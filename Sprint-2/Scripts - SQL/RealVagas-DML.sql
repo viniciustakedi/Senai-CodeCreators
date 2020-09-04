@@ -21,7 +21,7 @@ CREATE TABLE Adm (
 	IdAdm			INT PRIMARY KEY IDENTITY,
 	NomeAdm			VARCHAR (255),
 	DataNascimento	DATE,
-	Sexo			BIT,
+	Sexo			VARCHAR (120),
 );
 
 CREATE TABLE Empresas (
@@ -39,7 +39,7 @@ CREATE TABLE Alunos (
 	IdAluno				INT PRIMARY KEY IDENTITY,
 	NomeAluno			VARCHAR (255),
 	DataNascimento		DATE,
-	Sexo				BIT,
+	Sexo				VARCHAR (120),
 	Escola				VARCHAR (255),
 	Email				VARCHAR (255),
 	Telefone			VARCHAR (20),
@@ -60,8 +60,8 @@ CREATE TABLE Vagas (
 	TipoContrato		VARCHAR (255),
 	Cargo				VARCHAR (255),
 	QntVagas			INT,
-	Salario				VARCHAR (255),
-	Descricao			VARCHAR (255),
+	Salario				DECIMAL (255),
+	Descricao			TEXT (255),
 	Foto				IMAGE,
 	StatusVaga			BIT,
 	IdEmpresa			INT FOREIGN KEY REFERENCES	Empresas (IdEmpresa),
@@ -76,9 +76,3 @@ CREATE TABLE Inscricao (
 );
 
 
---Alterar uma coluna da tabela Vagas
-ALTER TABLE Vagas
-ALTER COLUMN Salario DECIMAL (18,2)
-
-ALTER TABLE VAGAS
-ALTER COLUMN Descricao TEXT
