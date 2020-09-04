@@ -60,8 +60,8 @@ CREATE TABLE Vagas (
 	TipoContrato		VARCHAR (255),
 	Cargo				VARCHAR (255),
 	QntVagas			INT,
-	Salario				DECIMAL (255),
-	Descricao			TEXT (255),
+	Salario				DECIMAL (8,2),
+	Descricao			TEXT,
 	Foto				IMAGE,
 	StatusVaga			BIT,
 	IdEmpresa			INT FOREIGN KEY REFERENCES	Empresas (IdEmpresa),
@@ -74,5 +74,8 @@ CREATE TABLE Inscricao (
 	IdVaga				INT FOREIGN KEY REFERENCES	Vagas  (IdVaga),
 	IdAluno				INT FOREIGN KEY REFERENCES	Alunos (IdAluno),
 );
+
+SELECT * FROM Alunos
+SELECT * FROM DadosSigilosos
 
 
