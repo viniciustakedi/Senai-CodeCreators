@@ -1,8 +1,10 @@
 --Criar banco de dados
 CREATE DATABASE RealVagas
+GO
 
 --Usar o banco de dados criado
 USE RealVagas
+GO
 
 --Criações das tabelas DLL
 CREATE TABLE DbDados (
@@ -11,12 +13,13 @@ CREATE TABLE DbDados (
 	NumMatricula		VARCHAR (255),
 	Senha				VARCHAR (255),
 );
+GO
 
 CREATE TABLE DbTipoUsuario (
 	ID	INT PRIMARY KEY IDENTITY,
 	Titulo			VARCHAR (255),
 );
-
+GO
 
 CREATE TABLE DbEmpresas (
 	ID		INT PRIMARY KEY IDENTITY,
@@ -27,8 +30,9 @@ CREATE TABLE DbEmpresas (
 	RazaoSocial		VARCHAR (255),
 	NomeResponsavel	VARCHAR (255),
 	Senha			VARCHAR (255),
-	IdTipoUsuario	INT FOREIGN KEY REFERENCES TipoUsuario (ID)
+	IdTipoUsuario	INT FOREIGN KEY REFERENCES DbTipoUsuario (ID)
 );
+GO
 
 CREATE TABLE DbUsuarios (
 	ID				INT PRIMARY KEY IDENTITY,
@@ -45,9 +49,10 @@ CREATE TABLE DbUsuarios (
 	Turma				VARCHAR (255),
 	Turno				VARCHAR (255),
 	Termo				INT,
-	IdTipoUsuario	INT FOREIGN KEY REFERENCES TipoUsuario (ID),
+	IdTipoUsuario	INT FOREIGN KEY REFERENCES DbTipoUsuario (ID),
 	IdDados	INT FOREIGN KEY REFERENCES DbDados (ID)
 );
+GO
 
 CREATE TABLE DbVagas (
 	ID				INT PRIMARY KEY IDENTITY,
@@ -61,16 +66,17 @@ CREATE TABLE DbVagas (
 	Descricao			TEXT,
 	Foto				IMAGE,
 	StatusVaga			BIT,
-	IdEmpresa			INT FOREIGN KEY REFERENCES	Empresas (IdEmpresa),
+	IdEmpresa			INT FOREIGN KEY REFERENCES	DbEmpresas(ID),
 );
+GO
 
 CREATE TABLE DbInscricao (
 	ID			INT PRIMARY KEY IDENTITY,
 	StatusInscricao		BIT,
 	DataInscricao		DATE,
-	IdVaga				INT FOREIGN KEY REFERENCES	Vagas  (IdVaga),
-	IdAluno				INT FOREIGN KEY REFERENCES	Alunos (IdAluno),
+	IdVaga				INT FOREIGN KEY REFERENCES	DbVagas  (ID),
+	IdUsuario			INT FOREIGN KEY REFERENCES	DbUsuarios (ID),
 );
-
+GO
 
 
