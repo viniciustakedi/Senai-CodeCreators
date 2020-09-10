@@ -28,7 +28,7 @@ namespace Real_Vagas_API.Domains
         public int? IdDados { get; set; }
 
         public virtual DbDados IdDadosNavigation { get; set; }
-        public virtual DbTipoUsuario IdTipoUsuarioNavigation { get; set; }
+        public virtual DbTipoUsuarioDomain IdTipoUsuarioNavigation { get; set; }
         public virtual ICollection<DbInscricao> DbInscricao { get; set; }
     }
 }

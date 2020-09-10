@@ -18,7 +18,7 @@ namespace Real_Vagas_API.Domains
         public virtual DbSet<DbDados> DbDados { get; set; }
         public virtual DbSet<DbEmpresas> DbEmpresas { get; set; }
         public virtual DbSet<DbInscricao> DbInscricao { get; set; }
-        public virtual DbSet<DbTipoUsuario> DbTipoUsuario { get; set; }
+        public virtual DbSet<DbTipoUsuarioDomain> DbTipoUsuario { get; set; }
         public virtual DbSet<DbUsuarios> DbUsuarios { get; set; }
         public virtual DbSet<DbVagas> DbVagas { get; set; }
 
@@ -106,7 +106,7 @@ namespace Real_Vagas_API.Domains
                     .HasConstraintName("FK__DbInscric__IdVag__534D60F1");
             });
 
-            modelBuilder.Entity<DbTipoUsuario>(entity =>
+            modelBuilder.Entity<DbTipoUsuarioDomain>(entity =>
             {
                 entity.Property(e => e.Id).HasColumnName("ID");
 

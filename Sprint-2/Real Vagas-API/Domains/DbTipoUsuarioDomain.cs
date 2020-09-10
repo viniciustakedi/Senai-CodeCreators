@@ -3,9 +3,9 @@ using System.Collections.Generic;
 
 namespace Real_Vagas_API.Domains
 {
-    public partial class DbTipoUsuario
+    public class DbTipoUsuarioDomain
     {
-        public DbTipoUsuario()
+        public DbTipoUsuarioDomain()
         {
             DbEmpresas = new HashSet<DbEmpresas>();
             DbUsuarios = new HashSet<DbUsuarios>();
@@ -16,5 +16,6 @@ namespace Real_Vagas_API.Domains
 
         public virtual ICollection<DbEmpresas> DbEmpresas { get; set; }
         public virtual ICollection<DbUsuarios> DbUsuarios { get; set; }
+        public int IDDbTipoUsuario { get; set; }
     }
 }

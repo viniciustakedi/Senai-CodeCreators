@@ -20,7 +20,7 @@ namespace Real_Vagas_API.Domains
         public string Senha { get; set; }
         public int? IdTipoUsuario { get; set; }
 
-        public virtual DbTipoUsuario IdTipoUsuarioNavigation { get; set; }
+        public virtual DbTipoUsuarioDomain IdTipoUsuarioNavigation { get; set; }
         public virtual ICollection<DbVagas> DbVagas { get; set; }
     }
 }
