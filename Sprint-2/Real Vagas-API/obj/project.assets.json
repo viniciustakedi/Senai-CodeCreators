@@ -8710,11 +8710,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\henri\\Desktop\\Senai-CodeCreators\\Sprint-2\\Real Vagas-API\\Real Vagas-API.csproj",
+      "projectUniqueName": "C:\\Users\\henri\\Desktop\\Senai-CodeCreators-1\\Sprint-2\\Real Vagas-API\\Real Vagas-API.csproj",
       "projectName": "Real Vagas-API",
-      "projectPath": "C:\\Users\\henri\\Desktop\\Senai-CodeCreators\\Sprint-2\\Real Vagas-API\\Real Vagas-API.csproj",
+      "projectPath": "C:\\Users\\henri\\Desktop\\Senai-CodeCreators-1\\Sprint-2\\Real Vagas-API\\Real Vagas-API.csproj",
       "packagesPath": "C:\\Users\\henri\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\henri\\Desktop\\Senai-CodeCreators\\Sprint-2\\Real Vagas-API\\obj\\",
+      "outputPath": "C:\\Users\\henri\\Desktop\\Senai-CodeCreators-1\\Sprint-2\\Real Vagas-API\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Microsoft\\Xamarin\\NuGet\\",

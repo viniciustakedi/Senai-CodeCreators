@@ -4,5 +4,83 @@
         <name>Real Vagas-API</name>
     </assembly>
     <members>
+        <member name="M:Real_Vagas_API.Controllers.EmpresasController.DeletarEmpresa(System.Int32)">
+            <summary>
+            Controller para deletar uma empresa do banco de dados
+            </summary>
+            <param name="ID"></param>
+            <response code="202">Retorna um aceito caso o ID for existente, assim deletado a empresa do sistema.</response>
+            <response code="404">Retorna um não encontrado caso o ID não existe no sistema.</response>   
+        </member>
+        <member name="M:Real_Vagas_API.Controllers.EmpresasController.ListarEmpresas">
+            <summary>
+            Controller responsável por listar todas as empresas do sistemas.
+            </summary>
+            <response code="200">Retorna um OK com uma lista de empresas cadastradas. </response>
+            <response code="404">Retorna um não encontrado caso não existe empresas cadastradas.</response>
+        </member>
+        <member name="M:Real_Vagas_API.Controllers.EmpresasController.CadastraEmpresa(Real_Vagas_API.Domains.DbEmpresas)">
+            <summary>
+            Controller responsável por cadastrar uma empresa no sistema.
+            </summary>
+            <response code="201">Retorna que foi criado a empresa, assim cadastrado a empresa no banco de dados. </response>
+            <response code="400">Retorna sintaxe inválida caso cnpj ou email já estiver cadastrado no sistema.</response>
+        </member>
+        <member name="M:Real_Vagas_API.Controllers.EmpresasController.AtualizarEmpresa(Real_Vagas_API.Domains.DbEmpresas)">
+            <summary>
+            Controller responsável por atualizar os dados de uma empresa no sistema.
+            </summary>
+            <response code="200">Retorna um ok, os dados serão atualizados no banco de dados. </response>
+            <response code="404">Retorna não encontrado caso o ID informado não existir.</response>
+        </member>
+        <member name="M:Real_Vagas_API.Controllers.EmpresasController.BuscarPorEmpresa(Real_Vagas_API.Domains.DbEmpresas)">
+            <summary>
+            Controller responsável por buscar dados do banco de dados apartir do email ou cnpj.
+            </summary>
+            <response code="200">Retorna um ok, os dados e as informadas da empresa buscada. </response>
+            <response code="404">Retorna não encontrado caso o email ou cnpj informado não estiver cadastrados.</response>
+        </member>
+        <member name="M:Real_Vagas_API.Controllers.EmpresasController.BuscarPeloID(System.Int32)">
+            <summary>
+            Controller responsável por buscar dados do banco de dados apartir do ID da empresa.
+            </summary>
+            <response code="200">Retorna um ok, os dados e as informadas da empresa buscada pelo ID. </response>
+            <response code="404">Retorna não encontrado caso o ID informado não existir.</response>
+        </member>
+        <member name="M:Real_Vagas_API.Controllers.EmpresasController.VagasCadastradas(System.Int32)">
+            <summary>
+            Controller responsável por buscar todas as vagas cadastradas por uma empresa, apartir do ID da empresa.
+            </summary>
+            <response code="200">Retorna um ok, as vagas cadastradas com ID da empresa.</response>
+            <response code="404">Retorna não encontrado caso o ID informado não existir ou não existir vagas com esse ID.</response>
+        </member>
+        <member name="M:Real_Vagas_API.Controllers.EmpresasController.VagasCadastradasEm30Dias(System.Int32)">
+            <summary>
+            Controller responsável por buscar todas as vagas cadastradas nós últimos 30 dias por uma empresa, apartir do ID da empresa.
+            </summary>
+            <response code="200">Retorna um ok, as vagas cadastradas com ID da empresa nós últimos 30 dias.</response>
+            <response code="404">Retorna não encontrado caso o ID informado não existir ou não existir vagas cadastradas com esse ID nós últimos 30 dias.</response>
+        </member>
+        <member name="M:Real_Vagas_API.Controllers.EmpresasController.CurriculosRecebidos(System.Int32)">
+            <summary>
+            Controller responsável por buscar todos os currículos inscritos nas vagas de uma empresa, apartir do ID da empresa.
+            </summary>
+            <response code="200">Retorna um ok, todos os currículos inscritos nas vagas da empresa.</response>
+            <response code="404">Retorna não encontrado caso o ID informado não existir ou não existir currículos inscritos numa vaga.</response>
+        </member>
+        <member name="M:Real_Vagas_API.Controllers.EmpresasController.CurriculosRecebidosEm30Dias(System.Int32)">
+            <summary>
+            Controller responsável por buscar todos os currículos inscritos nas vagas de uma empresa nós últimos 30 dias, apartir do ID da empresa.
+            </summary>
+            <response code="200">Retorna um ok, todos os currículos inscritos nas vagas da empresa nós últimos 30 dias.</response>
+            <response code="404">Retorna não encontrado caso o ID informado não existir ou não existir currículos inscritos numa vaga nós últimos 30 dias.</response>
+        </member>
+        <member name="M:Real_Vagas_API.Controllers.EmpresasController.CurriculosRecebidosPorVagas(System.Int32)">
+            <summary>
+            Controller responsável por buscar todos os currículos inscritos numa vaga, apartir do ID da vaga.
+            </summary>
+            <response code="200">Retorna um ok, todos os currículos inscritos na vaga selecionada.</response>
+            <response code="404">Retorna não encontrado caso o ID informado não existir ou não existir currículos inscritos na vaga.</response>
+        </member>
     </members>
 </doc>
