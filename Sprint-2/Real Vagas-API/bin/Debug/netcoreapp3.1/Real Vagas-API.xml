@@ -4,5 +4,17 @@
         <name>Real Vagas-API</name>
     </assembly>
     <members>
+        <member name="M:Real_Vagas_API.Controllers.TipoUsuarioController.Delete(System.Int32)">
+            Deleta um Tipo de Usuario
+        </member>
+        <member name="M:Real_Vagas_API.Controllers.TipoUsuarioController.Get">
+            Listar Tipo Usuario
+        </member>
+        <member name="M:Real_Vagas_API.Controllers.TipoUsuarioController.GetId(System.Int32)">
+            Buscar por Id
+        </member>
+        <member name="M:Real_Vagas_API.Controllers.TipoUsuarioController.PulIdUrl(System.Int32,Real_Vagas_API.Domains.DbTipoUsuarioDomain)">
+            Atualizar tipo Usuario
+        </member>
     </members>
 </doc>

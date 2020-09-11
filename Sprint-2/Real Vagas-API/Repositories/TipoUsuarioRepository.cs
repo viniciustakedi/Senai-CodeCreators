@@ -10,8 +10,8 @@ namespace Real_Vagas_API.Repositories
 {
     public class TipoUsuarioRepository : ITipoUsuario
     {
-        //para reconhecer o banco de dados 
-        private string stringConexao = "Data Source=nome\\SQLEXPRESS; initial catalog=RealVagas; user Id=usuario; pwd=senha";
+        //para reconhecer o banco de dados takedi
+        private string stringConexao = "Data Source=LAPTOP-QQ7IRANA\\SQLEXPRESS; initial catalog=RealVagas; user Id=sa; pwd=takedi79";
 
 
         //Repository para atualizar tipo usuario por Id
@@ -80,21 +80,6 @@ namespace Real_Vagas_API.Repositories
             }
         }
 
-        public void Cadastrar(DBTipoUsuarioDomain novoTipoUsuario)
-        {
-            using (SqlConnection con = new SqlConnection(stringConexao))
-            {
-                string queryInsert = "INSERT INT DbTipoUsuario(Titulo) VALUES (@Titulo)";
-
-                using (SqlCommand cmd = new SqlCommand(queryInsert, con))
-                {
-                    cmd.Parameters.AddWithValue("@Titulo", novoTipoUsuario);
-
-                    con.Open();
-                    cmd.ExecuteNonQuery();
-                }
-            }
-        }
 
         //Deletar um Tipo Usuario 
         public void Deletar(int id)
@@ -146,4 +131,4 @@ namespace Real_Vagas_API.Repositories
         }
     }
 }
-}
+
