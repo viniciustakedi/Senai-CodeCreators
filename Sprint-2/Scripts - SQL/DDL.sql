@@ -27,7 +27,7 @@ CREATE TABLE DbEmpresas (
 	RazaoSocial		VARCHAR (255),
 	NomeResponsavel	VARCHAR (255),
 	Senha			VARCHAR (255),
-	IdTipoUsuario	INT FOREIGN KEY REFERENCES TipoUsuario (ID)
+	IdTipoUsuario	INT FOREIGN KEY REFERENCES DbTipoUsuario (ID)
 );
 
 CREATE TABLE DbUsuarios (
@@ -45,7 +45,7 @@ CREATE TABLE DbUsuarios (
 	Turma				VARCHAR (255),
 	Turno				VARCHAR (255),
 	Termo				INT,
-	IdTipoUsuario	INT FOREIGN KEY REFERENCES TipoUsuario (ID),
+	IdTipoUsuario	INT FOREIGN KEY REFERENCES DbTipoUsuario (ID),
 	IdDados	INT FOREIGN KEY REFERENCES DbDados (ID)
 );
 
@@ -61,15 +61,15 @@ CREATE TABLE DbVagas (
 	Descricao			TEXT,
 	Foto				IMAGE,
 	StatusVaga			BIT,
-	IdEmpresa			INT FOREIGN KEY REFERENCES	Empresas (IdEmpresa),
+	IdEmpresa			INT FOREIGN KEY REFERENCES	DbEmpresas (ID),
 );
 
 CREATE TABLE DbInscricao (
 	ID			INT PRIMARY KEY IDENTITY,
 	StatusInscricao		BIT,
 	DataInscricao		DATE,
-	IdVaga				INT FOREIGN KEY REFERENCES	Vagas  (IdVaga),
-	IdAluno				INT FOREIGN KEY REFERENCES	Alunos (IdAluno),
+	IdVaga				INT FOREIGN KEY REFERENCES	DbVagas  (ID),
+	IdAluno				INT FOREIGN KEY REFERENCES	DbUsuarios (ID),
 );
 
 
