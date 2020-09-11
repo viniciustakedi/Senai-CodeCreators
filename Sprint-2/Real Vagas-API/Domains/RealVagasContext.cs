@@ -27,7 +27,7 @@ namespace Real_Vagas_API.Domains
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-                optionsBuilder.UseSqlServer("Server=LAPTOP-OEOULMOC\\SQLEXPRESS;Database=RealVagas;Trusted_Connection=True;");
+                optionsBuilder.UseSqlServer("Server=LAPTOP-U61L15JH\\SQLEXPRESS2019;Database=RealVagas;Trusted_Connection=True;");
             }
         }
 
@@ -86,7 +86,7 @@ namespace Real_Vagas_API.Domains
                 entity.HasOne(d => d.IdTipoUsuarioNavigation)
                     .WithMany(p => p.DbEmpresas)
                     .HasForeignKey(d => d.IdTipoUsuario)
-                    .HasConstraintName("FK__DbEmpresa__IdTip__4222D4EF");
+                    .HasConstraintName("FK__DbEmpresa__IdTip__3A81B327");
             });
 
             modelBuilder.Entity<DbInscricao>(entity =>
@@ -98,12 +98,12 @@ namespace Real_Vagas_API.Domains
                 entity.HasOne(d => d.IdUsuarioNavigation)
                     .WithMany(p => p.DbInscricao)
                     .HasForeignKey(d => d.IdUsuario)
-                    .HasConstraintName("FK__DbInscric__IdUsu__5441852A");
+                    .HasConstraintName("FK__DbInscric__IdUsu__44FF419A");
 
                 entity.HasOne(d => d.IdVagaNavigation)
                     .WithMany(p => p.DbInscricao)
                     .HasForeignKey(d => d.IdVaga)
-                    .HasConstraintName("FK__DbInscric__IdVag__534D60F1");
+                    .HasConstraintName("FK__DbInscric__IdVag__440B1D61");
             });
 
             modelBuilder.Entity<DbTipoUsuario>(entity =>
@@ -168,12 +168,12 @@ namespace Real_Vagas_API.Domains
                 entity.HasOne(d => d.IdDadosNavigation)
                     .WithMany(p => p.DbUsuarios)
                     .HasForeignKey(d => d.IdDados)
-                    .HasConstraintName("FK__DbUsuario__IdDad__45F365D3");
+                    .HasConstraintName("FK__DbUsuario__IdDad__3E52440B");
 
                 entity.HasOne(d => d.IdTipoUsuarioNavigation)
                     .WithMany(p => p.DbUsuarios)
                     .HasForeignKey(d => d.IdTipoUsuario)
-                    .HasConstraintName("FK__DbUsuario__IdTip__44FF419A");
+                    .HasConstraintName("FK__DbUsuario__IdTip__3D5E1FD2");
             });
 
             modelBuilder.Entity<DbVagas>(entity =>
@@ -207,7 +207,7 @@ namespace Real_Vagas_API.Domains
                 entity.HasOne(d => d.IdEmpresaNavigation)
                     .WithMany(p => p.DbVagas)
                     .HasForeignKey(d => d.IdEmpresa)
-                    .HasConstraintName("FK__DbVagas__IdEmpre__5070F446");
+                    .HasConstraintName("FK__DbVagas__IdEmpre__412EB0B6");
             });
 
             OnModelCreatingPartial(modelBuilder);

@@ -4,5 +4,72 @@
         <name>Real Vagas-API</name>
     </assembly>
     <members>
+        <member name="M:Real_Vagas_API.Controllers.DadosController.#ctor">
+            <summary>
+            Instancia este objeto para que haja a referência aos métodos no repositório
+            </summary>
+        </member>
+        <member name="F:Real_Vagas_API.Controllers.UsuariosController._usuario">
+            <summary>
+            Cria um objeto _usuarioRepository que irá receber todos os métodos definidos na interface
+            </summary>
+        </member>
+        <member name="M:Real_Vagas_API.Controllers.UsuariosController.#ctor">
+            <summary>
+            Instancia este objeto para que haja a referência aos métodos no repositório
+            </summary>
+        </member>
+        <member name="M:Real_Vagas_API.Interfaces.IDados.BuscarPorId(System.Int32)">
+            <summary>
+            Busca um usuário através do ID
+            </summary>
+            <param name="id">ID do usuário buscado</param>
+            <returns>Um usuário buscado</returns>
+        </member>
+        <member name="M:Real_Vagas_API.Interfaces.IDados.Cadastrar(Real_Vagas_API.Domains.DbDados)">
+            <summary>
+            Cadastra um novo usuário
+            </summary>
+            <param name="novoUsuario">Objeto novoUsuario que será cadastrado</param>
+        </member>
+        <member name="M:Real_Vagas_API.Interfaces.IDados.Atualizar(System.Int32,Real_Vagas_API.Domains.DbDados)">
+            <summary>
+            Atualiza um usuário existente
+            </summary>
+            <param name="id">ID do usuário que será atualizado</param>
+            <param name="usuarioAtualizado">Objeto com as novas informações</param>
+        </member>
+        <member name="M:Real_Vagas_API.Interfaces.IDados.Deletar(System.Int32)">
+            <summary>
+            Deleta um usuário
+            </summary>
+            <param name="id">ID do usuário que será deletado</param>
+        </member>
+        <member name="M:Real_Vagas_API.Interfaces.IUsuarios.BuscarPorId(System.Int32)">
+            <summary>
+            Busca um usuário através do ID
+            </summary>
+            <param name="id">ID do usuário buscado</param>
+            <returns>Um usuário buscado</returns>
+        </member>
+        <member name="M:Real_Vagas_API.Interfaces.IUsuarios.Cadastrar(Real_Vagas_API.Domains.DbUsuarios)">
+            <summary>
+            Cadastra um novo usuário
+            </summary>
+            <param name="novoUsuario">Objeto novoUsuario que será cadastrado</param>
+        </member>
+        <member name="M:Real_Vagas_API.Interfaces.IUsuarios.Atualizar(System.Int32,Real_Vagas_API.Domains.DbUsuarios)">
+            <summary>
+            Atualiza um usuário existente
+            </summary>
+            <param name="id">ID do usuário que será atualizado</param>
+            <param name="usuarioAtualizado">Objeto com as novas informações</param>
+        </member>
+        <member name="M:Real_Vagas_API.Interfaces.IUsuarios.Deletar(System.Int32)">
+            <summary>
+            Deleta um usuário
+            </summary>
+            <param name="id">ID do usuário que será deletado</param>
+        </member>
     </members>
 </doc>
