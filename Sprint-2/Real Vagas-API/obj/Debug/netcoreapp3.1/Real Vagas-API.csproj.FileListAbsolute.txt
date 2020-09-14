@@ -263,8 +263,6 @@ C:\Users\henri\Desktop\Senai-CodeCreators-1\Sprint-2\Real Vagas-API\bin\Debug\ne
 C:\Users\henri\Desktop\Senai-CodeCreators-1\Sprint-2\Real Vagas-API\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.0\System.Runtime.Caching.dll
 C:\Users\henri\Desktop\Senai-CodeCreators-1\Sprint-2\Real Vagas-API\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
 C:\Users\henri\Desktop\Senai-CodeCreators-1\Sprint-2\Real Vagas-API\obj\Debug\netcoreapp3.1\Real Vagas-API.csprojAssemblyReference.cache
-C:\Users\henri\Desktop\Senai-CodeCreators-1\Sprint-2\Real Vagas-API\obj\Debug\netcoreapp3.1\Real Vagas-API.MvcApplicationPartsAssemblyInfo.cs
-C:\Users\henri\Desktop\Senai-CodeCreators-1\Sprint-2\Real Vagas-API\obj\Debug\netcoreapp3.1\Real Vagas-API.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\henri\Desktop\Senai-CodeCreators-1\Sprint-2\Real Vagas-API\obj\Debug\netcoreapp3.1\Real Vagas-API.AssemblyInfoInputs.cache
 C:\Users\henri\Desktop\Senai-CodeCreators-1\Sprint-2\Real Vagas-API\obj\Debug\netcoreapp3.1\Real Vagas-API.AssemblyInfo.cs
 C:\Users\henri\Desktop\Senai-CodeCreators-1\Sprint-2\Real Vagas-API\obj\Debug\netcoreapp3.1\Real Vagas-API.RazorTargetAssemblyInfo.cache
@@ -272,3 +270,6 @@ C:\Users\henri\Desktop\Senai-CodeCreators-1\Sprint-2\Real Vagas-API\obj\Debug\ne
 C:\Users\henri\Desktop\Senai-CodeCreators-1\Sprint-2\Real Vagas-API\obj\Debug\netcoreapp3.1\Real Vagas-API.dll
 C:\Users\henri\Desktop\Senai-CodeCreators-1\Sprint-2\Real Vagas-API\obj\Debug\netcoreapp3.1\Real Vagas-API.xml
 C:\Users\henri\Desktop\Senai-CodeCreators-1\Sprint-2\Real Vagas-API\obj\Debug\netcoreapp3.1\Real Vagas-API.pdb
+C:\Users\henri\Desktop\Senai-CodeCreators-1\Sprint-2\Real Vagas-API\bin\Debug\netcoreapp3.1\WebDriver.dll
+C:\Users\henri\Desktop\Senai-CodeCreators-1\Sprint-2\Real Vagas-API\obj\Debug\netcoreapp3.1\Real Vagas-API.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\henri\Desktop\Senai-CodeCreators-1\Sprint-2\Real Vagas-API\obj\Debug\netcoreapp3.1\Real Vagas-API.MvcApplicationPartsAssemblyInfo.cache

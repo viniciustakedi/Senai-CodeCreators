@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Real_Vagas_API.Domains;
 using Real_Vagas_API.Interfaces;
 using Real_Vagas_API.Repositories;
+using Real_Vagas_API.ViewModels;
 
 namespace Real_Vagas_API.Controllers
 {
@@ -262,6 +263,53 @@ namespace Real_Vagas_API.Controllers
             else
             {
                 return StatusCode(404, "Nenhum currículo encontrado com ID dessa vaga.");
+            }
+        }
+
+        [HttpGet("validarcnpj")]
+        public IActionResult validar(string cnpj)
+        {
+            bool ret = _EmpresasRepository.VerificarCnpj(cnpj);
+
+            if (ret == true)
+            {
+                return Ok("cnpj valido!!!");
+            }
+            else
+            {
+                return NotFound("cnpj invalido!!!");
+            }
+        }
+
+        [HttpGet("SolicitarCodigo")]
+        public IActionResult SolicitarCodigo(string email)
+        {
+            DbEmpresas Empresa = _EmpresasRepository.SearchByEmpresa(email,"");
+
+            if (Empresa != null)
+            {
+                _EmpresasRepository.EnviarEmail(email, Empresa.Id, Empresa.Senha);
+                return Ok("Email enviado com sucesso, verifique sua caixa de email para redefinir sua senha!!!");
+            }
+            else
+            {
+                return NotFound("Email não cadastrado no sistema!!!");
+            }
+        }
+
+        [HttpGet("RedefinirSenha")]
+        public IActionResult RedefinirSenha(string Codigo, string NovaSenha)
+        {
+            string clear = _EmpresasRepository.ValidateCode(Codigo);
+            bool Empresa = _EmpresasRepository.ModifyPass(clear, NovaSenha);
+
+            if (Empresa == true)
+            {
+                return Ok("sua senha foi redefinida com sucesso!!!");
+            }
+            else
+            {
+                return NotFound("Seu codigo expirou solicite outro para redefinir sua senha!!!");
             }
         }
     }
