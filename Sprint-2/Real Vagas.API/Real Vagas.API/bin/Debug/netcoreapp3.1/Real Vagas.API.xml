@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Real Vagas.API</name>
+    </assembly>
+    <members>
+        <member name="M:Real_Vagas.API.Controllers.InscricaoController.Get">
+            <summary>
+            Listar Todas as incrições
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Real_Vagas.API.Controllers.InscricaoController.GetById(System.Int32)">
+            <summary>
+            Buscar uma incrição pelo ID
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Real_Vagas.API.Controllers.InscricaoController.Deletar(System.Int32)">
+            <summary>
+            Deletar um pacote pelo ID
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Real_Vagas.API.Controllers.InscricaoController.Put(System.Int32,Real_Vagas.API.Domains.DbInscricao)">
+            <summary>
+            Atualizar um Pacote pelo ID
+            </summary>
+            <param name="id"></param>
+            <param name="InscricaoAtulizada"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>
