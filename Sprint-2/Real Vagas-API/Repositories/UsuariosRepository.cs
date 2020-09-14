@@ -48,11 +48,15 @@ namespace Real_Vagas_API.Repositories
             return ctx.DbUsuarios.FirstOrDefault(u => u.Id == id);
         }
 
+
+        //Para buscar um usuario pelo Email e Senha
+        //Takedi fez essa parte então se der algum erro só comunicar.
         public DbUsuarios BuscarPorEmailSenha(string email, string senha)
         {
             using (SqlConnection con = new SqlConnection(stringConexao))
             {
-                string query = "SELECT Usuarios.IdDbUsuarios, DbUsuarios.Email, DbDados.Senha WHERE DbUsuarios.Email = @Email AND DbDados.Senha = @Senha"";
+                //Query para o data base
+                string query = "SELECT Email, Senha FROM DbUsuarios INNER JOIN DbDados ON DbDados.ID  = DbUsuarios.IdDbDados";
 
                 using (SqlCommand cmd = new SqlCommand(query, con))
                 {
@@ -60,22 +64,24 @@ namespace Real_Vagas_API.Repositories
                     cmd.Parameters.AddWithValue("@Senha", senha);
 
                     con.Open();
-                    SqlDataAdapter reader = cmd.ExecuteReader();
+                    SqlDataReader reader = cmd.ExecuteReader();
 
-                    if (reader.Read())
+                    if(reader.Read())
                     {
-                        DbUsuarios usuarios = new DbUsuarios();
-                        DbDados dados = new DbDados();
-                        usuarios.IdDbUsuario = Convert.ToInt32(reader["IdDbUsuarios"];
-                        usuarios.Email = reader["Email"].ToString();
-                        dados.Senha = reader["Senha"].ToString();
+                        DbUsuarios usuario = new DbUsuarios(); //Para chamar o usuario domain mais rapido
+                        DbDados dado = new DbDados();
+                        usuario.Id = Convert.ToInt32(reader["IdDbUsuarios"]);
+                        usuario.Email = reader["Email"].ToString();
+                        dado.Senha = reader["Senha"].ToString();
 
-                        return usuarios;
+                        return usuario;
+                        
                     }
                 }
                 return null;
             }
         }
+          
 
         public void Cadastrar(DbUsuarios novoUsuario)
         {

@@ -35,5 +35,8 @@ namespace Real_Vagas_API.Interfaces
         /// </summary>
         /// <param name="id">ID do usuário que será deletado</param>
         void Deletar(int id);
+
+        //Buscar um usuario por email e senha parte de Login
+        DbUsuarios BuscarPorEmailSenha(string email, string senha);
     }
 }

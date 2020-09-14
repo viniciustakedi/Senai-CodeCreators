@@ -21,7 +21,7 @@ SELECT Email FROM DbAlunos WHERE Email LIKE '@GMAIL.COM@' ORDER BY Nome ASC;
 
 
 --SELECIONA DADOS SIGILOSOS COM TABELA ALUNOS
-SELECT * FROM DbAlunos INNER JOIN DbDados ON DbDados.ID  = DbAlunos.IdDados ORDER BY DataNascimento ASC;
+SELECT Email, Senha FROM DbUsuarios INNER JOIN DbDados ON DbDados.ID  = DbUsuarios.IdDbDados;
 
 --SELECIONA ALUNO ATRAVÉS DA ESCOLA
 SELECT NomeAluno,DataNascimento,Sexo,Email,Telefone,Turno,Curso FROM DbAlunos
