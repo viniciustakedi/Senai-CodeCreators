@@ -133,5 +133,6 @@ C:\Users\henri\Desktop\Senai-CodeCreators\Sprint-2\Real Vagas-API\bin\Debug\netc
 C:\Users\henri\Desktop\Senai-CodeCreators\Sprint-2\Real Vagas-API\bin\Debug\netcoreapp3.1\Real Vagas-API.xml
 C:\Users\henri\Desktop\Senai-CodeCreators\Sprint-2\Real Vagas-API\obj\Debug\netcoreapp3.1\Real Vagas-API.xml
 C:\Users\henri\Desktop\Senai-CodeCreators\Sprint-2\Real Vagas-API\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\henri\Desktop\Senai-CodeCreators\Sprint-2\Real Vagas-API\bin\Debug\netcoreapp3.1\WebDriver.dll
 C:\Users\henri\Desktop\Senai-CodeCreators\Sprint-2\Real Vagas-API\obj\Debug\netcoreapp3.1\Real Vagas-API.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\henri\Desktop\Senai-CodeCreators\Sprint-2\Real Vagas-API\obj\Debug\netcoreapp3.1\Real Vagas-API.MvcApplicationPartsAssemblyInfo.cache

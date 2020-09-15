@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using Newtonsoft.Json;
 
@@ -23,22 +24,45 @@ namespace Real_Vagas_API
         {
             services
               // Adiciona o MVC ao projeto
-              .AddMvc()
+              .AddMvc();
 
-              // Define a versão do .NET Core
-              .SetCompatibilityVersion(Microsoft.AspNetCore.Mvc.CompatibilityVersion.Version_3_0);
+            services.AddControllers();
 
-            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-         .AddJwtBearer(options =>
-         {
-             options.Audience = "Real.Vagas";
-             options.Authority = "Real.Vagas";
-         })
-         .AddJwtBearer("Real Vagas", options =>
-         {
-             options.Audience = "Real.Vagas";
-             options.Authority = "Real.Vagas";
-         });
+            services
+               // Define a forma de autenticação
+               .AddAuthentication(options =>
+               {
+                   options.DefaultAuthenticateScheme = "JwtBearer";
+                   options.DefaultChallengeScheme = "JwtBearer";
+               })
+
+               // Define os parâmetros de validação do token
+               .AddJwtBearer("JwtBearer", options =>
+               {
+                   options.TokenValidationParameters = new TokenValidationParameters
+                   {
+                       // Quem está solicitando
+                       ValidateIssuer = true,
+
+                       // Quem está validando
+                       ValidateAudience = true,
+
+                       // Definindo o tempo de expiração
+                       ValidateLifetime = true,
+
+                       // Forma de criptografia
+                       IssuerSigningKey = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes("RealVagas-chave-autenticacao")),
+
+                       // Tempo de expiração do token
+                       ClockSkew = TimeSpan.FromMinutes(30),
+
+                       // Nome da issuer, de onde está vindo
+                       ValidIssuer = "RealVagas",
+
+                       // Nome da audience, de onde está vindo
+                       ValidAudience = "RealVagas"
+                   };
+               });
 
             services.AddSwaggerGen(c =>
             {
@@ -59,6 +83,13 @@ namespace Real_Vagas_API
             }
 
             app.UseSwagger();
+
+            app.UseRouting();
+
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllers();
+            });
 
             app.UseSwaggerUI(c =>
             {
