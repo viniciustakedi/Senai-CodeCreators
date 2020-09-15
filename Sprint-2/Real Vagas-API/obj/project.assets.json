@@ -8755,25 +8755,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\henri\\.nuget\\packages\\": {},
-    "C:\\Microsoft\\Xamarin\\NuGet\\": {},
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+    "C:\\Users\\vinic\\.nuget\\packages\\": {},
+    "C:\\Microsoft\\Xamarin\\NuGet\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\henri\\Desktop\\Senai-CodeCreators\\Sprint-2\\Real Vagas-API\\Real Vagas-API.csproj",
+      "projectUniqueName": "C:\\Users\\vinic\\Desktop\\Senai-CodeCreators\\Sprint-2\\Real Vagas-API\\Real Vagas-API.csproj",
       "projectName": "Real Vagas-API",
-      "projectPath": "C:\\Users\\henri\\Desktop\\Senai-CodeCreators\\Sprint-2\\Real Vagas-API\\Real Vagas-API.csproj",
-      "packagesPath": "C:\\Users\\henri\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\henri\\Desktop\\Senai-CodeCreators\\Sprint-2\\Real Vagas-API\\obj\\",
+      "projectPath": "C:\\Users\\vinic\\Desktop\\Senai-CodeCreators\\Sprint-2\\Real Vagas-API\\Real Vagas-API.csproj",
+      "packagesPath": "C:\\Users\\vinic\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\vinic\\Desktop\\Senai-CodeCreators\\Sprint-2\\Real Vagas-API\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\Microsoft\\Xamarin\\NuGet\\",
-        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        "C:\\Microsoft\\Xamarin\\NuGet\\"
       ],
       "configFilePaths": [
-        "C:\\Users\\henri\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\vinic\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
       ],
@@ -8861,7 +8859,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.101\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.200\\RuntimeIdentifierGraph.json"
       }
     }
   }
