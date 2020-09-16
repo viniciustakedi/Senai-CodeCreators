@@ -1,12 +1,12 @@
 {
 	"info": {
-		"_postman_id": "c294bb56-9de2-4d7c-9318-fa2117d2b2bd",
+		"_postman_id": "4a9ab9cf-612f-4db2-ae1f-d9a21f660732",
 		"name": "RealVagas",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
 		{
-			"name": "Tipo Usuário",
+			"name": "TipoUsuario",
 			"item": [
 				{
 					"name": "CadastrarTipoUsuario",
@@ -162,7 +162,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"Email\": \"\",\r\n    \"Senha\": \"\"\r\n}",
+							"raw": "{\r\n    \"Email\": \"adm@email.com\",\r\n    \"Senha\": \"adm\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -373,6 +373,169 @@
 								"1"
 							]
 						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Inscrição",
+			"item": [
+				{
+					"name": "BuscarPorId",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/Inscricao/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"Inscricao",
+								"1"
+							]
+						},
+						"description": "Buscar uma inscrição por Id"
+					},
+					"response": []
+				},
+				{
+					"name": "ListarInscrições",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/Inscricao",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"Inscricao"
+							]
+						},
+						"description": "Listar todas as inscrições"
+					},
+					"response": []
+				},
+				{
+					"name": "AtualizarInscricaoPorId",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id\": 0,\r\n  \"statusInscricao\": true,\r\n  \"dataInscricao\": \"2020-09-16T22:08:02.013Z\",\r\n  \"idVaga\": 0,\r\n  \"idUsuario\": 0,\r\n  \"idUsuarioNavigation\": {\r\n    \"id\": 0,\r\n    \"nome\": \"string\",\r\n    \"dataNascimento\": \"2020-09-16T22:08:02.013Z\",\r\n    \"sexo\": \"string\",\r\n    \"escola\": \"string\",\r\n    \"email\": \"string\",\r\n    \"telefone\": \"string\",\r\n    \"estadoCivil\": \"string\",\r\n    \"nivel\": \"string\",\r\n    \"tipoCurso\": \"string\",\r\n    \"curso\": \"string\",\r\n    \"turma\": \"string\",\r\n    \"turno\": \"string\",\r\n    \"termo\": 0,\r\n    \"idTipoUsuario\": 0,\r\n    \"idDados\": 0,\r\n    \"idDadosNavigation\": {\r\n      \"id\": 0,\r\n      \"cpf\": \"string\",\r\n      \"numMatricula\": \"string\",\r\n      \"senha\": \"string\",\r\n      \"dbUsuarios\": [\r\n        null\r\n      ]\r\n    },\r\n    \"idTipoUsuarioNavigation\": {\r\n      \"id\": 0,\r\n      \"titulo\": \"string\",\r\n      \"dbEmpresas\": [\r\n        {\r\n          \"id\": 0,\r\n          \"nome\": \"string\",\r\n          \"email\": \"string\",\r\n          \"telefone\": \"string\",\r\n          \"cnpj\": \"string\",\r\n          \"razaoSocial\": \"string\",\r\n          \"nomeResponsavel\": \"string\",\r\n          \"senha\": \"string\",\r\n          \"idTipoUsuario\": 0,\r\n          \"dbVagas\": [\r\n            null\r\n          ]\r\n        }\r\n      ],\r\n      \"dbUsuarios\": [\r\n        null\r\n      ]\r\n    },\r\n    \"dbInscricao\": [\r\n      null\r\n    ]\r\n  },\r\n  \"idVagaNavigation\": {\r\n    \"id\": 0,\r\n    \"nomeRecrutador\": \"string\",\r\n    \"localVaga\": \"string\",\r\n    \"tipoContrato\": \"string\",\r\n    \"dataPublicacao\": \"2020-09-16T22:08:02.013Z\",\r\n    \"cargo\": \"string\",\r\n    \"qntVagas\": 0,\r\n    \"salario\": 0,\r\n    \"descricao\": \"string\",\r\n    \"foto\": \"string\",\r\n    \"statusVaga\": true,\r\n    \"idEmpresa\": 0,\r\n    \"idEmpresaNavigation\": {\r\n      \"id\": 0,\r\n      \"nome\": \"string\",\r\n      \"email\": \"string\",\r\n      \"telefone\": \"string\",\r\n      \"cnpj\": \"string\",\r\n      \"razaoSocial\": \"string\",\r\n      \"nomeResponsavel\": \"string\",\r\n      \"senha\": \"string\",\r\n      \"idTipoUsuario\": 0,\r\n      \"dbVagas\": [\r\n        null\r\n      ]\r\n    },\r\n    \"dbInscricao\": [\r\n      null\r\n    ]\r\n  }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/Inscricao/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"Inscricao",
+								"1"
+							]
+						},
+						"description": "Atualizar uma inscrição pelo Id"
+					},
+					"response": []
+				},
+				{
+					"name": "DeletarInscricaoPorId",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/Inscricao/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"Inscricao",
+								"1"
+							]
+						},
+						"description": "Deletar uma inscrição pelo Id"
+					},
+					"response": []
+				}
+			],
+			"description": "Método inscrição",
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Usuario",
+			"item": [
+				{
+					"name": "CadastrarUsuario",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id\": 1,\r\n  \"nome\": \"takedi\",\r\n  \"dataNascimento\": \"2020-09-16T21:54:05.204Z\",\r\n  \"sexo\": \"string\",\r\n  \"escola\": \"string\",\r\n  \"email\": \"takedi@email.com\",\r\n  \"telefone\": \"string\",\r\n  \"estadoCivil\": \"string\",\r\n  \"nivel\": \"string\",\r\n  \"tipoCurso\": \"string\",\r\n  \"curso\": \"string\",\r\n  \"turma\": \"string\",\r\n  \"turno\": \"string\",\r\n  \"termo\": 0,\r\n  \"idTipoUsuario\": 3,\r\n  \"idDados\": 1,\r\n  \"idDadosNavigation\": {\r\n    \"id\": 1,\r\n    \"cpf\": \"string\",\r\n    \"numMatricula\": \"string\",\r\n    \"senha\": \"takedao\"\r\n  }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/usuarios",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"usuarios"
+							]
+						},
+						"description": "para cadastrar um novo usuário"
 					},
 					"response": []
 				}

@@ -9,6 +9,41 @@
             Instancia este objeto para que haja a referência aos métodos no repositório
             </summary>
         </member>
+        <member name="M:Real_Vagas_API.Controllers.DadosController.Get">
+            <summary>
+            Método listar Dados
+            </summary>
+            <returns>Todos os dados</returns>
+        </member>
+        <member name="M:Real_Vagas_API.Controllers.DadosController.GetByid(System.Int32)">
+            <summary>
+            Buscar um dado por id
+            </summary>
+            <param name="id"></param>
+            <returns>dadoBuscado</returns>
+        </member>
+        <member name="M:Real_Vagas_API.Controllers.DadosController.Post(Real_Vagas_API.Domains.DbDados)">
+            <summary>
+            Cadastra um novo dado
+            </summary>
+            <param name="novoUsuario"></param>
+            <returns>NovoUsuario</returns>
+        </member>
+        <member name="M:Real_Vagas_API.Controllers.DadosController.Put(System.Int32,Real_Vagas_API.Domains.DbDados)">
+            <summary>
+            Atualiza um dado
+            </summary>
+            <param name="id"></param>
+            <param name="dadoAtualizado"></param>
+            <returns>dadoAtualizado</returns>
+        </member>
+        <member name="M:Real_Vagas_API.Controllers.DadosController.Delete(System.Int32)">
+            <summary>
+            Metodo para Deletar um dado
+            </summary>
+            <param name="id"></param>
+            <returns>Vaga Deletada</returns>
+        </member>
         <member name="M:Real_Vagas_API.Controllers.EmpresasController.DeletarEmpresa(System.Int32)">
             <summary>
             Controller para deletar uma empresa do banco de dados
