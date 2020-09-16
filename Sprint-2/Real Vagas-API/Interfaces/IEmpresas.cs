@@ -19,7 +19,7 @@ namespace Real_Vagas_API.Interfaces
         List<DbInscricao> ResumesReceived(int ID);
         List<DbInscricao> ResumesReceivedBy30Days(int ID);
         List<DbInscricao> ResumesReceivedByVacancies(int ID);
-        bool VerificarCnpj(string cnpj);
+        string VerificarCnpjOuCpf(string cnpj);
         void EnviarEmail(string email, int ID, string senha);
         string GenerateCode(string ID, string Senha);
         string ValidateCode(string str);
