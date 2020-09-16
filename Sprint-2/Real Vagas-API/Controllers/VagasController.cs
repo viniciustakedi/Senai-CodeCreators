@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Real_Vagas_API.Domains;
 using Real_Vagas_API.Interfaces;
@@ -25,7 +26,13 @@ namespace Real_Vagas_API.Controllers
             _vagas = new VagasRepository();
         }
 
+        /// <summary>
+        /// Método Get para listar todas as vagas
+        /// </summary>        
+        /// <returns>Todas as Vagas </returns>
         [HttpGet]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public IActionResult Get()
         {
             try
@@ -38,7 +45,14 @@ namespace Real_Vagas_API.Controllers
             }
         }
 
+        /// <summary>
+        /// Método Post para cadastrar uma vaga
+        /// </summary>
+        /// <param name="VagaNova"></param>
+        /// <returns>Vaga Cadastrada</returns>
         [HttpPost]
+        [ProducesResponseType(StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public IActionResult Post(DbVagas VagaNova)
         {
             try
@@ -53,7 +67,15 @@ namespace Real_Vagas_API.Controllers
             }
         }
 
+        /// <summary>
+        /// Método Get para listar uma vaga por id
+        /// </summary>
+        /// <param name="Id"></param>
+        /// <returns>Vaga buscada</returns>
         [HttpGet("{Id}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public IActionResult GetById(int Id)
         {
             try
@@ -78,7 +100,15 @@ namespace Real_Vagas_API.Controllers
             }
         }
 
+        /// <summary>
+        /// Método Get para listar uma vaga pelo local
+        /// </summary>
+        /// <param name="LocalVaga"></param>
+        /// <returns>Vagas Encontradas</returns>
         [HttpGet("Vagas/{LocalVaga}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public IActionResult GetByLocal(string LocalVaga)
         {
             try
@@ -103,7 +133,15 @@ namespace Real_Vagas_API.Controllers
             }
         }
 
+        /// <summary>
+        /// Método Get para listar uma vaga pelo cargo
+        /// </summary>
+        /// <param name="Cargo"></param>
+        /// <returns>Vagas Encontradas</returns>
         [HttpGet("VagasPorCargo/{Cargo}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public IActionResult GetByCargo(string Cargo)
         {
             try
@@ -128,7 +166,15 @@ namespace Real_Vagas_API.Controllers
             }
         }
 
+        /// <summary>
+        /// Método Get para listar uma vaga pela data de publicação
+        /// </summary>
+        /// <param name="DataPublicacao"></param>
+        /// <returns>Vagas Encontradas</returns>
         [HttpGet("VagasPorData/{DataPublicacao}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public IActionResult GetByData(DateTime DataPublicacao)
         {
             try
@@ -153,7 +199,15 @@ namespace Real_Vagas_API.Controllers
             }
         }
 
+        /// <summary>
+        /// Método Get para listar uma vaga pelo nome da empresa
+        /// </summary>
+        /// <param name="EmpresaNome"></param>
+        /// <returns>Vagas Encontradas</returns>
         [HttpGet("VagasPorEmpresa/{EmpresaNome}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public IActionResult GetByEmpresa(string EmpresaNome)
         {
             try
@@ -178,7 +232,11 @@ namespace Real_Vagas_API.Controllers
             }
         }
 
+        
         [HttpPut("{Id}")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public IActionResult Put(int Id, DbVagas VagaAtualizada)
         {
             try
@@ -206,7 +264,15 @@ namespace Real_Vagas_API.Controllers
             }
         }
 
+        /// <summary>
+        /// Método Delete para deletar uma vaga
+        /// </summary>
+        /// <param name="Id"></param>
+        /// <returns>Vaga Deletada</returns>
         [HttpDelete("{Id}")]
+        [ProducesResponseType(StatusCodes.Status202Accepted)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public IActionResult Delete(int Id)
         {
             try

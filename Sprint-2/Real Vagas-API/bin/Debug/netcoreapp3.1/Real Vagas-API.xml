@@ -136,14 +136,32 @@
             <param name="InscricaoAtulizada"></param>
             <returns></returns>
         </member>
+        <member name="M:Real_Vagas_API.Controllers.TipoUsuarioController.Post(Real_Vagas_API.Domains.DbTipoUsuario)">
+            <summary>
+            Método Post para cadastrar um usuário
+            </summary>
+            <param name="tipousuario"></param>
+            <returns>Tipo Usuário Cadastrado</returns>
+        </member>
         <member name="M:Real_Vagas_API.Controllers.TipoUsuarioController.Delete(System.Int32)">
-            Deleta um Tipo de Usuario
+            <summary>
+            Método Delete para deletar um tipo usuário
+            </summary>
+            <param name="id"></param>
+            <returns>TipoUsuario Deletado</returns>
         </member>
         <member name="M:Real_Vagas_API.Controllers.TipoUsuarioController.Get">
-            Listar Tipo Usuario
+            <summary>
+            Método Get para listar todos os tipos de usuários
+            </summary>
+            <returns>Lista tipos usuários</returns>
         </member>
         <member name="M:Real_Vagas_API.Controllers.TipoUsuarioController.GetId(System.Int32)">
-            Buscar por Id
+            <summary>
+            Busca um tipo usuário pelo Id
+            </summary>
+            <param name="id"></param>
+            <returns>Busca tipo usuario pelo Id</returns>
         </member>
         <member name="M:Real_Vagas_API.Controllers.TipoUsuarioController.PulIdUrl(System.Int32,Real_Vagas_API.Domains.DbTipoUsuario)">
             Atualizar tipo Usuario
@@ -157,6 +175,61 @@
             <summary>
             Instancia este objeto para que haja a referência aos métodos no repositório
             </summary>
+        </member>
+        <member name="M:Real_Vagas_API.Controllers.VagasController.Get">
+            <summary>
+            Método Get para listar todas as vagas
+            </summary>        
+            <returns>Todas as Vagas </returns>
+        </member>
+        <member name="M:Real_Vagas_API.Controllers.VagasController.Post(Real_Vagas_API.Domains.DbVagas)">
+            <summary>
+            Método Post para cadastrar uma vaga
+            </summary>
+            <param name="VagaNova"></param>
+            <returns>Vaga Cadastrada</returns>
+        </member>
+        <member name="M:Real_Vagas_API.Controllers.VagasController.GetById(System.Int32)">
+            <summary>
+            Método Get para listar uma vaga por id
+            </summary>
+            <param name="Id"></param>
+            <returns>Vaga buscada</returns>
+        </member>
+        <member name="M:Real_Vagas_API.Controllers.VagasController.GetByLocal(System.String)">
+            <summary>
+            Método Get para listar uma vaga pelo local
+            </summary>
+            <param name="LocalVaga"></param>
+            <returns>Vagas Encontradas</returns>
+        </member>
+        <member name="M:Real_Vagas_API.Controllers.VagasController.GetByCargo(System.String)">
+            <summary>
+            Método Get para listar uma vaga pelo cargo
+            </summary>
+            <param name="Cargo"></param>
+            <returns>Vagas Encontradas</returns>
+        </member>
+        <member name="M:Real_Vagas_API.Controllers.VagasController.GetByData(System.DateTime)">
+            <summary>
+            Método Get para listar uma vaga pela data de publicação
+            </summary>
+            <param name="DataPublicacao"></param>
+            <returns>Vagas Encontradas</returns>
+        </member>
+        <member name="M:Real_Vagas_API.Controllers.VagasController.GetByEmpresa(System.String)">
+            <summary>
+            Método Get para listar uma vaga pelo nome da empresa
+            </summary>
+            <param name="EmpresaNome"></param>
+            <returns>Vagas Encontradas</returns>
+        </member>
+        <member name="M:Real_Vagas_API.Controllers.VagasController.Delete(System.Int32)">
+            <summary>
+            Método Delete para deletar uma vaga
+            </summary>
+            <param name="Id"></param>
+            <returns>Vaga Deletada</returns>
         </member>
         <member name="M:Real_Vagas_API.Interfaces.IDados.BuscarPorId(System.Int32)">
             <summary>

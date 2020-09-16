@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "6fb40c41-57ad-4b8e-b138-d9180fbbfd9f",
+		"_postman_id": "c294bb56-9de2-4d7c-9318-fa2117d2b2bd",
 		"name": "RealVagas",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -182,6 +182,197 @@
 							]
 						},
 						"description": "Login"
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Vagas",
+			"item": [
+				{
+					"name": "BuscarVagas",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\r\n    {\r\n        \"id\": 2,\r\n        \"nomeRecrutador\": null,\r\n        \"localVaga\": \"Minas\",\r\n        \"tipoContrato\": null,\r\n        \"dataPublicacao\": null,\r\n        \"cargo\": null,\r\n        \"qntVagas\": null,\r\n        \"salario\": null,\r\n        \"descricao\": null,\r\n        \"foto\": null,\r\n        \"statusVaga\": null,\r\n        \"idEmpresa\": null,\r\n        \"idEmpresaNavigation\": null,\r\n        \"dbInscricao\": []\r\n    }\r\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/Vagas",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"Vagas"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "BuscarVagasPorId",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/Vagas/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"Vagas",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "BuscarPorCargo",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/Vagas/VagasPorCargo/Estagiario",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"Vagas",
+								"VagasPorCargo",
+								"Estagiario"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "BuscarPorData",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/Vagas/VagasPorData/12",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"Vagas",
+								"VagasPorData",
+								"12"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "BuscarPorNomeEmpresa",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/Vagas/VagasPorEmpresa/Estagiario",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"Vagas",
+								"VagasPorEmpresa",
+								"Estagiario"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CadastrarVagas",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/Vagas",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"Vagas"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DeletarVaga",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/Vagas/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"Vagas",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "AtualizarVaga",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/Vagas/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"Vagas",
+								"1"
+							]
+						}
 					},
 					"response": []
 				}
