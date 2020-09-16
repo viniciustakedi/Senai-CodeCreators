@@ -102,7 +102,12 @@ namespace Real_Vagas_API.Controllers
             }
         }
 
-        ///Atualizar tipo Usuario
+        /// <summary>
+        /// Atualizar um tipo usuário por Id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="tipousuarioAtualizado"></param>
+        /// <returns></returns>
         [HttpPut("{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)] //Retorna um Ok caso o tipo usuário for encontrado e atualizado
         [ProducesResponseType(StatusCodes.Status401Unauthorized)] //Retorna um não autorizado caso o usuário não tenha permissão para efetuar essa ação

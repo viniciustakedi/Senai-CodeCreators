@@ -27,7 +27,11 @@ namespace Real_Vagas_API.Controllers
             _usuarios = new UsuariosRepository();
         }
 
-
+        /// <summary>
+        /// Request para fazer Login
+        /// </summary>
+        /// <param name="Usuario"></param>
+        /// <returns></returns>
         [HttpPost] //É um método Post
         public IActionResult Login(LoginViewModel Usuario)
         {

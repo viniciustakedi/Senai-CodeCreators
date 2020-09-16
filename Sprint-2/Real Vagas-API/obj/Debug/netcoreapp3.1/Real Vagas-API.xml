@@ -136,6 +136,13 @@
             <param name="InscricaoAtulizada"></param>
             <returns></returns>
         </member>
+        <member name="M:Real_Vagas_API.Controllers.LoginController.Login(Real_Vagas_API.ViewModels.LoginViewModel)">
+            <summary>
+            Request para fazer Login
+            </summary>
+            <param name="Usuario"></param>
+            <returns></returns>
+        </member>
         <member name="M:Real_Vagas_API.Controllers.TipoUsuarioController.Post(Real_Vagas_API.Domains.DbTipoUsuario)">
             <summary>
             Método Post para cadastrar um usuário
@@ -164,7 +171,12 @@
             <returns>Busca tipo usuario pelo Id</returns>
         </member>
         <member name="M:Real_Vagas_API.Controllers.TipoUsuarioController.PulIdUrl(System.Int32,Real_Vagas_API.Domains.DbTipoUsuario)">
-            Atualizar tipo Usuario
+            <summary>
+            Atualizar um tipo usuário por Id
+            </summary>
+            <param name="id"></param>
+            <param name="tipousuarioAtualizado"></param>
+            <returns></returns>
         </member>
         <member name="F:Real_Vagas_API.Controllers.UsuariosController._usuario">
             <summary>
