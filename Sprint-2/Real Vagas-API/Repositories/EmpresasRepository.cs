@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Mail;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Real_Vagas_API.Repositories
@@ -338,10 +339,10 @@ namespace Real_Vagas_API.Repositories
             return codigo;
         }
 
-        public bool VerificarCnpj(string cnpj)
+        public string VerificarCnpjOuCpf(string cnpj)
         {
-            bool verify = false;
-            using (IWebDriver driver = new ChromeDriver(@"C:\Users\henri\Desktop\Senai-CodeCreators-1\Sprint-2\Real Vagas-API\bin\Debug\netcoreapp3.1\"))
+            string verify = "";
+            using (IWebDriver driver = new ChromeDriver())
             {
                 driver.Url = "https://www.situacao-cadastral.com/";
 
@@ -361,32 +362,46 @@ namespace Real_Vagas_API.Repositories
                         }
                     }
                 }
-                text.SendKeys(valor);
 
-                IWebElement consultar = driver.FindElement(By.Id("consultar"));
+                text.SendKeys(valor + Keys.Enter);
+                Thread.Sleep(1800);
 
-                consultar.Click();
-                System.Threading.Thread.Sleep(2 * 1000);
-
-                if (driver.FindElement(By.ClassName("vrd")).Displayed)
+                if (IsElementPresent(By.ClassName("vrd"),driver))
                 {
                     IWebElement ativo = driver.FindElement(By.ClassName("vrd"));
-                    verify = (ativo.Text == "Situação: Ativa" || ativo.Text == "Situação: Regular") ? true : false;
+                    verify = (ativo.Text == "Situação: Ativa" && cot > 12) ? $"O CNPJ consultado a {ativo.Text}" : $"O CPF consultado a {ativo.Text}";
                 }
-                else if (driver.FindElement(By.Id("mensagem")).Displayed)
+                else if (IsElementPresent(By.Id("mensagem"), driver))
                 {
-                    IWebElement ativo = driver.FindElement(By.Id("mensagem"));
-                    verify = (ativo.Text == "CNPJ inválido") ? true : false;
+                    IWebElement ativo = driver.FindElement(By.Id("mensagem"));                  
+                    verify = (ativo.Text == "CNPJ inválido") ? $"O {ativo.Text}" : $"O {ativo.Text}";
                 }
-                else if (driver.FindElement(By.ClassName("vrm")).Displayed)
+                else if (IsElementPresent(By.ClassName("vrm"), driver))
                 {
                     IWebElement ativo = driver.FindElement(By.ClassName("vrm"));
-                    verify = (ativo.Text == "Situação: Inexistente") ? true : false;
+                    verify = (ativo.Text == "Situação: Inexistente") ? $"O CNPJ consultado a {ativo.Text}" : $"O CNPJ consultado a {ativo.Text}";
                 }
+                else
+                {
+                    verify = "CPF ou CNPJ não foi encontrado!!!";
+                }
+
                 driver.Close();
                 driver.Quit();
             }
             return verify;
+        }
+        private bool IsElementPresent(By by,IWebDriver driver)
+        {
+            try
+            {
+                driver.FindElement(by);
+                return true;
+            }
+            catch (NoSuchElementException)
+            {
+                return false;
+            }
         }
     }
 }

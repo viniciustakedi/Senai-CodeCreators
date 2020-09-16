@@ -266,22 +266,36 @@ namespace Real_Vagas_API.Controllers
             }
         }
 
+        /// <summary>
+        /// Controller responsável por buscar CNPJ ou CPF através de um web crawler para consulta se é válido.
+        /// </summary>
+        /// <response code="200">Retorna um ok, e a situação do CPF ou CNPJ.</response>
+        /// <response code="404">Retorna não encontrado caso o CPF ou CNPJ for inválido.</response>
         [HttpGet("validarcnpj")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public IActionResult validar(string cnpj)
         {
-            bool ret = _EmpresasRepository.VerificarCnpj(cnpj);
+            string ret = _EmpresasRepository.VerificarCnpjOuCpf(cnpj);
 
-            if (ret == true)
+            if (ret == "O CPF consultado a Situação: Regular" || ret == "O CNPJ consultado a Situação: Ativa")
             {
-                return Ok("cnpj valido!!!");
+                return Ok(ret);
             }
             else
             {
-                return NotFound("cnpj invalido!!!");
+                return NotFound(ret);
             }
         }
 
+        /// <summary>
+        /// Controller responsável por enviar um codigo para redefinir a senha para email para quem solicitou.
+        /// </summary>
+        /// <response code="200">Retorna um ok, enviar um codigo para email da pessoa.</response>
+        /// <response code="404">Retorna não encontrado caso email não existe no sistema.</response>
         [HttpGet("SolicitarCodigo")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public IActionResult SolicitarCodigo(string email)
         {
             DbEmpresas Empresa = _EmpresasRepository.SearchByEmpresa(email, "");
@@ -297,7 +311,14 @@ namespace Real_Vagas_API.Controllers
             }
         }
 
-        [HttpGet("RedefinirSenha")]
+        /// <summary>
+        /// Controller responsável por redefinir a senha do usuário através do codigo enviado para email da pessoa.
+        /// </summary>
+        /// <response code="200">Retorna um ok, redefinir a senha do usuário.</response>
+        /// <response code="404">Retorna não autorizado caso o codigo tenha expirado.</response>
+        [HttpPut("RedefinirSenha")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         public IActionResult RedefinirSenha(string Codigo, string NovaSenha)
         {
             string clear = _EmpresasRepository.ValidateCode(Codigo);
@@ -309,7 +330,7 @@ namespace Real_Vagas_API.Controllers
             }
             else
             {
-                return NotFound("Seu codigo expirou solicite outro para redefinir sua senha!!!");
+                return Unauthorized("Seu codigo expirou solicite outro para redefinir sua senha!!!");
             }
         }
     }
