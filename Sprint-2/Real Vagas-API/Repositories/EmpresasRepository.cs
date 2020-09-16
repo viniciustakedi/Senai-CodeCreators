@@ -341,7 +341,7 @@ namespace Real_Vagas_API.Repositories
         public bool VerificarCnpj(string cnpj)
         {
             bool verify = false;
-            using (IWebDriver driver = new ChromeDriver(@"C:\Users\henri\Desktop\Senai-CodeCreators-1\Sprint-2\Real Vagas-API\bin\Debug\netcoreapp3.1\"))
+            using (IWebDriver driver = new ChromeDriver())
             {
                 driver.Url = "https://www.situacao-cadastral.com/";
 

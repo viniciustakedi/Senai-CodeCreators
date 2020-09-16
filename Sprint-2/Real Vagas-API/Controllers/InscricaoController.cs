@@ -28,10 +28,22 @@ namespace Real_Vagas_API.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet]
-        public List<DbInscricao> Get()
+        public IActionResult Get()
         {
-            return _inscricaoRepository.Listar();
+            try
+            {
+                // Retorna a resposta da requisição 200- Ok
+                return Ok(_inscricaoRepository.Listar());
+            }
+            catch (Exception error)
+            {
+                // Retorna a resposta da requisição 400
+                return BadRequest(error);
+            }
         }
+
+
+
 
         /// <summary>
         /// Buscar uma incrição pelo ID
@@ -41,27 +53,73 @@ namespace Real_Vagas_API.Controllers
         [HttpGet("{id}")]
         public IActionResult GetById(int id)
         {
-            return Ok(_inscricaoRepository.BuscarPorId(id));
+            try
+            {
+                DbInscricao inscricaoBuscada = _inscricaoRepository.BuscarPorId(id);
+
+                // Verifica se a incrição foi encontrada
+                if (inscricaoBuscada != null)
+                {
+                    // Retorna a resposta da requisição 200 - Ok
+                    return Ok(inscricaoBuscada);
+
+                }
+
+                // Retorna a resposta de requisição 404
+                return NotFound("Nenhuma incrição encontrada");
+            }
+            catch (Exception error)
+            {
+                // Retorna a resposta da requisição 400
+                return BadRequest(error);
+            }
         }
 
+
+
+
+
+
+
+
         /// <summary>
-        /// Deletar um pacote pelo ID
+        /// Deletar um inscrição pelo ID
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpDelete("{id}")]
         public IActionResult Deletar(int id)
         {
+            try
+            {
+                DbInscricao inscriçãoBuscado = _inscricaoRepository.BuscarPorId(id);
+
+                if (inscriçãoBuscado != null)
+                {
+                    // Faz a chamada para o método
+                    _inscricaoRepository.Deletar(id);
+
+                    // Retora a resposta da requisição 202 
+                    return StatusCode(202);
+                }
+                // Retorna a resposta da requisição 404 - Not Found
+                return NotFound("Nenhuma inscrição encontrada");
+            }
+            catch (Exception error)
+            {
+                // Retorna a resposta da requisição 400
+                return BadRequest(error);
+            }
+
             //Faz a chamada para o método deletar
-            _inscricaoRepository.Deletar(id);
+
 
             //Retorna um status code com uma mensagem personalizada
-            return Ok($"Pacote {id} deletado");
         }
 
 
         /// <summary>
-        /// Atualizar um Pacote pelo ID
+        /// Atualizar um inscrição pelo ID
         /// </summary>
         /// <param name="id"></param>
         /// <param name="InscricaoAtulizada"></param>
@@ -69,9 +127,29 @@ namespace Real_Vagas_API.Controllers
         [HttpPut("{id}")]
         public IActionResult Put(int id, DbInscricao InscricaoAtulizada)
         {
-            _inscricaoRepository.Atualizar(id, InscricaoAtulizada);
+            try
+            {
+                // Faz a chamada para o método e armazena em um objeto eventoBuscado
+                DbInscricao inscricaoBuscada = _inscricaoRepository.BuscarPorId(id);
 
-            return StatusCode(204);
+                // Verifica se o evento foi encontrado
+                if (inscricaoBuscada != null)
+                {
+                    // Faz a chamada para o método
+                    _inscricaoRepository.Atualizar(id, InscricaoAtulizada);
+
+                    // Retora a resposta da requisição 204
+                    return StatusCode(204);
+                }
+
+                // Retorna a resposta da requisição 404
+                return NotFound("Nenhuma inscrição encontrada");
+            }
+            catch (Exception error)
+            {
+                // Retorna a resposta da requisição 400
+                return BadRequest(error);
+            }
         }
 
     }
