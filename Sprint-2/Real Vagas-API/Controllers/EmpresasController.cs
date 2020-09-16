@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Real_Vagas_API.Domains;
@@ -29,6 +30,7 @@ namespace Real_Vagas_API.Controllers
         /// <response code="202">Retorna um aceito caso o ID for existente, assim deletado a empresa do sistema.</response>
         /// <response code="404">Retorna um não encontrado caso o ID não existe no sistema.</response>   
         [HttpDelete("{ID}")]
+        [Authorize(Roles = "1")]
         [ProducesResponseType(StatusCodes.Status202Accepted)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public IActionResult DeletarEmpresa(int ID)
@@ -51,6 +53,7 @@ namespace Real_Vagas_API.Controllers
         /// <response code="200">Retorna um OK com uma lista de empresas cadastradas. </response>
         /// <response code="404">Retorna um não encontrado caso não existe empresas cadastradas.</response>
         [HttpGet]
+        [Authorize(Roles = "1")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public IActionResult ListarEmpresas()
@@ -95,6 +98,7 @@ namespace Real_Vagas_API.Controllers
         /// <response code="200">Retorna um ok, os dados serão atualizados no banco de dados. </response>
         /// <response code="404">Retorna não encontrado caso o ID informado não existir.</response>
         [HttpPut]
+        [Authorize(Roles = "2")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public IActionResult AtualizarEmpresa(DbEmpresas Empresa)
@@ -118,6 +122,7 @@ namespace Real_Vagas_API.Controllers
         /// <response code="200">Retorna um ok, os dados e as informadas da empresa buscada. </response>
         /// <response code="404">Retorna não encontrado caso o email ou cnpj informado não estiver cadastrados.</response>
         [HttpGet("BuscarPorEmpresa")]
+        [Authorize(Roles = "1")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public IActionResult BuscarPorEmpresa(DbEmpresas Empresa)
@@ -140,6 +145,7 @@ namespace Real_Vagas_API.Controllers
         /// <response code="200">Retorna um ok, os dados e as informadas da empresa buscada pelo ID. </response>
         /// <response code="404">Retorna não encontrado caso o ID informado não existir.</response>
         [HttpGet("BuscarPeloID/{ID}")]
+        [Authorize(Roles = "1,2")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public IActionResult BuscarPeloID(int ID)
@@ -162,6 +168,7 @@ namespace Real_Vagas_API.Controllers
         /// <response code="200">Retorna um ok, as vagas cadastradas com ID da empresa.</response>
         /// <response code="404">Retorna não encontrado caso o ID informado não existir ou não existir vagas com esse ID.</response>
         [HttpGet("VagasCadastradas/{ID}")]
+        [Authorize(Roles = "1,2")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public IActionResult VagasCadastradas(int ID)
@@ -184,6 +191,7 @@ namespace Real_Vagas_API.Controllers
         /// <response code="200">Retorna um ok, as vagas cadastradas com ID da empresa nós últimos 30 dias.</response>
         /// <response code="404">Retorna não encontrado caso o ID informado não existir ou não existir vagas cadastradas com esse ID nós últimos 30 dias.</response>
         [HttpGet("VagasCadastradasEm30Dias/{ID}")]
+        [Authorize(Roles = "1,2")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public IActionResult VagasCadastradasEm30Dias(int ID)
@@ -206,6 +214,7 @@ namespace Real_Vagas_API.Controllers
         /// <response code="200">Retorna um ok, todos os currículos inscritos nas vagas da empresa.</response>
         /// <response code="404">Retorna não encontrado caso o ID informado não existir ou não existir currículos inscritos numa vaga.</response>
         [HttpGet("CurriculosRecebidos/{ID}")]
+        [Authorize(Roles = "1,2")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public IActionResult CurriculosRecebidos(int ID)
@@ -228,6 +237,7 @@ namespace Real_Vagas_API.Controllers
         /// <response code="200">Retorna um ok, todos os currículos inscritos nas vagas da empresa nós últimos 30 dias.</response>
         /// <response code="404">Retorna não encontrado caso o ID informado não existir ou não existir currículos inscritos numa vaga nós últimos 30 dias.</response>
         [HttpGet("CurriculosRecebidosEm30Dias/{ID}")]
+        [Authorize(Roles = "1,2")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public IActionResult CurriculosRecebidosEm30Dias(int ID)
@@ -250,6 +260,7 @@ namespace Real_Vagas_API.Controllers
         /// <response code="200">Retorna um ok, todos os currículos inscritos na vaga selecionada.</response>
         /// <response code="404">Retorna não encontrado caso o ID informado não existir ou não existir currículos inscritos na vaga.</response>
         [HttpGet("CurriculosRecebidosPorVagas/{ID}")]
+        [Authorize(Roles = "1,2")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public IActionResult CurriculosRecebidosPorVagas(int ID)

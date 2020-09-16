@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Real_Vagas_API.Domains;
 using Real_Vagas_API.Repositories;
@@ -9,14 +11,10 @@ using Real_Vagas_API.Repositories;
 namespace Real_Vagas_API.Controllers
 {
     [Produces("application/json")]
-
     [Route("api/[controller]")]
-
     [ApiController]
     public class InscricaoController : Controller
     {
-
-
         private InscricaoRepository _inscricaoRepository;
         public InscricaoController()
         {
@@ -28,6 +26,9 @@ namespace Real_Vagas_API.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet]
+        [Authorize(Roles = "1,2")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public IActionResult Get()
         {
             try
@@ -43,14 +44,16 @@ namespace Real_Vagas_API.Controllers
         }
 
 
-
-
         /// <summary>
         /// Buscar uma incrição pelo ID
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpGet("{id}")]
+        [Authorize(Roles = "1,2")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public IActionResult GetById(int id)
         {
             try
@@ -77,17 +80,16 @@ namespace Real_Vagas_API.Controllers
 
 
 
-
-
-
-
-
         /// <summary>
         /// Deletar um inscrição pelo ID
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpDelete("{id}")]
+        [Authorize(Roles = "1")]
+        [ProducesResponseType(StatusCodes.Status202Accepted)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public IActionResult Deletar(int id)
         {
             try
@@ -125,6 +127,10 @@ namespace Real_Vagas_API.Controllers
         /// <param name="InscricaoAtulizada"></param>
         /// <returns></returns>
         [HttpPut("{id}")]
+        [Authorize]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public IActionResult Put(int id, DbInscricao InscricaoAtulizada)
         {
             try
@@ -153,4 +159,6 @@ namespace Real_Vagas_API.Controllers
         }
 
     }
+
 }
+

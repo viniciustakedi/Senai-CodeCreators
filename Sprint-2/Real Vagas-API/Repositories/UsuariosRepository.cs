@@ -35,7 +35,6 @@ namespace Real_Vagas_API.Repositories
 
             // Atualiza o usuário que foi buscado
             ctx.DbUsuarios.Update(usuarioBuscado);
-            ctx.DbUsuarios.Update(usuarioBuscado);
 
             // Salva as informações para serem gravadas no banco
             ctx.SaveChanges();

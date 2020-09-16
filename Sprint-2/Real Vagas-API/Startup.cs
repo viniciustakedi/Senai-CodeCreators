@@ -57,10 +57,10 @@ namespace Real_Vagas_API
                        ClockSkew = TimeSpan.FromMinutes(30),
 
                        // Nome da issuer, de onde está vindo
-                       ValidIssuer = "RealVagas",
+                       ValidIssuer = "RealVagas.WebApi.C#",
 
                        // Nome da audience, de onde está vindo
-                       ValidAudience = "RealVagas"
+                       ValidAudience = "RealVagas.WebApi.C#"
                    };
                });
 
@@ -85,6 +85,10 @@ namespace Real_Vagas_API
             app.UseSwagger();
 
             app.UseRouting();
+            // Habilita o uso de autenticação
+            app.UseAuthentication();
+
+            app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
@@ -96,10 +100,6 @@ namespace Real_Vagas_API
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "Real Vagas API");
                 c.RoutePrefix = string.Empty;
             });
-
-            // Habilita o uso de autenticação
-            app.UseAuthentication();
-
         }
     }
 }

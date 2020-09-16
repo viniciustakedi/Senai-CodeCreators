@@ -21,50 +21,83 @@ namespace Real_Vagas_API.Controllers
 
     public class LoginController : ControllerBase
     {
-        private SigningCredentials creds;
-
         private IUsuarios _usuarios { get; set; }
-        private IDados _dados { get; set; }
         public LoginController()
         {
             _usuarios = new UsuariosRepository();
-            _dados = new DadosRepository();
         }
 
 
         [HttpPost] //É um método Post
         public IActionResult Login(LoginViewModel Usuario)
         {
+            EmpresasRepository empresa = new EmpresasRepository();
             //Puxa o método buscar por email e senha do repository
-            DbUsuarios usuarioSelecionado = _usuarios.BuscarPorEmailSenha(Usuario.Email, Usuario.Senha);
+            var usuarioSelecionado1 = _usuarios.BuscarPorEmailSenha(Usuario.Email, Usuario.Senha);
+            var usuarioSelecionado2 = empresa.Login(Usuario.Email, Usuario.Senha);
 
-            //Verificação para ver se algum campo está vazio
-            if (usuarioSelecionado == null)
+            if (usuarioSelecionado1 != null)
+            {
+                var usuarioSelecionado = usuarioSelecionado1;
+                var claims = new[]
+              {
+                new Claim(JwtRegisteredClaimNames.Email, usuarioSelecionado.Email),
+                new Claim(JwtRegisteredClaimNames.Jti, usuarioSelecionado.Id.ToString()),
+                new Claim(ClaimTypes.Role, usuarioSelecionado.IdTipoUsuario.ToString())
+                };
+
+                var key = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes("RealVagas-chave-autenticacao"));
+
+                var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
+
+                //Chaves de seguranças e Tokens 
+                var token = new JwtSecurityToken(
+                    issuer: "RealVagas.WebApi.C#", //Emissor do Token
+                    audience: "RealVagas.WebApi.C#", //Destinatário do token
+                    claims: claims, //Os dados foram definidos em cima
+                    expires: DateTime.Now.AddMinutes(30), //Tempo de expiração
+                    signingCredentials: creds //credenciais do token
+                );
+
+                return Ok(new
+                {
+                    token = new JwtSecurityTokenHandler().WriteToken(token)
+                });
+            }
+            else if (usuarioSelecionado2 != null)
+            {
+                //Pay load
+                //para puxar a claim mais fácil no token
+                var usuarioSelecionado = usuarioSelecionado2;
+                var claims = new[]
+                {
+                new Claim(JwtRegisteredClaimNames.Email, usuarioSelecionado.Email),
+                new Claim(JwtRegisteredClaimNames.Jti, usuarioSelecionado.Id.ToString()),
+                new Claim(ClaimTypes.Role, usuarioSelecionado.IdTipoUsuario.ToString())
+                };
+
+                var key = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes("RealVagas-chave-autenticacao"));
+
+                var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
+
+                //Chaves de seguranças e Tokens 
+                var token = new JwtSecurityToken(
+                    issuer: "RealVagas.WebApi.C#", //Emissor do Token
+                    audience: "RealVagas.WebApi.C#", //Destinatário do token
+                    claims: claims, //Os dados foram definidos em cima
+                    expires: DateTime.Now.AddMinutes(30), //Tempo de expiração
+                    signingCredentials: creds //credenciais do token
+                );
+
+                return Ok(new
+                {
+                    token = new JwtSecurityTokenHandler().WriteToken(token)
+                });
+            }
+            else
             {
                 return NotFound("Email ou senha invalidos");
             }
-
-
-            //Pay load
-            //para puxar a claim mais fácil no token
-            var claims = new[]
-            {
-                new Claim(JwtRegisteredClaimNames.Email, usuarioSelecionado.Email),
-                new Claim(JwtRegisteredClaimNames.Jti, usuarioSelecionado.Id.ToString())
-            };
-            //Chaves de seguranças e Tokens 
-            var token = new JwtSecurityToken(
-                issuer: "RealVagas", //Emissor do Token
-                audience: "RealVagas", //Destinatário do token
-                claims: claims, //Os dados foram definidos em cima
-                expires: DateTime.Now.AddMinutes(30), //Tempo de expiração
-                signingCredentials: creds //credenciais do token
-            );
-
-            return Ok(new
-            {
-                token = new JwtSecurityTokenHandler().WriteToken(token)
-            });
         }
     }
 }

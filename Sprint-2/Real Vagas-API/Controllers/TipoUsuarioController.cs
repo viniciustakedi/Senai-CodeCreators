@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Real_Vagas_API.Domains;
@@ -10,9 +11,9 @@ using Real_Vagas_API.Repositories;
 
 namespace Real_Vagas_API.Controllers
 {
+    [Authorize(Roles = "1")]
     [Produces("application/json")]
     [Route("api/[controller]")]
-
     [ApiController]
     public class TipoUsuarioController : ControllerBase
     {
@@ -37,7 +38,7 @@ namespace Real_Vagas_API.Controllers
                 _tipousuarioRepository.Cadastrar(tipousuario);
 
                 return Created("cadastrado", tipousuario);
-            } 
+            }
             catch
             {
                 return BadRequest("Verifique as informações, todas precisam ser válidas!");

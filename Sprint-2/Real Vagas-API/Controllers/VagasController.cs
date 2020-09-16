@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Real_Vagas_API.Domains;
@@ -11,10 +12,8 @@ using Real_Vagas_API.Repositories;
 namespace Real_Vagas_API.Controllers
 {
     [Produces("application/json")]
-
     // Define que a rota de uma requisição será no formato domínio/api/NomeController
     [Route("api/[controller]")]
-
     // Define que é um controlador de API
     [ApiController]
     public class VagasController : ControllerBase
@@ -31,6 +30,7 @@ namespace Real_Vagas_API.Controllers
         /// </summary>        
         /// <returns>Todas as Vagas </returns>
         [HttpGet]
+        [Authorize]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public IActionResult Get()
@@ -51,6 +51,7 @@ namespace Real_Vagas_API.Controllers
         /// <param name="VagaNova"></param>
         /// <returns>Vaga Cadastrada</returns>
         [HttpPost]
+        [Authorize(Roles = "1,2")]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public IActionResult Post(DbVagas VagaNova)
@@ -73,6 +74,7 @@ namespace Real_Vagas_API.Controllers
         /// <param name="Id"></param>
         /// <returns>Vaga buscada</returns>
         [HttpGet("{Id}")]
+        [Authorize(Roles = "1,2")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -106,6 +108,7 @@ namespace Real_Vagas_API.Controllers
         /// <param name="LocalVaga"></param>
         /// <returns>Vagas Encontradas</returns>
         [HttpGet("Vagas/{LocalVaga}")]
+        [Authorize]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -139,6 +142,7 @@ namespace Real_Vagas_API.Controllers
         /// <param name="Cargo"></param>
         /// <returns>Vagas Encontradas</returns>
         [HttpGet("VagasPorCargo/{Cargo}")]
+        [Authorize]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -172,6 +176,7 @@ namespace Real_Vagas_API.Controllers
         /// <param name="DataPublicacao"></param>
         /// <returns>Vagas Encontradas</returns>
         [HttpGet("VagasPorData/{DataPublicacao}")]
+        [Authorize]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -205,6 +210,7 @@ namespace Real_Vagas_API.Controllers
         /// <param name="EmpresaNome"></param>
         /// <returns>Vagas Encontradas</returns>
         [HttpGet("VagasPorEmpresa/{EmpresaNome}")]
+        [Authorize]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -232,8 +238,9 @@ namespace Real_Vagas_API.Controllers
             }
         }
 
-        
+
         [HttpPut("{Id}")]
+        [Authorize(Roles = "1,2")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -270,6 +277,7 @@ namespace Real_Vagas_API.Controllers
         /// <param name="Id"></param>
         /// <returns>Vaga Deletada</returns>
         [HttpDelete("{Id}")]
+        [Authorize(Roles = "1,2")]
         [ProducesResponseType(StatusCodes.Status202Accepted)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
