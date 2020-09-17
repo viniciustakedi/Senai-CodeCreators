@@ -122,7 +122,7 @@
             <response code="200">Retorna um ok, todos os currículos inscritos na vaga selecionada.</response>
             <response code="404">Retorna não encontrado caso o ID informado não existir ou não existir currículos inscritos na vaga.</response>
         </member>
-        <member name="M:Real_Vagas_API.Controllers.EmpresasController.validar(Real_Vagas_API.ViewModels.CodigoViewModel)">
+        <member name="M:Real_Vagas_API.Controllers.EmpresasController.validar(Real_Vagas_API.ViewModels.ValidarViewModel)">
             <summary>
             Controller responsável por buscar CNPJ ou CPF através de um web crawler para consulta se é válido.
             </summary>
@@ -222,6 +222,41 @@
             <summary>
             Instancia este objeto para que haja a referência aos métodos no repositório
             </summary>
+        </member>
+        <member name="M:Real_Vagas_API.Controllers.UsuariosController.Get">
+            <summary>
+            Lista todos os usuários do sistema
+            </summary>
+            <returns>Lista de usuário</returns>
+        </member>
+        <member name="M:Real_Vagas_API.Controllers.UsuariosController.Get(System.Int32)">
+            <summary>
+            Lista um usuário por id especifico
+            </summary>
+            <param name="id"></param>
+            <returns>O usuário buscado</returns>
+        </member>
+        <member name="M:Real_Vagas_API.Controllers.UsuariosController.Post(Real_Vagas_API.Domains.DbUsuarios)">
+            <summary>
+            Cadastra um novo usuário no sistema
+            </summary>
+            <param name="novoUsuario"></param>
+            <returns>O usuário cadastrado</returns>
+        </member>
+        <member name="M:Real_Vagas_API.Controllers.UsuariosController.Put(System.Int32,Real_Vagas_API.Domains.DbUsuarios)">
+            <summary>
+            Atualiza as informações do usuário selecionado pelo id
+            </summary>
+            <param name="id"></param>
+            <param name="usuarioAtualizado"></param>
+            <returns>Usuario atualizado</returns>
+        </member>
+        <member name="M:Real_Vagas_API.Controllers.UsuariosController.Delete(System.Int32)">
+            <summary>
+            Deleta um usuário pelo id do sistema
+            </summary>
+            <param name="id"></param>
+            <returns>Usuario deletado</returns>
         </member>
         <member name="M:Real_Vagas_API.Controllers.VagasController.Get">
             <summary>

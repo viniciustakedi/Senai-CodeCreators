@@ -10,11 +10,14 @@ namespace Real_Vagas_API.Repositories
 {
     public class UsuariosRepository : IUsuarios
     {
-        RealVagasContext ctx = new RealVagasContext();
+        
         public void Atualizar(int id, DbUsuarios usuarioAtualizado)
         {
-            // Busca um usuário através do id
-            DbUsuarios usuarioBuscado = ctx.DbUsuarios.Find(id);
+            using (RealVagasContext ctx = new RealVagasContext())
+            {
+
+                // Busca um usuário através do id
+                DbUsuarios usuarioBuscado = ctx.DbUsuarios.Find(id);
 
             // Atribui os novos valores ao campos existentes
             usuarioBuscado.Nome = usuarioAtualizado.Nome;
@@ -38,17 +41,24 @@ namespace Real_Vagas_API.Repositories
 
             // Salva as informações para serem gravadas no banco
             ctx.SaveChanges();
+            }
         }
 
         public DbUsuarios BuscarPorId(int id)
         {
-            // Retorna o primeiro usuário para o ID informado
-            return ctx.DbUsuarios.FirstOrDefault(u => u.Id == id);
+            using (RealVagasContext ctx = new RealVagasContext())
+            {
+                // Retorna o primeiro usuário para o ID informado
+                return ctx.DbUsuarios.FirstOrDefault(u => u.Id == id);
+            }
         }
         public DbUsuarios BuscarPorEmail(string email)
         {
-            // Retorna o primeiro usuário para o ID informado
-            return ctx.DbUsuarios.FirstOrDefault(u => u.Email == email);
+            using (RealVagasContext ctx = new RealVagasContext())
+            {
+                // Retorna o primeiro usuário para o ID informado
+                return ctx.DbUsuarios.FirstOrDefault(u => u.Email == email);
+                }
         }
 
 
@@ -66,28 +76,37 @@ namespace Real_Vagas_API.Repositories
 
         public void Cadastrar(DbUsuarios novoUsuario)
         {
-            // Adiciona um novo usuário
-            ctx.DbUsuarios.Add(novoUsuario);
+            using (RealVagasContext ctx = new RealVagasContext())
+            {
+                // Adiciona um novo usuário
+                ctx.DbUsuarios.Add(novoUsuario);
 
-            // Salva as informações para serem gravas no banco
-            ctx.SaveChanges();
+                // Salva as informações para serem gravas no banco
+                ctx.SaveChanges();
+            }
         }
 
         public void Deletar(int id)
         {
-            // Busca um usuário através do id
-            DbUsuarios usuarioBuscado = ctx.DbUsuarios.Find(id);
+            using (RealVagasContext ctx = new RealVagasContext())
+            {
+                // Busca um usuário através do id
+                DbUsuarios usuarioBuscado = ctx.DbUsuarios.Find(id);
 
-            // Remove o usuário que foi buscado
-            ctx.DbUsuarios.Remove(usuarioBuscado);
+                // Remove o usuário que foi buscado
+                ctx.DbUsuarios.Remove(usuarioBuscado);
 
-            // Salva as alterações
-            ctx.SaveChanges();
+                // Salva as alterações
+                ctx.SaveChanges();
+            }
         }
 
         public List<DbUsuarios> Listar()
         {
-            return ctx.DbUsuarios.ToList();
+            using (RealVagasContext ctx = new RealVagasContext())
+            {
+                return ctx.DbUsuarios.ToList();
+            }
         }
     }
 }

@@ -30,6 +30,10 @@ namespace Real_Vagas_API.Controllers
             _usuario = new UsuariosRepository();
         }
 
+        /// <summary>
+        /// Lista todos os usuários do sistema
+        /// </summary>
+        /// <returns>Lista de usuário</returns>
         [HttpGet]
         [Authorize(Roles = "1")]
         public IActionResult Get()
@@ -37,6 +41,11 @@ namespace Real_Vagas_API.Controllers
             return Ok(_usuario.Listar());
         }
 
+        /// <summary>
+        /// Lista um usuário por id especifico
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>O usuário buscado</returns>
         [HttpGet("{id}")]
         [Authorize]
         public IActionResult Get(int id)
@@ -44,6 +53,11 @@ namespace Real_Vagas_API.Controllers
             return Ok(_usuario.BuscarPorId(id));
         }
 
+        /// <summary>
+        /// Cadastra um novo usuário no sistema
+        /// </summary>
+        /// <param name="novoUsuario"></param>
+        /// <returns>O usuário cadastrado</returns>
         [HttpPost]
         public IActionResult Post(DbUsuarios novoUsuario)
         {
@@ -61,6 +75,12 @@ namespace Real_Vagas_API.Controllers
             }
         }
 
+        /// <summary>
+        /// Atualiza as informações do usuário selecionado pelo id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="usuarioAtualizado"></param>
+        /// <returns>Usuario atualizado</returns>
         [HttpPut("{id}")]
         [Authorize]
         public IActionResult Put(int id, DbUsuarios usuarioAtualizado)
@@ -72,6 +92,11 @@ namespace Real_Vagas_API.Controllers
             return StatusCode(204);
         }
 
+        /// <summary>
+        /// Deleta um usuário pelo id do sistema
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>Usuario deletado</returns>
         [HttpDelete("{id}")]
         [Authorize(Roles = "1")]
         public IActionResult Delete(int id)
