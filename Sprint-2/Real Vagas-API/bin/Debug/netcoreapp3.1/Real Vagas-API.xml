@@ -122,7 +122,7 @@
             <response code="200">Retorna um ok, todos os currículos inscritos na vaga selecionada.</response>
             <response code="404">Retorna não encontrado caso o ID informado não existir ou não existir currículos inscritos na vaga.</response>
         </member>
-        <member name="M:Real_Vagas_API.Controllers.EmpresasController.validar(System.String)">
+        <member name="M:Real_Vagas_API.Controllers.EmpresasController.validar(Real_Vagas_API.ViewModels.CodigoViewModel)">
             <summary>
             Controller responsável por buscar CNPJ ou CPF através de um web crawler para consulta se é válido.
             </summary>

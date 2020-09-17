@@ -283,12 +283,12 @@ namespace Real_Vagas_API.Controllers
         /// </summary>
         /// <response code="200">Retorna um ok, e a situação do CPF ou CNPJ.</response>
         /// <response code="404">Retorna não encontrado caso o CPF ou CNPJ for inválido.</response>
-        [HttpGet("validarcnpj/{cnpj}")]
+        [HttpGet("validarcnpj")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public IActionResult validar(string cnpj)
+        public IActionResult validar(CodigoViewModel codigo)
         {
-            string ret = _EmpresasRepository.VerificarCnpjOuCpf(cnpj);
+            string ret = _EmpresasRepository.VerificarCnpjOuCpf(codigo.Email);
 
             if (ret != "CPF ou CNPJ não foi encontrado!!!" || ret != "Tente novamente!" && ret.Substring(0, 36) == "O CPF consultado a Situação: Regular" || ret.Substring(0, 35) == "O CNPJ consultado a Situação: Ativa")
             {
