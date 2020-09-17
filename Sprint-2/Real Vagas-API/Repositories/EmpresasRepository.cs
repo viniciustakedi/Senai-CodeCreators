@@ -27,21 +27,37 @@ namespace Real_Vagas_API.Repositories
         public void EnviarEmail(string email, int ID, string senha)
         {
             string nome = "";
+            bool user;
             using (RealVagasContext Ctx = new RealVagasContext())
             {
-                nome = Ctx.DbEmpresas.FirstOrDefault(E => E.Email == email).NomeResponsavel;
+                if (Ctx.DbEmpresas.FirstOrDefault(E => E.Email == email) != null)
+                {
+                    nome = Ctx.DbEmpresas.FirstOrDefault(E => E.Email == email).NomeResponsavel;
+                    user = false;
+                }
+                else
+                {
+                    nome = Ctx.DbUsuarios.FirstOrDefault(E => E.Email == email).Nome;
+                    user = true;
+                }
             }
+            string str = RedefinirRepository.conect();
+            string conect = ValidateCode(str);
+
+            string Real = conect.Substring(0, conect.IndexOf(';'));
+            int cot = conect.Substring(conect.IndexOf(';') + 1).Length;
+            string vagas = conect.Substring(conect.IndexOf(';') + 1, cot - 1);
             string to = email;
-            string from = "group.codecreators@hotmail.com";
+            string from = Real;
             MailMessage message = new MailMessage(from, to);
             message.Subject = "Redefinir senha Real Vagas - Não Responda!!!";
-            string CodigoRedefinir = GenerateCode(ID.ToString(), senha);
+            string CodigoRedefinir = GenerateCode(ID.ToString(), senha,user);
             message.Body = @$"Olá senhor(a) {nome} solicitação para redefinir sua senha, codigo para \n redefinir sua senha: 
             {CodigoRedefinir}. Não espalhe para ninguem usei para alterar sua senha.";
             SmtpClient client = new SmtpClient("smtp.live.com", Convert.ToInt32("587"));
 
             client.UseDefaultCredentials = true;
-            client.Credentials = new NetworkCredential("group.codecreators@hotmail.com", "#CodeCr3at0rs");
+            client.Credentials = new NetworkCredential(Real, vagas);
             client.EnableSsl = true;
 
             try
@@ -55,12 +71,12 @@ namespace Real_Vagas_API.Repositories
             }
         }
 
-        public string GenerateCode(string ID, string Senha)
+        public string GenerateCode(string ID, string Senha, bool user)
         {
             Random rnd = new Random();
             //string que será enviada para o usuário
             DateTime data = DateTime.Now.AddMinutes(5);
-            string inicial = $"Real_Vagas:ID='{ID}±Pass:{Senha}¢data:{data};";
+            string inicial = $"¤={user}/Real_Vagas:ID='{ID}±Pass:{Senha}¢data:{data};";
             string Codigo = "";
             //letra para descobrir qual hash usar;
             string[] lets = new string[] { "V", "R" };
@@ -137,17 +153,22 @@ namespace Real_Vagas_API.Repositories
         }
 
         public DbEmpresas Login(string Email, string Senha)
-        {         
+        {
             using (RealVagasContext Ctx = new RealVagasContext())
             {
                 return Ctx.DbEmpresas.FirstOrDefault(U => U.Email == Email &&
                 U.Senha == Senha);
-            }       
+            }
         }
 
-        public bool ModifyPass(string mody, string senha)
+        public string ModifyPass(string mody, string senha)
         {
             mody.Trim();
+            //Buscar o user na string
+            string tag = mody.Substring(mody.IndexOf("¤") + 2);
+            int sol = tag.IndexOf('/');
+            bool user = Convert.ToBoolean(tag.Substring(0, sol));
+
             //Buscar o ID na string
             string rappi = mody.Substring(mody.IndexOf("ID") + 4);
             int ho = rappi.IndexOf('±');
@@ -164,18 +185,32 @@ namespace Real_Vagas_API.Repositories
 
             if (DateTime.Now < data)
             {
-                using (RealVagasContext Ctx = new RealVagasContext())
+                if(user != true)
                 {
-                    DbEmpresas Empresa = Ctx.DbEmpresas.FirstOrDefault(E => E.Id == id);
-                    Empresa.Senha = senha;
-                    Ctx.DbEmpresas.Update(Empresa);
-                    Ctx.SaveChanges();
+                    using (RealVagasContext Ctx = new RealVagasContext())
+                    {
+                        DbEmpresas Empresa = Ctx.DbEmpresas.FirstOrDefault(E => E.Id == id);
+                        Empresa.Senha = senha;
+                        Ctx.DbEmpresas.Update(Empresa);
+                        Ctx.SaveChanges();
+                    }
+                    return "Senha da empresa atualizado com sucesso!!!";
                 }
-                return true;
+                else
+                {
+                    using (RealVagasContext Ctx = new RealVagasContext())
+                    {
+                        DbUsuarios usuario = Ctx.DbUsuarios.FirstOrDefault(E => E.Id == id);
+                        usuario.IdDadosNavigation.Senha = senha;
+                        Ctx.DbUsuarios.Update(usuario);
+                        Ctx.SaveChanges();
+                    }
+                    return "Senha do usuário atualizado com sucesso!!!";
+                }
             }
             else
             {
-                return false;
+                return "Não autenticado";
             }
         }
 
@@ -268,75 +303,83 @@ namespace Real_Vagas_API.Repositories
 
         public string ValidateCode(string str)
         {
-            string codigo = "";
-            string LetraSecurity = str.Substring(0, 1);
-
-            //herda os arrays da outra classe para deixa o codigo mais light 
-            string[] letras = (LetraSecurity == "V") ? RedefinirRepository.PrimeiroArray() : RedefinirRepository.SegundoArray();
-            string hash = (LetraSecurity == "V") ? RedefinirRepository.Hash_1() : RedefinirRepository.Hash_2();
-            string[] Numbers = { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9" };
-
-            //limpa o hash para preparação do codigo
-            string hashModi = "";
-            for (int i = 0; i < hash.Length; i++)
+            try
             {
-                for (int h = 0; h < Numbers.Length; h++)
+                string codigo = "";
+                string LetraSecurity = str.Substring(0, 1);
+
+                //herda os arrays da outra classe para deixa o codigo mais light 
+                string[] letras = (LetraSecurity == "V") ? RedefinirRepository.PrimeiroArray() : RedefinirRepository.SegundoArray();
+                string hash = (LetraSecurity == "V") ? RedefinirRepository.Hash_1() : RedefinirRepository.Hash_2();
+                string[] Numbers = { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9" };
+
+                //limpa o hash para preparação do codigo
+                string hashModi = "";
+                for (int i = 0; i < hash.Length; i++)
                 {
-                    string let = hash.Substring(i, 1);
-                    if (let == Numbers[h])
+                    for (int h = 0; h < Numbers.Length; h++)
                     {
-                        hashModi += string.Concat(let);
-                        break;
+                        string let = hash.Substring(i, 1);
+                        if (let == Numbers[h])
+                        {
+                            hashModi += string.Concat(let);
+                            break;
+                        }
                     }
                 }
-            }
-            //limpa o string recebida 
-            string Strlimpo = "";
-            for (int i = 0; i < str.Length; i++)
-            {
-                for (int h = 0; h < Numbers.Length; h++)
+                //limpa o string recebida 
+                string Strlimpo = "";
+                for (int i = 0; i < str.Length; i++)
                 {
-                    string let = str.Substring(i, 1);
-                    if (let == Numbers[h])
+                    for (int h = 0; h < Numbers.Length; h++)
                     {
-                        Strlimpo += string.Concat(let);
-                        break;
+                        string let = str.Substring(i, 1);
+                        if (let == Numbers[h])
+                        {
+                            Strlimpo += string.Concat(let);
+                            break;
+                        }
                     }
                 }
-            }
 
-            List<string> max = new List<string>();
-            for (int i = 0; i < hashModi.Length; i += 3)
-            {
-                int startIndex = i;
-                int length = 3;
-                string substring = hashModi.Substring(startIndex, length);
-                max.Add(substring);
-            }
-            List<string> hulk = new List<string>();
-            for (int i = 0; i < Strlimpo.Length; i += 3)
-            {
-                int startIndex = i;
-                int length = 3;
-                string substring = Strlimpo.Substring(startIndex, length);
-                hulk.Add(substring);
-            }
-
-            string nova = "";
-            for (int i = 0; i < hulk.Count; i++)
-            {
-                for (int h = 0; h < max.Count; h++)
+                List<string> max = new List<string>();
+                for (int i = 0; i < hashModi.Length; i += 3)
                 {
-                    if (hulk[i].ToString() == max[h].ToString())
+                    int startIndex = i;
+                    int length = 3;
+                    string substring = hashModi.Substring(startIndex, length);
+                    max.Add(substring);
+                }
+                List<string> hulk = new List<string>();
+                for (int i = 0; i < Strlimpo.Length; i += 3)
+                {
+                    int startIndex = i;
+                    int length = 3;
+                    string substring = Strlimpo.Substring(startIndex, length);
+                    hulk.Add(substring);
+                }
+
+                string nova = "";
+                for (int i = 0; i < hulk.Count; i++)
+                {
+                    for (int h = 0; h < max.Count; h++)
                     {
-                        nova += letras[h];
-                        break;
+                        if (hulk[i].ToString() == max[h].ToString())
+                        {
+                            nova += letras[h];
+                            break;
+                        }
                     }
                 }
-            }
-            codigo = nova;
+                codigo = nova;
 
-            return codigo;
+                return codigo;
+            }
+            catch
+            {
+                return "";
+            }
+
         }
 
         public string VerificarCnpjOuCpf(string cnpj)
@@ -364,34 +407,87 @@ namespace Real_Vagas_API.Repositories
                 }
 
                 text.SendKeys(valor + Keys.Enter);
-                Thread.Sleep(1800);
 
-                if (IsElementPresent(By.ClassName("vrd"),driver))
+                Thread.Sleep(2200);
+
+                if (IsElementPresent(By.Id("mesangem"), driver))
+                {
+                    if (driver.FindElement(By.Id("mesangem")).Text == "Tente novamente!")
+                    {
+                        text.Submit();
+                    }
+                }
+
+                if (IsElementPresent(By.ClassName("vrd"), driver))
                 {
                     IWebElement ativo = driver.FindElement(By.ClassName("vrd"));
-                    verify = (ativo.Text == "Situação: Ativa" && cot > 12) ? $"O CNPJ consultado a {ativo.Text}" : $"O CPF consultado a {ativo.Text}";
+                    if (cot > 12)
+                    {
+                        IWebElement empresa = driver.FindElement(By.CssSelector(".nome"));
+                        IWebElement localidade = driver.FindElement(By.ClassName("cidade"));
+                        IWebElement pendencias = driver.FindElement(By.CssSelector(".texto p"));
+
+                        verify = $"O CNPJ consultado a { ativo.Text} nome da empresa {empresa.Text}, Matriz:{localidade.Text}. Pendências {pendencias.Text}";
+                    }
+                    else
+                    {
+                        IWebElement Nome = driver.FindElement(By.CssSelector(".nome"));
+                        IWebElement pendencias = driver.FindElement(By.CssSelector(".texto"));
+                        verify = $"O CPF consultado a { ativo.Text} do nome {Nome.Text}. Pendências{pendencias.Text}";
+                    }
                 }
                 else if (IsElementPresent(By.Id("mensagem"), driver))
                 {
-                    IWebElement ativo = driver.FindElement(By.Id("mensagem"));                  
+                    IWebElement ativo = driver.FindElement(By.Id("mensagem"));
                     verify = (ativo.Text == "CNPJ inválido") ? $"O {ativo.Text}" : $"O {ativo.Text}";
                 }
                 else if (IsElementPresent(By.ClassName("vrm"), driver))
                 {
                     IWebElement ativo = driver.FindElement(By.ClassName("vrm"));
-                    verify = (ativo.Text == "Situação: Inexistente") ? $"O CNPJ consultado a {ativo.Text}" : $"O CNPJ consultado a {ativo.Text}";
+                    if (cot > 11)
+                    {
+                        if (ativo.Text == "Situação: Inexistente")
+                        {
+                            IWebElement federal = driver.FindElement(By.CssSelector(".texto"));
+                            verify = $"O CNPJ consultado a { ativo.Text}. {federal.Text} ";
+                        }
+                        else
+                        {
+                            IWebElement empresa = driver.FindElement(By.CssSelector(".nome"));
+                            IWebElement pendencias = driver.FindElement(By.CssSelector(".texto p"));
+                            verify = $"O CNPJ consultado a { ativo.Text} nome da empresa {empresa.Text}. Motivo de encerramento {pendencias.Text}";
+                        }
+                    }
+                    else
+                    {
+                        if (ativo.Text == "Situação: Inexistente")
+                        {
+                            IWebElement Federa = driver.FindElement(By.CssSelector(".texto p"));
+                            verify = $"O CPF consultado a { ativo.Text}. {Federa.Text}";
+                        }
+                        else
+                        {
+                            IWebElement Nome = driver.FindElement(By.CssSelector(".nome"));
+                            IWebElement pendencias = driver.FindElement(By.CssSelector(".texto"));
+                            verify = $"O CPF consultado a { ativo.Text} do nome {Nome.Text}. Pendências{pendencias.Text}";
+                        }
+                    }
+                }
+                else if (IsElementPresent(By.ClassName("amr"), driver))
+                {
+                    IWebElement ativo = driver.FindElement(By.ClassName("amr"));
+                    verify = (cot > 11) ? $"O CNPJ consultado a {ativo.Text}" : $"O CNPJ consultado a {ativo.Text}";
                 }
                 else
                 {
                     verify = "CPF ou CNPJ não foi encontrado!!!";
                 }
-
                 driver.Close();
                 driver.Quit();
             }
             return verify;
         }
-        private bool IsElementPresent(By by,IWebDriver driver)
+        private bool IsElementPresent(By by, IWebDriver driver)
         {
             try
             {

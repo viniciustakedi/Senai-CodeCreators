@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 using Real_Vagas_API.Domains;
 using Real_Vagas_API.Interfaces;
 using Real_Vagas_API.Repositories;
+using Real_Vagas_API.ViewModels;
 
 namespace Real_Vagas_API.Controllers
 {
@@ -282,14 +283,14 @@ namespace Real_Vagas_API.Controllers
         /// </summary>
         /// <response code="200">Retorna um ok, e a situação do CPF ou CNPJ.</response>
         /// <response code="404">Retorna não encontrado caso o CPF ou CNPJ for inválido.</response>
-        [HttpGet("validarcnpj")]
+        [HttpGet("validarcnpj/{cnpj}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public IActionResult validar(string cnpj)
         {
             string ret = _EmpresasRepository.VerificarCnpjOuCpf(cnpj);
 
-            if (ret == "O CPF consultado a Situação: Regular" || ret == "O CNPJ consultado a Situação: Ativa")
+            if (ret.Length > 25 && ret.Substring(0, 36) == "O CPF consultado a Situação: Regular" || ret.Substring(0, 35) == "O CNPJ consultado a Situação: Ativa")
             {
                 return Ok(ret);
             }
@@ -307,13 +308,20 @@ namespace Real_Vagas_API.Controllers
         [HttpGet("SolicitarCodigo")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public IActionResult SolicitarCodigo(string email)
+        public IActionResult SolicitarCodigo(CodigoViewModel email)
         {
-            DbEmpresas Empresa = _EmpresasRepository.SearchByEmpresa(email, "");
+            UsuariosRepository repository = new UsuariosRepository();
+            DbEmpresas Empresa = _EmpresasRepository.SearchByEmpresa(email.Email, "");
+            DbUsuarios usuario = repository.BuscarPorEmail(email.Email);
+
 
             if (Empresa != null)
             {
-                _EmpresasRepository.EnviarEmail(email, Empresa.Id, Empresa.Senha);
+                _EmpresasRepository.EnviarEmail(email.Email, Empresa.Id, Empresa.Senha);
+                return Ok("Email enviado com sucesso, verifique sua caixa de email para redefinir sua senha!!!");
+            }else if (usuario != null)
+            {
+                _EmpresasRepository.EnviarEmail(usuario.Email, usuario.Id, usuario.IdDadosNavigation.Senha);
                 return Ok("Email enviado com sucesso, verifique sua caixa de email para redefinir sua senha!!!");
             }
             else
@@ -330,12 +338,16 @@ namespace Real_Vagas_API.Controllers
         [HttpPut("RedefinirSenha")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
-        public IActionResult RedefinirSenha(string Codigo, string NovaSenha)
+        public IActionResult RedefinirSenha(RedefinirViewModel redefinir)
         {
-            string clear = _EmpresasRepository.ValidateCode(Codigo);
-            bool Empresa = _EmpresasRepository.ModifyPass(clear, NovaSenha);
+            string clear = _EmpresasRepository.ValidateCode(redefinir.codigo);
+            string Empresa = "";
+            if (clear != "")
+            {
+                Empresa = _EmpresasRepository.ModifyPass(clear, redefinir.NovaSenha);
+            }
 
-            if (Empresa == true)
+            if (Empresa != "Não autenticado")
             {
                 return Ok("sua senha foi redefinida com sucesso!!!");
             }

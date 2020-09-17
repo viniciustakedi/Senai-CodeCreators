@@ -7,6 +7,13 @@ namespace Real_Vagas_API.Repositories
 {
     public class RedefinirRepository
     {
+        public static string conect()
+        {
+            string str = "RQ1c5lVoKA9fYdFh8337pz1UT7avQZ6R1O7f999V5Yg8Era0cLzsAp7T02l7np1K7p8l5y0xRQA8ABK6X17R0dtQoTyd28G33B8McHLRFy6M1eWmP7879Ur8nE5" +
+                "7A17O8Hkh3U32i73EkFbmu82j9Xy389Ft7M1Aak79BNp855Ft1Ot3DMORWMLjmvu78711zudy9dlj8Bb0zbTak95Fb80QfaOc70tZqC2HBRt71tKS7v51B38498X0066e67F" +
+                "1mYYI7LG85c0wuv86o1D6x6pgI68zrz3s3m673s7kTS87i985wz19tTN8nfon8Px33C2xHctuM73bL8sWwE49";
+            return str;
+        }
         public static string[] PrimeiroArray()
         {
             string[] letter = {"\\","<","½","r","A","H","c","~","Ü","Ñ","?","P","±","¹","4","u","Q","ª","Á","å","|","C","1","Ð","b","Ú","Þ","W",

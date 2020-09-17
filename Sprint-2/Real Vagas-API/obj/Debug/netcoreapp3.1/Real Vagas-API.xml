@@ -129,14 +129,14 @@
             <response code="200">Retorna um ok, e a situação do CPF ou CNPJ.</response>
             <response code="404">Retorna não encontrado caso o CPF ou CNPJ for inválido.</response>
         </member>
-        <member name="M:Real_Vagas_API.Controllers.EmpresasController.SolicitarCodigo(System.String)">
+        <member name="M:Real_Vagas_API.Controllers.EmpresasController.SolicitarCodigo(Real_Vagas_API.ViewModels.CodigoViewModel)">
             <summary>
             Controller responsável por enviar um codigo para redefinir a senha para email para quem solicitou.
             </summary>
             <response code="200">Retorna um ok, enviar um codigo para email da pessoa.</response>
             <response code="404">Retorna não encontrado caso email não existe no sistema.</response>
         </member>
-        <member name="M:Real_Vagas_API.Controllers.EmpresasController.RedefinirSenha(System.String,System.String)">
+        <member name="M:Real_Vagas_API.Controllers.EmpresasController.RedefinirSenha(Real_Vagas_API.ViewModels.RedefinirViewModel)">
             <summary>
             Controller responsável por redefinir a senha do usuário através do codigo enviado para email da pessoa.
             </summary>

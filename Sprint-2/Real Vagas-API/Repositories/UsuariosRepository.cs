@@ -45,6 +45,11 @@ namespace Real_Vagas_API.Repositories
             // Retorna o primeiro usuário para o ID informado
             return ctx.DbUsuarios.FirstOrDefault(u => u.Id == id);
         }
+        public DbUsuarios BuscarPorEmail(string email)
+        {
+            // Retorna o primeiro usuário para o ID informado
+            return ctx.DbUsuarios.FirstOrDefault(u => u.Email == email);
+        }
 
 
         //Para buscar um usuario pelo Email e Senha

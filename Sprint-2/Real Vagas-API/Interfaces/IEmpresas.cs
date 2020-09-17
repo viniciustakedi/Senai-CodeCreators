@@ -21,9 +21,9 @@ namespace Real_Vagas_API.Interfaces
         List<DbInscricao> ResumesReceivedByVacancies(int ID);
         string VerificarCnpjOuCpf(string cnpj);
         void EnviarEmail(string email, int ID, string senha);
-        string GenerateCode(string ID, string Senha);
+        string GenerateCode(string ID, string Senha, bool user);
         string ValidateCode(string str);
-        bool ModifyPass(string mody, string senha);
+        string ModifyPass(string mody, string senha);
 
         DbEmpresas Login(string Email, string Senha);
     }

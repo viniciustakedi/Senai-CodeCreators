@@ -38,5 +38,7 @@ namespace Real_Vagas_API.Interfaces
 
         //Buscar um usuario por email e senha parte de Login
         DbUsuarios BuscarPorEmailSenha(string email, string senha);
+        //Buscar um usuario por email 
+        DbUsuarios BuscarPorEmail(string email);
     }
 }

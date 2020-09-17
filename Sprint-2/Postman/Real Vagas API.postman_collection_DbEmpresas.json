@@ -1,0 +1,473 @@
+{
+	"info": {
+		"_postman_id": "b9ceb808-1d53-4dd4-9fb3-5b8cd9131206",
+		"name": "Real Vagas API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "http://localhost:5000/api/Empresas",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImhlbnJpcXVlQGdtYWlsLmNvbSIsImp0aSI6IjMiLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiIiLCJleHAiOjE2MDAzMTMxNzEsImlzcyI6IlJlYWxWYWdhcy5XZWJBcGkuQyMiLCJhdWQiOiJSZWFsVmFnYXMuV2ViQXBpLkMjIn0.JmTk4xZFVSoctw9B_nGMeh0nLKCrHeWXlvrzKx9gK84",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"ID\": 1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/Empresas/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"Empresas",
+						"1"
+					]
+				},
+				"description": "Método deleta empresa do sistema"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:5000/api/Empresas",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImhlbnJpcXVlQGdtYWlsLmNvbSIsImp0aSI6IjMiLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiIiLCJleHAiOjE2MDAzMTMxNzEsImlzcyI6IlJlYWxWYWdhcy5XZWJBcGkuQyMiLCJhdWQiOiJSZWFsVmFnYXMuV2ViQXBpLkMjIn0.JmTk4xZFVSoctw9B_nGMeh0nLKCrHeWXlvrzKx9gK84",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/api/Empresas",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"Empresas"
+					]
+				},
+				"description": "Método de listar as empresas cadastradas no sistema."
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:5000/api/Empresas",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"nome\": \"comunica Informatica\",\r\n  \"email\": \"comunica@informatica.com\",\r\n  \"telefone\": \"1198323232\",\r\n  \"cnpj\": \"43434321-3232/1221\",\r\n  \"razaoSocial\": \"Senai\",\r\n  \"nomeResponsavel\": \"Luizão\",\r\n  \"senha\": \"empresa\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/Empresas",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"Empresas"
+					]
+				},
+				"description": "Método adiciona uma nova empresa no sistema."
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:5000/api/Empresas",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImhlbnJpcXVlQGdtYWlsLmNvbSIsImp0aSI6IjMiLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiIyIiwiZXhwIjoxNjAwMzEzNDkyLCJpc3MiOiJSZWFsVmFnYXMuV2ViQXBpLkMjIiwiYXVkIjoiUmVhbFZhZ2FzLldlYkFwaS5DIyJ9.1ZfSvSerMBYyyF1dBCL9jkd1joqj1F0rkOSV2Rf5gMg",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\r\n\"id\": 5,\r\n  \"nome\": \"\",\r\n  \"email\": \"\",\r\n  \"telefone\": \"\",\r\n  \"cnpj\": \"\",\r\n  \"razaoSocial\": \"\",\r\n  \"nomeResponsavel\": \"Marcio Perez\",\r\n  \"senha\": \"\",\r\n  \"idTipoUsuario\": 2\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/Empresas",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"Empresas"
+					]
+				},
+				"description": "Método de atualizar empresa no sistema."
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:5000/api/Empresas/BuscarPorEmpresa",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"Email\": \"Senai@informatica.com\",\r\n  \"Cnpj\": \"\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/Empresas/BuscarPorEmpresa",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"Empresas",
+						"BuscarPorEmpresa"
+					]
+				},
+				"description": "Método de buscar uma empresa pelo CNPJ ou Email."
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:5000/api/Empresas/BuscarPeloID/2",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImhlbnJpcXVlQGdtYWlsLmNvbSIsImp0aSI6IjMiLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiIyIiwiZXhwIjoxNjAwMzEzNDkyLCJpc3MiOiJSZWFsVmFnYXMuV2ViQXBpLkMjIiwiYXVkIjoiUmVhbFZhZ2FzLldlYkFwaS5DIyJ9.1ZfSvSerMBYyyF1dBCL9jkd1joqj1F0rkOSV2Rf5gMg",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"ID\": 2\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/Empresas/BuscarPeloID/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"Empresas",
+						"BuscarPeloID",
+						"2"
+					]
+				},
+				"description": "Método buscar empresa pelo ID no sistema."
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:5000/api/Empresas/VagasCadastradas/2",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImhlbnJpcXVlQGdtYWlsLmNvbSIsImp0aSI6IjMiLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiIyIiwiZXhwIjoxNjAwMzEzNDkyLCJpc3MiOiJSZWFsVmFnYXMuV2ViQXBpLkMjIiwiYXVkIjoiUmVhbFZhZ2FzLldlYkFwaS5DIyJ9.1ZfSvSerMBYyyF1dBCL9jkd1joqj1F0rkOSV2Rf5gMg",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"ID\": 2\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/Empresas/VagasCadastradas/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"Empresas",
+						"VagasCadastradas",
+						"2"
+					]
+				},
+				"description": "Método buscar vagas com ID da empresa."
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:5000/api/Empresas/VagasCadastradasEm30Dias/2",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImhlbnJpcXVlQGdtYWlsLmNvbSIsImp0aSI6IjMiLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiIyIiwiZXhwIjoxNjAwMzEzNDkyLCJpc3MiOiJSZWFsVmFnYXMuV2ViQXBpLkMjIiwiYXVkIjoiUmVhbFZhZ2FzLldlYkFwaS5DIyJ9.1ZfSvSerMBYyyF1dBCL9jkd1joqj1F0rkOSV2Rf5gMg",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/api/Empresas/VagasCadastradasEm30Dias/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"Empresas",
+						"VagasCadastradasEm30Dias",
+						"2"
+					]
+				},
+				"description": "Método buscar vagas cadastradas nós últimos 30 dias."
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:5000/api/Empresas/CurriculosRecebidos/2",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImhlbnJpcXVlQGdtYWlsLmNvbSIsImp0aSI6IjMiLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiIyIiwiZXhwIjoxNjAwMzEzNDkyLCJpc3MiOiJSZWFsVmFnYXMuV2ViQXBpLkMjIiwiYXVkIjoiUmVhbFZhZ2FzLldlYkFwaS5DIyJ9.1ZfSvSerMBYyyF1dBCL9jkd1joqj1F0rkOSV2Rf5gMg",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/api/Empresas/CurriculosRecebidos/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"Empresas",
+						"CurriculosRecebidos",
+						"2"
+					]
+				},
+				"description": "Método buscar todos os currículos recebidos pelo ID da empresa."
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:5000/api/Empresas/CurriculosRecebidosEm30Dias/2",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImhlbnJpcXVlQGdtYWlsLmNvbSIsImp0aSI6IjMiLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiIyIiwiZXhwIjoxNjAwMzEzNDkyLCJpc3MiOiJSZWFsVmFnYXMuV2ViQXBpLkMjIiwiYXVkIjoiUmVhbFZhZ2FzLldlYkFwaS5DIyJ9.1ZfSvSerMBYyyF1dBCL9jkd1joqj1F0rkOSV2Rf5gMg",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/api/Empresas/CurriculosRecebidosEm30Dias/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"Empresas",
+						"CurriculosRecebidosEm30Dias",
+						"2"
+					]
+				},
+				"description": "Método buscar todos os currículos recebido nós últimos 30 dias pelo ID da empresa."
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:5000/api/Empresas/CurriculosRecebidosPorVagas/2",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImhlbnJpcXVlQGdtYWlsLmNvbSIsImp0aSI6IjMiLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiIyIiwiZXhwIjoxNjAwMzEzNDkyLCJpc3MiOiJSZWFsVmFnYXMuV2ViQXBpLkMjIiwiYXVkIjoiUmVhbFZhZ2FzLldlYkFwaS5DIyJ9.1ZfSvSerMBYyyF1dBCL9jkd1joqj1F0rkOSV2Rf5gMg",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/api/Empresas/CurriculosRecebidosPorVagas/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"Empresas",
+						"CurriculosRecebidosPorVagas",
+						"2"
+					]
+				},
+				"description": "Método buscar todas os currículos recebido numa vaga apartir do ID dessa vaga."
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:5000/api/Empresas/SolicitarCodigo/henriquesilvasenai@gmail.com",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"email\": \"henriquesilvasenai@gmail.com\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/Empresas/SolicitarCodigo",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"Empresas",
+						"SolicitarCodigo"
+					]
+				},
+				"description": "Método de solicitar um codigo para redefinir a senha do usuário."
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:5000/api/Empresas/RedefinirSenha",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"codigo\": \"VC9BFKrr78NmjO35u0X8335hh9PeiOs2OD2I0z4t7u4yF9kQrwO8btX3A397Xcd1DqFc8w33p3z934wW50fA22TsG39P1OGxyqmcv5Mi2Cst6FO6PMqHRLIe4SrgF56Y2109sLeVVMfJ0oOI74gxin2EQ5ysI8Zy3nC3Ap39zMf3VH3Q93c45KjYRHRR0V31f3BdtGL35M0NzhS9twx7E183qOqCYI3Tp2i6bSqEb78UXAi33aFikUGu3EIiBo8VQ836H883rr3922u4753688339gKNNfcXH7983DZiy34z5vhj02V03Z177XVri5K7Wpq9wkf53mJKNk0xfHTMo1y80579ngF2lxnAFGOitz10e53WIb021Nvv0hX53q06N355W3s05L30VJ4q5M02AMH1020o3hFFgE4Fa5032oxR8LlE21bi09UYH2t1\",\r\n  \"novaSenha\": \"pitoco\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/Empresas/RedefinirSenha",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"Empresas",
+						"RedefinirSenha"
+					]
+				},
+				"description": "Método de redefinir a senha através do codigo recebido no Email."
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
