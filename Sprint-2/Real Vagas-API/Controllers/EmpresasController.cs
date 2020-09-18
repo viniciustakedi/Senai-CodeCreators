@@ -80,9 +80,12 @@ namespace Real_Vagas_API.Controllers
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public IActionResult CadastraEmpresa(DbEmpresas Empresa)
         {
+            UsuariosRepository Usuario = new UsuariosRepository();
             var busca = _EmpresasRepository.SearchByEmpresa(Empresa.Email, Empresa.Cnpj);
+            var buscar = Usuario.BuscarPorEmail(Empresa.Email);
 
-            if (busca == null)
+
+            if (busca == null && buscar == null)
             {
                 _EmpresasRepository.Post(Empresa);
                 return StatusCode(201, "Empresa foi criada com sucesso!!!");

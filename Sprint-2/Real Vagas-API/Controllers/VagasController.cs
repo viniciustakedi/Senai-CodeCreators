@@ -85,19 +85,14 @@ namespace Real_Vagas_API.Controllers
 
                 DbVagas vagaBuscada = _vagas.BuscarPorId(Id);
 
-
                 if (vagaBuscada != null)
                 {
-
                     return Ok(vagaBuscada);
                 }
-
-
                 return NotFound("Nenhuma vaga encontrada para o ID informado");
             }
             catch (Exception error)
             {
-
                 return BadRequest(error);
             }
         }
@@ -116,22 +111,16 @@ namespace Real_Vagas_API.Controllers
         {
             try
             {
-
                 DbVagas vagaBuscada = _vagas.BuscarPorLocal(LocalVaga);
-
-
                 if (vagaBuscada != null)
                 {
 
                     return Ok(vagaBuscada);
                 }
-
-
                 return NotFound("Nenhuma vaga encontrada para o Local informado");
             }
             catch (Exception error)
             {
-
                 return BadRequest(error);
             }
         }
@@ -150,22 +139,15 @@ namespace Real_Vagas_API.Controllers
         {
             try
             {
-
                 DbVagas vagaBuscada = _vagas.BuscarPorCargo(Cargo);
-
-
                 if (vagaBuscada != null)
                 {
-
                     return Ok(vagaBuscada);
                 }
-
-
                 return NotFound("Nenhuma vaga encontrada para o cargo informado");
             }
             catch (Exception error)
             {
-
                 return BadRequest(error);
             }
         }
@@ -184,17 +166,12 @@ namespace Real_Vagas_API.Controllers
         {
             try
             {
-
                 DbVagas vagaBuscada = _vagas.BuscarPorData(DataPublicacao);
-
-
                 if (vagaBuscada != null)
                 {
 
                     return Ok(vagaBuscada);
                 }
-
-
                 return NotFound("Nenhuma vaga encontrada para a data informada");
             }
             catch (Exception error)
@@ -218,16 +195,12 @@ namespace Real_Vagas_API.Controllers
         {
             try
             {
-
                 DbVagas vagaBuscada = _vagas.BuscarPorNomeEmpresa(EmpresaNome);
-
 
                 if (vagaBuscada != null)
                 {
-
                     return Ok(vagaBuscada);
                 }
-
 
                 return NotFound("Nenhuma vaga encontrada para a empresa informada");
             }
@@ -237,7 +210,6 @@ namespace Real_Vagas_API.Controllers
                 return BadRequest(error);
             }
         }
-
 
         [HttpPut("{Id}")]
         [Authorize(Roles = "1,2")]
@@ -303,7 +275,6 @@ namespace Real_Vagas_API.Controllers
             }
             catch (Exception error)
             {
-
                 return BadRequest(error);
             }
         }
