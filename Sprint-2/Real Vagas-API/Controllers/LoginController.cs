@@ -21,10 +21,10 @@ namespace Real_Vagas_API.Controllers
 
     public class LoginController : ControllerBase
     {
-        private IUsuarios _usuarios { get; set; }
-        public LoginController()
+        private readonly IUsuarios _usuarios;
+        public LoginController(IUsuarios usuario)
         {
-            _usuarios = new UsuariosRepository();
+            _usuarios = usuario;
         }
 
         /// <summary>

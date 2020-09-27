@@ -15,19 +15,21 @@ namespace Real_Vagas_API.Controllers
     [Route("api/[controller]")]
     // Define que é um controlador de API
     [ApiController]
-    public class UsuariosController : Controller
+    public class UsuariosController : ControllerBase
     {
         /// <summary>
         /// Cria um objeto _usuarioRepository que irá receber todos os métodos definidos na interface
         /// </summary>
-        private IUsuarios _usuario;
+        private readonly IUsuarios _usuario;
+        private readonly IEmpresas _empresa;
 
         /// <summary>
         /// Instancia este objeto para que haja a referência aos métodos no repositório
         /// </summary>
-        public UsuariosController()
+        public UsuariosController(IUsuarios usuario, IEmpresas empresa)
         {
-            _usuario = new UsuariosRepository();
+            _usuario = usuario;
+            _empresa = empresa;
         }
 
         /// <summary>
@@ -38,7 +40,15 @@ namespace Real_Vagas_API.Controllers
         [Authorize(Roles = "1")]
         public IActionResult Get()
         {
-            return Ok(_usuario.Listar());
+            var buscar = _usuario.Listar();
+            if (buscar.Count != 0)
+            {
+                return Ok(buscar);
+            }
+            else
+            {
+                return NotFound();
+            }
         }
 
         /// <summary>
@@ -50,7 +60,15 @@ namespace Real_Vagas_API.Controllers
         [Authorize]
         public IActionResult Get(int id)
         {
-            return Ok(_usuario.BuscarPorId(id));
+            var buscar = _usuario.BuscarPorId(id);
+            if (buscar != null)
+            {
+                return Ok(buscar);
+            }
+            else
+            {
+                return NotFound();
+            }
         }
 
         /// <summary>
@@ -61,13 +79,24 @@ namespace Real_Vagas_API.Controllers
         [HttpPost]
         public IActionResult Post(DbUsuarios novoUsuario)
         {
-            if (novoUsuario.IdTipoUsuario == 3 | novoUsuario.IdTipoUsuario == 4)
+            if (novoUsuario.IdTipoUsuario == 3 || novoUsuario.IdTipoUsuario == 4)
             {
+                var buscarUsuario = _usuario.BuscarPorEmail(novoUsuario.Email);
+                var buscarEmpresa = _empresa.SearchByEmpresa(novoUsuario.Email,"");
+
+                if (buscarUsuario == null && buscarEmpresa == null)
+                {
+
                 // Faz a chamada para o método
                 _usuario.Cadastrar(novoUsuario);
 
                 // Retorna um status code
                 return StatusCode(201);
+                }
+                else
+                {
+                    return Unauthorized();
+                }
             }
             else
             {
@@ -85,11 +114,19 @@ namespace Real_Vagas_API.Controllers
         [Authorize]
         public IActionResult Put(int id, DbUsuarios usuarioAtualizado)
         {
+            var busca = _usuario.BuscarPorId(id);
+            if (busca != null)
+            {
             // Faz a chamada para o método
             _usuario.Atualizar(id, usuarioAtualizado);
 
             // Retorna um status code
             return StatusCode(204);
+            }
+            else
+            {
+                return NotFound();
+            }
         }
 
         /// <summary>
@@ -101,11 +138,19 @@ namespace Real_Vagas_API.Controllers
         [Authorize(Roles = "1")]
         public IActionResult Delete(int id)
         {
+            var buscar = _usuario.BuscarPorId(id);
+            if (buscar != null)
+            {
             // Faz a chamada para o método
             _usuario.Deletar(id);
 
             // Retorna um status code
             return StatusCode(204);
+            }
+            else
+            {
+                return NotFound();
+            }
         }
     }
 }

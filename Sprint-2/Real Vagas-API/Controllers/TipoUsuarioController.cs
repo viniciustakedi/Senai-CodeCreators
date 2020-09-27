@@ -17,10 +17,10 @@ namespace Real_Vagas_API.Controllers
     [ApiController]
     public class TipoUsuarioController : ControllerBase
     {
-        private ITipoUsuario _tipousuarioRepository { get; set; }
-        public TipoUsuarioController()
+        private readonly ITipoUsuario _tipousuarioRepository;
+        public TipoUsuarioController(ITipoUsuario tipoUsuario)
         {
-            _tipousuarioRepository = new TipoUsuarioRepository();
+            _tipousuarioRepository = tipoUsuario;
         }
 
         /// <summary>
@@ -35,9 +35,16 @@ namespace Real_Vagas_API.Controllers
         {
             try
             {
-                _tipousuarioRepository.Cadastrar(tipousuario);
+                if (tipousuario != null)
+                {
+                    _tipousuarioRepository.Cadastrar(tipousuario);
+                    return Created("cadastrado", tipousuario);
+                }
+                else
+                {
+                    return Unauthorized();
+                }
 
-                return Created("cadastrado", tipousuario);
             }
             catch
             {
@@ -58,8 +65,16 @@ namespace Real_Vagas_API.Controllers
         {
             try
             {
-                _tipousuarioRepository.Deletar(id);
+                var tipo = _tipousuarioRepository.BuscarId(id);
+                if(tipo != null)
+                {
+                    _tipousuarioRepository.Deletar(id);
                 return Ok("Tipo Usuario removido");
+                }
+                else
+                {
+                    return NotFound();
+                }
             }
             catch
             {
@@ -75,9 +90,17 @@ namespace Real_Vagas_API.Controllers
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK)] //Retorna um Ok caso ele encontre todos os tipos de usuários
         [ProducesResponseType(StatusCodes.Status401Unauthorized)] //Retorna um Unauthorized caso o usuário não tenha permissão para listar os tipos de usuários
-        public IEnumerable<DbTipoUsuario> Get()
+        public IActionResult Get()
         {
-            return _tipousuarioRepository.Listar();
+            var buscar = _tipousuarioRepository.Listar();
+            if(buscar.Count != 0)
+            {
+            return StatusCode(200, buscar);
+            }
+            else
+            {
+                return NotFound();
+            }
         }
 
         /// <summary>
@@ -94,7 +117,10 @@ namespace Real_Vagas_API.Controllers
             try
             {
                 DbTipoUsuario tipousuario = _tipousuarioRepository.BuscarId(id);
-                return Ok(tipousuario);
+                if (tipousuario != null)
+                    return Ok(tipousuario);
+                else
+                    return NotFound();
             }
             catch
             {
@@ -116,8 +142,16 @@ namespace Real_Vagas_API.Controllers
         {
             try
             {
-                _tipousuarioRepository.AtualizarTipoUsuarioId(id, tipousuarioAtualizado);
-                return Ok();
+                var buscar = _tipousuarioRepository.BuscarId(id);
+                if (buscar != null)
+                {
+                    _tipousuarioRepository.AtualizarTipoUsuarioId(id, tipousuarioAtualizado);
+                    return Ok();
+                }
+                else
+                {
+                    return NotFound();
+                }
             }
             catch
             {

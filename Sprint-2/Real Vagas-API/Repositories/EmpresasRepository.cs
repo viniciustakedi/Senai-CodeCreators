@@ -64,10 +64,9 @@ namespace Real_Vagas_API.Repositories
             {
                 client.Send(message);
             }
-            catch (Exception ex)
+            catch
             {
-                Console.WriteLine("Exception caught in CreateTestMessage2(): {0}",
-                    ex.ToString());
+                Console.WriteLine("Ocorreu um erro ao enviar seu email de redefinir senha!!!");
             }
         }
 

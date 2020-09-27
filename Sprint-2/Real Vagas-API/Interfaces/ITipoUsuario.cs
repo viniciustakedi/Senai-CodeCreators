@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Real_Vagas_API.Interfaces
 {
-    interface ITipoUsuario
+    public interface ITipoUsuario
     {
         List<DbTipoUsuario> Listar(); //Para listar todos os tipos de usuarios
         void Cadastrar(DbTipoUsuario tipousuario); //Para cadastrar um novo tipo de usuario

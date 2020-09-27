@@ -17,21 +17,17 @@ namespace Real_Vagas_API.Controllers
     [Authorize(Roles = "1")]
     public class AdministradorController : ControllerBase
     {
-        private IAdministrador _AdministradorRepository;
-        private IEmpresas _EmpresasRepository;
-        private IUsuarios _UsuariosRepository;
-        private IInscricao _InscricaosRepository;
-        private IVagas _VagasRepository;
-        private IDados _DadosRepository;
+        private readonly IAdministrador _AdministradorRepository;
+        private readonly IEmpresas _EmpresasRepository;
+        private readonly IUsuarios _UsuariosRepository;
+        private readonly IInscricao _InscricaosRepository;
 
-        public AdministradorController()
+        public AdministradorController(IAdministrador administrador,IEmpresas empresa,IUsuarios usuario, IInscricao inscricao)
         {
-            _AdministradorRepository = new AdministradorRepository();
-            _EmpresasRepository = new EmpresasRepository();
-            _UsuariosRepository = new UsuariosRepository();
-            _InscricaosRepository = new InscricaoRepository();
-            _VagasRepository = new VagasRepository();
-            _DadosRepository = new DadosRepository();
+            _AdministradorRepository = administrador;
+            _EmpresasRepository = empresa;
+            _InscricaosRepository = inscricao;
+            _UsuariosRepository = usuario;
         }
 
         /// <summary>
@@ -44,9 +40,9 @@ namespace Real_Vagas_API.Controllers
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public IActionResult CadastrarAdministrador(DbUsuarios Usuario)
         {
-            var busca = _EmpresasRepository.SearchByEmpresa(Usuario.Email, "");
-            var buscar = _UsuariosRepository.BuscarPorEmail(Usuario.Email);
-            if (busca == null && buscar == null && Usuario.IdTipoUsuarioNavigation.Id == 1)
+            var buscaEmpresa = _EmpresasRepository.SearchByEmpresa(Usuario.Email, "");
+            var buscarUsuario = _UsuariosRepository.BuscarPorEmail(Usuario.Email);
+            if (buscaEmpresa == null && buscarUsuario == null && Usuario.IdTipoUsuario == 1)
             {
              _AdministradorRepository.CadastrarAdm(Usuario);
                 return StatusCode(201, "Administrador criado com sucesso!!!");
@@ -69,7 +65,7 @@ namespace Real_Vagas_API.Controllers
         {
             var busca = _EmpresasRepository.SearchByEmpresa(Usuario.Email, "");
             var buscar = _UsuariosRepository.BuscarPorEmail(Usuario.Email);
-            if (busca == null && buscar == null && Usuario.IdTipoUsuarioNavigation.Id == 3 || Usuario.IdTipoUsuarioNavigation.Id == 4)
+            if (busca == null && buscar == null && Usuario.IdTipoUsuario == 3 || Usuario.IdTipoUsuario == 4)
             {
                 _AdministradorRepository.CadastrarAluno(Usuario);
                 return StatusCode(201, "Aluno criado com sucesso!!!");
@@ -203,7 +199,7 @@ namespace Real_Vagas_API.Controllers
         public IActionResult DeletarAdministrador(int ID)
         {
             var delete = _UsuariosRepository.BuscarPorId(ID);
-            if (delete != null && delete.IdTipoUsuarioNavigation.Id == 1)
+            if (delete != null && delete.IdTipoUsuario == 1)
             {
                 _AdministradorRepository.DeletarAdm(ID);
                 return StatusCode(202, "Administrador deletado do bancos de dados com sucesso!!!");
@@ -306,7 +302,6 @@ namespace Real_Vagas_API.Controllers
                 // Retorna a resposta da requisição 400
                 return BadRequest(error);
             }
-
         }
     }
 }

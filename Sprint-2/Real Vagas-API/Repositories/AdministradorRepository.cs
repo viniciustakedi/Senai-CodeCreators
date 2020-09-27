@@ -1,4 +1,5 @@
-﻿using Real_Vagas_API.Domains;
+﻿using Microsoft.EntityFrameworkCore;
+using Real_Vagas_API.Domains;
 using Real_Vagas_API.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -48,8 +49,8 @@ namespace Real_Vagas_API.Repositories
         {
             using (RealVagasContext Ctx = new RealVagasContext())
             {
-                return Ctx.DbUsuarios.ToList().FindAll(U => U.IdTipoUsuarioNavigation.Id == 3
-                && U.IdTipoUsuarioNavigation.Id == 4);
+                return Ctx.DbUsuarios.ToList()
+                    .FindAll(U => U.IdTipoUsuario == 3 || U.IdTipoUsuario == 4);
             }
         }
 
@@ -57,7 +58,7 @@ namespace Real_Vagas_API.Repositories
         {
             using (RealVagasContext Ctx = new RealVagasContext())
             {
-                return Ctx.DbEmpresas.ToList().FindAll(U => U.IdTipoUsuarioNavigation.Id == 2);
+                return Ctx.DbEmpresas.ToList().FindAll(U => U.IdTipoUsuario == 2);
             }
         }
 

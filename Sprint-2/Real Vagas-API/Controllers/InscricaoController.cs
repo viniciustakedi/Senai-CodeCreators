@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Real_Vagas_API.Domains;
+using Real_Vagas_API.Interfaces;
 using Real_Vagas_API.Repositories;
 
 namespace Real_Vagas_API.Controllers
@@ -13,12 +14,12 @@ namespace Real_Vagas_API.Controllers
     [Produces("application/json")]
     [Route("api/[controller]")]
     [ApiController]
-    public class InscricaoController : Controller
+    public class InscricaoController : ControllerBase
     {
-        private InscricaoRepository _inscricaoRepository;
-        public InscricaoController()
+        private readonly IInscricao _inscricaoRepository;
+        public InscricaoController(IInscricao inscricao)
         {
-            _inscricaoRepository = new InscricaoRepository();
+            _inscricaoRepository = inscricao;
         }
 
         /// <summary>
@@ -34,7 +35,15 @@ namespace Real_Vagas_API.Controllers
             try
             {
                 // Retorna a resposta da requisição 200- Ok
-                return Ok(_inscricaoRepository.Listar());
+                var inscricao = _inscricaoRepository.Listar();
+                if (inscricao != null)
+                {
+                    return Ok(inscricao);
+                }
+                else
+                {
+                    return NotFound();
+                }
             }
             catch (Exception error)
             {

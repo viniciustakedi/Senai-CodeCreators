@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Real_Vagas_API.Interfaces
 {
-    interface IAdministrador
+    public interface IAdministrador
     {
         void CadastrarAdm(DbUsuarios Usuario);
         void DeletarAdm(int ID);

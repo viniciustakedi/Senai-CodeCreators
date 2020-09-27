@@ -18,11 +18,11 @@ namespace Real_Vagas_API.Controllers
     [ApiController]
     public class VagasController : ControllerBase
     {
-        private IVagas _vagas;
+        private readonly IVagas _vagas;
 
-        public VagasController()
+        public VagasController(IVagas vagas)
         {
-            _vagas = new VagasRepository();
+            _vagas = vagas;
         }
 
         /// <summary>
@@ -37,7 +37,15 @@ namespace Real_Vagas_API.Controllers
         {
             try
             {
-                return Ok(_vagas.ListaVagas());
+                var buscar = _vagas.ListaVagas();
+                if (buscar.Count != 0)
+                {
+                    return Ok(buscar);
+                }
+                else
+                {
+                    return NotFound();
+                }
             }
             catch (Exception error)
             {
@@ -257,10 +265,7 @@ namespace Real_Vagas_API.Controllers
         {
             try
             {
-
                 DbVagas vagaBuscada = _vagas.BuscarPorId(Id);
-
-
                 if (vagaBuscada != null)
                 {
 

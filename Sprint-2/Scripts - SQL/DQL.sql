@@ -5,11 +5,12 @@ USE RealVagas
 
 SELECT * FROM DbDados;
 SELECT * FROM DbTipoUsuario;
-SELECT * FROM DbAdministradores;
 SELECT * FROM DbEmpresas;
-SELECT * FROM DbAlunos;
+SELECT * FROM DbUsuarios;
 SELECT * FROM DbVagas;
 SELECT * FROM DbInscricao;
+
+
 
 
 --SELECIONA PELO EMAIL DO ALUNO, EMPRESA OU ADMINISTRADOR

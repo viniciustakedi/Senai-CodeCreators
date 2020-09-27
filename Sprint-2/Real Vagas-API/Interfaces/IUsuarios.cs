@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Real_Vagas_API.Interfaces
 {
-    interface IUsuarios
+    public interface IUsuarios
     {
         List<DbUsuarios> Listar();
 
@@ -40,5 +40,6 @@ namespace Real_Vagas_API.Interfaces
         DbUsuarios BuscarPorEmailSenha(string email, string senha);
         //Buscar um usuario por email 
         DbUsuarios BuscarPorEmail(string email);
+
     }
 }

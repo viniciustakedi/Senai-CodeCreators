@@ -16,16 +16,16 @@ namespace Real_Vagas_API.Controllers
     [Route("api/[controller]")]
     // Define que é um controlador de API
     [ApiController]
-    public class DadosController : Controller
+    public class DadosController : ControllerBase
     {
-        private IDados _dado;
+        private readonly IDados _dado;
 
         /// <summary>
         /// Instancia este objeto para que haja a referência aos métodos no repositório
         /// </summary>
-        public DadosController()
+        public DadosController(IDados dados)
         {
-            _dado = new DadosRepository();
+            _dado = dados;
         }
 
         /// <summary>
@@ -40,9 +40,15 @@ namespace Real_Vagas_API.Controllers
         {
             try
             {
-
-
-            return Ok(_dado.Listar());
+                var dados = _dado.Listar();
+                if (dados.Count != 0)
+                {
+                    return Ok(dados);
+                }
+                else
+                {
+                    return NotFound();
+                }
             }
             catch (Exception error)
             {
@@ -56,7 +62,7 @@ namespace Real_Vagas_API.Controllers
         /// <param name="id"></param>
         /// <returns>dadoBuscado</returns>
         [HttpGet("{id}")]
-        [Authorize(Roles = "3,4")]
+        [Authorize(Roles = "1")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -64,22 +70,17 @@ namespace Real_Vagas_API.Controllers
         {
             try
             {
-
                 DbDados dadoBuscado = _dado.BuscarPorId(id);
-
 
                 if (dadoBuscado != null)
                 {
-
                     return Ok(dadoBuscado);
                 }
-
 
                 return NotFound("Nenhum dado encontrado para o id informado");
             }
             catch (Exception error)
             {
-
                 return BadRequest(error);
             }
         }
@@ -124,9 +125,7 @@ namespace Real_Vagas_API.Controllers
         {
             try
             {
-
                 DbDados dadoBuscado = _dado.BuscarPorId(id);
-
 
                 if (dadoBuscado != null)
                 {
@@ -162,19 +161,14 @@ namespace Real_Vagas_API.Controllers
         {
             try
             {
-
                 DbDados dadoBuscado = _dado.BuscarPorId(id);
-
 
                 if (dadoBuscado != null)
                 {
-
                     _dado.Deletar(id);
-
 
                     return StatusCode(202);
                 }
-
 
                 return NotFound("Nenhum dado encontrado para o ID informado");
             }

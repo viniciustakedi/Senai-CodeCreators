@@ -17,11 +17,11 @@ namespace Real_Vagas_API.Controllers
     [ApiController]
     public class EmpresasController : ControllerBase
     {
-        private IEmpresas _EmpresasRepository;
+        private readonly IEmpresas _EmpresasRepository;
 
-        public EmpresasController()
+        public EmpresasController(IEmpresas Empresa)
         {
-            _EmpresasRepository = new EmpresasRepository();
+            _EmpresasRepository = Empresa;
         }
 
         /// <summary>
@@ -83,7 +83,6 @@ namespace Real_Vagas_API.Controllers
             UsuariosRepository Usuario = new UsuariosRepository();
             var busca = _EmpresasRepository.SearchByEmpresa(Empresa.Email, Empresa.Cnpj);
             var buscar = Usuario.BuscarPorEmail(Empresa.Email);
-
 
             if (busca == null && buscar == null)
             {

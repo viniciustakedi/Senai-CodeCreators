@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Real_Vagas_API.Interfaces
 {
-    interface IVagas
+    public interface IVagas
     {
         public List<DbVagas> ListaVagas();
         public DbVagas BuscarPorId(int Id);

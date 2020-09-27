@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Real_Vagas_API.Interfaces
 {
-    interface IInscricao
+    public interface IInscricao
     {
         List<DbInscricao> Listar();
 

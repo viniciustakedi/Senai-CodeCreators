@@ -85,7 +85,7 @@
             <response code="404">Retorna bad request em caso de problemas na API.</response> 
             <response code="400">Retorna não encontrado caso o ID informado não estiver cadastrado.</response>        
         </member>
-        <member name="M:Real_Vagas_API.Controllers.DadosController.#ctor">
+        <member name="M:Real_Vagas_API.Controllers.DadosController.#ctor(Real_Vagas_API.Interfaces.IDados)">
             <summary>
             Instancia este objeto para que haja a referência aos métodos no repositório
             </summary>
@@ -299,7 +299,7 @@
             Cria um objeto _usuarioRepository que irá receber todos os métodos definidos na interface
             </summary>
         </member>
-        <member name="M:Real_Vagas_API.Controllers.UsuariosController.#ctor">
+        <member name="M:Real_Vagas_API.Controllers.UsuariosController.#ctor(Real_Vagas_API.Interfaces.IUsuarios,Real_Vagas_API.Interfaces.IEmpresas)">
             <summary>
             Instancia este objeto para que haja a referência aos métodos no repositório
             </summary>

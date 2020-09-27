@@ -10,9 +10,6 @@ namespace Real_Vagas_API.Repositories
 {
     public class InscricaoRepository : IInscricao
     {
-
-
-
         public List<DbInscricao> Listar()
         {
             using (RealVagasContext ctx = new RealVagasContext())

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Real_Vagas_API.Interfaces
 {
-    interface IEmpresas
+    public interface IEmpresas
     {
         void Post(DbEmpresas Empresa);
         List<DbEmpresas> Get();

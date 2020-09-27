@@ -13,6 +13,8 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using Newtonsoft.Json;
+using Real_Vagas_API.Interfaces;
+using Real_Vagas_API.Repositories;
 
 namespace Real_Vagas_API
 {
@@ -22,9 +24,13 @@ namespace Real_Vagas_API
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+
             services
-              // Adiciona o MVC ao projeto
-              .AddMvc();
+               .AddMvc()
+               .AddJsonOptions(options =>
+               {
+                   options.JsonSerializerOptions.IgnoreNullValues = true;
+               });
 
             services.AddControllers();
 
@@ -73,6 +79,14 @@ namespace Real_Vagas_API
                 var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
                 c.IncludeXmlComments(xmlPath);
             });
+
+            services.AddTransient<IAdministrador, AdministradorRepository>();
+            services.AddTransient<IDados, DadosRepository>();
+            services.AddTransient<IEmpresas, EmpresasRepository>();
+            services.AddTransient<IInscricao, InscricaoRepository>();
+            services.AddTransient<ITipoUsuario, TipoUsuarioRepository>();
+            services.AddTransient<IUsuarios, UsuariosRepository>();
+            services.AddTransient<IVagas, VagasRepository>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
