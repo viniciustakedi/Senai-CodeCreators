@@ -1,0 +1,45 @@
+nav{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+nav ul {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    list-style-type: none;
+}
+
+nav ul > li{
+    text-align: center;
+    margin: 2rem;
+}
+
+
+.login{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.login input{
+    width: 100px;
+    height: 25px;
+    border-radius: 25px;
+    border: none;
+    background-color: #EF0000;
+    color: #FFFFFF;
+}
+
+.login input:focus {
+    outline: thin dotted;
+    outline: 0px auto -webkit-focus-ring-color;
+    outline-offset: 0px;
+}
+
+#LogoImg{
+    width: 140px;
+    height: 140px;
+}
+
