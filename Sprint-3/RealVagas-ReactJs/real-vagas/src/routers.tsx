@@ -14,7 +14,7 @@ import Dicas from './pages/Teste-Comportamental/indexDicas';
 import Chat from './pages/Chat';
 import PagCurriculos from './pages/Dashboard-Empresa/Página-do-currícúlo';
 
-function routers(){
+function Routers(){
 
     return(
     <BrowserRouter>
@@ -36,4 +36,4 @@ function routers(){
 )
 }
 
-export default routers;
+export default Routers;

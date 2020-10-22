@@ -1,5 +1,5 @@
 Arguments: 
-  C:\Program Files\nodejs\node.exe C:\Program Files (x86)\Yarn\bin\yarn.js add @types/react-bootstrap-bootstrap
+  C:\Program Files\nodejs\node.exe C:\Program Files (x86)\Yarn\bin\yarn.js add react-bootstrap-validtion --save
 
 PATH: 
   C:\Program Files\Microsoft MPI\Bin\;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\iCLS\;C:\Program Files\Intel\Intel(R) Management Engine Components\iCLS\;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\WiFi\bin\;C:\Program Files\Common Files\Intel\WirelessCommon\;C:\Program Files\dotnet\;C:\Program Files\Microsoft SQL Server\130\Tools\Binn\;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\170\Tools\Binn\;C:\Program Files\nodejs\;C:\Program Files (x86)\Microsoft SQL Server\140\Tools\Binn\;C:\Program Files\Microsoft SQL Server\140\Tools\Binn\;C:\Program Files (x86)\Microsoft SQL Server\140\DTS\Binn\;C:\Program Files\Microsoft SQL Server\140\DTS\Binn\;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\130\Tools\Binn\;C:\Program Files (x86)\Microsoft SQL Server\150\DTS\Binn\;C:\Program Files (x86)\Yarn\bin\;C:\Users\vinic\AppData\Local\Microsoft\WindowsApps;;C:\Users\vinic\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\vinic\.dotnet\tools;C:\Users\vinic\AppData\Roaming\npm;C:\Users\vinic\AppData\Local\Microsoft\WindowsApps;C:\Users\vinic\AppData\Local\Yarn\bin
@@ -14,7 +14,7 @@ Platform:
   win32 x64
 
 Trace: 
-  Error: https://registry.yarnpkg.com/@types%2freact-bootstrap-bootstrap: Not found
+  Error: https://registry.yarnpkg.com/react-bootstrap-validtion: Not found
       at Request.params.callback [as _callback] (C:\Program Files (x86)\Yarn\lib\cli.js:66097:18)
       at Request.self.callback (C:\Program Files (x86)\Yarn\lib\cli.js:140749:22)
       at Request.emit (events.js:310:20)
@@ -38,13 +38,16 @@ npm manifest:
       "@types/jest": "^24.0.0",
       "@types/node": "^12.0.0",
       "@types/react": "^16.9.0",
+      "@types/react-bootstrap": "^0.32.24",
       "@types/react-dom": "^16.9.0",
       "@types/react-router-dom": "^5.1.6",
+      "@types/bootstrap": "^5.0.0",
+      "bootstrap": "^4.5.3",
       "react": "^17.0.0",
       "react-dom": "^17.0.0",
       "react-router-dom": "^5.2.0",
       "react-scripts": "3.4.3",
-      "typescript": "~3.7.2"
+      "typescript": "^4.0.3"
     },
     "scripts": {
       "start": "react-scripts start",
@@ -1585,6 +1588,14 @@ Lockfile:
     dependencies:
       "@babel/types" "^7.3.0"
   
+  "@types/bootstrap@^5.0.0":
+    version "5.0.0"
+    resolved "https://registry.yarnpkg.com/@types/bootstrap/-/bootstrap-5.0.0.tgz#33507845c17ae9fc2284e5344b9dd17344848319"
+    integrity sha512-Buic9y01REuPhC7f3fvGN9ONoEKwkDnT/SdGcD7gk+99jrQnTC8QpPOfCMC7wZPKpPrTiizP0S4AC5MIH5PdQw==
+    dependencies:
+      "@types/jquery" "*"
+      popper.js "^1.14.1"
+  
   "@types/color-name@^1.1.1":
     version "1.1.1"
     resolved "https://registry.yarnpkg.com/@types/color-name/-/color-name-1.1.1.tgz#1c1261bbeaa10a8055bbc5d8ab84b7b2afc846a0"
@@ -1648,6 +1659,13 @@ Lockfile:
     dependencies:
       jest-diff "^24.3.0"
   
+  "@types/jquery@*":
+    version "3.5.3"
+    resolved "https://registry.yarnpkg.com/@types/jquery/-/jquery-3.5.3.tgz#adcc647e4c675bd9ebae7fb980e9ca75d58ee8c7"
+    integrity sha512-IENpHTjGksr2wQS6ZO8eMIE0tIB22Ywg+n3/yAWCa56VSZ26phcwAbFdh9+VNUWk7e83qB27QLax3Rf4G92Y9A==
+    dependencies:
+      "@types/sizzle" "*"
+  
   "@types/json-schema@^7.0.3":
     version "7.0.4"
     resolved "https://registry.yarnpkg.com/@types/json-schema/-/json-schema-7.0.4.tgz#38fd73ddfd9b55abb1e1b2ed578cb55bd7b7d339"
@@ -1688,6 +1706,13 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/@types/q/-/q-1.5.2.tgz#690a1475b84f2a884fd07cd797c00f5f31356ea8"
     integrity sha512-ce5d3q03Ex0sy4R14722Rmt6MT07Ua+k4FwDfdcToYJcMKNtRVQvJ6JCAPdAmAnbRb6CsX6aYb9m96NGod9uTw==
   
+  "@types/react-bootstrap@^0.32.24":
+    version "0.32.24"
+    resolved "https://registry.yarnpkg.com/@types/react-bootstrap/-/react-bootstrap-0.32.24.tgz#d08176d8927fc52c5f31a9e8b674c5b72c627d12"
+    integrity sha512-dbLBBupieo25qeGGaqeiWwOe8Q4ZPM5gIDeLT/F8UL4J3nuiJKuXhxFC+3EAwRvxhfuS4l64XkO8ikfX06LcIg==
+    dependencies:
+      "@types/react" "*"
+  
   "@types/react-dom@*", "@types/react-dom@^16.9.0":
     version "16.9.8"
     resolved "https://registry.yarnpkg.com/@types/react-dom/-/react-dom-16.9.8.tgz#fe4c1e11dfc67155733dfa6aa65108b4971cb423"
@@ -1719,6 +1744,11 @@ Lockfile:
     dependencies:
       "@types/prop-types" "*"
       csstype "^3.0.2"
+  
+  "@types/sizzle@*":
+    version "2.3.2"
+    resolved "https://registry.yarnpkg.com/@types/sizzle/-/sizzle-2.3.2.tgz#a811b8c18e2babab7d542b3365887ae2e4d9de47"
+    integrity sha512-7EJYyKTL7tFR8+gDbB6Wwz/arpGa0Mywk1TJbNzKzHtzbwVmY4HR9WqS5VV7dsBUKQmPNr192jHr/VpBluj/hg==
   
   "@types/stack-utils@^1.0.1":
     version "1.0.1"
@@ -2623,6 +2653,11 @@ Lockfile:
     version "1.0.0"
     resolved "https://registry.yarnpkg.com/boolbase/-/boolbase-1.0.0.tgz#68dff5fbe60c51eb37725ea9e3ed310dcc1e776e"
     integrity sha1-aN/1++YMUes3cl6p4+0xDcwed24=
+  
+  bootstrap@^4.5.3:
+    version "4.5.3"
+    resolved "https://registry.yarnpkg.com/bootstrap/-/bootstrap-4.5.3.tgz#c6a72b355aaf323920be800246a6e4ef30997fe6"
+    integrity sha512-o9ppKQioXGqhw8Z7mah6KdTYpNQY//tipnkxppWhPbiSWdD+1raYsnhwEZjkTHYbGee4cVQ0Rx65EhOY/HNLcQ==
   
   brace-expansion@^1.1.7:
     version "1.1.11"
@@ -7784,6 +7819,11 @@ Lockfile:
     dependencies:
       ts-pnp "^1.1.6"
   
+  popper.js@^1.14.1:
+    version "1.16.1"
+    resolved "https://registry.yarnpkg.com/popper.js/-/popper.js-1.16.1.tgz#2a223cb3dc7b6213d740e40372be40de43e65b1b"
+    integrity sha512-Wb4p1J4zyFTbM+u6WuO4XstYx4Ky9Cewe4DWrel7B0w6VVICvPwdOpotjzcf6eD8TsckVnIMNONQyPIUFOUbCQ==
+  
   portfinder@^1.0.26:
     version "1.0.28"
     resolved "https://registry.yarnpkg.com/portfinder/-/portfinder-1.0.28.tgz#67c4622852bd5374dd1dd900f779f53462fac778"
@@ -10339,10 +10379,10 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/typedarray/-/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
     integrity sha1-hnrHTjhkGHsdPUfZlqeOxciDB3c=
   
-  typescript@~3.7.2:
-    version "3.7.5"
-    resolved "https://registry.yarnpkg.com/typescript/-/typescript-3.7.5.tgz#0692e21f65fd4108b9330238aac11dd2e177a1ae"
-    integrity sha512-/P5lkRXkWHNAbcJIiHPfRoKqyd7bsyCma1hZNUGfn20qm64T6ZBlrzprymeu918H+mB/0rIg2gGK/BXkhhYgBw==
+  typescript@^4.0.3:
+    version "4.0.3"
+    resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.0.3.tgz#153bbd468ef07725c1df9c77e8b453f8d36abba5"
+    integrity sha512-tEu6DGxGgRJPb/mVPIZ48e69xCn2yRmCgYmDugAVwmJ6o+0u1RI18eO7E7WBTLYLaEVVOhwQmcdhQHweux/WPg==
   
   unicode-canonical-property-names-ecmascript@^1.0.4:
     version "1.0.4"
