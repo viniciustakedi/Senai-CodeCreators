@@ -2,12 +2,11 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background: #D6002C;
-    background-color: linear-gradient(margin-right, #D6002C, #470613);
+    background-image: linear-gradient(to right, #CF002B, #730018);
 }
 
 .Footer hr{
-    height: 5rem;
+    height: 6vw;
     border: 0.5px #ffffff solid;
     margin-left: 4rem;
     margin-right: 4rem;
@@ -18,20 +17,22 @@
     list-style-type: none;
     text-decoration: none;
     color: #FFFFFF;
+    font-size: 1.1vw;
 }
 
 .images{
     display: flex;
     align-items: center;
+    justify-content: center;
 }
 
 #logo{
     margin-right: 2rem;
-    width: 110px;
-    height: 100px;
+    width: 7vw;
+    height: 6vw;
 }
 
 #logoSenai{
-    width: 130px;
-    height: 40px;
+    width: 7.5vw;
+    height: 2vw;
 }

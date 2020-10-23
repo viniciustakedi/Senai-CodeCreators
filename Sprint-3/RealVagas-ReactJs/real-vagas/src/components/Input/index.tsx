@@ -11,7 +11,7 @@ const Input: React.FunctionComponent<InputProps> = ({ label, name, ...rest }) =>
     return (
         <div >
             <div className="form">
-                <label htmlFor={name}>{label}</label><br />
+                <label id="Label" htmlFor={name}>{label}</label><br />
                 <input type="text" id={name}{...rest}></input>
             </div>
         </div>

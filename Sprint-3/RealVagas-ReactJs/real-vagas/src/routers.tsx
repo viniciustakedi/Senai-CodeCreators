@@ -1,6 +1,5 @@
 import React from 'react';
-import {BrowserRouter, Route, Switch} from 'react-router-dom';
-import {Button, ModalBody} from 'react-bootstrap';
+import { BrowserRouter, Redirect, Route, Router, Switch } from 'react-router-dom';
 import Home from './pages/Home';
 import Login from './pages/Login';
 import Cadastro from './pages/Cadastro';
@@ -13,27 +12,108 @@ import Teste from './pages/Teste-Comportamental';
 import Dicas from './pages/Teste-Comportamental/indexDicas';
 import Chat from './pages/Chat';
 import PagCurriculos from './pages/Dashboard-Empresa/Página-do-currícúlo';
+import { parseJWT } from './services/auth';
+import Documentos from './pages/Dashboard-Empresa/Documentos-pendente';
 
-function Routers(){
+function Routers() {
 
-    return(
-    <BrowserRouter>
+    interface RouteProps {
+        component: any;
+        path: any;
+    }
+
+    const RotaComum: React.FC<RouteProps> = ({ component: Component, path, ...rest }) => {
+        var token = localStorage.getItem("Real-Vagas-Token");
+        return (
+            <Route
+                render={props => (token === undefined || token === null) ?
+                    (
+                        <Component path={path}  {...rest} {...props} />
+                    ) : (
+                        <Redirect to={{ pathname: '/', state: { from: props.location } }} />
+                    )
+                } />
+        )
+    }
+
+    const RotaAdm: React.FC<RouteProps> = ({ component: Component, path, ...rest }) => {
+        var token = localStorage.getItem("Real-Vagas-Token");
+        return (
+            <Route
+                render={props => ((token !== undefined || token !== null) && parseJWT() === 1) ?
+                    (
+                        <Component path={path}  {...rest} {...props} />
+                    ) : (
+                        <Redirect to={{ pathname: '/', state: { from: props.location } }} />
+                    )
+                } />
+        )
+    }
+
+    const RotaEmpresa: React.FC<RouteProps> = ({ component: Component, path, ...rest }) => {
+        var token = localStorage.getItem("Real-Vagas-Token");
+        return (
+            <Route
+                render={props => ((token !== undefined || token !== null) && parseJWT() === 2) ?
+                    (
+                        <Component path={path}  {...rest} {...props} />
+                    ) : (
+                        <Redirect to={{ pathname: '/', state: { from: props.location } }} />
+                    )
+                } />
+        )
+    }
+
+    const RotaAluno: React.FC<RouteProps> = ({ component: Component, path, ...rest }) => {
+        var token = localStorage.getItem("Real-Vagas-Token");
+        return (
+            <Route
+                render={props => ((token !== undefined || token !== null) && (parseJWT() === 3 || parseJWT() === 4)) ?
+                    (
+                        <Component path={path}  {...rest} {...props} />
+                    ) : (
+                        <Redirect to={{ pathname: '/', state: { from: props.location } }} />
+                    )
+                } />
+        )
+    }
+
+    const RotaPrivada: React.FC<RouteProps> = ({ component: Component, path, ...rest }) => {
+        var token = localStorage.getItem("Real-Vagas-Token");
+        return (
+            <Route
+                render={props => ((token !== undefined || token !== null)) ?
+                    (
+                        <Component path={path}  {...rest} {...props} />
+                    ) : (
+                        <Redirect to={{ pathname: '/', state: { from: props.location } }} />
+                    )
+                } />
+        )
+    }
+
+    return (
+        <BrowserRouter>
             <Switch>
-                <Route path="/" exact component={Home}/>
-                <Route path="/Login" component={Login}/>
-                <Route path="/Cadastro" component={Cadastro}/>
-                <Route path="/Sobre" component={Sobre}/>
-                <Route path="/Dicas" component={Dicas}/>
-                <Route path="/Perfil" component={Perfil}/>
-                <Route path="/Dashboard" component={DashEmpresa}/>
-                <Route path="/Administrador" component={DashAdm}/>
-                <Route path="/Dashboard" component={Teste}/>
-                <Route path="/Vagas" component={Vagas}/>
-                <Route path="/Chat" component={Chat}/>
-                <Route path="/Curriculos" component={PagCurriculos}/>
+                <Route path="/" exact component={Home} />
+                <RotaComum path="/Login" component={Login} />
+                <RotaComum path="/Cadastro" component={Cadastro} />
+
+                <Route path="/Sobre" component={Sobre} />
+                <Route path="/Dicas" component={Dicas} />
+                <Route path="/Teste" component={Teste} />
+
+                <RotaAdm path="/Administrador" component={DashAdm} />
+                <Route path="/Dashboard" component={DashEmpresa} />
+                <Route path="/Perfil" component={Perfil} />
+
+                <RotaPrivada path="/Vagas" component={Vagas} />
+                <RotaAdm path="/Chat" component={Chat} />
+                <RotaEmpresa path="/Curriculos" component={PagCurriculos} />
+                <RotaEmpresa path="/Documentos" component={Documentos} />
             </Switch>
-    </BrowserRouter>
-)
+        </BrowserRouter>
+    )
 }
 
 export default Routers;

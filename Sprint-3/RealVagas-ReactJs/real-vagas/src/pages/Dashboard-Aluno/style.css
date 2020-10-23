@@ -1,0 +1,110 @@
+
+.Perfil{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #F3F3F3;
+    padding-bottom: 4vw;
+}
+
+.foto{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.foto img{
+    width: 10vw;
+    height: 10vw;
+}
+
+#bt{
+    border: none;
+    background: transparent;
+    outline: none;
+}
+
+
+#IconEdit{
+    width: 2vw;
+    height: 1.5vw;
+    margin-left: 0.5vw;
+}
+
+.icon{
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-end;
+    margin: 1vw
+
+}
+
+#InputEdit{
+    border: none;
+    border-bottom: 0.05vw solid #000000;
+    background: transparent;
+    outline: none;
+    font-size: 1.2vw;
+}
+
+
+
+.title{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 4vw;
+    padding-top: 4vw;
+}
+
+.title h1{
+    font-size: 2vw;
+}
+
+.conteudo{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #FFFFFF;
+    border-radius: 3vw;
+    width: 25vw;
+    padding-bottom: 2vw;
+    padding-top: 2vw;
+    
+    /* Box-shadow faz a sombra acontecer */
+    /* O primeiro "Parametro" 3px é a sombra da direita */
+    /* O segundo "Parametro" 2px é a sombra de baixo */
+    /* O terceiro "Parametro" 10 é a suavidade da sombra */
+    /* E o quarto #696969 é a cor da sombra */
+    box-shadow: 3px 2px 10px #696969;
+}
+
+
+/* Modal */
+#InputEdit1{
+    border: none;
+    border-bottom: 0.09vw solid #CF002B;
+    background: transparent;
+    outline: none;
+    font-size: 1.4vw;
+}
+
+#ModalColor{
+    background-image: linear-gradient(to right, #CF002B, #730018);
+}
+
+#ModalColor1{
+    color: #FFFFFF;
+}
+
+.Modal{
+    border: none;
+}
+
+#btn{
+    border-radius: 3vw;
+    border-color: #ffffff;
+    color: #ffffff;
+    background: transparent;
+    width: 13vw;
+}
