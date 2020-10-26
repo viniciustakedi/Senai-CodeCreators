@@ -10,6 +10,7 @@ import '../../assets/style/global.css';
 import './style.css';
 
 function DashboardAluno() {
+    
     const [show, setShow] = useState(false);
 
     const handleClose = () => setShow(false);
@@ -31,7 +32,7 @@ function DashboardAluno() {
                             <Input id="InputEdit" label="Nome: " name="Nome" />
                             <button id="bt" onClick={handleShow} ><img id="IconEdit" src={IconEdit} alt="icone de edição de informaçãos" /></button>
                         </div>
-                        <div className="informacoes">
+                        <div className="Informacoes">
                             <div className="icon">
                                 <Input id="InputEdit" label="Email: " name="Email" />
                                 <button id="bt" onClick={handleShow} ><img id="IconEdit" src={IconEdit} alt="icone de edição de informação" /></button>

@@ -6,8 +6,8 @@
 }
 
 #LogoImg{
-    width: 140px;
-    height: 140px;
+    width: 14vw;
+    height: 14vw;
 }
 
 .Container-nav{
@@ -39,7 +39,6 @@
     align-items: center;
     text-align: center;
     justify-content: space-around;
-    width: 100%;
     height: 1.83vw;
     border-radius: 25vw;
     border: none;

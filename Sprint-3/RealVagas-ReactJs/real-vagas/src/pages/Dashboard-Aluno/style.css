@@ -1,5 +1,4 @@
-
-.Perfil{
+.Perfil {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -7,39 +6,37 @@
     padding-bottom: 4vw;
 }
 
-.foto{
+.foto {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.foto img{
+.foto img {
     width: 10vw;
     height: 10vw;
 }
 
-#bt{
+#bt {
     border: none;
     background: transparent;
     outline: none;
 }
 
-
-#IconEdit{
+#IconEdit {
     width: 2vw;
     height: 1.5vw;
     margin-left: 0.5vw;
 }
 
-.icon{
+.icon {
     display: flex;
     justify-content: space-around;
     align-items: flex-end;
     margin: 1vw
-
 }
 
-#InputEdit{
+#InputEdit {
     border: none;
     border-bottom: 0.05vw solid #000000;
     background: transparent;
@@ -47,9 +44,7 @@
     font-size: 1.2vw;
 }
 
-
-
-.title{
+.title {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -57,11 +52,11 @@
     padding-top: 4vw;
 }
 
-.title h1{
+.title h1 {
     font-size: 2vw;
 }
 
-.conteudo{
+.conteudo {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -70,7 +65,6 @@
     width: 25vw;
     padding-bottom: 2vw;
     padding-top: 2vw;
-    
     /* Box-shadow faz a sombra acontecer */
     /* O primeiro "Parametro" 3px é a sombra da direita */
     /* O segundo "Parametro" 2px é a sombra de baixo */
@@ -81,7 +75,8 @@
 
 
 /* Modal */
-#InputEdit1{
+
+#InputEdit1 {
     border: none;
     border-bottom: 0.09vw solid #CF002B;
     background: transparent;
@@ -89,22 +84,21 @@
     font-size: 1.4vw;
 }
 
-#ModalColor{
+#ModalColor {
     background-image: linear-gradient(to right, #CF002B, #730018);
 }
 
-#ModalColor1{
+#ModalColor1 {
     color: #FFFFFF;
 }
 
-.Modal{
+.Modal {
     border: none;
 }
 
-#btn{
+#btn {
     border-radius: 3vw;
     border-color: #ffffff;
     color: #ffffff;
     background: transparent;
-    width: 13vw;
 }

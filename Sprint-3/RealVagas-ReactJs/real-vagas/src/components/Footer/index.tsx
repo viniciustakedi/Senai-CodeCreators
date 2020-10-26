@@ -6,7 +6,6 @@ import InverseLogoSenai from '../../assets/image/senailogobranca.png';
 
 function Footer() {
     return (
-        <div className="centro">
             <div className="Footer">
                 <div className="text">
                     <ul>
@@ -23,7 +22,6 @@ function Footer() {
                     <img id="logoSenai" src={InverseLogoSenai} alt="" />
                 </div>
             </div>
-        </div>
     )
 }
 

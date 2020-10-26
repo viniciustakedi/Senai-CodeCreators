@@ -1,18 +1,18 @@
-.Footer{
+.Footer {
     display: flex;
     align-items: center;
     justify-content: center;
     background-image: linear-gradient(to right, #CF002B, #730018);
 }
 
-.Footer hr{
+.Footer hr {
     height: 6vw;
     border: 0.5px #ffffff solid;
     margin-left: 4rem;
     margin-right: 4rem;
 }
 
-.text ul li{
+.text ul li {
     font-size: medium;
     list-style-type: none;
     text-decoration: none;
@@ -20,19 +20,19 @@
     font-size: 1.1vw;
 }
 
-.images{
+.images {
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-#logo{
-    margin-right: 2rem;
+#logo {
+    margin-right: 1vw;
     width: 7vw;
     height: 6vw;
 }
 
-#logoSenai{
+#logoSenai {
     width: 7.5vw;
     height: 2vw;
 }

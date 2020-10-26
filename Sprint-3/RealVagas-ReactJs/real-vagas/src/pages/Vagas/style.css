@@ -1,0 +1,149 @@
+.vagas {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding-bottom: 4vw;
+}
+
+.pesquisa {
+    display: flex;
+    align-items: flex-end;
+    padding-bottom: 1vw;
+    width: 70vw;
+}
+
+.pesquisa img {
+    width: 2vw;
+    height: 1.5vw;
+    margin-left: 2vw;
+    font-size: 1vw;
+}
+
+.title {
+    display: flex;
+    align-items: flex-start;
+    justify-content: start;
+    padding-bottom: 4vw;
+    padding-top: 4vw;
+}
+
+.title h1 {
+    font-size: 2vw;
+}
+
+.Conteudo {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.fetch {
+    width: 70vw;
+    background-color: #FFFFFF;
+    border-radius: 2vw;
+    padding-bottom: 2vw;
+    padding-top: 2vw;
+    box-shadow: 3px 2px 10px #696969;
+}
+
+#InputEdit {
+    border: none;
+    border-bottom: 0.1vw solid #000000;
+    background: transparent;
+    outline: none;
+    font-size: 1.2vw;
+}
+
+.TitleImg {
+    display: flex;
+    align-items: center;
+    margin-left: 2vw;
+}
+
+.img {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 9vw;
+    height: 8vw;
+    border-radius: 2vw;
+    border: 1.5px solid #FE0000;
+    margin-right: 1vw;
+    box-shadow: 2px 1px 4px #696969;
+}
+
+.title {
+    margin-left: 1vw;
+}
+
+.title1 h1 {
+    color: #1F3A4B;
+    font-size: 1.40vw;
+}
+
+.title1 h2 {
+    color: #FE0000;
+    font-size: 1.20vw;
+}
+
+.title1 h3 {
+    color: #1F3A4B;
+    font-size: 1.10vw;
+}
+
+
+/* Buttons */
+
+.buttons {
+    display: flex;
+    align-items: center;
+    margin-right: 2vw;
+}
+
+.inscricao {
+    margin-right: 0.5vw;
+}
+
+.verMais {
+    margin-left: 0.5vw;
+}
+
+.verMais button {
+    border-radius: 3vw;
+    border: none;
+    color: #FFFFFF;
+    background: #FE0000;
+    border: 1.5px solid #FE0000;
+    width: 11vw;
+    font-size: 1.2vw;
+}
+
+.verMais button:focus {
+    outline-style: none;
+}
+
+
+/* modal */
+
+.bodyModal {
+    display: flex;
+    align-items: center;
+    padding-bottom: 1vw;
+}
+
+.informacoes {
+    display: flex;
+    align-items: center;
+    background-color: #F4F4F4;
+    border-radius: 2vw;
+    margin-left: 2vw;
+    margin-right: 2vw;
+    padding-bottom: 1vw;
+    box-shadow: 3px 2px 10px #696969;
+}
+
+.informacoes p {
+    display: flex;
+    margin: 1vw;
+}

@@ -1,0 +1,12 @@
+.ButtonArea2 {
+    border-radius: 3vw;
+    border: 1.5px solid #FE0000;
+    color: #FE0000;
+    background: transparent;
+    width: 11vw;
+    font-size: 1.2vw;
+}
+
+.ButtonArea2:focus {
+    outline-style: none;
+}
