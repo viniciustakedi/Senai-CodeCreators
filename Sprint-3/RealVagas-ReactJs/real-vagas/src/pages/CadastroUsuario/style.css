@@ -1,0 +1,116 @@
+.titulo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1vw;
+    margin-top: 2vw;
+}
+
+.genero h6 {
+    display: table-cell;
+    float: left;
+    margin-bottom: 2vw;
+}
+
+.button-Usuario {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 2vw;
+    margin-top: 2vw;
+}
+
+.cadastro-centralizado {
+    width: 80%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    margin: 3vw auto;
+    margin-left: 18vw;
+}
+
+label style {
+    margin: 1vw;
+}
+
+.centralizado {
+    background-color: #ffffff;
+    border-radius: 2vw;
+    box-shadow: 3px 2px 10px #696969;
+    width: 45vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1vw;
+}
+
+input {
+    border: none;
+    border-bottom: 0.06vw solid #000000;
+    background: transparent;
+    outline: none;
+    font-size: 1.5vw;
+    margin-top: auto;
+}
+
+.informaçao {
+    font-size: 1.4vw;
+    margin-top: 1vw;
+}
+
+select {
+    border: none;
+    border-bottom: 0.06vw solid #000000;
+    background: transparent;
+    outline: none;
+    margin-top: 1vw;
+    font-size: 1.2vw;
+    width: 18vw;
+}
+
+.estadoCivil {
+    margin-top: 1vw;
+    width: 1vw;
+}
+
+.genero-feminino {
+    float: right;
+    margin: -2vw;
+    margin-right: 1vw;
+}
+
+.periodo {
+    margin-top: 1vw;
+    width: 1vw;
+}
+
+#DataNascimento {
+    width: 18vw;
+    font-size: 1.3vw;
+}
+
+.estadoCivil {
+    width: 18vw;
+    margin-top: -1vw;
+}
+
+.informaçao {
+    font-size: 1vw;
+}
+
+.feminino {
+    margin-left: 2vw;
+}
+
+.masculino {
+    margin-left: 1vw;
+}
+
+.genero {
+    margin-top: 1.8vw;
+}
+
+.sexo {
+    margin: 3.5vw;
+    margin-top: -0vw;
+}

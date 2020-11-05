@@ -2,6 +2,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    width: 100%;
     background-image: linear-gradient(to right, #CF002B, #730018);
 }
 
@@ -12,12 +13,13 @@
     margin-right: 4rem;
 }
 
-.text ul li {
+#Text p {
     font-size: medium;
     list-style-type: none;
     text-decoration: none;
     color: #FFFFFF;
     font-size: 1.1vw;
+    margin-bottom: 0;
 }
 
 .images {
@@ -26,13 +28,13 @@
     justify-content: center;
 }
 
-#logo {
-    margin-right: 1vw;
-    width: 7vw;
-    height: 6vw;
+#LogoInversa {
+    margin-right: 1.7vw;
+    width: 11.20vw;
+    height: 11, 20vw;
 }
 
-#logoSenai {
-    width: 7.5vw;
-    height: 2vw;
+#LogoSenai {
+    width: 11.70vw;
+    height: 3vw;
 }

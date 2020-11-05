@@ -11,7 +11,7 @@ function Home() {
         <div>
             <Header/>
             <div className="Home">
-                <img className="ImageLupa" src={ImgLupa} alt="Real vagas, sua vaga em um clique"/>
+                {/* <img className="ImageLupa" src={ImgLupa} alt="Real vagas, sua vaga em um clique"/> */}
             </div>
             <Footer/>
         </div>

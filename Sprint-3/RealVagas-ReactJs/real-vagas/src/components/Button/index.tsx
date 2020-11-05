@@ -6,11 +6,11 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     name: string;
 }
 
-const Button: React.FC<ButtonProps> = ({ name }) => {
+const Button: React.FC<ButtonProps> = ({ name, ...rest}) => {
     return (
         <div>
-            <button className="ButtonArea">{name}</button>
-        </div>
+            <button className="ButtonArea" {...rest}>{name}</button>
+        </div>  
     );
 }
 

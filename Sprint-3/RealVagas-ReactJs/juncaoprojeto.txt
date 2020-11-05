@@ -1,0 +1,56 @@
+**Junção de telas:**
+
+*MVP*
+Cadastro da Empresa:
+- Funcionalidades: OK
+- Index: Ok
+- Style: Ok
+
+*MVP*
+Cadastro Usuário:
+- Ver depois
+
+Chat: 
+- Ver depois
+
+Dashboard Adm:
+- Funcionalidades: Ok
+- Index: Ok
+- Style: Ok
+
+Dashboard Aluno:
+- Funcionalidades: Não
+- Index: Ok
+- Style: Ok
+
+Dashboard Empresa:
+- Ver depois
+
+Dicas:
+- Funcionalidades: Ok
+- Index: Ok
+- Style: Não
+
+Home:
+- Fazer
+
+Login:
+- Funcionalidades: Ok
+- Index: Ok
+- Style: Não
+
+Sobre:
+- Funcionalidades: Ok
+- Index: Ok
+- Style: Não
+
+Teste Comportamental:
+-Fazer
+
+Vagas:
+- Funcionalidades: Não
+- Index: Ok
+- Style: Ok
+
+
+

@@ -1,0 +1,39 @@
+.sobre {
+    background-image: linear-gradient(to bottom, #D6002C, #9c1732);
+    margin: 0;
+    height: 34vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0.5em 0 0 0;
+}
+
+.footer-sobre :first-child {
+    background-image: linear-gradient(to top, #9c0624, #9c1732);
+}
+
+.containersobre {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#logo {
+    margin-right: 2rem;
+    width: 110px;
+    height: 100px;
+}
+
+#logoSenai {
+    width: 130px;
+    height: 40px;
+}
+
+.texto p {
+    width: 55vw;
+    list-style-type: none;
+    text-align: justify;
+    color: #FFFFFF;
+}

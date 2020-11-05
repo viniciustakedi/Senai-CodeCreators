@@ -2,14 +2,15 @@ import React from 'react';
 import { BrowserRouter, Redirect, Route, Router, Switch } from 'react-router-dom';
 import Home from './pages/Home';
 import Login from './pages/Login';
-import Cadastro from './pages/Cadastro';
+import Cadastro from './pages/CadastroUsuario';
+import CadastroEmpresa from './pages/CadastroEmpresa';
 import Perfil from './pages/Dashboard-Aluno';
 import DashEmpresa from './pages/Dashboard-Empresa';
 import DashAdm from './pages/Dashboard-Administrador';
 import Sobre from './pages/Sobre';
 import Vagas from './pages/Vagas';
-import Teste from './pages/Teste-Comportamental';
-import Dicas from './pages/Teste-Comportamental/indexDicas';
+import TesteComp from './pages/Teste-Comportamental';
+import Dicas from './pages/Dicas';
 import Chat from './pages/Chat';
 import PagCurriculos from './pages/Dashboard-Empresa/Página-do-currícúlo';
 import { parseJWT } from './services/auth';
@@ -98,12 +99,15 @@ function Routers() {
                 <Route path="/" exact component={Home} />
                 <RotaComum path="/Login" component={Login} />
                 <RotaComum path="/Cadastro" component={Cadastro} />
+                <RotaComum path="/CadastroEmpresa" component={CadastroEmpresa}/>
 
                 <Route path="/Sobre" component={Sobre} />
                 <Route path="/Dicas" component={Dicas} />
-                <Route path="/Teste" component={Teste} />
+                <Route path="/Teste" component={TesteComp} />
 
-                <RotaAdm path="/Administrador" component={DashAdm} />
+
+                {/* Rota Adm */}
+                <RotaAdm path="/Administrador" component={DashAdm} /> 
                 <Route path="/Dashboard" component={DashEmpresa} />
                 <Route path="/Perfil" component={Perfil} />
 

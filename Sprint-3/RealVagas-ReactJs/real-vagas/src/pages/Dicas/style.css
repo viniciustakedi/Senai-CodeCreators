@@ -1,0 +1,81 @@
+.dicas-sobre {
+    height: 90%;
+    ;
+}
+
+.Dicas {
+    background-color: #F3F3F3;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    height: 100%;
+    margin: 4vw;
+}
+
+body {
+    background-color: #F3F3F3;
+}
+
+.conteudo-sobre {
+    background-color: #FFFFFF;
+    border-radius: 1vw;
+    width: 60vw;
+    box-shadow: 3px 2px 2px #696969;
+    height: 100%;
+}
+
+.dicas ul li {
+    list-style-type: none;
+    font-size: 1vw;
+    margin-left: 8vw;
+}
+
+#imgicone {
+    width: 4.2vw;
+    height: 4.2vw;
+    margin-left: 3vw;
+}
+
+#imgcurriculo {
+    width: 4.2vw;
+    height: 4.2vw;
+    margin-left: 3vw;
+    margin-top: 2vw;
+    margin-bottom: 2vw;
+}
+
+a {
+    color: #212529;
+    margin: 0.5rem;
+    font-family: 'Work Sans', sans-serif;
+    font-weight: 500;
+    font-size: 1.6vw;
+}
+
+#imgteste {
+    width: 4.2vw;
+    height: 4.2vw;
+    margin-left: 3vw;
+}
+
+.icones {
+    float: left;
+}
+
+.conteudo-icon {
+    display: table;
+    margin-top: 4vw;
+}
+
+.imagem {
+    display: table-cell;
+}
+
+.texto-icon {
+    display: table-cell;
+}
+
+.texto-icon h3 {
+    color: #000000;
+    font-size: 2vw;
+}

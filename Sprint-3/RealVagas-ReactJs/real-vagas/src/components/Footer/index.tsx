@@ -7,19 +7,17 @@ import InverseLogoSenai from '../../assets/image/senailogobranca.png';
 function Footer() {
     return (
             <div className="Footer">
-                <div className="text">
-                    <ul>
-                        <li>Real Vagas & SENAI</li>
-                        <li>Contato: (XX) XXXX-XXXX</li>
-                        <li>senai@email.com</li>
-                    </ul>
+                <div id="Text">
+                        <p>Real Vagas & SENAI</p>
+                        <p>Contato: (XX) XXXX-XXXX</p>
+                        <p>senai@email.com</p>
                 </div>
 
                 <hr />
 
                 <div className="images">
-                    <img id="logo" src={InverseLogo} alt="" />
-                    <img id="logoSenai" src={InverseLogoSenai} alt="" />
+                    <img id="LogoInversa" src={InverseLogo} alt="" />
+                    <img id="LogoSenai" src={InverseLogoSenai} alt="" />
                 </div>
             </div>
     )

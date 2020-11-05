@@ -1,0 +1,136 @@
+.quadro {
+    box-shadow: 3px 3px 10px #696969;
+    background-color: white;
+    padding: 30px;
+    border-radius: 5px;
+    width: 36.603221083455345vw;
+    margin: auto;
+    height: 21.961932650073205vw;
+    border-radius: 1.0980966325036603vw;
+    margin-top: 5%;
+}
+
+.quadro-top {
+    font-size: 1.2445095168374818vw;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.quadro-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin-top: -47%;
+}
+
+.text-center {
+    text-align: center!important;
+    width: 24.78vw;
+    display: flex;
+    align-items: center;
+    margin: 0 auto;
+    border: 0.18vw solid #FE0000;
+    border-radius: 1.17vw;
+    margin-top: 10%;
+}
+
+.text-center2 {
+    text-align: center!important;
+    width: 24.78vw;
+    display: flex;
+    align-items: center;
+    margin: 0 auto;
+    border: 0.18vw solid #FE0000;
+    border-radius: 1.17vw;
+}
+
+.card {
+    background-color: transparent;
+}
+
+.card-body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 1 1 auto;
+    min-height: 1px;
+    padding: .75rem .75rem .15rem 0;
+}
+
+.card-body img {
+    width: 7.39vw;
+    height: 7.39vw;
+}
+
+.card-ajuste {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.h5 {
+    font-size: 1.2vw;
+}
+
+.btn-primary {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    width: 6.95vw;
+    height: 1.83vw;
+    border-radius: 25vw;
+    border: none;
+    background-color: #EF0000;
+    color: #FFFFFF;
+}
+
+.btn-primary a {
+    color: #FFFFFF;
+    font-size: 1.10vw;
+}
+
+.btn-primary:hover {
+    background-color: #EF0000;
+}
+
+.btn-primary:focus {
+    color: #fff;
+    background-color: #EF0000;
+    border-color: #EF0000;
+    box-shadow: none;
+}
+
+.btn-primary a:link {
+    text-decoration: none;
+}
+
+.coluna {
+    margin: 4.40vw auto;
+}
+
+#LogoImg {
+    width: 7.320644216691069vw;
+    height: 7.320644216691069vw;
+}
+
+.btn {
+    font-size: 1.10vw;
+}
+
+.modal-content {
+    width: 100%;
+    height: 350px;
+}
+
+h3 {
+    font-size: 1.2vw;
+    text-align: start;
+    color: red;
+}
+
+.bodyModal {
+    display: flex;
+    align-items: center;
+    padding-bottom: 1vw;
+}

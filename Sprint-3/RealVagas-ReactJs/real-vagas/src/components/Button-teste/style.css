@@ -1,0 +1,14 @@
+.ButtonArea3 {
+    color: #ffffff;
+    background-color: #C50C31;
+    margin-bottom: 4px;
+    margin-top: 10px;
+    border-radius: 2em;
+    padding: 5px 18px 5px;
+    font-size: 19px;
+    border-color: white;
+}
+
+.ButtonArea3:focus {
+    outline-style: none;
+}
