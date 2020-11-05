@@ -54,7 +54,7 @@ namespace Real_Vagas_API.Controllers
         /// <response code="200">Retorna um OK com uma lista de empresas cadastradas. </response>
         /// <response code="404">Retorna um não encontrado caso não existe empresas cadastradas.</response>
         [HttpGet]
-        [Authorize(Roles = "1")]
+        //[Authorize(Roles = "1")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public IActionResult ListarEmpresas()

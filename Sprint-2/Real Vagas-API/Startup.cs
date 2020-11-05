@@ -102,6 +102,11 @@ namespace Real_Vagas_API
             // Habilita o uso de autenticação
             app.UseAuthentication();
 
+            app.UseCors(builder => builder
+               .AllowAnyOrigin()
+               .AllowAnyMethod()
+               .AllowAnyHeader());
+
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
@@ -114,6 +119,8 @@ namespace Real_Vagas_API
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "Real Vagas API");
                 c.RoutePrefix = string.Empty;
             });
+
+
         }
     }
 }

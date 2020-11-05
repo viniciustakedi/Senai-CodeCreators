@@ -30,46 +30,56 @@ function Cadastro() {
 
 
     const salvar = () => {
-        const form = {
-            nome: usuario,
-            dataNascimento: DataNascimento,
-            sexo: sexo,
-            escola: escola,
-            email: email,
-            telefone: telefone,
-            estadoCivil: EstadoCivil,
-            nivel: nivel,
-            tipoCurso: TipoCurso,
-            curso: curso,
-            turma: turma,
-            turno: turno,
-            termo: termo,
-            tipoUsuariop: 3,
-
+       
+        const Tbdados ={
             cpf : cpf,
             NumMatricula: matricula,
-            senha: senha,
+            senha: senha
+        }
 
+        const urlDados = 'http://localhost:5000/api/Dados';
 
-        };
-
- 
         const urlRequest ='http://localhost:5000/api/Usuarios';
 
-        console.log(JSON.stringify(form))
-
-        fetch(urlRequest , {
+        fetch(urlDados , {
             method: "POST",
-            body: JSON.stringify(form),
+            body: JSON.stringify(Tbdados),
             headers: {
                 'Content-Type': 'application/json',
             }
         })
+        .then(Response => Response.json())
+          .then(dados=>{
 
-        .then(() => {
-           console.log("Usuário cadastrado")
+              const form = {
+                nome: usuario,
+                dataNascimento: DataNascimento,
+                sexo: sexo,
+                escola: escola,
+                email: email,
+                telefone: telefone,
+                estadoCivil: EstadoCivil,
+                nivel: nivel,
+                tipoCurso: TipoCurso,
+                curso: curso,
+                turma: turma,
+                turno: turno,
+                termo: parseInt(termo),
+                idTipoUsuario: 3,
+                idDados: dados
+            };
 
-        })
+            console.log(form);
+              fetch(urlRequest , {
+                method: "POST",
+                body: JSON.stringify(form),
+                headers: {
+                    'Content-Type': 'application/json',
+                }
+            }).then(()=>{
+                console.log("Usuário cadastrado");
+            })
+          })
         .catch(err => console.error(err));
     }
 
@@ -113,44 +123,36 @@ function Cadastro() {
                 
                 <label className="masculino">
                     
-                    <input  type="radio"  name="genero"
+                    <input  type="radio" value="Masculino"  name="genero"
                       onChange={e => setSexo(e.target.value)} />
                           Masculino
-                     
                 </label>
 
                
                 <label className="feminino" >
-                    <input  type="radio"   name="genero"
+                    <input  type="radio" value="Feminino"  name="genero"
                     onChange={e => setSexo(e.target.value)}/>
                       Feminino
                 </label>
-                
-               
                            
                 </div>
 
-                
-                
                <div className='sexo'>
 
                <label>
-                <input  type="radio"  name="genero"
+                <input  type="radio" value="Prefiro não me indentificar"  name="genero"
                     onChange={e => setSexo(e.target.value)}/>
                       Prefiro não me indentificar
                 </label>
 
                </div>
                 
-                
-
-
-
                 <div className="estadoCivil">
                     <label>
                         Estado civil:
-                        <select
+                        <select required
                             onChange={e => setEstadoCivil(e.target.value)}>
+                            <option value="" selected disabled hidden>Selecione seu Estado Civil</option>
                             <option  value='solteiro'>Solteiro(a)</option>
                             <option  value='casado'>Casado(a)</option>
                             <option  value='divorciado'>Divorciado(a)</option>
@@ -200,8 +202,9 @@ function Cadastro() {
                 <div className="periodo">
                     
                         Periodo:
-                        <select 
+                        <select required
                             onChange={e => setTurno(e.target.value)}>
+                            <option value="" selected disabled hidden>Selecione seu turno</option>
                             <option  value='Manhã'>Manhã</option>
                             <option  value='Tarde'>Tarde</option>
                             <option  value='Noite'>Noite</option>

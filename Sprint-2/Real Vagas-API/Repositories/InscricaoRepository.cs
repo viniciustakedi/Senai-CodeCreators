@@ -38,6 +38,22 @@ namespace Real_Vagas_API.Repositories
             }
         }
 
+        public void Cadastrar(DbInscricao inscricao)
+        {
+            using (RealVagasContext ctx = new RealVagasContext())
+            {
+                ctx.DbInscricao.Add(inscricao);
+                ctx.SaveChanges();
+            }
+        }
+
+        public List<DbInscricao> ListarById(int id)
+        {
+            using (RealVagasContext ctx = new RealVagasContext())
+            {
+                return ctx.DbInscricao.ToList().FindAll(I => I.IdUsuario == id);
+            }
+        }
 
         public void Atualizar(int id, DbInscricao inscricaoAtulizada)
         {

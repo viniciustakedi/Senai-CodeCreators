@@ -37,7 +37,7 @@ namespace Real_Vagas_API.Controllers
         /// </summary>
         /// <returns>Lista de usuário</returns>
         [HttpGet]
-        [Authorize(Roles = "1")]
+        //[Authorize(Roles = "1")]
         public IActionResult Get()
         {
             var buscar = _usuario.Listar();

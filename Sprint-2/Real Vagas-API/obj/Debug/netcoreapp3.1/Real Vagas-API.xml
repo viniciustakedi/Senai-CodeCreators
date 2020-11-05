@@ -230,6 +230,20 @@
             </summary>
             <returns></returns>
         </member>
+        <member name="M:Real_Vagas_API.Controllers.InscricaoController.ListarById(System.Int32)">
+            <summary>
+            Listar uma inscrição pelo Id do usuário
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Real_Vagas_API.Controllers.InscricaoController.post(Real_Vagas_API.Domains.DbInscricao)">
+            <summary>
+            Cadastrar uma nova inscrição
+            </summary>
+            <param name="novoUsuario"></param>
+            <returns></returns>
+        </member>
         <member name="M:Real_Vagas_API.Controllers.InscricaoController.GetById(System.Int32)">
             <summary>
             Buscar uma incrição pelo ID

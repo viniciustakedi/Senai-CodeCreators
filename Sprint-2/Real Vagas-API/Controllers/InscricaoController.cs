@@ -27,7 +27,7 @@ namespace Real_Vagas_API.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet]
-        [Authorize(Roles = "1,2")]
+        //[Authorize(Roles = "1,2")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public IActionResult Get()
@@ -52,6 +52,64 @@ namespace Real_Vagas_API.Controllers
             }
         }
 
+
+        /// <summary>
+        /// Listar uma inscrição pelo Id do usuário
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [HttpGet("ListarById/id")]
+        //[Authorize(Roles = "1,2")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public IActionResult ListarById(int id)
+        {
+            try
+            {
+                List<DbInscricao> inscricaoBuscada = _inscricaoRepository.ListarById(id);
+
+                // Verifica se a incrição foi encontrada
+                if (inscricaoBuscada.Count != 0)
+                {
+                    // Retorna a resposta da requisição 200 - Ok
+                    return Ok(inscricaoBuscada);
+
+                }
+
+                // Retorna a resposta de requisição 404
+                return NotFound("Nenhuma incrição encontrada");
+            }
+            catch (Exception error)
+            {
+                // Retorna a resposta da requisição 400
+                return BadRequest(error);
+            }
+        }
+
+        /// <summary>
+        /// Cadastrar uma nova inscrição
+        /// </summary>
+        /// <param name="novoUsuario"></param>
+        /// <returns></returns>
+        //[Authorize(Roles = "3,4")]
+        [HttpPost]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public IActionResult post(DbInscricao inscricaos)
+        {
+            try
+            {
+                // Retorna a resposta da requisição 200- Ok
+                _inscricaoRepository.Cadastrar(inscricaos);
+                return Ok();
+            }
+            catch (Exception error)
+            {
+                // Retorna a resposta da requisição 400
+                return BadRequest(error);
+            }
+        }
 
         /// <summary>
         /// Buscar uma incrição pelo ID
@@ -95,7 +153,7 @@ namespace Real_Vagas_API.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpDelete("{id}")]
-        [Authorize(Roles = "1")]
+        //[Authorize(Roles = "1")]
         [ProducesResponseType(StatusCodes.Status202Accepted)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -136,7 +194,6 @@ namespace Real_Vagas_API.Controllers
         /// <param name="InscricaoAtulizada"></param>
         /// <returns></returns>
         [HttpPut("{id}")]
-        [Authorize]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]

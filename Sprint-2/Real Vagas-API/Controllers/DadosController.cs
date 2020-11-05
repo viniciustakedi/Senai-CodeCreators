@@ -33,7 +33,7 @@ namespace Real_Vagas_API.Controllers
         /// </summary>
         /// <returns>Todos os dados</returns>
         [HttpGet]
-        [Authorize(Roles = "1")]
+        //[Authorize(Roles = "1")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public IActionResult Get()
