@@ -222,6 +222,7 @@ function DashboardAdm() {
 
 
             <Footer />
+            
             {
                 empresas.map((item: any) => {
                     return (

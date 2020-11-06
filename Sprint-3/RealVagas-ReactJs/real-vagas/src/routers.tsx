@@ -15,6 +15,7 @@ import Chat from './pages/Chat';
 import PagCurriculos from './pages/Dashboard-Empresa/Página-do-currícúlo';
 import { parseJWT } from './services/auth';
 import Documentos from './pages/Dashboard-Empresa/Documentos-pendente';
+import Oportunidade from './pages/CadastrarVagas';
 
 function Routers() {
 
@@ -27,7 +28,7 @@ function Routers() {
         var token = localStorage.getItem("Real-Vagas-Token");
         return (
             <Route
-                render={props => (token === undefined || token === null) ?
+                render={props => (token == undefined || token == null) ?
                     (
                         <Component path={path}  {...rest} {...props} />
                     ) : (
@@ -41,7 +42,7 @@ function Routers() {
         var token = localStorage.getItem("Real-Vagas-Token");
         return (
             <Route
-                render={props => ((token !== undefined || token !== null) && parseJWT() === 1) ?
+                render={props => ((token !== undefined || token !== null) && parseJWT() == 1) ?
                     (
                         <Component path={path}  {...rest} {...props} />
                     ) : (
@@ -55,7 +56,7 @@ function Routers() {
         var token = localStorage.getItem("Real-Vagas-Token");
         return (
             <Route
-                render={props => ((token !== undefined || token !== null) && parseJWT() === 2) ?
+                render={props => ((token !== undefined || token !== null) && parseJWT() == 2) ?
                     (
                         <Component path={path}  {...rest} {...props} />
                     ) : (
@@ -69,7 +70,7 @@ function Routers() {
         var token = localStorage.getItem("Real-Vagas-Token");
         return (
             <Route
-                render={props => ((token !== undefined || token !== null) && (parseJWT() === 3 || parseJWT() === 4)) ?
+                render={props => ((token !== undefined || token !== null) && (parseJWT() == 3 || parseJWT() == 4)) ?
                     (
                         <Component path={path}  {...rest} {...props} />
                     ) : (
@@ -108,8 +109,9 @@ function Routers() {
 
                 {/* Rota Adm */}
                 <RotaAdm path="/Administrador" component={DashAdm} /> 
-                <Route path="/Dashboard" component={DashEmpresa} />
-                <Route path="/Perfil" component={Perfil} />
+                <RotaEmpresa path="/CadastroVaga" component={Oportunidade}/>
+                <RotaEmpresa path="/Dashboard" component={DashEmpresa} />
+                <RotaAluno path="/Perfil" component={Perfil} />
 
                 <RotaPrivada path="/Vagas" component={Vagas} />
                 <RotaAdm path="/Chat" component={Chat} />

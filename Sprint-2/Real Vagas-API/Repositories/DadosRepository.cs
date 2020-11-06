@@ -25,12 +25,13 @@ namespace Real_Vagas_API.Repositories
             return ctx.DbDados.FirstOrDefault(u => u.Id == id);
         }
 
-        public void Cadastrar(DbDados novoUsuario)
+        public int Cadastrar(DbDados novoUsuario)
         {
             ctx.DbDados.Add(novoUsuario);
-
             // Salva as informações para serem gravas no banco
             ctx.SaveChanges();
+
+            return ctx.DbDados.FirstOrDefault(D => D.Cpf == novoUsuario.Cpf).Id;
         }
 
         public void Deletar(int id)

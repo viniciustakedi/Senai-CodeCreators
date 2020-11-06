@@ -401,6 +401,13 @@
             <param name="EmpresaNome"></param>
             <returns>Vagas Encontradas</returns>
         </member>
+        <member name="M:Real_Vagas_API.Controllers.VagasController.GetByEmpresa(System.Int32)">
+            <summary>
+            Retorna uma vaga pelo id da empresa
+            </summary>
+            <param name="Id"></param>
+            <returns></returns>
+        </member>
         <member name="M:Real_Vagas_API.Controllers.VagasController.Delete(System.Int32)">
             <summary>
             Método Delete para deletar uma vaga

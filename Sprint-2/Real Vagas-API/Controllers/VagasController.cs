@@ -221,7 +221,7 @@ namespace Real_Vagas_API.Controllers
         }
 
         [HttpPut("{Id}")]
-        [Authorize(Roles = "1,2")]
+        //[Authorize(Roles = "1,2")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -252,13 +252,37 @@ namespace Real_Vagas_API.Controllers
             }
         }
 
+
+        /// <summary>
+        /// Retorna uma vaga pelo id da empresa
+        /// </summary>
+        /// <param name="Id"></param>
+        /// <returns></returns>
+        [HttpGet("VagaByIdEmpresa/id")]
+        //[Authorize]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public IActionResult GetByEmpresa(int Id)
+        {
+            try
+            {
+                var buscar = _vagas.ListaByIdEmpresa(Id);
+                return Ok(buscar);
+               
+            }
+            catch (Exception error)
+            {
+                return BadRequest(error);
+            }
+        }
+
         /// <summary>
         /// Método Delete para deletar uma vaga
         /// </summary>
         /// <param name="Id"></param>
         /// <returns>Vaga Deletada</returns>
         [HttpDelete("{Id}")]
-        [Authorize(Roles = "1,2")]
+        //[Authorize(Roles = "1,2")]
         [ProducesResponseType(StatusCodes.Status202Accepted)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]

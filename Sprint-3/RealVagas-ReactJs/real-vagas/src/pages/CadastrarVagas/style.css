@@ -1,0 +1,216 @@
+.express {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.container-express {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    background-color: #FFFFFF;
+    border-radius: 1.06vw;
+    box-shadow: 0 3px 6px #696969;
+    height: 100%;
+    margin: 5vw;
+}
+
+.express-title {
+    width: 100%;
+}
+
+.express-title img {
+    width: 1.97vw;
+    height: 1.75vw;
+}
+
+#seta {
+    margin-top: 3vw;
+}
+
+.title-principal {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.title-principal h3 {
+    font-size: 2vw;
+}
+
+.title-principal img {
+    width: 9.5vw;
+    height: 9.5vw;
+}
+
+.express-cont {
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 2vw;
+}
+
+.inputsVagas {
+    border: 0;
+    width: 20.50vw;
+    border-bottom: 0.14vw solid #000000;
+    background-color: transparent;
+    outline: 0;
+    margin: 0 2vw 0 2vw;
+    height: 2.2vw;
+    display: flex;
+    font-size: 1.17vw;
+}
+
+.express-cont label {
+    margin: 0.70vw 2vw 0 2vw;
+    font-weight: 400;
+    font-size: 1.20vw;
+}
+
+.express-cont input::-webkit-outer-spin-button,
+.express-cont input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.express-cont input[type=number] {
+    -moz-appearance: textfield;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 3.6vw;
+    height: 1.75vw;
+}
+
+#toggle-menu {
+    margin: 0.70vw 1vw 0 2vw;
+    ;
+}
+
+
+/* Hide default HTML checkbox */
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+
+/* The slider */
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+    border: none;
+    outline: 0;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 1.46vw;
+    width: 1.46vw;
+    left: 0.14vw;
+    bottom: 0.14vw;
+    background-color: #FFFFFF;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+input:checked+.slider {
+    background-color: #FE0000;
+}
+
+input:focus+.slider {
+    box-shadow: 0 0 0.07vw #FE0000;
+}
+
+input:checked+.slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+    background-color: #FFFFFF;
+    border: none;
+}
+
+
+/* Rounded sliders */
+
+.slider.round {
+    border-radius: 10vw;
+}
+
+.slider.round:before {
+    border-radius: 50%;
+}
+
+.toggle {
+    margin-top: 1vw;
+    display: flex;
+    align-items: center;
+}
+
+.inputPerson {
+    display: flex;
+    flex-direction: column;
+}
+
+.inputPerson textarea {
+    resize: none;
+    margin: 0.70vw 2vw 0 2vw;
+    outline: 0;
+    height: 9vw;
+    border: 0.14vw solid #000000;
+    border-radius: 0.65vw;
+    width: 20.50vw;
+}
+
+.FilePerson input[type="file"] {
+    display: none;
+}
+
+.FilePerson label {
+    margin-top: 7vw;
+    width: 18.30vw;
+    color: #FFF;
+    text-transform: uppercase;
+    text-align: center;
+    padding: 0.45vw;
+    cursor: pointer;
+    color: #5E5E5E;
+    border: 0.07vw solid #FE0000;
+    border-radius: 10vw;
+    font-size: 1vw;
+}
+
+.btnVagas {
+    margin: 2vw;
+}
+
+.btnVagas label {
+    display: none;
+}
+
+.btnVagas input {
+    color: #FFFFFF;
+    background-color: #E00000;
+    border: 0;
+    outline: 0;
+    width: 11vw;
+    height: 3vw;
+    cursor: pointer;
+    border-radius: 2.5vw;
+}

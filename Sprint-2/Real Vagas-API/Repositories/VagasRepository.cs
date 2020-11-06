@@ -16,6 +16,7 @@ namespace Real_Vagas_API.Repositories
         public void Atualizar(int Id, DbVagas VagaAtualizada)
         {
             DbVagas VagaBuscada = ctx.DbVagas.Find(Id);
+            VagaBuscada.StatusVaga = VagaAtualizada.StatusVaga;
 
             if (VagaBuscada != null)
             {
@@ -35,6 +36,14 @@ namespace Real_Vagas_API.Repositories
             }
 
             return null;
+        }
+
+        public List<DbVagas> ListaByIdEmpresa(int Id)
+        {
+            using (RealVagasContext Ctx = new RealVagasContext())
+            {
+                return Ctx.DbVagas.ToList().FindAll(E => E.IdEmpresa == Id);
+            }
         }
 
         public DbVagas BuscarPorData(DateTime DataPublicacao)
@@ -95,7 +104,9 @@ namespace Real_Vagas_API.Repositories
         //Método que deleta uma vaga
         public void Deletar(int Id)
         {
-            ctx.DbVagas.Remove(BuscarPorId(Id));
+            DbVagas Deletado = BuscarPorId(Id);
+
+            ctx.DbVagas.Remove(Deletado);
 
             ctx.SaveChanges();
         }

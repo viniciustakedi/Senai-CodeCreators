@@ -21,7 +21,7 @@ namespace Real_Vagas_API.Interfaces
         /// Cadastra um novo usuário
         /// </summary>
         /// <param name="novoUsuario">Objeto novoUsuario que será cadastrado</param>
-        void Cadastrar(DbDados novoUsuario);
+        int Cadastrar(DbDados novoUsuario);
 
         /// <summary>
         /// Atualiza um usuário existente

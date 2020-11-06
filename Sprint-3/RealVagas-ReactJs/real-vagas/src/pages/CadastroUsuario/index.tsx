@@ -6,6 +6,7 @@ import Input from '../../components/Input';
 import imgcadastro from '../../assets/image/imgcadastro.png';
 import './style.css';
 import Button  from "../../components/Button";
+import { useHistory } from 'react-router-dom';
 
 
 
@@ -29,17 +30,19 @@ function Cadastro() {
     const [termo, setTermo] = useState('');
 
 
+    var history = useHistory();
+
     const salvar = () => {
-       
+
         const Tbdados ={
             cpf : cpf,
             NumMatricula: matricula,
             senha: senha
         }
 
-        const urlDados = 'http://localhost:5000/api/Dados';
-
-        const urlRequest ='http://localhost:5000/api/Usuarios';
+        const urlDados = 'http://localhost:5000/api/Dados/';
+        var idUsuario = 0;
+        const urlRequest ='http://localhost:5000/api/Usuarios/';
 
         fetch(urlDados , {
             method: "POST",
@@ -49,9 +52,12 @@ function Cadastro() {
             }
         })
         .then(Response => Response.json())
-          .then(dados=>{
+        .then(dados => {
+            idUsuario = dados;
+        })
+        .then(() =>{
 
-              const form = {
+            const form = {
                 nome: usuario,
                 dataNascimento: DataNascimento,
                 sexo: sexo,
@@ -66,20 +72,21 @@ function Cadastro() {
                 turno: turno,
                 termo: parseInt(termo),
                 idTipoUsuario: 3,
-                idDados: dados
+                idDados: idUsuario
             };
 
             console.log(form);
-              fetch(urlRequest , {
+                fetch(urlRequest , {
                 method: "POST",
                 body: JSON.stringify(form),
                 headers: {
                     'Content-Type': 'application/json',
                 }
             }).then(()=>{
+                history.push('/Login');
                 console.log("Usuário cadastrado");
             })
-          })
+        })
         .catch(err => console.error(err));
     }
 

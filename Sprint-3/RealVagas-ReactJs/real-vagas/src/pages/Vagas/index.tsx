@@ -2,14 +2,11 @@ import React, { useEffect, useState } from 'react';
 import { Modal, Button } from 'react-bootstrap';
 import Footer from '../../components/Footer';
 import Header from '../../components/Header';
-import Input from '../../components/Input';
 import { parseJWT } from '../../services/auth';
 import ButtonInscricao from '../../components/Button-inscricao';
 import ImgLupa from '../../assets/image/icone-busca.png';
 import '../../assets/style/global.css';
 import './style.css';
-import { isJSDocVariadicType } from 'typescript';
-import { parse } from 'path';
 
 
 function Vagas() {
@@ -60,7 +57,6 @@ function Vagas() {
             .then(response => response.json())
             .then(dados => {
                 setVagas(dados)
-                console.log(dados);
             })
 
             .catch(Erro => console.error(Erro));
@@ -70,8 +66,9 @@ function Vagas() {
     function buscarVaga(cargo: string) { //Paramêtro: cargo é uma string
 
         //se vagas for diferente de indefinido ele executa
-        if (vagas != undefined) {
-
+        cargo = 'Analista';
+        console.log(cargo);
+        if (vagas.length != 0) {
             //Variavel Filtrados com filter para a pesquisa de vagas.
             //O que o filter faz: A função Filter recebe como parâmetro uma função de callback, onde o retorno dado será um novo array com os elementos que passaram na validação realizada. Lembrando que o array original não é alterado, trazendo assim um dos conceitos da programação funcional.   
             //vaga: any define que vaga pode ser qualquer tipo de objeto, podendo ser int, string etc.
@@ -79,8 +76,8 @@ function Vagas() {
             //toUpperCase define que todas as letras vao ser maiusculas
             //includes determina se um conjunto de caracteres pode ser encontrado dentro de outra string, retornando true ou false. ou seja, ele pesquisa e se existir é true se n existir é false, retorna ou não retorna
             //O parametro dentro do includes serve para todas as vagas aparecerem quando n há nada digitado no input de pesquisa.
-            var filtrados = vagas.filter((vaga: any) => vaga.cargo.toUpperCase().includes(cargo.toUpperCase()))
-
+            var filtrados = vagas.filter((vaga: any) => vaga.cargo.toLowerCase().includes(cargo.toLowerCase()));
+            console.log(filtrados)
             //Se os filtrador forem diferente de indefinido ele executa
             if (filtrados != undefined)
                 return filtrados; //Retorna a vaga que o usuario pesquisou
@@ -119,33 +116,32 @@ function Vagas() {
         var inscricao = {};
         var Metodo = "";
         var UrlInscricao = "";
-        const itemBuscado = inscricoes.filter((element: any) => element.idVaga === id);
-        console.log("==========")
-        console.log(itemBuscado)
-        console.log("==========")
-        
+        const itemBuscado = Object.values(inscricoes).filter((user:any)=> user.idVaga === id)
+
         var IdInscricao = (itemBuscado.length != 0 ) ? Object.values(itemBuscado[0])[0] : false;
-        var ObjItem = (itemBuscado.length != 0) ? Object.values(itemBuscado[0])[1] : false;
 
-        UrlInscricao = (ObjItem == true && itemBuscado != null) ? "http://localhost:5000/api/Inscricao/" + IdInscricao : "http://localhost:5000/api/Inscricao/";
-        Metodo = (ObjItem == true && itemBuscado != null) ? "PUT" : "POST";
+        console.log(itemBuscado.length)
+        UrlInscricao = (itemBuscado.length == 0) ? "http://localhost:5000/api/Inscricao/" : "http://localhost:5000/api/Inscricao/" + IdInscricao;
 
-        if (Object.values(itemBuscado[0])[1] == true && itemBuscado.length != 0) {
-            
+        Metodo = (itemBuscado.length == 0) ? "POST" : "PUT";
+
+        var putStatus = (itemBuscado.length != 0 && Object.values(itemBuscado[0])[1] == false)? true : false;
+
+        if (itemBuscado.length == 0) {
             inscricao = {
                 statusInscricao: true,
                 dataInscricao: new Date(),
                 idVaga: id,
-                idUsuario: parseInt(localStorage.getItem("Real-Vagas-Id-Usuario") as any),
+                idUsuario: parseInt(localStorage.getItem("Real-Vagas-Id-Usuario") as any)
             }
-
-            
         } 
         else
         {
             inscricao = {
-                statusInscricao: false,
+                statusInscricao: putStatus,
                 dataInscricao: new Date(),
+                idVaga: id,
+                idUsuario: parseInt(localStorage.getItem("Real-Vagas-Id-Usuario") as any)
             }
         }
 
@@ -161,7 +157,14 @@ function Vagas() {
                 'content-type': 'application/json', //Tipo do conteudo é uma aplicação Json
             },
         })
+        .then(()=>{
+            var putButton = (itemBuscado.length == 0)? id : Object.values(itemBuscado[0])[3]; 
+            console.log(putButton)
+            ButtonChange(putButton);
+            InscricoesUsuario();
+        })
             .catch(Erro => console.error(Erro));
+
     }
 
 
@@ -186,25 +189,28 @@ function Vagas() {
 
 
     function ButtonChange(id: any) {
-        const itemBuscado = inscricoes.filter((element: any) => element.idVaga === id);
-        var string = "";
-        var bool;
-        // console.log(itemBuscado)
-        // console.log(inscricoes)
+        if(inscricoes.length !== 0)
+        {
+            const itemBuscado = Object.values(inscricoes).filter((user:any)=> user.idVaga === id)
+            var string = "";
+            var bool;
 
-        itemBuscado.map((item: any) => {
-            bool = item.statusInscricao
-        })
-
-        if (bool == true) {
-
-            string = "Inscrito";
+            itemBuscado.map((item: any) => {
+                bool = item.statusInscricao
+            })
+            
+            if (bool == true) {
+                
+                string = "Inscrito";
+            }
+            else {
+                string = "Inscrever-se";
+            }
+            
+            return string;
+        }else{
+            return "Inscrever-se";
         }
-        else {
-            string = "Inscrever-se";
-        }
-
-        return string;
     }
 
 
@@ -237,7 +243,7 @@ function Vagas() {
                                     <div className="TitleImg">
                                         <div className="img">
                                             {/* Imagem da vaga */}
-                                            <img src="" alt="Foto vaga" />
+                                            <img src={item.foto} alt="Foto vaga" />
                                         </div>
                                         <div className="title1">
                                             {/* Nome da vaga */}
@@ -247,7 +253,7 @@ function Vagas() {
                                             <h2>{item.localVaga}</h2>
 
                                             {/* Salário */}
-                                            <h3>{'Salário: R$ ' + item.salario}</h3>
+                                            <h3>{'Salário: R$ ' + item.salario.toFixed(2)}</h3>
                                         </div>
 
 
@@ -283,7 +289,7 @@ function Vagas() {
                                     <div className="bodyModal">
                                         <div className="img">
                                             {/* Imagem da vaga */}
-                                            <img src="" alt="Foto vaga" />
+                                            <img src={dado.foto} alt="Foto vaga" />
                                         </div>
                                         <div className="title1">
                                             {/* Nome da vaga */}
@@ -293,7 +299,7 @@ function Vagas() {
                                             <h2>{dado.localVaga}</h2>
 
                                             {/* Salário */}
-                                            <h3>{'Salário: R$ ' + dado.salario}</h3>
+                                            <h3>{'Salário: R$ ' + dado.salario.toFixed(3)}</h3>
                                         </div>
                                     </div>
 
@@ -311,7 +317,7 @@ function Vagas() {
 
                                 </Modal.Body>
                                 <Modal.Footer id="ModalColor">
-                                    <Button id="btn" variant="primary" onClick={handleClose}>Fechar</Button>
+                                    <Button id="btn" onClick={handleClose}>Fechar</Button>
                                     <ButtonInscricao id="btn" onClick={() => Inscrito(dado.id)} value={ButtonChange(dado.id)} />
                                 </Modal.Footer>
                             </Modal >

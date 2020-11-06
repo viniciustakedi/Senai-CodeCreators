@@ -91,24 +91,25 @@ namespace Real_Vagas_API.Controllers
         /// <param name="novoUsuario"></param>
         /// <returns>NovoUsuario</returns>
         [HttpPost]
-        [Authorize(Roles = "1")]
+        //[Authorize(Roles = "1")]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public IActionResult Post(DbDados novoUsuario)
         {
             try
             {
-            // Faz a chamada para o método
-            _dado.Cadastrar(novoUsuario);
+                // Faz a chamada para o método
+                int respost = _dado.Cadastrar(novoUsuario);
 
-            // Retorna um status code
-            return StatusCode(201);
+                // Retorna um status code
+                return StatusCode(201, respost);
             }
             catch (Exception error)
             {
                 return BadRequest(error);
             }
         }
+
 
         /// <summary>
         /// Atualiza um dado

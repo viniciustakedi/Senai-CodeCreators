@@ -31,7 +31,7 @@ function TesteComp() {
                     </div>
                     <div className="container-texto">
                         <h1>Objetivos</h1>
-                        <p className="texto-alinhado">Em sua carreira você é lobo, tubarão, gato ou águia?
+                        <p id="texto-alinhado">Em sua carreira você é lobo, tubarão, gato ou águia?
                         As características do mundo animal também podem
                         ser usadas como inspiração no ambiente corporativo.
                         E hoje já é possível falar sobre o tipo de personalidade

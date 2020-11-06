@@ -21,8 +21,8 @@ function Home() {
                     <h1>Real Vagas & SENAI</h1>
                 </div>
 
-                <div className="title-Home">
-                    <p>
+                <div className="Title-Home">
+                    <p id="TitleP">
                         Cadastre uma vaga ou procure uma.
                     </p>
                 </div>
@@ -35,9 +35,9 @@ function Home() {
 
                 <div className="footer-HomeAlterado">
                     <div className="Home-texto">
-                            <p>Real Vagas & SENAI</p>
-                            <p>Contato: (XX) XXXX-XXXX</p>
-                            <p>senai@email.com</p>
+                            <p id="FooterHomeP" >Real Vagas & SENAI</p>
+                            <p id="FooterHomeP" >Contato: (XX) XXXX-XXXX</p>
+                            <p id="FooterHomeP" >senai@email.com</p>
 
                     </div>
                     <hr />

@@ -5,6 +5,7 @@ import Button from "../../components/Button";
 import Input from '../../components/Input';
 import '../../assets/style/global.css';
 import './style.css';
+import { useHistory } from 'react-router-dom';
 
 
 function CadastroEmpresa() {
@@ -17,6 +18,7 @@ function CadastroEmpresa() {
     const [email, setEmail] = useState('');
     const [senha, setSenha] = useState('');
     const [telefone, setTelefone] = useState('')
+    let history = useHistory();
 
     const salvar = () => {
         const form = {
@@ -47,7 +49,7 @@ function CadastroEmpresa() {
         })
 
             .then(() => {
-                console.log("Empresa cadastrada")
+                history.push('/Login');
             })
             .catch(err => console.error(err));
     }

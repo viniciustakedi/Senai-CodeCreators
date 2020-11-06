@@ -38,7 +38,7 @@
     font-size: 4vw;
 }
 
-.title-Home {
+#TitleP {
     width: 16vw;
     font-size: 1.4vw;
     color: #ffffff;
@@ -54,6 +54,7 @@
     font-size: 1.3vw;
     width: 19vw;
     height: 2.7vw;
+    outline: none;
 }
 
 #CadastroEmpresa {
@@ -66,6 +67,7 @@
     width: 19vw;
     height: 2.7vw;
     margin-top: 1vw;
+    outline: none;
 }
 
 .footer-HomeAlterado {
@@ -83,6 +85,14 @@
 }
 
 .Home-texto p {
+    font-size: medium;
+    text-decoration: none;
+    color: #FFFFFF;
+    font-size: 1.1vw;
+    margin-bottom: 0;
+}
+
+#FooterHomeP {
     font-size: medium;
     text-decoration: none;
     color: #FFFFFF;

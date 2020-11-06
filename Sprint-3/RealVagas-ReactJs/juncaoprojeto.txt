@@ -1,5 +1,7 @@
 **Junção de telas:**
 
+FALTA: DEIXAR RESPONSIVO
+
 *MVP*
 Cadastro da Empresa:
 - Funcionalidades: OK
@@ -8,7 +10,9 @@ Cadastro da Empresa:
 
 *MVP*
 Cadastro Usuário:
-- Ver depois
+- Funcionalidades: OK
+- Index: Ok
+- Style: Ok 
 
 Chat: 
 - Ver depois
@@ -24,31 +28,37 @@ Dashboard Aluno:
 - Style: Ok
 
 Dashboard Empresa:
-- Ver depois
+- Funcionalidades: OK
+- Index: Ok
+- Style: Ok
 
 Dicas:
 - Funcionalidades: Ok
 - Index: Ok
-- Style: Não
+- Style: Ok
 
 Home:
-- Fazer
+- Funcionalidades: OK
+- Index: Ok
+- Style: Ok
 
 Login:
 - Funcionalidades: Ok
 - Index: Ok
-- Style: Não
+- Style: Ok
 
 Sobre:
 - Funcionalidades: Ok
 - Index: Ok
-- Style: Não
+- Style: Ok
 
 Teste Comportamental:
--Fazer
+- Funcionalidades: Não
+- Index: Ok
+- Style: Ok
 
 Vagas:
-- Funcionalidades: Não
+- Funcionalidades: Ok
 - Index: Ok
 - Style: Ok
 

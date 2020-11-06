@@ -159,7 +159,6 @@
     border-radius: 2vw;
     margin-left: 2vw;
     margin-right: 2vw;
-    padding-bottom: 1vw;
     box-shadow: 3px 2px 10px #696969;
 }
 
@@ -187,4 +186,10 @@
 
 #liInformacoesMeio {
     color: #FE0000;
+}
+
+.img img {
+    width: 9vw;
+    height: 8vw;
+    border-radius: 2vw;
 }

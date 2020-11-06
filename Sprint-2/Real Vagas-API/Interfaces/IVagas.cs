@@ -13,6 +13,8 @@ namespace Real_Vagas_API.Interfaces
         public void Cadastrar(DbVagas VagaNova);
         public void Atualizar(int Id, DbVagas VagaAtualizada);
         public void Deletar(int Id);
+
+        public List<DbVagas> ListaByIdEmpresa(int Id);
         public DbVagas BuscarPorLocal(string localVaga);
         public DbVagas BuscarPorCargo(string Cargo);
         public DbVagas BuscarPorData(DateTime DataPublicacao);

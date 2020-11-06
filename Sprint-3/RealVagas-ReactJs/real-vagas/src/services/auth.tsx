@@ -14,10 +14,6 @@ export const parseJWT = () =>{
         let acesso = Object.values(tipo)[2];
         let id = Object.values(tipo)[1] as any;
         localStorage.setItem("Real-Vagas-Id-Usuario", id);
-        console.log("==========")
-        console.log(acesso)
-        console.log(jsonPayload)
-        console.log("==========")
         return acesso;
     }
 }

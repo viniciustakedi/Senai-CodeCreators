@@ -20,10 +20,6 @@ const Header = () => {
 
     const menu = () => {
         const token = localStorage.getItem('Real-Vagas-Token');
-        console.log("==========")
-        console.log(parseJWT())
-        console.log("==========")
-
         if (token === undefined || token === null) {
             return (
                 <div className="Container-Nav">
@@ -54,7 +50,6 @@ const Header = () => {
                         </ul>
                         <ul>
                             <li><Link to="/">Home</Link></li>
-                            <li><Link to="/Vagas">Vagas</Link></li>
                             <li><Link to="/Dicas">Dicas do Possarle</Link></li>
                             <li><Link to ="/Sobre">Sobre Nós</Link></li>
                         </ul>
@@ -77,7 +72,6 @@ const Header = () => {
                         </ul>
                         <ul>
                             <li><Link to="/">Home</Link></li>
-                            <li><Link to="/Vagas">Vagas</Link></li>
                             <li><Link to="/Dicas">Dicas do Possarle</Link></li>
                             <li><Link to ="/Sobre">Sobre Nós</Link></li>
                         </ul>

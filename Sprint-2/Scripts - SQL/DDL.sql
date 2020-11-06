@@ -6,6 +6,7 @@ GO
 USE RealVagas
 GO
 
+
 --Criações das tabelas DLL
 CREATE TABLE DbDados (
 	ID	INT PRIMARY KEY IDENTITY,

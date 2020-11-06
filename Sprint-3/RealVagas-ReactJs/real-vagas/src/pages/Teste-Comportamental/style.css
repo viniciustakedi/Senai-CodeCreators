@@ -50,7 +50,8 @@
     color: white;
 }
 
-.texto-alinhado {
+#texto-alinhado {
+    color: #FFFFFF;
     text-align: justify;
     max-width: 30rem;
 }

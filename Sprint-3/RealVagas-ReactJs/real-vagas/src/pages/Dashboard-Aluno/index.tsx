@@ -23,55 +23,38 @@ function DashboardAluno() {
     const [dado, setDado] = useState('');
     const [idDado, setIdDado] = useState(0);
 
-    const [usuarios, setUsuarios] = useState([]);
+    const [usuarios, setUsuarios] = useState({});
     const [dados, setDadaos] = useState([]);
 
     useEffect(() => {
         Listar();
     }, []);
 
+
     const Listar = () => {
-        fetch('http://localhost:5000​/api​/Usuarios​/', {
+        var idUsuario = localStorage.getItem("Real-Vagas-Id-Usuario") as any;
+        var idUrl = parseInt(idUsuario);
+
+        fetch('http://localhost:5000/api/Usuarios/' + idUrl, {
             method: 'GET',
             headers: {
                 //Bearer é o token authentication, um Schema paraautenticação HTTP
                 //Ele indentifica recursos protegidos por um OAuth2
-                authorization: 'Bearer ' + localStorage.getItem('Real-Vagas-Token, Real-Vagas-Id-Usuario')
+                authorization: 'Bearer ' + localStorage.getItem('Real-Vagas-Token'),
+                'Content-Type': 'application/json'
             }
         })
             .then(response => response.json())
             .then(dados => {
                 setUsuarios(dados)
+                console.log("===========");
                 console.log(dados);
+                console.log("===========");
             })
 
             .catch(Erro => console.error(Erro));
     }
 
-    //Atualizar usuario
-    const Atualizar = (id: number) => {
-        fetch('http://localhost:5000​/api​/Usuarios​/' + id, {
-            method: 'GET',
-            headers: {
-                authorization: 'Bearer ' + localStorage.getItem('Real-Vagas-Token')
-            }
-        })
-            .then(response => response.json())
-            .then(dados => {
-                setIdUsuario(dados.idUsuario);
-                setIdDado(dados.idDado);
-                setUsuario(dados.nome);
-                setUsuario(dados.dataNascimento);
-                setUsuario(dados.sexo);
-                setUsuario(dados.escola);
-                setUsuario(dados.email);
-                setDado(dados.senha);
-                setUsuario(dados.telefone);
-                setUsuario(dados.EstadoCivil);
-                setDado(dados.cpf);
-            })
-            .catch(err => console.error(err));
-    }
 
     return (
         <div>
@@ -81,58 +64,51 @@ function DashboardAluno() {
                 <div className="title">
                     <h1>Informações pessoais</h1>
                 </div>
-                
-                <div className="conteudo">
-                    {
-                        usuarios.map((item: any) => {
-                            return (
-                                <div key={item.id}>
-                                    <div className="foto">
-                                        <img src={ImgUsuario} alt="Image de um usuário" />
-                                        <div className="icon">
-                                            <Input id="InputEdit" label="Nome: " name="Nome">{item.nome}</Input>
-                                            <button id="bt" onClick={handleShow} ><img id="IconEdit" src={IconEdit} alt="icone de edição de informaçãos" /></button>
-                                        </div>
-                                        <div className="icon">
-                                            <Input id="InputEdit" label="Data Nascimento: " name="DataNascimento">{item.dataNascimento}</Input>
-                                            <button id="bt" onClick={handleShow} ><img id="IconEdit" src={IconEdit} alt="icone de edição de informaçãos" /></button>
-                                        </div>
-                                        <div className="icon">
-                                            <Input id="InputEdit" label="Sexo: " name="Sexo">{item.sexo}</Input>
-                                            <button id="bt" onClick={handleShow} ><img id="IconEdit" src={IconEdit} alt="icone de edição de informação" /></button>
-                                        </div>
-                                        <div className="icon">
-                                            <Input id="InputEdit" label="Escola: " name="Escola">{item.escola}</Input>
-                                            <button id="bt" onClick={handleShow} ><img id="IconEdit" src={IconEdit} alt="icone de edição de informação" /></button>
-                                        </div>
-                                        <div className="Informacoes">
-                                            <div className="icon">
-                                                <Input id="InputEdit" label="Email: " name="Email" />
-                                                <button id="bt" onClick={handleShow} ><img id="IconEdit" src={IconEdit} alt="icone de edição de informação" /></button>
-                                            </div>
-                                            <div className="icon">
-                                                <Input id="InputEdit" label="Senha: " name="Senha" />
-                                                <button id="bt" onClick={handleShow} ><img id="IconEdit" src={IconEdit} alt="icone de edição de informação" /></button>
-                                            </div>
-                                            <div className="icon">
-                                                <Input id="InputEdit" label="Telefone: " name="TEL" />
-                                                <button id="bt" onClick={handleShow} ><img id="IconEdit" src={IconEdit} alt="icone de edição de informação" /></button>
-                                            </div>
-                                            <div className="icon">
-                                                <Input id="InputEdit" label="Estado Cívil: " name="EstadoCivil" />
-                                                <button id="bt" onClick={handleShow} ><img id="IconEdit" src={IconEdit} alt="icone de edição de informação" /></button>
-                                            </div>
-                                            <div className="icon">
-                                                <Input id="InputEdit" label="Cpf: " name="CPF" />
-                                                <button id="bt" onClick={handleShow} ><img id="IconEdit" src={IconEdit} alt="icone de edição de informação" /></button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            )
-                        })
-                    }
 
+                <div className="conteudo">
+                    <div>
+                        <div className="foto">
+                            <img src={ImgUsuario} alt="Image de um usuário" />
+                            <div className="icon">
+                                <Input id="InputEdit" label='Nome: ' name="" value={Object.values(usuarios)[1] as any}   />
+                                <button id="bt" onClick={handleShow} ><img id="IconEdit" src={IconEdit} alt="icone de edição de informaçãos" /></button>
+                            </div>
+                            <div className="icon">
+                                <Input id="InputEdit" label="Data Nascimento:"  name="" value={Object.values(usuarios)[4] as any} />
+                                <button id="bt" onClick={handleShow} ><img id="IconEdit" src={IconEdit} alt="icone de edição de informaçãos" /></button>
+                            </div>
+                            <div className="icon">
+                                <Input id="InputEdit" label="Sexo: " name="" />
+                                <button id="bt" onClick={handleShow} ><img id="IconEdit" src={IconEdit} alt="icone de edição de informação" /></button>
+                            </div>
+                            <div className="icon">
+                                <Input id="InputEdit" label="Escola: " name="" />
+                                <button id="bt" onClick={handleShow} ><img id="IconEdit" src={IconEdit} alt="icone de edição de informação" /></button>
+                            </div>
+                            <div className="Informacoes">
+                                <div className="icon">
+                                    <Input id="InputEdit" label="Email: " name="Email" />
+                                    <button id="bt" onClick={handleShow} ><img id="IconEdit" src={IconEdit} alt="icone de edição de informação" /></button>
+                                </div>
+                                <div className="icon">
+                                    <Input id="InputEdit" label="Senha: " name="Senha" />
+                                    <button id="bt" onClick={handleShow} ><img id="IconEdit" src={IconEdit} alt="icone de edição de informação" /></button>
+                                </div>
+                                <div className="icon">
+                                    <Input id="InputEdit" label="Telefone: " name="TEL" />
+                                    <button id="bt" onClick={handleShow} ><img id="IconEdit" src={IconEdit} alt="icone de edição de informação" /></button>
+                                </div>
+                                <div className="icon">
+                                    <Input id="InputEdit" label="Estado Cívil: " name="EstadoCivil" />
+                                    <button id="bt" onClick={handleShow} ><img id="IconEdit" src={IconEdit} alt="icone de edição de informação" /></button>
+                                </div>
+                                <div className="icon">
+                                    <Input id="InputEdit" label="Cpf: " name="CPF" />
+                                    <button id="bt" onClick={handleShow} ><img id="IconEdit" src={IconEdit} alt="icone de edição de informação" /></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
             <Footer />

@@ -1,0 +1,451 @@
+body {
+    background-color: #F3F3F3;
+}
+
+.Banner {
+    border: 1px solid #111111;
+    width: 65%;
+    height: 7.5vw;
+    display: flex;
+    justify-content: center;
+    margin: 4.48vw auto !important;
+}
+
+.text-center {
+    text-align: center!important;
+    width: 28.78vw;
+    display: flex;
+    align-items: center;
+    margin: 0 auto;
+    border: 0.18vw solid #FE0000;
+    border-radius: 1.17vw;
+}
+
+.card {
+    background-color: transparent;
+}
+
+.card-body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 1 1 auto;
+    min-height: 1px;
+    padding: .75rem .75rem .15rem 0;
+}
+
+.card-body img {
+    width: 7.39vw;
+    height: 7.39vw;
+}
+
+.card-ajuste {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.h5 {
+    font-size: 1.6vw;
+}
+
+.button-card {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    width: 6.95vw;
+    height: 1.83vw;
+    border-radius: 25vw;
+    border: none;
+    background-color: #EF0000;
+    color: #FFFFFF;
+}
+
+.button-card a {
+    color: #FFFFFF;
+    font-size: 1.10vw;
+}
+
+.button-card a:link {
+    text-decoration: none;
+}
+
+.coluna {
+    margin: 2.40vw auto;
+}
+
+.tabela-dash {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 7vw;
+}
+
+.tabela-dash table {
+    width: 51vw;
+    background-color: #FFFFFF;
+    border-radius: 1.06vw;
+    box-shadow: 0 3px 6px #696969;
+    font-size: 1.17vw;
+}
+
+.tabela-dash table th {
+    padding: 1.2vw 1.2vw 0.70vw 1.2vw;
+    border-top: 0;
+    border-bottom: 0.15vw solid #FE0000;
+    text-align: center;
+}
+
+.tabela-dash table td {
+    border-top: 0;
+    padding: .45rem;
+    text-align: center;
+}
+
+.grafico {
+    width: 28.30vw;
+    height: 100%;
+    background-color: #FFFFFF;
+    border-radius: 1.06vw;
+    box-shadow: 0 3px 6px #696969;
+    margin: 0 0 4em 0;
+    text-align: center;
+}
+
+.grafico ul {
+    list-style: none;
+    margin-bottom: 0.40rem;
+}
+
+.grafico li {
+    color: #E54A38;
+    text-align: start;
+    margin-left: 1vw;
+    display: flex;
+    align-items: center;
+    font-size: 1.18vw;
+    justify-content: space-between;
+}
+
+.grafico li div:first-child {
+    display: flex;
+    align-items: center;
+    text-align: center;
+}
+
+.ponto {
+    width: 0.85vw;
+    height: 0.85vw;
+    border-radius: 100%;
+}
+
+#sub-title {
+    margin: 0 2vw 0 0;
+    font-size: 1.18vw;
+    color: #E54A38;
+}
+
+.grafico canvas {
+    margin: 2em auto;
+}
+
+#grafico-data {
+    margin: 0;
+    font-size: 1.17vw;
+    font-weight: bold;
+    border-bottom: 0;
+    margin-right: 2vw;
+    font-size: 1.18vw;
+}
+
+.title-grafico {
+    margin: 0.75vw auto;
+    padding-bottom: 0.75vw;
+    font-size: 1.17vw;
+    font-weight: bold;
+    border-bottom: 0.15vw solid #FE0000;
+}
+
+.grafico canvas span {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    margin-right: 5px;
+}
+
+.modal-content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    pointer-events: auto;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 0;
+    border-radius: .3rem;
+    outline: 0;
+}
+
+.modal-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.cont-vagas {
+    display: flex;
+    width: 100%;
+    align-items: initial;
+    justify-content: center;
+    text-align: center;
+    margin: 2vw 0 1vw 0;
+    flex-direction: column;
+}
+
+.cont-vagas img {
+    width: 1.97vw;
+    height: 1.75vw;
+    cursor: pointer;
+}
+
+
+/*********************************************************** 
+                   Página de documentos
+************************************************************/
+
+.table-docs {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 10em auto;
+}
+
+.conta-docs {
+    display: flex;
+    width: 55%;
+    align-items: initial;
+    justify-content: center;
+    text-align: center;
+    margin: 2vw 0 1vw 0;
+}
+
+.conta-docs h4 {
+    font-size: 1.75vw;
+    margin-bottom: 0;
+}
+
+.conta-docs img {
+    width: 1.97vw;
+    height: 1.75vw;
+}
+
+.table-docs table {
+    width: 51vw;
+    background-color: #FFFFFF;
+    border-radius: 1.06vw;
+    box-shadow: 3px 2px 2px #696969;
+    font-size: 1.17vw;
+}
+
+.table-docs table th {
+    padding: .30rem;
+}
+
+.table-docs thead {
+    background-color: #FE0000;
+    color: #FFFFFF;
+}
+
+.table-docs th:first-child {
+    border-radius: 1.06vw 0 0 0;
+}
+
+.table-docs th:last-child {
+    border-radius: 0 1.06vw 0 0;
+}
+
+.table-docs table th {
+    border-top: 0;
+    border-bottom: 0;
+}
+
+.table-docs table td:first-child {
+    border-left: 0;
+}
+
+.table-docs table td {
+    border-top: 0;
+    padding: .45rem;
+    border-left: 1px solid #FE0000;
+}
+
+
+/*********************************************************
+                Página de currículos
+**********************************************************/
+
+.pag {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 6vw 0 14vw 0;
+}
+
+.pag-title {
+    display: flex;
+    width: 63%;
+    align-items: initial;
+    justify-content: center;
+    text-align: center;
+    margin: 2vw 0 1vw 0;
+}
+
+.col-10 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.pag-title h4 {
+    font-size: 1.75vw;
+    margin-bottom: 0;
+}
+
+.pag-title img {
+    width: 1.97vw;
+    height: 1.75vw;
+}
+
+.conta-pag {
+    background-color: #FFFFFF;
+    border-radius: 1.06vw;
+    box-shadow: 3px 2px 2px #696969;
+    width: 60.5vw;
+    height: 100%;
+}
+
+.vagas-pag {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 2vw auto;
+    padding-left: 2vw;
+}
+
+.vagas-imagem {
+    width: 7.8vw;
+    height: 7.2vw;
+    border-radius: 1.06vw;
+    border: 1px solid #FE0000;
+}
+
+.info-vagas {
+    padding-left: 2vw;
+    display: flex;
+    height: 6.2vw;
+    justify-content: space-between;
+    flex-direction: column;
+}
+
+.info-vagas p,
+h5 {
+    margin-bottom: 0;
+}
+
+.info-vagas h5 {
+    font-size: 1.46vw;
+}
+
+.info-vagas p {
+    color: #FE0000;
+    font-size: 1.17vw;
+}
+
+.info-vagas h5,
+p:last-child {
+    color: #1F3A4B;
+}
+
+.itens-pag {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.button-pag button {
+    background-color: #FFFFFF;
+    border: 0.14vw solid #FE0000;
+    width: 11.5vw;
+    height: 3vw;
+    color: #FE0000;
+    border-radius: 2.20vw;
+    outline: none;
+    margin-right: 2vw;
+    font-size: 1.1vw;
+}
+
+.button-pag button:hover {
+    color: snow;
+}
+
+.button-pag button:hover {
+    color: steelblue;
+    -webkit-transform: scale(1.05);
+    -ms-transform: scale(1.05);
+    transform: scale(1.05);
+}
+
+.tit-vagas {
+    margin: 0 0 3vw 0;
+}
+
+.tab-vgs {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 3vw 0 5vw 0;
+}
+
+.tab-vgs table {
+    width: 51vw;
+    background-color: #FFFFFF;
+    border-radius: 1.06vw 1.06vw 0 0;
+    box-shadow: 3px 2px 2px #696969;
+    font-size: 1.17vw;
+}
+
+.tab-vgs table th {
+    padding: .30rem;
+}
+
+.tab-vgs thead {
+    background-color: #FE0000;
+    color: #FFFFFF;
+}
+
+.tab-vgs th:first-child {
+    border-radius: 1.06vw 0 0 0;
+}
+
+.tab-vgs th:last-child {
+    border-radius: 0 1.06vw 0 0;
+}
+
+.tab-vgs table th {
+    border-top: 0;
+    border-bottom: 0;
+}
+
+.tab-vgs table td:first-child {
+    border-left: 0;
+}
+
+.tab-vgs table td {
+    border-top: 0;
+    padding: .45rem;
+    border-top: 1px solid #FE0000;
+}
