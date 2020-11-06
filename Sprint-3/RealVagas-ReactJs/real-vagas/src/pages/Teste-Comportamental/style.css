@@ -51,7 +51,7 @@
 }
 
 .texto-alinhado {
-    text-align: center;
+    text-align: justify;
     max-width: 30rem;
 }
 
@@ -73,14 +73,19 @@
 
 .container-objetivos img {}
 
-.footer-alterado {
+.Footer-Alterado {
     margin: 4vw 0 0 0;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.footer-alterado hr {
+.text ul li {
+    list-style-type: none;
+    color: #FFFFFF;
+}
+
+.Footer-Alterado hr {
     height: 5rem;
     border: 0.5px #ffffff solid;
     margin-left: 4rem;
@@ -97,11 +102,11 @@
     .texto-principal h1 {
         color: white;
         font-size: 1.5rem;
-        text-align: center;
+        text-align: justify;
     }
     .texto-principal h2 {
         color: white;
         font-size: 1rem;
-        text-align: center;
+        text-align: justify;
     }
 }

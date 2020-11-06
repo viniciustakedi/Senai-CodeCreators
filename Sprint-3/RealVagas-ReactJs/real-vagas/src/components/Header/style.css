@@ -39,12 +39,15 @@ nav ul li a:link {
 #btnCadastro {
     display: flex;
     border: none;
+    align-items: center;
+    justify-content: center;
     background-color: #FE0000;
     color: #FFFFFF;
     border-radius: 12vw;
-    font-size: 1.20vw;
+    font-size: 1.2vw;
     outline: none;
-    padding: 0.3vw 0.3vw 0.3vw 0.3vw;
+    width: 8vw;
+    height: 2vw;
 }
 
 

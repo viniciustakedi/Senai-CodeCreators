@@ -62,7 +62,7 @@ function TesteComp() {
                         </div>
                     </Container>
 
-                    <div className="footer-alterado">
+                    <div className="Footer-Alterado">
                         <div className="text">
                             <ul>
                                 <li>Real Vagas & SENAI</li>
