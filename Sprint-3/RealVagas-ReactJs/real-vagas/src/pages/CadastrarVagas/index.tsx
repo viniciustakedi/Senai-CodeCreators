@@ -9,6 +9,7 @@ import seta from '../../assets/image/seta.png';
 import Logo from '../../assets/image/Logo.png';
 import { stringify } from 'querystring';
 
+
 function Oportunidade() {
     let history = useHistory();
 
@@ -70,6 +71,12 @@ function Oportunidade() {
                 console.error(err);
             });
     }
+    function formatToCurrency(item:any){
+        var amount = parseInt(item);
+        var um = "R$" + amount.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, "$&,");
+        console.log(um)
+       return "R$" + amount.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, "$&,");
+    }
 
     return (
         <div>
@@ -102,7 +109,7 @@ function Oportunidade() {
                                 <Input onChange={e => setEmpresa(e.target.value)} className="inputsVagas" id="campo" label="Nome da empresa:" name="NomeEmpresa:" />
                                 <Input onChange={e => setLocal(e.target.value)} className="inputsVagas" id="campo" label="Local:" name="Local" />
                                 <Input onChange={e => setCargo(e.target.value)} className="inputsVagas" id="campo" label="Nome do cargo:" name="NomeCargo" />
-                                <Input disabled={combinar} onChange={e => setSalario(parseFloat(e.target.value))} className="inputsVagas" label="Valor do salário:" name="salario" />
+                                <Input disabled={combinar} className="inputsVagas" label="Valor do salário:" name="salario" />
                                 <div className="inputPerson">
                                     <label htmlFor="Descricao">Descrição da vaga:</label>
                                     <textarea onChange={e => setDescricao(e.target.value)} id="campo" name="Descricao"></textarea>

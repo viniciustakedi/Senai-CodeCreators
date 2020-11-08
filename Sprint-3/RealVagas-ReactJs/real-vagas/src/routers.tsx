@@ -14,7 +14,6 @@ import Dicas from './pages/Dicas';
 import Chat from './pages/Chat';
 import PagCurriculos from './pages/Dashboard-Empresa/Página-do-currícúlo';
 import { parseJWT } from './services/auth';
-import Documentos from './pages/Dashboard-Empresa/Documentos-pendente';
 import Oportunidade from './pages/CadastrarVagas';
 
 function Routers() {
@@ -116,7 +115,6 @@ function Routers() {
                 <RotaPrivada path="/Vagas" component={Vagas} />
                 <RotaAdm path="/Chat" component={Chat} />
                 <RotaEmpresa path="/Curriculos" component={PagCurriculos} />
-                <RotaEmpresa path="/Documentos" component={Documentos} />
             </Switch>
         </BrowserRouter>
     )

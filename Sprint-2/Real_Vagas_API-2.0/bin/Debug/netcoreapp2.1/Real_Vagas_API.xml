@@ -1,0 +1,464 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Real_Vagas_API</name>
+    </assembly>
+    <members>
+        <member name="M:Real_Vagas_API.Controllers.AdministradorController.CadastrarAdministrador(Real_Vagas_API.Domains.DbUsuarios)">
+            <summary>
+            Controller responsavél por criar um novo administrador. 
+            </summary>
+            <response code="201">Retorna um criado e usuário será criado no sistemas.</response>
+            <response code="404">Retorna um não encontrado caso o email já estiver cadastrado no sistemas.</response>   
+        </member>
+        <member name="M:Real_Vagas_API.Controllers.AdministradorController.CadastrarAluno(Real_Vagas_API.Domains.DbUsuarios)">
+            <summary>
+            Controller responsavél por criar um novo aluno no banco de dados. 
+            </summary>
+            <response code="201">Retorna um criado e usuário será criado no sistemas.</response>
+            <response code="404">Retorna um não encontrado caso o email já estiver cadastrado no sistemas.</response>   
+        </member>
+        <member name="M:Real_Vagas_API.Controllers.AdministradorController.CadastrarEmpresa(Real_Vagas_API.Domains.DbEmpresas)">
+            <summary>
+            Controller responsavél por criar um nova empresa no banco de dados. 
+            </summary>
+            <response code="201">Retorna um criado e usuário será criado no sistemas.</response>
+            <response code="404">Retorna um não encontrado caso o email já estiver cadastrado no sistemas.</response>   
+        </member>
+        <member name="M:Real_Vagas_API.Controllers.AdministradorController.ListarEmpresas">
+            <summary>
+            Controller responsavél listar todas as empresas no sistema.
+            </summary>
+            <response code="200">Retorna OK, listar de todas empresas cadastras.</response>
+            <response code="404">Retorna um não encontrado, caso não tiver nenhuma empresa cadastrada.</response>   
+        </member>
+        <member name="M:Real_Vagas_API.Controllers.AdministradorController.ListarAluno">
+            <summary>
+            Controller responsavél listar todos os alunos no sistema.
+            </summary>
+            <response code="200">Retorna OK, listar de todos os alunos cadastras.</response>
+            <response code="404">Retorna um não encontrado, caso não tiver nenhum aluno cadastrado.</response>   
+        </member>
+        <member name="M:Real_Vagas_API.Controllers.AdministradorController.ListarAdministrador">
+            <summary>
+            Controller responsavél listar todos os adminstradores no sistema.
+            </summary>
+            <response code="200">Retorna OK, listar de todos os adminstradores cadastras.</response>
+            <response code="404">Retorna um não encontrado, adminstradores caso não tiver nenhum aluno cadastrado.</response>   
+        </member>
+        <member name="M:Real_Vagas_API.Controllers.AdministradorController.DeletarEmpresa(System.Int32)">
+            <summary>
+            Controller para deletar uma empresa do banco de dados
+            </summary>
+            <param name="ID"></param>
+            <response code="202">Retorna um aceito caso o ID for existente, assim deletado a empresa do sistema.</response>
+            <response code="404">Retorna um não encontrado caso o ID não existe no sistema.</response>   
+        </member>
+        <member name="M:Real_Vagas_API.Controllers.AdministradorController.DeletarAdministrador(System.Int32)">
+            <summary>
+            Controller para deletar um administador do banco de dados
+            </summary>
+            <param name="ID"></param>
+            <response code="202">Retorna um aceito caso o ID for existente, assim deletado o administador do sistema.</response>
+            <response code="404">Retorna um não encontrado caso o ID não existe no sistema.</response>   
+        </member>
+        <member name="M:Real_Vagas_API.Controllers.AdministradorController.BuscarPorEmpresa(Real_Vagas_API.Domains.DbEmpresas)">
+            <summary>
+            Controller responsável por buscar dados do banco de dados apartir do email ou cnpj.
+            </summary>
+            <response code="200">Retorna um ok, os dados e as informadas da empresa buscada. </response>
+            <response code="404">Retorna não encontrado caso o email ou cnpj informado não estiver cadastrados.</response>
+        </member>
+        <member name="M:Real_Vagas_API.Controllers.AdministradorController.DeletarInscricao(System.Int32)">
+            <summary>
+            Deletar um inscrição pelo ID
+            </summary>
+            <response code="202">Retorna um aceiteo, e deletar a inscrição do sistemas.</response>
+            <response code="404">Retorna bad request em caso de problemas na API.</response> 
+            <response code="400">Retorna não encontrado caso o ID informado não estiver cadastrado.</response>        
+        </member>
+        <member name="M:Real_Vagas_API.Controllers.AdministradorController.DeletarUsuario(System.Int32)">
+            <summary>
+            Deleta um usuário pelo id do sistema
+            </summary>
+            <response code="202">Retorna um aceito, deletar o usuário do sistema.</response>
+            <response code="404">Retorna bad request em caso de problemas na API.</response> 
+            <response code="400">Retorna não encontrado caso o ID informado não estiver cadastrado.</response>        
+        </member>
+        <member name="M:Real_Vagas_API.Controllers.DadosController.#ctor(Real_Vagas_API.Interfaces.IDados)">
+            <summary>
+            Instancia este objeto para que haja a referência aos métodos no repositório
+            </summary>
+        </member>
+        <member name="M:Real_Vagas_API.Controllers.DadosController.Get">
+            <summary>
+            Método listar Dados
+            </summary>
+            <returns>Todos os dados</returns>
+        </member>
+        <member name="M:Real_Vagas_API.Controllers.DadosController.GetByid(System.Int32)">
+            <summary>
+            Buscar um dado por id
+            </summary>
+            <param name="id"></param>
+            <returns>dadoBuscado</returns>
+        </member>
+        <member name="M:Real_Vagas_API.Controllers.DadosController.Post(Real_Vagas_API.Domains.DbDados)">
+            <summary>
+            Cadastra um novo dado
+            </summary>
+            <param name="novoUsuario"></param>
+            <returns>NovoUsuario</returns>
+        </member>
+        <member name="M:Real_Vagas_API.Controllers.DadosController.Put(System.Int32,Real_Vagas_API.Domains.DbDados)">
+            <summary>
+            Atualiza um dado
+            </summary>
+            <param name="id"></param>
+            <param name="dadoAtualizado"></param>
+            <returns>dadoAtualizado</returns>
+        </member>
+        <member name="M:Real_Vagas_API.Controllers.DadosController.Delete(System.Int32)">
+            <summary>
+            Metodo para Deletar um dado
+            </summary>
+            <param name="id"></param>
+            <returns>Vaga Deletada</returns>
+        </member>
+        <member name="M:Real_Vagas_API.Controllers.EmpresasController.DeletarEmpresa(System.Int32)">
+            <summary>
+            Controller para deletar uma empresa do banco de dados
+            </summary>
+            <param name="ID"></param>
+            <response code="202">Retorna um aceito caso o ID for existente, assim deletado a empresa do sistema.</response>
+            <response code="404">Retorna um não encontrado caso o ID não existe no sistema.</response>   
+        </member>
+        <member name="M:Real_Vagas_API.Controllers.EmpresasController.ListarEmpresas">
+            <summary>
+            Controller responsável por listar todas as empresas do sistemas.
+            </summary>
+            <response code="200">Retorna um OK com uma lista de empresas cadastradas. </response>
+            <response code="404">Retorna um não encontrado caso não existe empresas cadastradas.</response>
+        </member>
+        <member name="M:Real_Vagas_API.Controllers.EmpresasController.CadastraEmpresa(Real_Vagas_API.Domains.DbEmpresas)">
+            <summary>
+            Controller responsável por cadastrar uma empresa no sistema.
+            </summary>
+            <response code="201">Retorna que foi criado a empresa, assim cadastrado a empresa no banco de dados. </response>
+            <response code="400">Retorna sintaxe inválida caso cnpj ou email já estiver cadastrado no sistema.</response>
+        </member>
+        <member name="M:Real_Vagas_API.Controllers.EmpresasController.AtualizarEmpresa(Real_Vagas_API.Domains.DbEmpresas)">
+            <summary>
+            Controller responsável por atualizar os dados de uma empresa no sistema.
+            </summary>
+            <response code="200">Retorna um ok, os dados serão atualizados no banco de dados. </response>
+            <response code="404">Retorna não encontrado caso o ID informado não existir.</response>
+        </member>
+        <member name="M:Real_Vagas_API.Controllers.EmpresasController.BuscarPorEmpresa(Real_Vagas_API.Domains.DbEmpresas)">
+            <summary>
+            Controller responsável por buscar dados do banco de dados apartir do email ou cnpj.
+            </summary>
+            <response code="200">Retorna um ok, os dados e as informadas da empresa buscada. </response>
+            <response code="404">Retorna não encontrado caso o email ou cnpj informado não estiver cadastrados.</response>
+        </member>
+        <member name="M:Real_Vagas_API.Controllers.EmpresasController.BuscarPeloID(System.Int32)">
+            <summary>
+            Controller responsável por buscar dados do banco de dados apartir do ID da empresa.
+            </summary>
+            <response code="200">Retorna um ok, os dados e as informadas da empresa buscada pelo ID. </response>
+            <response code="404">Retorna não encontrado caso o ID informado não existir.</response>
+        </member>
+        <member name="M:Real_Vagas_API.Controllers.EmpresasController.VagasCadastradas(System.Int32)">
+            <summary>
+            Controller responsável por buscar todas as vagas cadastradas por uma empresa, apartir do ID da empresa.
+            </summary>
+            <response code="200">Retorna um ok, as vagas cadastradas com ID da empresa.</response>
+            <response code="404">Retorna não encontrado caso o ID informado não existir ou não existir vagas com esse ID.</response>
+        </member>
+        <member name="M:Real_Vagas_API.Controllers.EmpresasController.VagasCadastradasEm30Dias(System.Int32)">
+            <summary>
+            Controller responsável por buscar todas as vagas cadastradas nós últimos 30 dias por uma empresa, apartir do ID da empresa.
+            </summary>
+            <response code="200">Retorna um ok, as vagas cadastradas com ID da empresa nós últimos 30 dias.</response>
+            <response code="404">Retorna não encontrado caso o ID informado não existir ou não existir vagas cadastradas com esse ID nós últimos 30 dias.</response>
+        </member>
+        <member name="M:Real_Vagas_API.Controllers.EmpresasController.CurriculosRecebidos(System.Int32)">
+            <summary>
+            Controller responsável por buscar todos os currículos inscritos nas vagas de uma empresa, apartir do ID da empresa.
+            </summary>
+            <response code="200">Retorna um ok, todos os currículos inscritos nas vagas da empresa.</response>
+            <response code="404">Retorna não encontrado caso o ID informado não existir ou não existir currículos inscritos numa vaga.</response>
+        </member>
+        <member name="M:Real_Vagas_API.Controllers.EmpresasController.CurriculosRecebidosEm30Dias(System.Int32)">
+            <summary>
+            Controller responsável por buscar todos os currículos inscritos nas vagas de uma empresa nós últimos 30 dias, apartir do ID da empresa.
+            </summary>
+            <response code="200">Retorna um ok, todos os currículos inscritos nas vagas da empresa nós últimos 30 dias.</response>
+            <response code="404">Retorna não encontrado caso o ID informado não existir ou não existir currículos inscritos numa vaga nós últimos 30 dias.</response>
+        </member>
+        <member name="M:Real_Vagas_API.Controllers.EmpresasController.CurriculosRecebidosPorVagas(System.Int32)">
+            <summary>
+            Controller responsável por buscar todos os currículos inscritos numa vaga, apartir do ID da vaga.
+            </summary>
+            <response code="200">Retorna um ok, todos os currículos inscritos na vaga selecionada.</response>
+            <response code="404">Retorna não encontrado caso o ID informado não existir ou não existir currículos inscritos na vaga.</response>
+        </member>
+        <member name="M:Real_Vagas_API.Controllers.EmpresasController.validar(Real_Vagas_API.ViewModels.ValidarViewModel)">
+            <summary>
+            Controller responsável por buscar CNPJ ou CPF através de um web crawler para consulta se é válido.
+            </summary>
+            <response code="200">Retorna um ok, e a situação do CPF ou CNPJ.</response>
+            <response code="404">Retorna não encontrado caso o CPF ou CNPJ for inválido.</response>
+        </member>
+        <member name="M:Real_Vagas_API.Controllers.EmpresasController.SolicitarCodigo(Real_Vagas_API.ViewModels.CodigoViewModel)">
+            <summary>
+            Controller responsável por enviar um codigo para redefinir a senha para email para quem solicitou.
+            </summary>
+            <response code="200">Retorna um ok, enviar um codigo para email da pessoa.</response>
+            <response code="404">Retorna não encontrado caso email não existe no sistema.</response>
+        </member>
+        <member name="M:Real_Vagas_API.Controllers.EmpresasController.RedefinirSenha(Real_Vagas_API.ViewModels.RedefinirViewModel)">
+            <summary>
+            Controller responsável por redefinir a senha do usuário através do codigo enviado para email da pessoa.
+            </summary>
+            <response code="200">Retorna um ok, redefinir a senha do usuário.</response>
+            <response code="404">Retorna não autorizado caso o codigo tenha expirado.</response>
+        </member>
+        <member name="M:Real_Vagas_API.Controllers.InscricaoController.Get">
+            <summary>
+            Listar Todas as incrições
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Real_Vagas_API.Controllers.InscricaoController.ListarById(System.Int32)">
+            <summary>
+            Listar uma inscrição pelo Id do usuário
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Real_Vagas_API.Controllers.InscricaoController.GetById(System.Int32)">
+            <summary>
+            Buscar uma incrição pelo ID
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Real_Vagas_API.Controllers.InscricaoController.Deletar(System.Int32)">
+            <summary>
+            Deletar um inscrição pelo ID
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Real_Vagas_API.Controllers.InscricaoController.Put(System.Int32,Real_Vagas_API.Domains.DbInscricao)">
+            <summary>
+            Atualizar um inscrição pelo ID
+            </summary>
+            <param name="id"></param>
+            <param name="InscricaoAtulizada"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Real_Vagas_API.Controllers.LoginController.Login(Real_Vagas_API.ViewModels.LoginViewModel)">
+            <summary>
+            Request para fazer Login
+            </summary>
+            <param name="Usuario"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Real_Vagas_API.Controllers.TipoUsuarioController.Post(Real_Vagas_API.Domains.DbTipoUsuario)">
+            <summary>
+            Método Post para cadastrar um usuário
+            </summary>
+            <param name="tipousuario"></param>
+            <returns>Tipo Usuário Cadastrado</returns>
+        </member>
+        <member name="M:Real_Vagas_API.Controllers.TipoUsuarioController.Delete(System.Int32)">
+            <summary>
+            Método Delete para deletar um tipo usuário
+            </summary>
+            <param name="id"></param>
+            <returns>TipoUsuario Deletado</returns>
+        </member>
+        <member name="M:Real_Vagas_API.Controllers.TipoUsuarioController.Get">
+            <summary>
+            Método Get para listar todos os tipos de usuários
+            </summary>
+            <returns>Lista tipos usuários</returns>
+        </member>
+        <member name="M:Real_Vagas_API.Controllers.TipoUsuarioController.GetId(System.Int32)">
+            <summary>
+            Busca um tipo usuário pelo Id
+            </summary>
+            <param name="id"></param>
+            <returns>Busca tipo usuario pelo Id</returns>
+        </member>
+        <member name="M:Real_Vagas_API.Controllers.TipoUsuarioController.PulIdUrl(System.Int32,Real_Vagas_API.Domains.DbTipoUsuario)">
+            <summary>
+            Atualizar um tipo usuário por Id
+            </summary>
+            <param name="id"></param>
+            <param name="tipousuarioAtualizado"></param>
+            <returns></returns>
+        </member>
+        <member name="F:Real_Vagas_API.Controllers.UsuariosController._usuario">
+            <summary>
+            Cria um objeto _usuarioRepository que irá receber todos os métodos definidos na interface
+            </summary>
+        </member>
+        <member name="M:Real_Vagas_API.Controllers.UsuariosController.#ctor(Real_Vagas_API.Interfaces.IUsuarios,Real_Vagas_API.Interfaces.IEmpresas)">
+            <summary>
+            Instancia este objeto para que haja a referência aos métodos no repositório
+            </summary>
+        </member>
+        <member name="M:Real_Vagas_API.Controllers.UsuariosController.Get">
+            <summary>
+            Lista todos os usuários do sistema
+            </summary>
+            <returns>Lista de usuário</returns>
+        </member>
+        <member name="M:Real_Vagas_API.Controllers.UsuariosController.GetById(System.Int32)">
+            <summary>
+            Lista um usuário por id especifico
+            </summary>
+            <param name="id"></param>
+            <returns>O usuário buscado</returns>
+        </member>
+        <member name="M:Real_Vagas_API.Controllers.UsuariosController.Post(Real_Vagas_API.Domains.DbUsuarios)">
+            <summary>
+            Cadastra um novo usuário no sistema
+            </summary>
+            <param name="novoUsuario"></param>
+            <returns>O usuário cadastrado</returns>
+        </member>
+        <member name="M:Real_Vagas_API.Controllers.UsuariosController.Put(System.Int32,Real_Vagas_API.Domains.DbUsuarios)">
+            <summary>
+            Atualiza as informações do usuário selecionado pelo id
+            </summary>
+            <param name="id"></param>
+            <param name="usuarioAtualizado"></param>
+            <returns>Usuario atualizado</returns>
+        </member>
+        <member name="M:Real_Vagas_API.Controllers.UsuariosController.Delete(System.Int32)">
+            <summary>
+            Deleta um usuário pelo id do sistema
+            </summary>
+            <param name="id"></param>
+            <returns>Usuario deletado</returns>
+        </member>
+        <member name="M:Real_Vagas_API.Controllers.VagasController.Get">
+            <summary>
+            Método Get para listar todas as vagas
+            </summary>        
+            <returns>Todas as Vagas </returns>
+        </member>
+        <member name="M:Real_Vagas_API.Controllers.VagasController.Post(Real_Vagas_API.Domains.DbVagas)">
+            <summary>
+            Método Post para cadastrar uma vaga
+            </summary>
+            <param name="VagaNova"></param>
+            <returns>Vaga Cadastrada</returns>
+        </member>
+        <member name="M:Real_Vagas_API.Controllers.VagasController.GetById(System.Int32)">
+            <summary>
+            Método Get para listar uma vaga por id
+            </summary>
+            <param name="Id"></param>
+            <returns>Vaga buscada</returns>
+        </member>
+        <member name="M:Real_Vagas_API.Controllers.VagasController.GetByLocal(System.String)">
+            <summary>
+            Método Get para listar uma vaga pelo local
+            </summary>
+            <param name="LocalVaga"></param>
+            <returns>Vagas Encontradas</returns>
+        </member>
+        <member name="M:Real_Vagas_API.Controllers.VagasController.GetByCargo(System.String)">
+            <summary>
+            Método Get para listar uma vaga pelo cargo
+            </summary>
+            <param name="Cargo"></param>
+            <returns>Vagas Encontradas</returns>
+        </member>
+        <member name="M:Real_Vagas_API.Controllers.VagasController.GetByData(System.DateTime)">
+            <summary>
+            Método Get para listar uma vaga pela data de publicação
+            </summary>
+            <param name="DataPublicacao"></param>
+            <returns>Vagas Encontradas</returns>
+        </member>
+        <member name="M:Real_Vagas_API.Controllers.VagasController.GetByEmpresa(System.String)">
+            <summary>
+            Método Get para listar uma vaga pelo nome da empresa
+            </summary>
+            <param name="EmpresaNome"></param>
+            <returns>Vagas Encontradas</returns>
+        </member>
+        <member name="M:Real_Vagas_API.Controllers.VagasController.GetByEmpresa(System.Int32)">
+            <summary>
+            Retorna uma vaga pelo id da empresa
+            </summary>
+            <param name="Id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Real_Vagas_API.Controllers.VagasController.Delete(System.Int32)">
+            <summary>
+            Método Delete para deletar uma vaga
+            </summary>
+            <param name="Id"></param>
+            <returns>Vaga Deletada</returns>
+        </member>
+        <member name="M:Real_Vagas_API.Interfaces.IDados.BuscarPorId(System.Int32)">
+            <summary>
+            Busca um usuário através do ID
+            </summary>
+            <param name="id">ID do usuário buscado</param>
+            <returns>Um usuário buscado</returns>
+        </member>
+        <member name="M:Real_Vagas_API.Interfaces.IDados.Cadastrar(Real_Vagas_API.Domains.DbDados)">
+            <summary>
+            Cadastra um novo usuário
+            </summary>
+            <param name="novoUsuario">Objeto novoUsuario que será cadastrado</param>
+        </member>
+        <member name="M:Real_Vagas_API.Interfaces.IDados.Atualizar(System.Int32,Real_Vagas_API.Domains.DbDados)">
+            <summary>
+            Atualiza um usuário existente
+            </summary>
+            <param name="id">ID do usuário que será atualizado</param>
+            <param name="usuarioAtualizado">Objeto com as novas informações</param>
+        </member>
+        <member name="M:Real_Vagas_API.Interfaces.IDados.Deletar(System.Int32)">
+            <summary>
+            Deleta um usuário
+            </summary>
+            <param name="id">ID do usuário que será deletado</param>
+        </member>
+        <member name="M:Real_Vagas_API.Interfaces.IUsuarios.BuscarPorId(System.Int32)">
+            <summary>
+            Busca um usuário através do ID
+            </summary>
+            <param name="id">ID do usuário buscado</param>
+            <returns>Um usuário buscado</returns>
+        </member>
+        <member name="M:Real_Vagas_API.Interfaces.IUsuarios.Cadastrar(Real_Vagas_API.Domains.DbUsuarios)">
+            <summary>
+            Cadastra um novo usuário
+            </summary>
+            <param name="novoUsuario">Objeto novoUsuario que será cadastrado</param>
+        </member>
+        <member name="M:Real_Vagas_API.Interfaces.IUsuarios.Atualizar(System.Int32,Real_Vagas_API.Domains.DbUsuarios)">
+            <summary>
+            Atualiza um usuário existente
+            </summary>
+            <param name="id">ID do usuário que será atualizado</param>
+            <param name="usuarioAtualizado">Objeto com as novas informações</param>
+        </member>
+        <member name="M:Real_Vagas_API.Interfaces.IUsuarios.Deletar(System.Int32)">
+            <summary>
+            Deleta um usuário
+            </summary>
+            <param name="id">ID do usuário que será deletado</param>
+        </member>
+    </members>
+</doc>

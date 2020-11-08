@@ -34,9 +34,46 @@ function DashboardAluno() {
     const Listar = () => {
         var idUsuario = localStorage.getItem("Real-Vagas-Id-Usuario") as any;
         var idUrl = parseInt(idUsuario);
-
         fetch('http://localhost:5000/api/Usuarios/' + idUrl, {
             method: 'GET',
+            headers: {
+                authorization: 'Bearer ' + localStorage.getItem('Real-Vagas-Token')
+            }
+        })
+            .then(response => response.json())
+            .then(dados => {
+                setUsuarios(dados)
+                console.log("===========");
+                console.log(dados);
+                console.log("===========");
+            })
+
+            .catch(Erro => console.error(Erro));
+    }
+
+    const Atualizar = () => {
+        var DadosUsuario = {
+            "nome": "string",
+            "dataNascimento": "2020-11-07T20:05:47.824Z",
+            "sexo": "string",
+            "escola": "string",
+            "email": "string",
+            "telefone": "string",
+            "estadoCivil": "string",
+            "nivel": "string",
+            "tipoCurso": "string",
+            "curso": "string",
+            "turma": "string",
+            "turno": "string",
+            "termo": 0
+        };
+
+        var idUsuario = localStorage.getItem("Real-Vagas-Id-Usuario") as any;
+        var idUrl = parseInt(idUsuario);
+
+        fetch('http://localhost:5000/api/Usuarios/' + idUrl, {
+            method: 'PUT',
+            body: JSON.stringify(DadosUsuario),
             headers: {
                 //Bearer é o token authentication, um Schema paraautenticação HTTP
                 //Ele indentifica recursos protegidos por um OAuth2
@@ -47,9 +84,6 @@ function DashboardAluno() {
             .then(response => response.json())
             .then(dados => {
                 setUsuarios(dados)
-                console.log("===========");
-                console.log(dados);
-                console.log("===========");
             })
 
             .catch(Erro => console.error(Erro));
@@ -74,36 +108,36 @@ function DashboardAluno() {
                                 <button id="bt" onClick={handleShow} ><img id="IconEdit" src={IconEdit} alt="icone de edição de informaçãos" /></button>
                             </div>
                             <div className="icon">
-                                <Input id="InputEdit" label="Data Nascimento:"  name="" value={Object.values(usuarios)[4] as any} />
+                                <Input id="InputEdit" label="Data Nascimento:"  name="" value={Object.values(usuarios)[2] as any} />
                                 <button id="bt" onClick={handleShow} ><img id="IconEdit" src={IconEdit} alt="icone de edição de informaçãos" /></button>
                             </div>
                             <div className="icon">
-                                <Input id="InputEdit" label="Sexo: " name="" />
+                                <Input id="InputEdit" label="Sexo: " name="" value={Object.values(usuarios)[3] as any}/>
                                 <button id="bt" onClick={handleShow} ><img id="IconEdit" src={IconEdit} alt="icone de edição de informação" /></button>
                             </div>
                             <div className="icon">
-                                <Input id="InputEdit" label="Escola: " name="" />
+                                <Input id="InputEdit" label="Escola: " name="" value={Object.values(usuarios)[4] as any} />
                                 <button id="bt" onClick={handleShow} ><img id="IconEdit" src={IconEdit} alt="icone de edição de informação" /></button>
                             </div>
                             <div className="Informacoes">
                                 <div className="icon">
-                                    <Input id="InputEdit" label="Email: " name="Email" />
+                                    <Input id="InputEdit" label="Email: " name="Email" value={Object.values(usuarios)[5] as any} />
                                     <button id="bt" onClick={handleShow} ><img id="IconEdit" src={IconEdit} alt="icone de edição de informação" /></button>
                                 </div>
                                 <div className="icon">
-                                    <Input id="InputEdit" label="Senha: " name="Senha" />
+                                    <Input id="InputEdit" label="Senha: "  name="Senha"/>
                                     <button id="bt" onClick={handleShow} ><img id="IconEdit" src={IconEdit} alt="icone de edição de informação" /></button>
                                 </div>
                                 <div className="icon">
-                                    <Input id="InputEdit" label="Telefone: " name="TEL" />
+                                    <Input id="InputEdit" label="Telefone: " name="TEL" value={Object.values(usuarios)[6] as any}/>
                                     <button id="bt" onClick={handleShow} ><img id="IconEdit" src={IconEdit} alt="icone de edição de informação" /></button>
                                 </div>
                                 <div className="icon">
-                                    <Input id="InputEdit" label="Estado Cívil: " name="EstadoCivil" />
+                                    <Input id="InputEdit" label="Estado Cívil: " name="EstadoCivil" value={Object.values(usuarios)[7] as any} />
                                     <button id="bt" onClick={handleShow} ><img id="IconEdit" src={IconEdit} alt="icone de edição de informação" /></button>
                                 </div>
                                 <div className="icon">
-                                    <Input id="InputEdit" label="Cpf: " name="CPF" />
+                                    <Input id="InputEdit" label="Cpf: " name="CPF" value={Object.values(dados)[2] as any} />
                                     <button id="bt" onClick={handleShow} ><img id="IconEdit" src={IconEdit} alt="icone de edição de informação" /></button>
                                 </div>
                             </div>

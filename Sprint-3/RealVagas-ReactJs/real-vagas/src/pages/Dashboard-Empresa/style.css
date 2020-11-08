@@ -83,7 +83,7 @@ body {
 }
 
 .tabela-dash table {
-    width: 51vw;
+    width: 57vw;
     background-color: #FFFFFF;
     border-radius: 1.06vw;
     box-shadow: 0 3px 6px #696969;
@@ -98,9 +98,14 @@ body {
 }
 
 .tabela-dash table td {
+    white-space: nowrap;
     border-top: 0;
-    padding: .45rem;
+    padding: .45vw;
     text-align: center;
+    max-width: 1.40vw;
+    overflow: auto;
+    overflow-x: hidden;
+    max-height: 1.40vw;
 }
 
 .grafico {
@@ -124,7 +129,7 @@ body {
     margin-left: 1vw;
     display: flex;
     align-items: center;
-    font-size: 1.18vw;
+    font-size: 1vw;
     justify-content: space-between;
 }
 
@@ -144,6 +149,11 @@ body {
     margin: 0 2vw 0 0;
     font-size: 1.18vw;
     color: #E54A38;
+}
+
+#link-dash {
+    font-size: 1vw;
+    color: #FE0000;
 }
 
 .grafico canvas {
@@ -196,12 +206,14 @@ body {
 
 .cont-vagas {
     display: flex;
-    width: 100%;
-    align-items: initial;
-    justify-content: center;
     text-align: center;
     margin: 2vw 0 1vw 0;
     flex-direction: column;
+}
+
+.col-10 {
+    flex: 0 0 78.333333%;
+    max-width: 78.333333%;
 }
 
 .cont-vagas img {
@@ -210,6 +222,17 @@ body {
     cursor: pointer;
 }
 
+#button-dash {
+    background-color: transparent;
+    border: 0;
+    cursor: pointer;
+    outline: 0;
+    color: #FE0000;
+}
+
+#button-dash:hover{
+    color: #696969;
+}
 
 /*********************************************************** 
                    Página de documentos
@@ -323,7 +346,7 @@ body {
 .conta-pag {
     background-color: #FFFFFF;
     border-radius: 1.06vw;
-    box-shadow: 3px 2px 2px #696969;
+    box-shadow: 0 2px 6px #696969;
     width: 60.5vw;
     height: 100%;
 }
@@ -341,7 +364,18 @@ body {
     height: 7.2vw;
     border-radius: 1.06vw;
     border: 1px solid #FE0000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
+
+.vagas-imagem img{
+    width: 7.9vw;
+    height: 7.2vw;
+    border-radius: 1.06vw;
+    box-shadow: 1px 1px 2px #000000;
+}
+
 
 .info-vagas {
     padding-left: 2vw;
@@ -363,6 +397,10 @@ h5 {
 .info-vagas p {
     color: #FE0000;
     font-size: 1.17vw;
+}
+
+#title-list{
+    font-size: 1.60vw;
 }
 
 .info-vagas h5,

@@ -1,4 +1,5 @@
 ﻿using Microsoft.Data.SqlClient;
+using Microsoft.EntityFrameworkCore;
 using Real_Vagas_API.Domains;
 using Real_Vagas_API.Interfaces;
 using System;
@@ -105,7 +106,7 @@ namespace Real_Vagas_API.Repositories
         {
             using (RealVagasContext ctx = new RealVagasContext())
             {
-                return ctx.DbUsuarios.ToList();
+                return ctx.DbUsuarios.Include(U => U.IdDadosNavigation).ToList();
             }
         }
     }

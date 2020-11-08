@@ -1,0 +1,16 @@
+C:\Users\henri\Desktop\Real_Vagas_API\bin\Debug\netcoreapp2.1\Properties\launchSettings.json
+C:\Users\henri\Desktop\Real_Vagas_API\bin\Debug\netcoreapp2.1\Real_Vagas_API.deps.json
+C:\Users\henri\Desktop\Real_Vagas_API\bin\Debug\netcoreapp2.1\Real_Vagas_API.runtimeconfig.json
+C:\Users\henri\Desktop\Real_Vagas_API\bin\Debug\netcoreapp2.1\Real_Vagas_API.runtimeconfig.dev.json
+C:\Users\henri\Desktop\Real_Vagas_API\bin\Debug\netcoreapp2.1\Real_Vagas_API.dll
+C:\Users\henri\Desktop\Real_Vagas_API\obj\Debug\netcoreapp2.1\Real_Vagas_API.csprojAssemblyReference.cache
+C:\Users\henri\Desktop\Real_Vagas_API\obj\Debug\netcoreapp2.1\Real_Vagas_API.RazorAssemblyInfo.cache
+C:\Users\henri\Desktop\Real_Vagas_API\obj\Debug\netcoreapp2.1\Real_Vagas_API.RazorAssemblyInfo.cs
+C:\Users\henri\Desktop\Real_Vagas_API\obj\Debug\netcoreapp2.1\Real_Vagas_API.AssemblyInfoInputs.cache
+C:\Users\henri\Desktop\Real_Vagas_API\obj\Debug\netcoreapp2.1\Real_Vagas_API.AssemblyInfo.cs
+C:\Users\henri\Desktop\Real_Vagas_API\obj\Debug\netcoreapp2.1\Real_Vagas_API.RazorTargetAssemblyInfo.cache
+C:\Users\henri\Desktop\Real_Vagas_API\bin\Debug\netcoreapp2.1\Real_Vagas_API.pdb
+C:\Users\henri\Desktop\Real_Vagas_API\obj\Debug\netcoreapp2.1\Real_Vagas_API.dll
+C:\Users\henri\Desktop\Real_Vagas_API\obj\Debug\netcoreapp2.1\Real_Vagas_API.pdb
+C:\Users\henri\Desktop\Real_Vagas_API\bin\Debug\netcoreapp2.1\Real_Vagas_API.xml
+C:\Users\henri\Desktop\Real_Vagas_API\obj\Debug\netcoreapp2.1\Real_Vagas_API.xml

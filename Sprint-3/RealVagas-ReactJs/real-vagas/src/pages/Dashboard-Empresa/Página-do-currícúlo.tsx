@@ -8,34 +8,41 @@ import { Link } from 'react-router-dom';
 
 
 function PagCurriculo() {
-const [modalShow, setModalShow] = useState(false);
-const[vagas, setVagas] = useState([]);
-const[inscricoes, setInscriçoes] = useState([]);
+    const [modalShow, setModalShow] = useState(false);
+    const[vagas, setVagas] = useState([]);
+    const[inscricoes, setInscricoes] = useState([]);
+    const[titulo, setTitulo] = useState('');
 
-useEffect(() =>{
-    Listar();
-  },[]);
-
-const ListarInscricoes = (id:any) =>{
-    const url = "http://localhost:5000/api/Inscricao/ListarByVaga/id?id="+id;
-    fetch(url,{
-        method: "GET"
+    useEffect(() =>{
+        Listar();
+    },[]);
+    
+    const ListarInscricoes = (id:any) =>{
+        const url = "http://localhost:5000/api/Inscricao/ListarByIdVaga/id?Id="+id;
+        fetch(url,{
+            method: "GET"
     }).then(Response => Response.json())
     .then(Respost =>{
-        setInscriçoes(Respost);
+        setInscricoes(Respost);
     })
     .catch(err => {
       console.error(err); //retornar um erro 
   })
-
+  
+  
+  var title = vagas.filter((item:any) => item.id == id );
+  setTitulo(Object.values(title[0])[5] as any);
   setModalShow(true);
 }
-  
+
 const Listar = () =>{
     var IdEmpresa =  localStorage.getItem("Real-Vagas-Id-Usuario") as any;
     const url = "http://localhost:5000/api/Vagas/VagaByIdEmpresa/id?Id="+IdEmpresa;
     console.log(url);
     fetch(url,{
+        headers:{
+            authorization: 'Bearer ' + localStorage.getItem('Real-Vagas-Token')
+        },
         method: "GET"
     }).then(Response => Response.json())
     .then(Respost =>{
@@ -47,6 +54,7 @@ const Listar = () =>{
       console.error(err); //retornar um erro 
   })
 }
+
 
 function MyVerticallyCenteredModal(props:any) {
     return (
@@ -62,7 +70,7 @@ function MyVerticallyCenteredModal(props:any) {
                 <Container>
                     <Row>
                         <Col xs={1}><img  onClick={props.onHide} src={seta} alt=""/></Col>
-                        <Col  xs={10}><h5>Analista de sistemas</h5></Col>
+                        <Col xs={10}><h5 id="title-list">{titulo}</h5></Col>
                         <Col xs={1}></Col>
                     </Row>
                 </Container>
@@ -79,12 +87,18 @@ function MyVerticallyCenteredModal(props:any) {
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <td>Table cell</td>
-                    <td>Table cell</td>
-                    <td>Table cell</td>
-                    <td>Table cell</td>
-                </tr>
+                    {
+                        inscricoes.map((item:any) =>{
+                            return(
+                            <tr>
+                                <td>{item.idUsuarioNavigation.nome}</td>
+                                <td>{item.idUsuarioNavigation.turno}</td>
+                                <td>{item.idUsuarioNavigation.curso}</td>
+                                <td>Table cell</td>
+                            </tr>
+                            )
+                        })
+                    }
                 </tbody>
             </Table>
         </div>
@@ -119,7 +133,9 @@ function MyVerticallyCenteredModal(props:any) {
                             return(
                         <div className="vagas-pag">
                             <div className="itens-pag">
-                                <div className="vagas-imagem"></div>
+                                <div className="vagas-imagem">
+                                    <img src={atob(item.foto)} alt=""/>
+                                </div>
                                 <div className="info-vagas">
                                     <h5>{item.cargo}</h5>
                                     <p>{item.localVaga}</p>

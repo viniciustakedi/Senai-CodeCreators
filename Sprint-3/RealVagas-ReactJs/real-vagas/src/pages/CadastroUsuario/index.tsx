@@ -109,7 +109,7 @@ function Cadastro() {
                     salvar();
                 }}>
 
-                <div className="titulo">
+                <div id="titulo">
                   <h3>Cadastro</h3>
                 </div>
                 
@@ -206,8 +206,8 @@ function Cadastro() {
                 </div>
 
 
-                <div className="periodo">
-                    
+            <div className="periodo">
+                <label>
                         Periodo:
                         <select required
                             onChange={e => setTurno(e.target.value)}>
@@ -216,7 +216,7 @@ function Cadastro() {
                             <option  value='Tarde'>Tarde</option>
                             <option  value='Noite'>Noite</option>
                         </select>
-                    
+                </label>
                 </div>
 
 
@@ -242,8 +242,8 @@ function Cadastro() {
                     onChange={e => setSenha(e.target.value)} />
                 </div>
 
-                <div className="button-Usuario">
-                    <Button name="Cadastrar-se" />
+                <div>
+                    <Button className="button-Usuario" name="Cadastrar-se" />
                 </div>
 
                 </form>

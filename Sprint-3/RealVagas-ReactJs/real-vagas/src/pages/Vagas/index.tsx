@@ -66,8 +66,6 @@ function Vagas() {
     function buscarVaga(cargo: string) { //Paramêtro: cargo é uma string
 
         //se vagas for diferente de indefinido ele executa
-        cargo = 'Analista';
-        console.log(cargo);
         if (vagas.length != 0) {
             //Variavel Filtrados com filter para a pesquisa de vagas.
             //O que o filter faz: A função Filter recebe como parâmetro uma função de callback, onde o retorno dado será um novo array com os elementos que passaram na validação realizada. Lembrando que o array original não é alterado, trazendo assim um dos conceitos da programação funcional.   
@@ -76,7 +74,7 @@ function Vagas() {
             //toUpperCase define que todas as letras vao ser maiusculas
             //includes determina se um conjunto de caracteres pode ser encontrado dentro de outra string, retornando true ou false. ou seja, ele pesquisa e se existir é true se n existir é false, retorna ou não retorna
             //O parametro dentro do includes serve para todas as vagas aparecerem quando n há nada digitado no input de pesquisa.
-            var filtrados = vagas.filter((vaga: any) => vaga.cargo.toLowerCase().includes(cargo.toLowerCase()));
+            var filtrados = vagas.filter((vaga: any) => vaga.cargo.toUpperCase().includes(cargo.toUpperCase()));
             console.log(filtrados)
             //Se os filtrador forem diferente de indefinido ele executa
             if (filtrados != undefined)
@@ -243,7 +241,7 @@ function Vagas() {
                                     <div className="TitleImg">
                                         <div className="img">
                                             {/* Imagem da vaga */}
-                                            <img src={item.foto} alt="Foto vaga" />
+                                            <img src={atob(item.foto)} alt="Foto vaga" />
                                         </div>
                                         <div className="title1">
                                             {/* Nome da vaga */}
@@ -289,7 +287,7 @@ function Vagas() {
                                     <div className="bodyModal">
                                         <div className="img">
                                             {/* Imagem da vaga */}
-                                            <img src={dado.foto} alt="Foto vaga" />
+                                            <img src={atob(dado.foto)} alt="Foto vaga" />
                                         </div>
                                         <div className="title1">
                                             {/* Nome da vaga */}

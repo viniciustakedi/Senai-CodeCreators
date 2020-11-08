@@ -1,9 +1,12 @@
-.titulo {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+#titulo{
     margin-bottom: 1vw;
     margin-top: 2vw;
+    text-align: center;
+}
+
+#titulo h3{
+    font-size: 2vw;
+    color: #4D4D4D;
 }
 
 .genero h6 {
@@ -19,6 +22,11 @@
     margin-bottom: 2vw;
     margin-top: 2vw;
     border-radius: 25px;
+    outline: 0;
+    color: #ffffff;
+    background-color: #EF0000;
+    border: 0;
+    padding: 0.35vw 1vw 0.35vw 1vw;
 }
 
 .cadastro-centralizado {
@@ -27,7 +35,6 @@
     display: flex;
     justify-content: center;
     margin: 3vw auto;
-    margin-left: 18vw;
 }
 
 label style {
@@ -43,6 +50,13 @@ label style {
     align-items: center;
     justify-content: center;
     font-size: 1vw;
+}
+
+.formulario form{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
 }
 
 input {
@@ -82,7 +96,8 @@ select {
 
 .periodo {
     margin-top: 1vw;
-    width: 1vw;
+    width: 18vw;
+    color: #A9A9A9;
 }
 
 #DataNascimento {
