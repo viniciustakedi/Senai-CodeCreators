@@ -84,6 +84,10 @@
     margin-right: 4rem;
 }
 
+hr {
+    color: white;
+}
+
 .Home-texto p {
     font-size: medium;
     text-decoration: none;

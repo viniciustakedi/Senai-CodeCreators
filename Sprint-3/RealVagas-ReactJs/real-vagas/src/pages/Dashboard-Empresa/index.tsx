@@ -144,7 +144,11 @@ function DashboardEmpresa() {
         })
     }
 }
-
+    const formatter = new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'USD',
+    minimumFractionDigits: 2
+        })
     return (
         <div>
             <Header />
@@ -200,7 +204,7 @@ function DashboardEmpresa() {
                                 return (
                                     <tr>
                                         <td>{item.cargo}</td>
-                                        <td>R$ {item.salario.toFixed(2)}</td>
+                                        <td>R$ {formatter.format(item.salario)}</td>
                                         <td>{item.nomeRecrutador}</td>
                                         <td>{item.localVaga}</td>
                                         <td><Link id="link-dash" to="/Curriculos">Ver Inscrições</Link></td>

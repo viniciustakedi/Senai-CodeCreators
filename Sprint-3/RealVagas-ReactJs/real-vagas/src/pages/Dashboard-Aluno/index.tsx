@@ -8,6 +8,7 @@ import ImgUsuario from '../../assets/image/usuario.jpg';
 import IconEdit from '../../assets/image/icone-editar.png';
 import '../../assets/style/global.css';
 import './style.css';
+import { Item } from 'react-bootstrap/lib/Breadcrumb';
 
 function DashboardAluno() {
 
@@ -26,6 +27,11 @@ function DashboardAluno() {
     const [usuarios, setUsuarios] = useState({});
     const [dados, setDadaos] = useState([]);
 
+    const [cpf, setCpf] = useState('');
+    const [senha, setSenha] = useState('');
+    const [matricula, setMatricula] = useState('');
+
+
     useEffect(() => {
         Listar();
     }, []);
@@ -43,29 +49,44 @@ function DashboardAluno() {
             .then(response => response.json())
             .then(dados => {
                 setUsuarios(dados)
-                console.log("===========");
-                console.log(dados);
-                console.log("===========");
+
+                var CpfSenha = Object.values(dados)[16] as any;
+                var cpf = Object.values(CpfSenha)[1] as any;
+                var matricula = Object.values(CpfSenha)[2] as any;
+                var senha = Object.values(CpfSenha)[3] as any;
+
+                setCpf(cpf)
+                setSenha(senha)
+                setMatricula(matricula)
             })
+
 
             .catch(Erro => console.error(Erro));
     }
 
     const Atualizar = () => {
         var DadosUsuario = {
-            "nome": "string",
-            "dataNascimento": "2020-11-07T20:05:47.824Z",
-            "sexo": "string",
-            "escola": "string",
-            "email": "string",
-            "telefone": "string",
-            "estadoCivil": "string",
-            "nivel": "string",
-            "tipoCurso": "string",
-            "curso": "string",
-            "turma": "string",
-            "turno": "string",
-            "termo": 0
+            "nome": "Davi Takedi",
+            "dataNascimento": "2008-04-30T00:00:00",
+            "sexo": "Masculino",
+            "escola": "Escola SENAI de Informática",
+            "email": "davi@gmail.com",
+            "telefone": "11974878388",
+            "estadoCivil": "solteiro",
+            "nivel": Object.values(dados)[8] as any,
+            "tipoCurso": Object.values(dados)[9] as any,
+            "curso": Object.values(dados)[10] as any,
+            "turma": Object.values(dados)[11] as any,
+            "turno": Object.values(dados)[12] as any,
+            "termo": Object.values(dados)[13] as any,
+            "idTipoUsuario": Object.values(dados)[14] as any,
+            "idDados": Object.values(dados)[15] as any,
+            "idDadosNavigation": {
+                "id": Object.values(dados)[15] as any,
+                "cpf": "487382736100",
+                "numMatricula": matricula,
+                "senha": "123"
+            }
         };
 
         var idUsuario = localStorage.getItem("Real-Vagas-Id-Usuario") as any;
@@ -104,15 +125,27 @@ function DashboardAluno() {
                         <div className="foto">
                             <img src={ImgUsuario} alt="Image de um usuário" />
                             <div className="icon">
-                                <Input id="InputEdit" label='Nome: ' name="" value={Object.values(usuarios)[1] as any}   />
+                                <Input id="InputEdit" label='Nome: ' name="" value={Object.values(usuarios)[1] as any} />
                                 <button id="bt" onClick={handleShow} ><img id="IconEdit" src={IconEdit} alt="icone de edição de informaçãos" /></button>
                             </div>
                             <div className="icon">
-                                <Input id="InputEdit" label="Data Nascimento:"  name="" value={Object.values(usuarios)[2] as any} />
+                                <Input id="InputEdit" label="Data Nascimento:" name="" value={Object.values(usuarios)[2] as any} />
                                 <button id="bt" onClick={handleShow} ><img id="IconEdit" src={IconEdit} alt="icone de edição de informaçãos" /></button>
                             </div>
                             <div className="icon">
-                                <Input id="InputEdit" label="Sexo: " name="" value={Object.values(usuarios)[3] as any}/>
+                                <Input id="InputEdit" label="Telefone: " name="TEL" value={Object.values(usuarios)[6] as any} />
+                                <button id="bt" onClick={handleShow} ><img id="IconEdit" src={IconEdit} alt="icone de edição de informação" /></button>
+                            </div>
+                            <div className="icon">
+                                <Input id="InputEdit" label="Cpf: " name="CPF" value={cpf as any} />
+                                <button id="bt" onClick={handleShow} ><img id="IconEdit" src={IconEdit} alt="icone de edição de informação" /></button>
+                            </div>
+                            <div className="icon">
+                                <Input id="InputEdit" label="Estado Cívil: " name="EstadoCivil" value={Object.values(usuarios)[7] as any} />
+                                <button id="bt" onClick={handleShow} ><img id="IconEdit" src={IconEdit} alt="icone de edição de informação" /></button>
+                            </div>
+                            <div className="icon">
+                                <Input id="InputEdit" label="Sexo: " name="" value={Object.values(usuarios)[3] as any} />
                                 <button id="bt" onClick={handleShow} ><img id="IconEdit" src={IconEdit} alt="icone de edição de informação" /></button>
                             </div>
                             <div className="icon">
@@ -125,19 +158,7 @@ function DashboardAluno() {
                                     <button id="bt" onClick={handleShow} ><img id="IconEdit" src={IconEdit} alt="icone de edição de informação" /></button>
                                 </div>
                                 <div className="icon">
-                                    <Input id="InputEdit" label="Senha: "  name="Senha"/>
-                                    <button id="bt" onClick={handleShow} ><img id="IconEdit" src={IconEdit} alt="icone de edição de informação" /></button>
-                                </div>
-                                <div className="icon">
-                                    <Input id="InputEdit" label="Telefone: " name="TEL" value={Object.values(usuarios)[6] as any}/>
-                                    <button id="bt" onClick={handleShow} ><img id="IconEdit" src={IconEdit} alt="icone de edição de informação" /></button>
-                                </div>
-                                <div className="icon">
-                                    <Input id="InputEdit" label="Estado Cívil: " name="EstadoCivil" value={Object.values(usuarios)[7] as any} />
-                                    <button id="bt" onClick={handleShow} ><img id="IconEdit" src={IconEdit} alt="icone de edição de informação" /></button>
-                                </div>
-                                <div className="icon">
-                                    <Input id="InputEdit" label="Cpf: " name="CPF" value={Object.values(dados)[2] as any} />
+                                    <Input id="InputEdit" type="password" label="Senha: " name="Senha" value={senha as any} />
                                     <button id="bt" onClick={handleShow} ><img id="IconEdit" src={IconEdit} alt="icone de edição de informação" /></button>
                                 </div>
                             </div>
@@ -160,8 +181,11 @@ function DashboardAluno() {
             </Button>
                 </Modal.Footer>
             </Modal>
+
+
         </div>
     )
 }
+
 
 export default DashboardAluno;

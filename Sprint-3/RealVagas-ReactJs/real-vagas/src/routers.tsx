@@ -105,6 +105,11 @@ function Routers() {
                 <Route path="/Dicas" component={Dicas} />
                 <Route path="/Teste" component={TesteComp} />
 
+                <Route path='/Personalidade' component={() => { 
+                window.location.href = 'https://www.personalidades.mobi/Perfil_Comportamental/'; 
+                return null;
+                }}/>
+
 
                 {/* Rota Adm */}
                 <RotaAdm path="/Administrador" component={DashAdm} /> 

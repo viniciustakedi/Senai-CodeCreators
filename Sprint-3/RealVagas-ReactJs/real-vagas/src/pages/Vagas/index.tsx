@@ -212,7 +212,11 @@ function Vagas() {
     }
 
 
-
+        const formatter = new Intl.NumberFormat('en-US', {
+        style: 'currency',
+        currency: 'USD',
+        minimumFractionDigits: 2
+            })
     return (
         <div>
             <Header />
@@ -251,7 +255,7 @@ function Vagas() {
                                             <h2>{item.localVaga}</h2>
 
                                             {/* Salário */}
-                                            <h3>{'Salário: R$ ' + item.salario.toFixed(2)}</h3>
+                                            <h3>{'Salário: R$ ' + formatter.format(item.salario)}</h3>
                                         </div>
 
 

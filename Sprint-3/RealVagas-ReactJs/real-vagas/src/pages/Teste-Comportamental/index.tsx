@@ -12,6 +12,7 @@ import imgTeste3 from '../../assets/image/imgTeste3.png';
 import Row from 'react-bootstrap/esm/Row';
 import Col from 'react-bootstrap/esm/Col';
 import { Container } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 function TesteComp() {
     return (
@@ -27,7 +28,9 @@ function TesteComp() {
                             <h1>Descubra quem você é</h1>
                             <h2>e como as outras pessoas são diferentes de você</h2>
                         </div>
+                        <Link to="Personalidade">
                         <ButtonTeste value="Clique aqui para começar" />
+                        </Link>
                     </div>
                     <div className="container-texto">
                         <h1>Objetivos</h1>

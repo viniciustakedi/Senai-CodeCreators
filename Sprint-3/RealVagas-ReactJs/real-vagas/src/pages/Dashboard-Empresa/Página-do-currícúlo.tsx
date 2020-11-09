@@ -55,7 +55,11 @@ const Listar = () =>{
   })
 }
 
-
+    const formatter = new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'USD',
+    minimumFractionDigits: 2
+        })
 function MyVerticallyCenteredModal(props:any) {
     return (
       <Modal
@@ -139,7 +143,7 @@ function MyVerticallyCenteredModal(props:any) {
                                 <div className="info-vagas">
                                     <h5>{item.cargo}</h5>
                                     <p>{item.localVaga}</p>
-                                    <p>{item.salario}</p>
+                                    <p>{formatter.format(item.salario)}</p>
                                 </div>
                             </div>
 
