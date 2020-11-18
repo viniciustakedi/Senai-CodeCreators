@@ -1,0 +1,9 @@
+{
+  "name": "RealVagas-ReactNative",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "expo": "^39.0.4"
+  }
+}

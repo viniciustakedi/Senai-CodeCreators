@@ -1,0 +1,12 @@
+{
+  "name": "real-vagas",
+  "displayName": "real-vagas",
+  "expo": {
+    "name": "real-vagas",
+    "slug": "real-vagas",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
