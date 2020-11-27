@@ -1,24 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\gabri\\Desktop\\NOVO CODE\\Senai-CodeCreators\\Sprint-2\\Real_Vagas_API-2.0\\Real_Vagas_API.csproj": {}
+    "C:\\Users\\vinic\\Desktop\\Senai-CodeCreators\\Sprint-2\\Real_Vagas_API-2.0\\Real_Vagas_API.csproj": {}
   },
   "projects": {
-    "C:\\Users\\gabri\\Desktop\\NOVO CODE\\Senai-CodeCreators\\Sprint-2\\Real_Vagas_API-2.0\\Real_Vagas_API.csproj": {
+    "C:\\Users\\vinic\\Desktop\\Senai-CodeCreators\\Sprint-2\\Real_Vagas_API-2.0\\Real_Vagas_API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\gabri\\Desktop\\NOVO CODE\\Senai-CodeCreators\\Sprint-2\\Real_Vagas_API-2.0\\Real_Vagas_API.csproj",
+        "projectUniqueName": "C:\\Users\\vinic\\Desktop\\Senai-CodeCreators\\Sprint-2\\Real_Vagas_API-2.0\\Real_Vagas_API.csproj",
         "projectName": "Real_Vagas_API",
-        "projectPath": "C:\\Users\\gabri\\Desktop\\NOVO CODE\\Senai-CodeCreators\\Sprint-2\\Real_Vagas_API-2.0\\Real_Vagas_API.csproj",
-        "packagesPath": "C:\\Users\\gabri\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\gabri\\Desktop\\NOVO CODE\\Senai-CodeCreators\\Sprint-2\\Real_Vagas_API-2.0\\obj\\",
+        "projectPath": "C:\\Users\\vinic\\Desktop\\Senai-CodeCreators\\Sprint-2\\Real_Vagas_API-2.0\\Real_Vagas_API.csproj",
+        "packagesPath": "C:\\Users\\vinic\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\vinic\\Desktop\\Senai-CodeCreators\\Sprint-2\\Real_Vagas_API-2.0\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Microsoft\\Xamarin\\NuGet\\",
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+          "C:\\Microsoft\\Xamarin\\NuGet\\"
         ],
         "configFilePaths": [
-          "C:\\Users\\gabri\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\vinic\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
@@ -109,7 +108,7 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.301\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.200\\RuntimeIdentifierGraph.json"
         }
       }
     }

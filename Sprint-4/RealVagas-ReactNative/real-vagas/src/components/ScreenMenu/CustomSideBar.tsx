@@ -6,22 +6,32 @@ import {
     Image,
     Text,
     Linking,
+    TouchableOpacity,
 } from 'react-native';
+
+import { Entypo } from '@expo/vector-icons';
 
 import {
     DrawerContentScrollView,
     DrawerItemList,
     DrawerItem,
+    createDrawerNavigator,
 } from '@react-navigation/drawer';
 
-const CustomSidebarMenu = (props: any) => {
+const Drawer = createDrawerNavigator();
 
+const CustomSidebarMenu = (props: any, navigation: any) => {
+
+    const Sair = (navigation: any) => {
+        navigation.navigate('Login')
+        // RemoveToken()
+    }
 
     return (
         <SafeAreaView style={{ flex: 1 }}>
 
             {/* Para dar espaçamento */}
-                <Text></Text>
+            <Text></Text>
 
             {/*Top Large Image */}
             <Image
@@ -37,25 +47,43 @@ const CustomSidebarMenu = (props: any) => {
                 />
             </DrawerContentScrollView>
 
-                <Text
-                    style={{
-                        fontSize: 14,
-                        textAlign: 'center',
-                        justifyContent: 'center',
-                        color: '#000000',
-                    }}>
-                    Real Vagas & SENAI
-                </Text>
+            <View style={{
+                marginLeft: 10,
+                marginRight: 10,
+                borderRadius: 3,
+                backgroundColor: '#DCDCDC',
+            }}>
+                <TouchableOpacity
+                    style={styles.logout}
+                    // onPress={() => Sair(navigation)}
+                >
+                    <Entypo name='log-out' size={24} color='#000000' />
+                    <Text
+                        style={{
+                            fontSize: 18,
+                            marginLeft: 25,
+                            color: '#000000',
+                        }}
+                    >Sair</Text>
+                </TouchableOpacity>
+            </View>
 
         </SafeAreaView>
     );
 };
+
 
 const styles = StyleSheet.create({
     sideMenuProfileIcon: {
         width: 90,
         height: 90,
         alignSelf: 'center',
+    },
+    logout: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        margin: 10,
+        height: 30,
     },
 });
 

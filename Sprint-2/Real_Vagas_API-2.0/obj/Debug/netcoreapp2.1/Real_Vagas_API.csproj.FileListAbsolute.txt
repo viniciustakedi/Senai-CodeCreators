@@ -32,3 +32,21 @@ C:\Users\gabri\Desktop\NOVO CODE\Senai-CodeCreators\Sprint-2\Real_Vagas_API-2.0\
 C:\Users\gabri\Desktop\NOVO CODE\Senai-CodeCreators\Sprint-2\Real_Vagas_API-2.0\obj\Debug\netcoreapp2.1\Real_Vagas_API.xml
 C:\Users\gabri\Desktop\NOVO CODE\Senai-CodeCreators\Sprint-2\Real_Vagas_API-2.0\obj\Debug\netcoreapp2.1\Real_Vagas_API.pdb
 C:\Users\gabri\Desktop\NOVO CODE\Senai-CodeCreators\Sprint-2\Real_Vagas_API-2.0\obj\Debug\netcoreapp2.1\Real_Vagas_API.genruntimeconfig.cache
+C:\Users\vinic\Desktop\Senai-CodeCreators\Sprint-2\Real_Vagas_API-2.0\obj\Debug\netcoreapp2.1\Real_Vagas_API.dll
+C:\Users\vinic\Desktop\Senai-CodeCreators\Sprint-2\Real_Vagas_API-2.0\obj\Debug\netcoreapp2.1\Real_Vagas_API.xml
+C:\Users\vinic\Desktop\Senai-CodeCreators\Sprint-2\Real_Vagas_API-2.0\obj\Debug\netcoreapp2.1\Real_Vagas_API.pdb
+C:\Users\vinic\Desktop\Senai-CodeCreators\Sprint-2\Real_Vagas_API-2.0\bin\Debug\netcoreapp2.1\Properties\launchSettings.json
+C:\Users\vinic\Desktop\Senai-CodeCreators\Sprint-2\Real_Vagas_API-2.0\bin\Debug\netcoreapp2.1\Real_Vagas_API.deps.json
+C:\Users\vinic\Desktop\Senai-CodeCreators\Sprint-2\Real_Vagas_API-2.0\bin\Debug\netcoreapp2.1\Real_Vagas_API.runtimeconfig.json
+C:\Users\vinic\Desktop\Senai-CodeCreators\Sprint-2\Real_Vagas_API-2.0\bin\Debug\netcoreapp2.1\Real_Vagas_API.runtimeconfig.dev.json
+C:\Users\vinic\Desktop\Senai-CodeCreators\Sprint-2\Real_Vagas_API-2.0\bin\Debug\netcoreapp2.1\Real_Vagas_API.dll
+C:\Users\vinic\Desktop\Senai-CodeCreators\Sprint-2\Real_Vagas_API-2.0\bin\Debug\netcoreapp2.1\Real_Vagas_API.pdb
+C:\Users\vinic\Desktop\Senai-CodeCreators\Sprint-2\Real_Vagas_API-2.0\bin\Debug\netcoreapp2.1\Real_Vagas_API.xml
+C:\Users\vinic\Desktop\Senai-CodeCreators\Sprint-2\Real_Vagas_API-2.0\obj\Debug\netcoreapp2.1\Real_Vagas_API.csprojAssemblyReference.cache
+C:\Users\vinic\Desktop\Senai-CodeCreators\Sprint-2\Real_Vagas_API-2.0\obj\Debug\netcoreapp2.1\Real_Vagas_API.csproj.CoreCompileInputs.cache
+C:\Users\vinic\Desktop\Senai-CodeCreators\Sprint-2\Real_Vagas_API-2.0\obj\Debug\netcoreapp2.1\Real_Vagas_API.RazorAssemblyInfo.cache
+C:\Users\vinic\Desktop\Senai-CodeCreators\Sprint-2\Real_Vagas_API-2.0\obj\Debug\netcoreapp2.1\Real_Vagas_API.RazorAssemblyInfo.cs
+C:\Users\vinic\Desktop\Senai-CodeCreators\Sprint-2\Real_Vagas_API-2.0\obj\Debug\netcoreapp2.1\Real_Vagas_API.AssemblyInfoInputs.cache
+C:\Users\vinic\Desktop\Senai-CodeCreators\Sprint-2\Real_Vagas_API-2.0\obj\Debug\netcoreapp2.1\Real_Vagas_API.AssemblyInfo.cs
+C:\Users\vinic\Desktop\Senai-CodeCreators\Sprint-2\Real_Vagas_API-2.0\obj\Debug\netcoreapp2.1\Real_Vagas_API.RazorTargetAssemblyInfo.cache
+C:\Users\vinic\Desktop\Senai-CodeCreators\Sprint-2\Real_Vagas_API-2.0\obj\Debug\netcoreapp2.1\Real_Vagas_API.genruntimeconfig.cache

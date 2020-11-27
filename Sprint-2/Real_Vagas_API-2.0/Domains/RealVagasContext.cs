@@ -27,8 +27,8 @@ namespace Real_Vagas_API.Domains
             if (!optionsBuilder.IsConfigured)
             {
                 //Gabriel optionsBuilder.UseSqlServer("Server=LAPTOP-U61L15JH\\SQLEXPRESS2019;Database=RealVagas;Trusted_Connection=True;");
-                //takedi optionsBuilder.UseSqlServer("Server=LAPTOP-QQ7IRANA\\SQLEXPRESS2019;Database=RealVagas;Trusted_Connection=True;");
-                optionsBuilder.UseSqlServer("Server=LAPTOP-OEOULMOC\\SQLEXPRESS;Database=RealVagas;Trusted_Connection=True;");
+                optionsBuilder.UseSqlServer("Server=LAPTOP-QQ7IRANA\\SQLEXPRESS2019;Database=RealVagas;Trusted_Connection=True;");
+                //optionsBuilder.UseSqlServer("Server=LAPTOP-OEOULMOC\\SQLEXPRESS;Database=RealVagas;Trusted_Connection=True;");
             }
         }
 

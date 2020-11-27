@@ -1,6 +1,9 @@
 {
   "name": "real-vagas",
   "displayName": "real-vagas",
+  "splash": {
+    
+  },
   "expo": {
     "name": "real-vagas",
     "slug": "real-vagas",

@@ -8,11 +8,15 @@
     "test": "jest"
   },
   "dependencies": {
+    "@expo/vector-icons": "^10.2.1",
+    "@react-native-community/async-storage": "^1.12.1",
     "@react-navigation/drawer": "^5.11.3",
-    "@react-navigation/native": "^5.8.9",
+    "@react-navigation/native": "^5.8.10",
+    "@react-navigation/stack": "^5.12.8",
     "expo": "~39.0.2",
     "expo-splash-screen": "~0.6.2",
     "expo-updates": "~0.3.3",
+    "jwt-decode": "^3.1.2",
     "react": "16.13.1",
     "react-dom": "16.13.1",
     "react-native": "~0.63.3",
@@ -20,7 +24,8 @@
     "react-native-reanimated": "~1.13.0",
     "react-native-screens": "~2.10.1",
     "react-native-unimodules": "~0.11.0",
-    "react-native-web": "~0.13.12"
+    "react-native-web": "~0.13.12",
+    "react-navigation": "^4.4.3"
   },
   "devDependencies": {
     "@babel/core": "~7.9.0",

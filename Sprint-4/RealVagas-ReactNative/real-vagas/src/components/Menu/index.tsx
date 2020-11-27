@@ -8,7 +8,7 @@ export default function Menu({navigation}: any){
     return (
         <View style={styles.menu}>
             <TouchableOpacity onPress={() => navigation.openDrawer()}>
-                <Entypo name="menu" size={46} color='black' /> 
+                <Entypo name="menu" size={46} color='black' />
             </TouchableOpacity>
         </View>
     );
