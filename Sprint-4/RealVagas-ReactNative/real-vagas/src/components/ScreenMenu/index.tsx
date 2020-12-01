@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Text, View } from 'react-native';
+import { Text } from 'react-native';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { Entypo } from '@expo/vector-icons';
 import Empresa from '../../screens/Empresa';
@@ -7,16 +7,13 @@ import Home from '../../screens/Home/index';
 import Aluno from '../../screens/Usuario/index';
 import Login from '../../screens/Login/index';
 import CustomSidebarMenu from './CustomSideBar';
-import { parseJWT, SetToken } from '../../../services/auth';
+import { parseJWT} from '../../../services/auth';
 import { NavigationContainer } from '@react-navigation/native';
+
 
 const Drawer = createDrawerNavigator();
 
 export default function ScreensMenu() {
-
-    const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImRhdmlAZ21haWwuY29tIiwianRpIjoiOSIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IjMiLCJleHAiOjE2MDY0MTQ5MjcsImlzcyI6IlJlYWxWYWdhcy5XZWJBcGkuQyMiLCJhdWQiOiJSZWFsVmFnYXMuV2ViQXBpLkMjIn0.J-h-EHJ0a1hRy4-rGzc3h8-d7EkZteh5YNgMP9jSaxA";
-    SetToken(token);
-
     const Menu = () => {
         if (parseJWT() == undefined || parseJWT() == null) {
             return (
