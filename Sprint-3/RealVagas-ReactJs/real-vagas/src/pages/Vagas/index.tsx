@@ -212,9 +212,9 @@ function Vagas() {
     }
 
 
-        const formatter = new Intl.NumberFormat('en-US', {
+        const formatter = new Intl.NumberFormat('pt-BR', {
         style: 'currency',
-        currency: 'USD',
+        currency: 'BRL',
         minimumFractionDigits: 2
             })
     return (
@@ -255,7 +255,7 @@ function Vagas() {
                                             <h2>{item.localVaga}</h2>
 
                                             {/* Salário */}
-                                            <h3>{'Salário: R$ ' + formatter.format(item.salario)}</h3>
+                                            <h3>{'Salário: '+formatter.format(item.salario)}</h3>
                                         </div>
 
 
@@ -301,7 +301,7 @@ function Vagas() {
                                             <h2>{dado.localVaga}</h2>
 
                                             {/* Salário */}
-                                            <h3>{'Salário: R$ ' + dado.salario.toFixed(3)}</h3>
+                                            <h3>{'Salário: '+ formatter.format(dado.salario)}</h3>
                                         </div>
                                     </div>
 

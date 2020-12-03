@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import {
     SafeAreaView,
     View,
@@ -18,14 +18,11 @@ import {
     createDrawerNavigator,
 } from '@react-navigation/drawer';
 
+import AsyncStorage from '@react-native-community/async-storage';
+
 const Drawer = createDrawerNavigator();
 
-const CustomSidebarMenu = (props: any, navigation: any) => {
-
-    const Sair = (navigation: any) => {
-        navigation.navigate('Login')
-        // RemoveToken()
-    }
+const CustomSidebarMenu = (props: any) => {
 
     return (
         <SafeAreaView style={{ flex: 1 }}>
@@ -48,24 +45,15 @@ const CustomSidebarMenu = (props: any, navigation: any) => {
             </DrawerContentScrollView>
 
             <View style={{
-                marginLeft: 10,
-                marginRight: 10,
-                borderRadius: 3,
-                backgroundColor: '#DCDCDC',
+                justifyContent: "center",
+                alignItems: "center",
             }}>
-                <TouchableOpacity
-                    style={styles.logout}
-                    // onPress={() => Sair(navigation)}
-                >
-                    <Entypo name='log-out' size={24} color='#000000' />
-                    <Text
-                        style={{
-                            fontSize: 18,
-                            marginLeft: 25,
-                            color: '#000000',
-                        }}
-                    >Sair</Text>
-                </TouchableOpacity>
+                <Text
+                    style={{
+                        fontSize: 16,
+                        fontWeight: 'bold',
+                    }}
+                >Real Vagas & SENAI</Text>
             </View>
 
         </SafeAreaView>

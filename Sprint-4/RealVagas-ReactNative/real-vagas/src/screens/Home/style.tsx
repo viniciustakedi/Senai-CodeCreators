@@ -9,17 +9,17 @@ export default StyleSheet.create({
         flex: 1,
         backgroundColor: '#F3F3F3',
         alignItems: 'center',
-        justifyContent: 'center',
+        justifyContent: 'flex-end',
     },
     logo: {
-        width: 170,
-        height: 190,
-        marginTop: 180,
+        width: 180,
+        height: 200,
+        marginBottom: 80,
         resizeMode: 'stretch',
     },
     conteudo: {
         width: '100%',
-        height: '100%',
+        height: '60%',
         backgroundColor: '#D8002D',
     },
     infos: {
@@ -41,7 +41,7 @@ export default StyleSheet.create({
         marginRight: 2,
     },
     infos2: {
-        justifyContent: 'center',
+        justifyContent: 'flex-end',
         alignItems: 'center',
         textAlign: 'center',
         color: '#fff',

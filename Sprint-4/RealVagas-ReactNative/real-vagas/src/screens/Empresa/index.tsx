@@ -1,3 +1,4 @@
+import AsyncStorage from '@react-native-community/async-storage';
 import React, { useEffect, useState } from 'react';
 import { FlatList, SafeAreaView, View, Text, Image } from 'react-native';
 import Menu from '../../components/Menu';
@@ -9,29 +10,43 @@ export default function Empresa({ navigation }: any) {
     const [vagas, setVagas] = useState([]);
     const [resposta, setReposta] = useState("");
 
+    const [idEmpresa, setIdEmpresa] = useState('');
+    const [TokenUsuario, setTokenUsuario] = useState('');
 
     useEffect(() => {
         Listar();
     }, []);
 
     const Listar = () => {
-        //var IdEmpresa = localStorage.getItem("Real-Vagas-Id-Usuario") as any;
-        const url = "http://localhost:5000/api/Vagas/VagaByIdEmpresa/id?Id=" + 3;
-        console.log(url);
-        fetch(url, {
-            // headers:{
-            //     authorization: 'Bearer ' + localStorage.getItem('Real-Vagas-Token')
-            // },
-            method: "GET"
-        }).then(Response => Response.json())
-            .then(Respost => {
-                setVagas(Respost);
-                console.log(Respost);
+        AsyncStorage.getItem("Real-Vagas-Token").then((item1: any) => {
+            setTokenUsuario(item1)
+
+            AsyncStorage.getItem("Real-Vagas-Id-Usuario").then((item: any) => {
+                setIdEmpresa(item)
+                console.log(item)
+
+                const url = "http://localhost:5000/api/Vagas/VagaByIdEmpresa/id?Id=" + item;
+                console.log(url);
+                fetch(url, {
+                    headers: {
+                        authorization: 'Bearer ' + item1
+                    },
+                    method: "GET"
+                }).then(Response => Response.json())
+                    .then(Respost => {
+                        setVagas(Respost);
+                        console.log(Respost);
+                    })
+                    .catch(err => {
+                        console.log("Deu erro!!!")
+                        console.error(err); //retornar um erro 
+                    })
             })
-            .catch(err => {
-                console.log("Deu erro!!!")
-                console.error(err); //retornar um erro 
-            })
+        })
+
+
+
+
     }
 
     const Deleta = (Id: any) => {
@@ -44,10 +59,10 @@ export default function Empresa({ navigation }: any) {
             const form = {
                 StatusVaga: false
             }
-            const url = "http://10.0.2.2:5000/api/Vagas/" + Id;
+            const url = "http://localhost:5000/api/Vagas/" + Id;
             fetch(url, {
                 headers: {
-                    authorization: 'Bearer ' + localStorage.getItem('Real-Vagas-Token'),
+                    authorization: 'Bearer ' + AsyncStorage.getItem('Real-Vagas-Token'),
                     'Content-Type': 'application/json'
                 },
                 method: "PUT",
@@ -70,7 +85,7 @@ export default function Empresa({ navigation }: any) {
 
     return (
         <View style={styles.container1}>
-            <Menu navigation={navigation}/>
+            <Menu navigation={navigation} />
             <View style={styles.containerTotal}>
                 <View>
                     <View style={styles.alignContain}>
@@ -90,7 +105,7 @@ export default function Empresa({ navigation }: any) {
                                         <Text style={styles.ListItens}>{formatter.format(item.salario)}</Text>
 
                                         <View style={styles.itens_flex}>
-                                            <Text style={styles.ListItens}>{item.nomeRecrutador}</Text>
+                                            <Text style={styles.ListItens}>{item.nomeRecrutador},</Text>
                                             <Text style={styles.especial}>{item.localVaga}</Text>
                                         </View>
                                     </View>
@@ -105,7 +120,6 @@ export default function Empresa({ navigation }: any) {
                         />
                     </SafeAreaView>
                 </View>
-
                 <View style={styles.footerDash}>
                     <Text>Real vagas & Senai</Text>
                 </View>

@@ -51,7 +51,8 @@ namespace Real_Vagas_API.Repositories
         {
             using (RealVagasContext ctx = new RealVagasContext())
             {
-                return ctx.DbInscricao.ToList().FindAll(I => I.IdUsuario == id);
+ 
+                return ctx.DbInscricao.Include(I => I.IdVagaNavigation.IdEmpresaNavigation).ToList().FindAll(I => I.IdUsuario == id & I.StatusInscricao == true );
             }
         }
 

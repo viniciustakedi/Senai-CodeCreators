@@ -4,15 +4,29 @@ export default StyleSheet.create({
     container: {
         flex: 1,
         justifyContent: 'center',
+        flexDirection: 'column',
         alignItems: 'center',
-        backgroundColor: '#DBD7D7',
+
+    },
+
+    containerBotao: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+
+    containerSenha: {
+        flex: 1,
+        justifyContent: 'flex-start',
+        alignItems: 'center',
     },
 
     input: {
         borderBottomWidth: 2,
         borderBottomColor: '#FE0000',
-        width: 300,
-        
+        width: 270,
+        marginTop: 10,
+        borderWidth: 0,
     },
 
     logo: {
@@ -21,32 +35,34 @@ export default StyleSheet.create({
     },
 
     email: {
-        
+        fontWeight: '400',
         fontSize: 14,
     },
-    
-    senha: {
-        fontSize: 14,
-        paddingTop: 10,
 
+    senha: {
+        fontWeight: '400',
+        fontSize: 14,
+        marginTop: 15,
     },
     logTexto: {
         fontSize: 36,
         paddingBottom: 30,
         fontWeight: 'bold',
     },
-    linha: {
+
+    touch: {
         flex: 1,
-        height: 1,
-        backgroundColor: 'black',
-    },
-    botao: {
-        width: 300,
+        justifyContent: 'center',
+        marginTop: 100,
+        width: 40,
         height: 40,
-        backgroundcolor: 'black',
-        marginTop: 10,
+        backgroundColor: 'Red',
         borderRadius: 4,
         alignItems: 'center',
-        justifyContent: 'center',
+
+    },
+    tudo: {
+        flex: 1,
+        height: '100%',
     },
 });

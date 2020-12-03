@@ -4,6 +4,30 @@ export default StyleSheet.create({
     container: {
         flex: 2,
         paddingTop: 40,
+        
+        
+    },
+    containerVagas:{
+        flex: 1,
+        backgroundColor: "#fafafa",
+        
+        
+    },
+
+    Container:{
+        padding: 20
+    },
+    Vaga:{
+        backgroundColor: "#fff",
+        borderWidth: 1,
+        borderColor: "#ddd",
+        borderRadius: 5,
+        padding: 10,
+        marginBottom: 10
+    },
+    container3:{
+        display: 'flex',
+        alignItems: 'center',
     },
     img: {
         width: 170,
@@ -21,6 +45,13 @@ export default StyleSheet.create({
         fontSize: 20,
 
     },
+    titulos:{
+        color: 'black',
+        fontSize: 17,
+        margin: 3,
+        marginLeft: 14,
+       
+    },
     imgLupa: {
         width: 20,
         height: 20,
@@ -34,7 +65,11 @@ export default StyleSheet.create({
         width: 165,
 
     },
-
+    inscrições: {
+        borderBottomWidth: 2,
+        borderBottomColor:"#FE0000",
+        marginBottom: 2,
+    },
     pesquisa: {
         display: 'flex',
         paddingBottom: 1,

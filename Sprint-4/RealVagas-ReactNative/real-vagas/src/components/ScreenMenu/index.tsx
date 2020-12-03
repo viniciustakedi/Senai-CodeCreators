@@ -7,15 +7,31 @@ import Home from '../../screens/Home/index';
 import Aluno from '../../screens/Usuario/index';
 import Login from '../../screens/Login/index';
 import CustomSidebarMenu from './CustomSideBar';
-import { parseJWT} from '../../../services/auth';
+import { parseJWT } from '../../../services/auth';
 import { NavigationContainer } from '@react-navigation/native';
+import AsyncStorage from '@react-native-community/async-storage';
+
+import { createStackNavigator } from '@react-navigation/stack';
+import curriculos from '../../screens/Empresa/pag-inscricoes';
 
 
 const Drawer = createDrawerNavigator();
+const Stack = createStackNavigator();
 
-export default function ScreensMenu() {
+export default function ScreensMenu(props: any) {
+
+    const Sair = () => {
+        AsyncStorage.removeItem('Real-Vagas-Token')
+        AsyncStorage.removeItem("Real-Vagas-Id-Usuario")
+        props.navigation.navigate('Logout', {
+            screen: 'Home',
+        })
+    }
+
     const Menu = () => {
-        if (parseJWT() == undefined || parseJWT() == null) {
+        var parseJWTResponse = parseJWT()
+
+        if (parseJWTResponse == undefined || parseJWTResponse == null) {
             return (
                 <Drawer.Navigator
                     initialRouteName="Login"
@@ -45,10 +61,26 @@ export default function ScreensMenu() {
                             }
                         }
                     />
+                    <Drawer.Screen
+                        name="Home"
+                        component={Home}
+                        options={
+                            {
+                                //focused é una prop em boleano para indicar ser o menu é selecionado ou não
+                                drawerLabel: (({ focused }) => <Text style={
+                                    {
+                                        color: focused ? '#FFF' : '#000000',
+                                        fontSize: 18,
+                                    }}>Home</Text>),
+
+                                drawerIcon: (({ focused }) => <Entypo name='home' size={24} color={focused ? '#FFFFFF' : '#000000'} />)
+                            }
+                        }
+                    />
                 </Drawer.Navigator>
             )
         }
-        else if (parseJWT() == 2) {
+        else if (parseJWTResponse == 2) {
             return (
                 <Drawer.Navigator
                     initialRouteName="Home"
@@ -95,10 +127,28 @@ export default function ScreensMenu() {
                             }
                         }
                     />
+                    <Drawer.Screen
+                        name="Logout"
+                        component={Login}
+                        options={
+                            {
+                                //focused é una prop em boleano para indicar ser o menu é selecionado ou não
+                                drawerLabel: (({ focused }) => <Text
+                                    onPress={() => Sair()}
+                                    style={
+                                        {
+                                            color: focused ? '#FFF' : '#000000',
+                                            fontSize: 18,
+                                        }}>Sair</Text>),
+
+                                drawerIcon: (({ focused }) => <Entypo onPress={Sair} name='log-out' size={24} color={focused ? '#FFFFFF' : '#000000'} />)
+                            }
+                        }
+                    />
                 </Drawer.Navigator>
             )
         }
-        else if (parseJWT() == 3 || parseJWT() == 4) {
+        else if (parseJWTResponse == 3 || parseJWTResponse == 4) {
             return (
                 <Drawer.Navigator
                     initialRouteName="Home"
@@ -147,10 +197,30 @@ export default function ScreensMenu() {
                             }
                         }
                     />
+                    <Drawer.Screen
+                        name="Logout"
+                        component={Login}
+                        options={
+                            {
+                                //focused é una prop em boleano para indicar ser o menu é selecionado ou não
+                                drawerLabel: (({ focused }) => <Text
+                                    onPress={() => Sair()}
+                                    style={
+                                        {
+                                            color: focused ? '#FFF' : '#000000',
+                                            fontSize: 18,
+                                        }}>Sair</Text>),
+                                drawerIcon: (({ focused }) => <Entypo onPress={Sair} name='log-out' size={24} color={focused ? '#FFFFFF' : '#000000'} />),
+                            }
+                        }
+                    />
                 </Drawer.Navigator>
+
+
             )
         }
     }
+
 
     return (
         <NavigationContainer>

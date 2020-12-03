@@ -1,3 +1,6 @@
+--Deletar banco de dados
+DROP DATABASE RealVagas
+
 --Criar banco de dados
 CREATE DATABASE RealVagas
 GO

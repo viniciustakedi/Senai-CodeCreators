@@ -1,12 +1,10 @@
-
 import AsyncStorage from '@react-native-community/async-storage';
 import React, { useState } from 'react';
+import { TextInput, View, StyleSheet, Text, Image, Button, Alert, TouchableOpacity, TouchableWithoutFeedback, } from 'react-native';
+import Menu from '../../components/Menu';
+import styles from './style'
 
-import { TextInput, View, StyleSheet, Text, Image, Button, Alert, TouchableOpacity, } from 'react-native';
-import styles from './style';
-
-
-export default function Login() {
+export default function Login(props: any) {
 
     const [email, setEmail] = useState("");
     const [senha, setSenha] = useState("");
@@ -30,12 +28,8 @@ export default function Login() {
             .then((response) => response.json())
             .then((dados) => {
                 if (dados.token != undefined) {
-                    var Dados = dados.token + ""
-
-                        AsyncStorage.setItem('Real-Vagas-Token', Dados)
-                        console.log(AsyncStorage.getItem('Real-Vagas-Token'));
-
-                    console.log(dados);
+                    console.log(dados.token);
+                    AsyncStorage.setItem('Real-Vagas-Token', dados.token)
 
                 } else alert("Email ou senha inválidos"); //Alerta caso o email ou senha estejam errados
             })
@@ -43,10 +37,19 @@ export default function Login() {
             .catch((error) => console.error(error)); // Como usando o fetch colocamos um catch caso algo de errado.
     };
 
-
     return (
-        <View>
-            <View style={styles.container}>
+        <View style={{
+            paddingTop: 40,
+        }}>
+            <View style={{
+                flex: 2,
+                backgroundColor: '#F3F3F3',
+                justifyContent: 'center',
+                flexDirection: 'column',
+                alignItems: 'center',
+                height: '100%',
+            }}
+            >
                 <Image source={require('../../assets/images/LogoNovapng.png')}
                     style={styles.logo}
                 />
@@ -58,7 +61,6 @@ export default function Login() {
                 <Text style={styles.email}>
                     Email
             </Text>
-
                 <form
                     onSubmit={(event) => {
                         event.preventDefault();
@@ -69,25 +71,41 @@ export default function Login() {
                         style={styles.input}
                         onChangeText={(Value) => setEmail(Value)}
                     />
-
-                    <Text style={styles.senha}>
-                        Senha
-                </Text>
+                    <View style={styles.containerSenha}>
+                        <Text style={styles.senha}>
+                            Senha
+                    </Text>
+                    </View>
 
                     <TextInput
                         style={styles.input}
                         onChangeText={(Value) => setSenha(Value)}
-
-
                     />
-
-                    <input type='submit'
-                        title='Entrar'
-                        value="Entrar"
-
-                    />
+                    <View style={styles.containerBotao}>
+                        <TouchableOpacity
+                            onPress={login}
+                            style={{
+                                flex: 1,
+                                justifyContent: 'center',
+                                alignItems: 'center',
+                                marginTop: 18,
+                                width: 110,
+                                backgroundColor: '#FE0000',
+                                borderRadius: 34,
+                            }}
+                        >
+                            <Text 
+                            style={{
+                                color: 'white',
+                                alignSelf: "center",
+                                height: 25,
+                            }}>
+                                Entrar</Text>
+                        </TouchableOpacity>
+                    </View>
                 </form>
             </View>
         </View>
+
     )
 }

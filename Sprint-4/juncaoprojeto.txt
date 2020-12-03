@@ -1,0 +1,29 @@
+Junção projeto:
+
+*Testar ainda*
+
+{=====* React Native *=====}
+
+Diego - Home:
+Tela: Ok
+Styles: Ok
+
+Gabriel - Login:
+Tela: Ok
+Styles: Não ( Passar para o projeto principal )
+Funcionalidade: Não ( Botão entrar precisa redirecionar para a home automático )
+
+Fabiane - Aluno:
+Tela: Ok
+Styles: Ok
+Funcionalidade: Ok
+
+Henrique - Empresa:
+Tela: Ok
+Styles: OK
+Funcionalidade: Não ( botão ver mais )
+
+Takedi - Menu:
+Componente: Ok
+Styles: Ok
+Funcionalidade: Ok

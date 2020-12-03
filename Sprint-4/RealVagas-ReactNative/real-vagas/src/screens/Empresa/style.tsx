@@ -11,7 +11,6 @@ export default StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'space-between',
         alignSelf: 'stretch',
-        height: '100%'
     },
     alignContain: {
         display: 'flex',
@@ -41,6 +40,7 @@ export default StyleSheet.create({
     },
     cont: {
         marginTop: 30,
+        marginBottom: '60%',
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
@@ -99,11 +99,12 @@ export default StyleSheet.create({
         width: 220
     },
     footerDash: {
-        padding: 2,
-        paddingRight: 10,
-        paddingLeft: 10,
-        // borderTopColor: '#11111',
-        // borderTopWidth: StyleSheet.hairlineWidth
+        paddingTop:2,
+        alignItems: "center",
+        paddingRight: 20,
+        paddingLeft: 20,
+        borderTopColor: '#11111',
+        borderTopWidth: StyleSheet.hairlineWidth
     },
     curriculos: {
         display: 'flex',

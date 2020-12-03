@@ -7,11 +7,12 @@ import Logo from '../../assets/image/Logo.png';
 import { Link, useHistory } from 'react-router-dom';
 import { Pie } from 'react-chartjs-2';
 import Button from '../../components/Button';
+import { Console } from 'console';
 
 function DashboardEmpresa() {
 
     const [vagas, setVagas] = useState([]);
-    const[grafic, setgrafic] = useState([]);
+    const [grafic, setgrafic] = useState([]);
 
     useEffect(() => {
         Listar();
@@ -85,7 +86,7 @@ function DashboardEmpresa() {
         const url = "http://localhost:5000/api/Vagas/VagaByIdEmpresa/id?Id=" + IdEmpresa;
         console.log(url);
         fetch(url, {
-            headers:{
+            headers: {
                 authorization: 'Bearer ' + localStorage.getItem('Real-Vagas-Token')
             },
             method: "GET"
@@ -100,55 +101,59 @@ function DashboardEmpresa() {
             })
     }
 
-    const grafico = () =>{
-        var IdEmpresa =  localStorage.getItem("Real-Vagas-Id-Usuario") as any;
-        const url = "http://localhost:5000/api/Inscricao/ListarByIdEmpresa/id?Id="+IdEmpresa;
+    const grafico = () => {
+        var IdEmpresa = localStorage.getItem("Real-Vagas-Id-Usuario") as any;
+        const url = "http://localhost:5000/api/Inscricao/ListarByIdEmpresa/id?Id=" + IdEmpresa;
         console.log(url);
-        fetch(url,{
-            headers:{
+        fetch(url, {
+            headers: {
                 authorization: 'Bearer ' + localStorage.getItem('Real-Vagas-Token')
             },
             method: "GET"
         }).then(Response => Response.json())
-        .then(Respost =>{
-            setgrafic(Respost);
-        })
-        .catch(err => {
-          console.error(err); //retornar um erro 
-      })
+            .then(Respost => {
+                if (Respost != 'Nenhuma incrição encontrada') {
+                    setgrafic(Respost);
+                } else {
+                    setgrafic([])
+                }
+
+            })
+            .catch(err => {
+                console.error(err); //retornar um erro 
+            })
     }
 
-    const Deleta = (Id:any) => {
+    const Deleta = (Id: any) => {
         let resposta = window.prompt("Digite 'excluir vaga' para excluir essa vaga:")?.toLowerCase();
 
         console.log(resposta);
-        if(resposta == "excluir vaga")
-        {
-            const form ={
+        if (resposta == "excluir vaga") {
+            const form = {
                 StatusVaga: false
             }
             const url = "http://localhost:5000/api/Vagas/" + Id;
             fetch(url, {
-                headers:{
-                authorization: 'Bearer ' + localStorage.getItem('Real-Vagas-Token'),
-                'Content-Type': 'application/json'
-            },
-            method: "PUT",
-            body: JSON.stringify(form)
-        }).then(()=>{
-            Listar();
-        })
-        .catch(err => {
-            console.log("Deu erro!!!")
-            console.error(err); //retornar um erro 
-        })
+                headers: {
+                    authorization: 'Bearer ' + localStorage.getItem('Real-Vagas-Token'),
+                    'Content-Type': 'application/json'
+                },
+                method: "PUT",
+                body: JSON.stringify(form)
+            }).then(() => {
+                Listar();
+            })
+                .catch(err => {
+                    console.log("Deu erro!!!")
+                    console.error(err); //retornar um erro 
+                })
+        }
     }
-}
-    const formatter = new Intl.NumberFormat('en-US', {
-    style: 'currency',
-    currency: 'USD',
-    minimumFractionDigits: 2
-        })
+    const formatter = new Intl.NumberFormat('pt-BR', {
+        style: 'currency',
+        currency: 'BRL',
+        minimumFractionDigits: 2
+    })
     return (
         <div>
             <Header />
@@ -208,18 +213,18 @@ function DashboardEmpresa() {
                                         <td>{item.nomeRecrutador}</td>
                                         <td>{item.localVaga}</td>
                                         <td><Link id="link-dash" to="/Curriculos">Ver Inscrições</Link></td>
-                                        <td><Button id="button-dash" name="Deletar" onClick={() =>Deleta(item.id)}/></td>
+                                        <td><Button id="button-dash" name="Deletar" onClick={() => Deleta(item.id)} /></td>
                                     </tr>
                                 )
                             })
-                        } 
+                        }
 
                     </tbody>
                 </table>
 
                 <div className="grafico">
                     <p className="title-grafico">Estatísticas dos ultimos 30 dias</p>
-                    <Pie legend={legends}data={data}/>
+                    <Pie legend={legends} data={data} />
 
                     <div className="legends">{generate()}</div>
                 </div>
