@@ -6,6 +6,7 @@ import Empresa from '../../screens/Empresa';
 import Home from '../../screens/Home/index';
 import Aluno from '../../screens/Usuario/index';
 import Login from '../../screens/Login/index';
+import Inscricoes from '../../screens/Empresa/pag-inscricoes';
 import CustomSidebarMenu from './CustomSideBar';
 import { parseJWT } from '../../../services/auth';
 import { NavigationContainer } from '@react-navigation/native';
@@ -121,12 +122,28 @@ export default function ScreensMenu(props: any) {
                                     {
                                         color: focused ? '#FFF' : '#000000',
                                         fontSize: 18,
-                                    }}>Empresa</Text>),
+                                    }}>Minhas Vagas</Text>),
 
                                 drawerIcon: (({ focused }) => <Entypo name='clipboard' size={24} color={focused ? '#FFFFFF' : '#000000'} />)
                             }
                         }
                     />
+                    {/* <Drawer.Screen
+                        name="Inscricoes"
+                        component={Inscricoes}
+                        options={
+                            {
+                                //focused é una prop em boleano para indicar ser o menu é selecionado ou não
+                                drawerLabel: (({ focused }) => <Text style={
+                                    {
+                                        color: focused ? '#FFF' : '#000000',
+                                        fontSize: 18,
+                                    }}>Inscritos as vagas</Text>),
+
+                                drawerIcon: (({ focused }) => <Entypo name='users' size={24} color={focused ? '#FFFFFF' : '#000000'} />)
+                            }
+                        }
+                    /> */}
                     <Drawer.Screen
                         name="Logout"
                         component={Login}
@@ -141,7 +158,7 @@ export default function ScreensMenu(props: any) {
                                             fontSize: 18,
                                         }}>Sair</Text>),
 
-                                drawerIcon: (({ focused }) => <Entypo onPress={Sair} name='log-out' size={24} color={focused ? '#FFFFFF' : '#000000'} />)
+                                drawerIcon: (({ focused }) => <Entypo onPress={Sair} name='log-out' size={23} color={focused ? '#FFFFFF' : '#000000'} />)
                             }
                         }
                     />
@@ -190,9 +207,9 @@ export default function ScreensMenu(props: any) {
                                     {
                                         color: focused ? '#FFF' : '#000000',
                                         fontSize: 18,
-                                    }}>Aluno</Text>),
+                                    }}>Minhas Inscrições</Text>),
 
-                                drawerIcon: (({ focused }) => <Entypo name='user' size={24} color={focused ? '#FFFFFF' : '#000000'} />)
+                                drawerIcon: (({ focused }) => <Entypo name='list' size={25} color={focused ? '#FFFFFF' : '#000000'} />)
 
                             }
                         }

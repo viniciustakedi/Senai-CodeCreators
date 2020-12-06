@@ -1,11 +1,11 @@
 import AsyncStorage from '@react-native-community/async-storage';
 import React, { useEffect, useState } from 'react';
-import { FlatList, SafeAreaView, View, Text, Image } from 'react-native';
+import { FlatList, SafeAreaView, View, Text, Image, Modal, TouchableHighlight } from 'react-native';
 import Menu from '../../components/Menu';
 import curriculos from './pag-inscricoes';
 import styles from './style';
 
-export default function Empresa({ navigation }: any) {
+export default function Empresa({ navigation }: any, props: any) {
     const [modalVisible, setModalVisible] = useState(false);
     const [vagas, setVagas] = useState([]);
     const [resposta, setReposta] = useState("");
@@ -50,19 +50,16 @@ export default function Empresa({ navigation }: any) {
     }
 
     const Deleta = (Id: any) => {
-        setModalVisible(false);
-        let resposta = window.prompt("Digite 'excluir vaga' para excluir essa vaga:")?.toLowerCase();
+        AsyncStorage.getItem("Real-Vagas-Token").then((item: any) => {
 
-
-        console.log(resposta);
-        if (resposta == "excluir vaga") {
             const form = {
                 StatusVaga: false
             }
+
             const url = "http://localhost:5000/api/Vagas/" + Id;
             fetch(url, {
                 headers: {
-                    authorization: 'Bearer ' + AsyncStorage.getItem('Real-Vagas-Token'),
+                    authorization: 'Bearer ' + item,
                     'Content-Type': 'application/json'
                 },
                 method: "PUT",
@@ -74,7 +71,7 @@ export default function Empresa({ navigation }: any) {
                     console.log("Deu erro!!!")
                     console.error(err); //retornar um erro 
                 })
-        }
+        })
     }
 
     const formatter = new Intl.NumberFormat('pt-br', {
@@ -111,8 +108,8 @@ export default function Empresa({ navigation }: any) {
                                     </View>
 
                                     <View>
-                                        <Text style={styles.btnInscricao} onPress={() => navigation.navigate('Curriculos', { id: item.id, vaga: item.cargo })}>ver inscrições</Text>
-                                        <Text style={styles.btnDelete} onPress={() => Deleta(item.id)}>Deleta</Text>
+                                        <Text style={styles.btnInscricao} onPress={() => props.navigation.navigate('Curriculos', { id: item.id, vaga: item.cargo })}>ver inscrições</Text>
+                                        <Text style={styles.btnDelete} onPress={() => Deleta(item.id)}>Deletar</Text>
                                     </View>
                                 </View>
                             )}
@@ -125,5 +122,6 @@ export default function Empresa({ navigation }: any) {
                 </View>
             </View>
         </View>
+
     )
 }

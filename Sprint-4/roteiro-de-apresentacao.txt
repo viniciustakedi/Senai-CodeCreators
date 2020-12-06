@@ -1,0 +1,36 @@
+Roteiro de apresentação React Native:
+
+Apresentação do grupo - 2 minutos
+Diego:
+ 	- apresentação do grupo
+	- Framework utilizado
+	- Dificuldades
+	- ( começamos a apresentação )
+
+Apresentação - 12 minutos
+Gabriel: 
+	- Apresenta o login
+	- Loga com o usuário
+		pedro@email.com	
+		123
+	- ( apresenta a home ) forma simples
+
+Takedi: 
+	- Apresenta o menu
+	- E apresentar funcionalidades por partes
+		( de acordo com as páginas sendo clicadas )	
+		( intervalo de falas )
+
+Fabiane:
+	- Apresenta a tela de usuário
+	- Funcionalidade de listar inscrições
+		( inscrever-se no React Js e testar no React Native)
+	- Filtro de pesquisa 
+
+Henrique:
+	- Apresenta a tela da empresa
+	- Funcionalidade inscriçÕes recebidas
+		( se quiser testar no React Js )
+	- Funcionalidade de listar vagas
+
+
