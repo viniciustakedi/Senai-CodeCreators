@@ -15,7 +15,6 @@ function Home() {
     return (
         <div className="Home">
             <Header />
-
             <div className="padding-margin">
                 <div className="titulo-home">
                     <h1>Real Vagas & SENAI</h1>

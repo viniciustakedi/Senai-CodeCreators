@@ -111,7 +111,7 @@ namespace Real_Vagas_API.Controllers
         /// <param name="usuarioAtualizado"></param>
         /// <returns>Usuario atualizado</returns>
         [HttpPut("{id}")]
-        [Authorize]
+        //[Authorize]
         public IActionResult Put(int id, DbUsuarios usuarioAtualizado)
         {
             var busca = _usuario.BuscarPorId(id);
@@ -135,7 +135,7 @@ namespace Real_Vagas_API.Controllers
         /// <param name="id"></param>
         /// <returns>Usuario deletado</returns>
         [HttpDelete("{id}")]
-        [Authorize(Roles = "1")]
+        //[Authorize(Roles = "1")]
         public IActionResult Delete(int id)
         {
             var buscar = _usuario.BuscarPorId(id);

@@ -20,6 +20,18 @@
     font-size: 1vw;
 }
 
+#imgSm {
+    width: 175px;
+    height: 185px;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+}
+
+#imgSm:hover {
+    -webkit-transform: scale(4);
+    -ms-transform: scale(4);
+    transform: scale(4);
+}
+
 .BtnPesquisa {
     display: flex;
     align-items: center;

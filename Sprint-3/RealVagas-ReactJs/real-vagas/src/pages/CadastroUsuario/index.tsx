@@ -7,6 +7,7 @@ import imgcadastro from '../../assets/image/imgcadastro.png';
 import './style.css';
 import Button  from "../../components/Button";
 import { useHistory } from 'react-router-dom';
+import InputPerson from '../../components/InputCurrency/InputMoney';
 
 
 
@@ -171,13 +172,13 @@ function Cadastro() {
                 </div>
 
                 <div className="informaçao">
-                    <Input type="text" name="CPF" label="CPF:"
+                    <InputPerson mask='cpf' type="text" name="CPF" label="CPF:"
                     onChange={e => setCpf(e.target.value)}/>
                 </div>
 
                 <div className="informaçao">
                     <Input type="text" name="Telefone" label="Telefone:" 
-                    onChange={e => setTelefone(e.target.value)} />
+                    onChange={cpf as any} />
                 </div>
 
                 <div className="informaçao">

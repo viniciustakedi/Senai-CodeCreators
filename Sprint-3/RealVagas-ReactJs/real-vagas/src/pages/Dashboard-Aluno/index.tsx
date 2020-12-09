@@ -9,7 +9,7 @@ import IconEdit from '../../assets/image/icone-editar.png';
 import '../../assets/style/global.css';
 import './style.css';
 import { Item } from 'react-bootstrap/lib/Breadcrumb';
-
+import { cpf } from '../../components/InputCurrency/Mask';
 function DashboardAluno() {
 
     const [show, setShow] = useState(false);
@@ -24,13 +24,16 @@ function DashboardAluno() {
     const [dado, setDado] = useState('');
     const [idDado, setIdDado] = useState(0);
 
-    const [usuarios, setUsuarios] = useState({});
+    const [usuarios, setUsuarios] = useState([]);
     const [dados, setDadaos] = useState([]);
 
-    const [cpf, setCpf] = useState('');
+    const [cpf1, setCpf1] = useState('');
     const [senha, setSenha] = useState('');
     const [matricula, setMatricula] = useState('');
 
+    const [nome, setNome] = useState('');
+    const [data, setData] = useState('');
+    const [telefone, setTelefone] = useState('');
 
     useEffect(() => {
         Listar();
@@ -43,50 +46,61 @@ function DashboardAluno() {
         fetch('http://localhost:5000/api/Usuarios/' + idUrl, {
             method: 'GET',
             headers: {
-                authorization: 'Bearer ' + localStorage.getItem('Real-Vagas-Token')
+                authorization: 'Bearer ' + localStorage.getItem('Real-Vagas-Token'),
+                'content-type': 'application/json',
             }
         })
             .then(response => response.json())
             .then(dados => {
                 setUsuarios(dados)
+                setIdUsuario(dados.id)
 
                 var CpfSenha = Object.values(dados)[16] as any;
                 var cpf = Object.values(CpfSenha)[1] as any;
                 var matricula = Object.values(CpfSenha)[2] as any;
                 var senha = Object.values(CpfSenha)[3] as any;
 
-                setCpf(cpf)
+                setCpf1(cpf)
                 setSenha(senha)
                 setMatricula(matricula)
             })
 
 
             .catch(Erro => console.error(Erro));
-    }
+    } 
 
     const Atualizar = () => {
-        var DadosUsuario = {
-            "nome": "Davi Takedi",
-            "dataNascimento": "2008-04-30T00:00:00",
+
+        //fazer um if ternario para manter o valor caso nào seja alterado
+        //problema pegar a string digitada
+
+        console.log(Object.values(usuarios)[1]);
+        console.log(nome);
+
+        const DadosUsuario = {
+            "nome":  nome != Object.values(usuarios)[1] ? nome : Object.values(usuarios)[1],
+            "dataNascimento": data != Object.values(usuarios)[2] ? data : Object.values(usuarios)[2],
             "sexo": "Masculino",
-            "escola": "Escola SENAI de Informática",
-            "email": "davi@gmail.com",
-            "telefone": "11974878388",
+            "escola": "SENAI de Informatica",
+            "email": "pedro@email.com",
+            "telefone": telefone,
             "estadoCivil": "solteiro",
-            "nivel": Object.values(dados)[8] as any,
-            "tipoCurso": Object.values(dados)[9] as any,
-            "curso": Object.values(dados)[10] as any,
-            "turma": Object.values(dados)[11] as any,
-            "turno": Object.values(dados)[12] as any,
-            "termo": Object.values(dados)[13] as any,
-            "idTipoUsuario": Object.values(dados)[14] as any,
-            "idDados": Object.values(dados)[15] as any,
+            "nivel": Object.values(usuarios)[8] as any,
+            "tipoCurso": Object.values(usuarios)[9] as any,
+            "curso": Object.values(usuarios)[10] as any,
+            "turma": Object.values(usuarios)[11] as any,
+            "turno": Object.values(usuarios)[12] as any,
+            "termo": Object.values(usuarios)[13] as any,
+            "idTipoUsuario": Object.values(usuarios)[14] as any,
+            "idDados": Object.values(usuarios)[15] as any,
             "idDadosNavigation": {
-                "id": Object.values(dados)[15] as any,
-                "cpf": "487382736100",
-                "numMatricula": matricula,
-                "senha": "123"
-            }
+                "id": Object.values(usuarios)[15] as any,
+                "cpf": "3912831231",
+                "numMatricula": "39878482",
+                "senha": "123",
+                "dbUsuarios": []
+            },
+            "dbInscricao": []
         };
 
         var idUsuario = localStorage.getItem("Real-Vagas-Id-Usuario") as any;
@@ -110,7 +124,6 @@ function DashboardAluno() {
             .catch(Erro => console.error(Erro));
     }
 
-
     return (
         <div>
             <Header />
@@ -125,64 +138,42 @@ function DashboardAluno() {
                         <div className="foto">
                             <img src={ImgUsuario} alt="Image de um usuário" />
                             <div className="icon">
-                                <Input id="InputEdit" label='Nome: ' name="" value={Object.values(usuarios)[1] as any} />
-                                <button id="bt" onClick={handleShow} ><img id="IconEdit" src={IconEdit} alt="icone de edição de informaçãos" /></button>
+                                <Input onChange={e => setNome(e.target.value)} name="" id="InputEdit" label='Nome:' placeholder={Object.values(usuarios)[1]}/>
                             </div>
                             <div className="icon">
-                                <Input id="InputEdit" label="Data Nascimento:" name="" value={Object.values(usuarios)[2] as any} />
-                                <button id="bt" onClick={handleShow} ><img id="IconEdit" src={IconEdit} alt="icone de edição de informaçãos" /></button>
+                                <Input onChange={e => setData(e.target.value)} id="InputEdit" label="Data Nascimento:" name="" placeholder={Object.values(usuarios)[2] as any} />
                             </div>
                             <div className="icon">
-                                <Input id="InputEdit" label="Telefone: " name="TEL" value={Object.values(usuarios)[6] as any} />
-                                <button id="bt" onClick={handleShow} ><img id="IconEdit" src={IconEdit} alt="icone de edição de informação" /></button>
+                                <Input onChange={e => setTelefone(e.target.value)} id="InputEdit" label="Telefone: " name="TEL" placeholder={Object.values(usuarios)[6] as any} />
                             </div>
                             <div className="icon">
-                                <Input id="InputEdit" label="Cpf: " name="CPF" value={cpf as any} />
-                                <button id="bt" onClick={handleShow} ><img id="IconEdit" src={IconEdit} alt="icone de edição de informação" /></button>
+                                <Input id="InputEdit" label="Estado Cívil: " name="EstadoCivil" placeholder={Object.values(usuarios)[7] as any} />
                             </div>
                             <div className="icon">
-                                <Input id="InputEdit" label="Estado Cívil: " name="EstadoCivil" value={Object.values(usuarios)[7] as any} />
-                                <button id="bt" onClick={handleShow} ><img id="IconEdit" src={IconEdit} alt="icone de edição de informação" /></button>
+                                <Input id="InputEdit" label="Sexo: " name="" placeholder={Object.values(usuarios)[3] as any} />
                             </div>
                             <div className="icon">
-                                <Input id="InputEdit" label="Sexo: " name="" value={Object.values(usuarios)[3] as any} />
-                                <button id="bt" onClick={handleShow} ><img id="IconEdit" src={IconEdit} alt="icone de edição de informação" /></button>
-                            </div>
-                            <div className="icon">
-                                <Input id="InputEdit" label="Escola: " name="" value={Object.values(usuarios)[4] as any} />
-                                <button id="bt" onClick={handleShow} ><img id="IconEdit" src={IconEdit} alt="icone de edição de informação" /></button>
+                                <Input id="InputEdit" label="Escola: " name="" placeholder={Object.values(usuarios)[4] as any} />
                             </div>
                             <div className="Informacoes">
                                 <div className="icon">
-                                    <Input id="InputEdit" label="Email: " name="Email" value={Object.values(usuarios)[5] as any} />
-                                    <button id="bt" onClick={handleShow} ><img id="IconEdit" src={IconEdit} alt="icone de edição de informação" /></button>
+                                    <Input id="InputEdit" label="Email: " name="Email" placeholder={Object.values(usuarios)[5] as any} />
                                 </div>
                                 <div className="icon">
-                                    <Input id="InputEdit" type="password" label="Senha: " name="Senha" value={senha as any} />
+                                    <Input id="InputEdit" type="password" label="Senha: " name="Senha" placeholder={senha as any} />
                                     <button id="bt" onClick={handleShow} ><img id="IconEdit" src={IconEdit} alt="icone de edição de informação" /></button>
                                 </div>
+                            <div className="icon">
+                                <Input id="InputEdit" label="Cpf: " name="CPF" placeholder={cpf1 as any }/>
+                                <button id="bt" onClick={handleShow} ><img id="IconEdit" src={IconEdit} alt="icone de edição de informação" /></button>
                             </div>
+                            </div> 
+                            <input type="submit" id="btn1" onClick={Atualizar} value="salvar" />
                         </div>
                     </div>
                 </div>
             </div>
             <Footer />
-
-            <Modal className="Modal" show={show} onHide={handleClose}>
-                <Modal.Header id="ModalColor" closeButton>
-                    <Modal.Title id="ModalColor1" >Alteração de dados</Modal.Title>
-                </Modal.Header>
-                <Modal.Body>
-                    <Input id="InputEdit1" name="Alteração" label="Insira o dado atualizado: " />
-                </Modal.Body>
-                <Modal.Footer id="ModalColor">
-                    <Button id="btn" variant="primary" onClick={handleClose}>
-                        Salvar
-            </Button>
-                </Modal.Footer>
-            </Modal>
-
-
         </div>
     )
 }
