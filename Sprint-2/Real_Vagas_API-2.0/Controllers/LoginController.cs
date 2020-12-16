@@ -28,11 +28,11 @@ namespace Real_Vagas_API.Controllers
         }
 
         /// <summary>
-        /// Request para fazer Login
+        /// Controller responsavél por emitir um token para verificar o usuário.
         /// </summary>
-        /// <param name="Usuario"></param>
-        /// <returns></returns>
-        [HttpPost] //É um método Post
+        /// <response code="200">Retorna status code 200, emitir um token de 30 minutos.</response>
+        /// <response code="404">Retorna status code 404 um não encontrado, não achar nenhum usuário com aquele email e senha.</response>   
+        [HttpPost] 
         public IActionResult Login(LoginViewModel Usuario)
         {
             EmpresasRepository empresa = new EmpresasRepository();

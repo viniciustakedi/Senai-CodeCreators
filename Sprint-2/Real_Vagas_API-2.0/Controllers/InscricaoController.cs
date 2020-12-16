@@ -15,7 +15,7 @@ namespace Real_Vagas_API.Controllers
     [Route("api/[controller]")]
     [ApiController]
     public class InscricaoController : ControllerBase
-    {
+    { 
         private readonly IInscricao _inscricaoRepository;
         public InscricaoController(IInscricao inscricao)
         {
@@ -23,9 +23,11 @@ namespace Real_Vagas_API.Controllers
         }
 
         /// <summary>
-        /// Listar Todas as incrições
+        /// Controller responsavél por listar todas as inscrições do sistema.
         /// </summary>
-        /// <returns></returns>
+        /// <response code="200">Retorna status code 200 OK, listar todas inscrições do sistemas.</response>
+        /// <response code="404">Retorna status code 404 não encontrado, não tiver nenhuma inscrição cadastrada.</response>
+        /// <response code="400">Retorna stauts code 400 bad request, caso de conflito com api</response> 
         [HttpGet]
         //[Authorize(Roles = "1,2")]
         [ProducesResponseType(StatusCodes.Status200OK)]
@@ -54,10 +56,11 @@ namespace Real_Vagas_API.Controllers
 
 
         /// <summary>
-        /// Listar uma inscrição pelo Id do usuário
+        /// Controller responsavél por listar todas as inscrições de usuário pelo seu ID.
         /// </summary>
-        /// <param name="id"></param>
-        /// <returns></returns>
+        /// <response code="200">Retorna status code 200 OK, listar todas inscrições do usuário solicitado.</response>
+        /// <response code="404">Retorna status code 404 não encontrado, caso não existir nenhuma inscrição com aquele ID no sistema.</response>
+        /// <response code="400">Retorna stauts code 400 bad request, caso de conflito com api</response> 
         [HttpGet("ListarById/id")]
         //[Authorize(Roles = "1,2")]
         [ProducesResponseType(StatusCodes.Status200OK)]
@@ -74,11 +77,10 @@ namespace Real_Vagas_API.Controllers
                 {
                     // Retorna a resposta da requisição 200 - Ok
                     return Ok(inscricaoBuscada);
-
                 }
 
                 // Retorna a resposta de requisição 404
-                return NotFound("Nenhuma incrição encontrada");
+                return NotFound("Nenhuma inscrição encontrada!!!");
             }
             catch (Exception error)
             {
@@ -87,9 +89,13 @@ namespace Real_Vagas_API.Controllers
             }
         }
 
-
+        /// <summary>
+        /// Controller responsavél por listar todas as inscrições de empresa pelo seu ID.
+        /// </summary>
+        /// <response code="200">Retorna status code 200 OK, listar todas inscrições daquela empresa.</response>
+        /// <response code="404">Retorna status code 404 não encontrado, caso não existir nenhuma inscrição no sistema.</response>
         [HttpGet("ListarByIdEmpresa/id")]
-        [Authorize(Roles = "1,2")]
+       // [Authorize(Roles = "1,2")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -108,11 +114,15 @@ namespace Real_Vagas_API.Controllers
             else
             {
                 // Retorna a resposta de requisição 404
-                return NotFound("Nenhuma incrição encontrada");
+                return NotFound("Nenhuma inscrição encontrada!!!");
             }
            
         }
 
+        /// <summary>
+        /// Controller responsavél por listar todas as inscrições de uma vaga pelo seu ID.
+        /// </summary>
+        /// <response code="200">Retorna status code 200 OK, listar todas inscrições daquela vaga.</response>
         [HttpGet("ListarByIdVaga/id")]
         //[Authorize(Roles = "1,2")]
         [ProducesResponseType(StatusCodes.Status200OK)]
@@ -120,13 +130,16 @@ namespace Real_Vagas_API.Controllers
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public IActionResult ListarByIdVaga(int id)
         {
-
             List<DbInscricao> inscricaoBuscada = _inscricaoRepository.ListarByIdVaga(id);
 
-          
             return Ok(inscricaoBuscada);
         }
 
+        /// <summary>
+        /// Controller responsavél por cadastrar uma inscrição.
+        /// </summary>
+        /// <response code="200">Retorna status code 201 criado, cadastra uma nova inscrição.</response>
+        /// <response code="400">Retorna stauts code 400 bad request, caso de conflito com api</response> 
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -146,12 +159,13 @@ namespace Real_Vagas_API.Controllers
         }
 
         /// <summary>
-        /// Buscar uma incrição pelo ID
+        /// Controller responsavél por buscar uma inscrição pelo seu ID.
         /// </summary>
-        /// <param name="id"></param>
-        /// <returns></returns>
+        /// <response code="200">Retorna status code 200 OK, listar a inscrição solicitada.</response>
+        /// <response code="404">Retorna status code 404 não encontrado, caso não existir nenhuma inscrição pelo o ID.</response>
+        /// <response code="400">Retorna stauts code 400 bad request, caso de conflito com api</response> 
         [HttpGet("{id}")]
-        [Authorize(Roles = "1,2")]
+     //   [Authorize(Roles = "1,2")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -182,10 +196,11 @@ namespace Real_Vagas_API.Controllers
 
 
         /// <summary>
-        /// Deletar um inscrição pelo ID
+        /// Controller responsavél por deletar uma inscrição pelo seu ID.
         /// </summary>
-        /// <param name="id"></param>
-        /// <returns></returns>
+        /// <response code="200">Retorna status code 200 OK, deletar a inscrição do sistema.</response>
+        /// <response code="404">Retorna status code 404 não encontrado, caso não existir o ID.</response>
+        /// <response code="400">Retorna stauts code 400 bad request, caso de conflito com api</response> 
         [HttpDelete("{id}")]
         //[Authorize(Roles = "1")]
         [ProducesResponseType(StatusCodes.Status202Accepted)]
@@ -222,11 +237,11 @@ namespace Real_Vagas_API.Controllers
 
 
         /// <summary>
-        /// Atualizar um inscrição pelo ID
+        /// Controller responsavél por atualizar uma inscrição pelo seu ID e body.
         /// </summary>
-        /// <param name="id"></param>
-        /// <param name="InscricaoAtulizada"></param>
-        /// <returns></returns>
+        /// <response code="204">Retorna status code 204 aceito, atualizar uma inscrição.</response>
+        /// <response code="404">Retorna status code 404 não encontrado, caso não existir nenhuma inscrição daquele ID.</response>
+        /// <response code="400">Retorna stauts code 400 bad request, caso de conflito com api</response> 
         [HttpPut("{id}")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]

@@ -25,36 +25,12 @@ namespace Real_Vagas_API.Repositories
             }
         }
 
-        public DbVagas BuscarPorCargo(string Cargo)
-        {
-            DbVagas VagaBuscada = ctx.DbVagas.FirstOrDefault(x => x.Cargo == Cargo);
-
-            if (VagaBuscada != null)
-            {
-                return VagaBuscada;
-            }
-
-            return null;
-        }
-
         public List<DbVagas> ListaByIdEmpresa(int Id)
         {
             using (RealVagasContext Ctx = new RealVagasContext())
             {
                 return Ctx.DbVagas.ToList().FindAll(E => E.IdEmpresa == Id && E.StatusVaga != false);
             }
-        }
-
-        public DbVagas BuscarPorData(DateTime DataPublicacao)
-        {
-            DbVagas VagaBuscada = ctx.DbVagas.FirstOrDefault(x => x.DataPublicacao == DataPublicacao);
-
-            if (VagaBuscada != null)
-            {
-                return VagaBuscada;
-            }
-
-            return null;
         }
 
         //Método que busca uma vaga por Id
@@ -69,28 +45,6 @@ namespace Real_Vagas_API.Repositories
 
             return null;
         }
-
-        public DbVagas BuscarPorLocal(string localVaga)
-        {
-            DbVagas VagaBuscada = ctx.DbVagas.FirstOrDefault(x => x.LocalVaga == localVaga);
-
-            if (VagaBuscada != null)
-            {
-                return VagaBuscada;
-            }
-
-            return null;
-        }
-
-        public DbVagas BuscarPorNomeEmpresa(string EmpresaNome)
-        {
-            using (RealVagasContext ctx = new RealVagasContext())
-            {
-                return ctx.DbVagas.FirstOrDefault(x => x.IdEmpresaNavigation.Nome == EmpresaNome);
-            }
-        }
-
-
 
         //Método que cadastra uma nova vaga
         public void Cadastrar(DbVagas VagaNova)

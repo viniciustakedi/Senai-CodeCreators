@@ -8,7 +8,8 @@ using System.Threading.Tasks;
 namespace Real_Vagas_API.Repositories
 {
     public class TipoUsuarioRepository : ITipoUsuario
-    {
+    { 
+        //Atualizar um tipo de usuário pelo ID e tipo usuário.
         public void AtualizarTipoUsuarioId(int id, DbTipoUsuario tipousuario)
         {
             using (RealVagasContext Ctx = new RealVagasContext())
@@ -21,6 +22,7 @@ namespace Real_Vagas_API.Repositories
             }
         }
 
+        //Buscar um tipo de usuário pelo seu ID.
         public DbTipoUsuario BuscarId(int id)
         {
             using (RealVagasContext Ctx = new RealVagasContext())
@@ -29,6 +31,7 @@ namespace Real_Vagas_API.Repositories
             }
         }
 
+        //Cadastrar um tipo de usuário no sistema. 
         public void Cadastrar(DbTipoUsuario tipousuario)
         {
             using (RealVagasContext Ctx = new RealVagasContext())
@@ -38,6 +41,7 @@ namespace Real_Vagas_API.Repositories
             }
         }
 
+        //Deletar um tipo de usuário pelo seu ID.
         public void Deletar(int id)
         {
             using (RealVagasContext Ctx = new RealVagasContext())
@@ -48,6 +52,7 @@ namespace Real_Vagas_API.Repositories
             }
         }
 
+        //Listar todos tipo de usuário.
         public List<DbTipoUsuario> Listar()
         {
             using (RealVagasContext Ctx = new RealVagasContext())

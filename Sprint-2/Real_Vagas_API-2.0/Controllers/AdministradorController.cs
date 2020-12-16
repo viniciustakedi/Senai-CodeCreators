@@ -8,13 +8,14 @@ using Microsoft.AspNetCore.Mvc;
 using Real_Vagas_API.Domains;
 using Real_Vagas_API.Interfaces;
 using Real_Vagas_API.Repositories;
+using Real_Vagas_API.ViewModels;
 
 namespace Real_Vagas_API.Controllers
 {
     [Produces("application/json")]
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize(Roles = "1")]
+    [Authorize(Roles = "1")] 
     public class AdministradorController : ControllerBase
     {
         private readonly IAdministrador _AdministradorRepository;
@@ -31,20 +32,20 @@ namespace Real_Vagas_API.Controllers
         }
 
         /// <summary>
-        /// Controller responsavél por criar um novo administrador. 
+        /// Controller responsavél por criar um usuário do tipo administrador. 
         /// </summary>
-        /// <response code="201">Retorna um criado e usuário será criado no sistemas.</response>
-        /// <response code="404">Retorna um não encontrado caso o email já estiver cadastrado no sistemas.</response>   
+        /// <response code="201">Retorna status code 201 caso for criado e usuário será criado no sistema.</response>
+        /// <response code="404">Retorna status code 404 um não encontrado, caso o email já estiver cadastrado no sistema.</response>   
         [HttpPost("CadastrarAdministrador")]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public IActionResult CadastrarAdministrador(DbUsuarios Usuario)
         {
-            var buscaEmpresa = _EmpresasRepository.SearchByEmpresa(Usuario.Email, "");
+            var buscaEmpresa = _EmpresasRepository.BuscarPorEmpresa(Usuario.Email, "");
             var buscarUsuario = _UsuariosRepository.BuscarPorEmail(Usuario.Email);
-            if (buscaEmpresa == null && buscarUsuario == null && Usuario.IdTipoUsuario == 1)
+            if (Usuario != null && buscaEmpresa == null && buscarUsuario == null && Usuario.IdTipoUsuario == 1)
             {
-                _AdministradorRepository.CadastrarAdm(Usuario);
+                _AdministradorRepository.CadastrarAdministrador(Usuario);
                 return StatusCode(201, "Administrador criado com sucesso!!!");
             }
             else
@@ -54,18 +55,18 @@ namespace Real_Vagas_API.Controllers
         }
 
         /// <summary>
-        /// Controller responsavél por criar um novo aluno no banco de dados. 
+        /// Controller responsavél por criar um novo usuário do tipo aluno. 
         /// </summary>
-        /// <response code="201">Retorna um criado e usuário será criado no sistemas.</response>
-        /// <response code="404">Retorna um não encontrado caso o email já estiver cadastrado no sistemas.</response>   
+        /// <response code="201">Retorna status code 201 e usuário será criado no sistema.</response>
+        /// <response code="404">Retorna status code 404 não encontrado, caso o email já estiver cadastrado no sistema.</response>   
         [HttpPost("CadastrarAluno")]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public IActionResult CadastrarAluno(DbUsuarios Usuario)
         {
-            var busca = _EmpresasRepository.SearchByEmpresa(Usuario.Email, "");
+            var busca = _EmpresasRepository.BuscarPorEmpresa(Usuario.Email, "");
             var buscar = _UsuariosRepository.BuscarPorEmail(Usuario.Email);
-            if (busca == null && buscar == null && Usuario.IdTipoUsuario == 3 || Usuario.IdTipoUsuario == 4)
+            if (Usuario != null && busca == null && buscar == null && Usuario.IdTipoUsuario == 3 || Usuario.IdTipoUsuario == 4)
             {
                 _AdministradorRepository.CadastrarAluno(Usuario);
                 return StatusCode(201, "Aluno criado com sucesso!!!");
@@ -77,33 +78,33 @@ namespace Real_Vagas_API.Controllers
         }
 
         /// <summary>
-        /// Controller responsavél por criar um nova empresa no banco de dados. 
+        /// Controller responsavél por criar um novo usuário do tipo empresa.
         /// </summary>
-        /// <response code="201">Retorna um criado e usuário será criado no sistemas.</response>
-        /// <response code="404">Retorna um não encontrado caso o email já estiver cadastrado no sistemas.</response>   
+        /// <response code="201">Retorna status code 201 usuário será criado no sistema.</response>
+        /// <response code="404">Retorna status code 401 não encontrado, caso o email já estiver cadastrado no sistema.</response>   
         [HttpPost("CadastrarEmpresa")]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public IActionResult CadastrarEmpresa(DbEmpresas Empresa)
         {
-            var busca = _EmpresasRepository.SearchByEmpresa(Empresa.Email, Empresa.Cnpj);
+            var busca = _EmpresasRepository.BuscarPorEmpresa(Empresa.Email, Empresa.Cnpj);
             var buscar = _UsuariosRepository.BuscarPorEmail(Empresa.Email);
-            if (busca == null && buscar == null && Empresa.IdTipoUsuarioNavigation.Id == 2)
+            if (Empresa != null && busca == null && buscar == null && Empresa.IdTipoUsuario == 2)
             {
                 _AdministradorRepository.CadastrarEmpresa(Empresa);
                 return StatusCode(201, "Empresa criado com sucesso!!!");
             }
             else
             {
-                return StatusCode(404, "Empresa não foi criado, email ou cpf já existente no sistema!!!");
+                return StatusCode(404, "Empresa não foi criada, email ou cpf já existente no sistema!!!");
             }
         }
 
         /// <summary>
-        /// Controller responsavél listar todas as empresas no sistema.
+        /// Controller responsavél por listar todos os usuários do tipo empresa.
         /// </summary>
-        /// <response code="200">Retorna OK, listar de todas empresas cadastras.</response>
-        /// <response code="404">Retorna um não encontrado, caso não tiver nenhuma empresa cadastrada.</response>   
+        /// <response code="200">Retorna status code 200 OK, listar todos os usuários do tipo empresa.</response>
+        /// <response code="404">Retorna status code 404 não encontrado, caso não tiver nenhuma empresa cadastrada.</response>   
         [HttpGet("ListarEmpresas")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -121,10 +122,10 @@ namespace Real_Vagas_API.Controllers
         }
 
         /// <summary>
-        /// Controller responsavél listar todos os alunos no sistema.
+        /// Controller responsavél por listar todos os usuários do tipo aluno e ex-aluno.
         /// </summary>
-        /// <response code="200">Retorna OK, listar de todos os alunos cadastras.</response>
-        /// <response code="404">Retorna um não encontrado, caso não tiver nenhum aluno cadastrado.</response>   
+        /// <response code="200">Retorna status code 200 OK, listar de todos os alunos cadastras.</response>
+        /// <response code="404">Retorna status coide 404 não encontrado, caso não tiver nenhum aluno cadastrado.</response>   
         [HttpGet("ListarAluno")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -142,10 +143,10 @@ namespace Real_Vagas_API.Controllers
         }
 
         /// <summary>
-        /// Controller responsavél listar todos os adminstradores no sistema.
+        /// Controller responsavél por listar todos usuários do tipo administrador.
         /// </summary>
-        /// <response code="200">Retorna OK, listar de todos os adminstradores cadastras.</response>
-        /// <response code="404">Retorna um não encontrado, adminstradores caso não tiver nenhum aluno cadastrado.</response>   
+        /// <response code="200">Retorna status code 200 OK, listar todos os usuários do tipo administrador</response>
+        /// <response code="404">Retorna status code 404 um não encontrado, caso não existe nenhum administrador cadastrado</response>   
         [HttpGet("ListarAdministrador")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -163,37 +164,34 @@ namespace Real_Vagas_API.Controllers
         }
 
         /// <summary>
-        /// Controller para deletar uma empresa do banco de dados
+        /// Controller responsavél por deletar um usuário do tipo empresa.
         /// </summary>
         /// <param name="ID"></param>
-        /// <response code="202">Retorna um aceito caso o ID for existente, assim deletado a empresa do sistema.</response>
-        /// <response code="404">Retorna um não encontrado caso o ID não existe no sistema.</response>   
+        /// <response code="202">Retorna status code 202 aceito, caso o ID for existente, assim deletado a empresa do sistema.</response>
+        /// <response code="404">Retorna status code 404 não encontrado, caso o ID não for existe no sistema.</response>   
         [HttpDelete("DeletarEmpresa/{ID}")]
-        [Authorize(Roles = "1")]
         [ProducesResponseType(StatusCodes.Status202Accepted)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public IActionResult DeletarEmpresa(int ID)
         {
-            var delete = _EmpresasRepository.SearchById(ID);
+            var delete = _EmpresasRepository.BuscarPorId(ID);
             if (delete != null)
             {
                 _EmpresasRepository.Delete(ID);
-                return StatusCode(202, "Empresa deletada do bancos de dados com sucesso!!!");
+                return StatusCode(202, "Empresa deletada com sucesso!!!");
             }
             else
             {
-                return StatusCode(404, "Empresa não encontrada com esse ID informado!!!");
+                return StatusCode(404, "Nenhuma empresa encontrada com ID informado!!!");
             }
         }
 
         /// <summary>
-        /// Controller para deletar um administador do banco de dados
+        /// Controller responsavél por deletar um usuário do tipo administrador.
         /// </summary>
-        /// <param name="ID"></param>
-        /// <response code="202">Retorna um aceito caso o ID for existente, assim deletado o administador do sistema.</response>
-        /// <response code="404">Retorna um não encontrado caso o ID não existe no sistema.</response>   
+        /// <response code="202">Retorna status code 202 aceito, caso o ID for existente deletado o administador do sistema.</response>
+        /// <response code="404">Retorna status code 404 não encontrado, caso o ID não existe no sistema.</response>   
         [HttpDelete("DeletarAdministrador/{ID}")]
-        [Authorize(Roles = "1")]
         [ProducesResponseType(StatusCodes.Status202Accepted)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public IActionResult DeletarAdministrador(int ID)
@@ -201,27 +199,26 @@ namespace Real_Vagas_API.Controllers
             var delete = _UsuariosRepository.BuscarPorId(ID);
             if (delete != null && delete.IdTipoUsuario == 1)
             {
-                _AdministradorRepository.DeletarAdm(ID);
-                return StatusCode(202, "Administrador deletado do bancos de dados com sucesso!!!");
+                _AdministradorRepository.DeletarAdministrador(ID);
+                return StatusCode(202, "Administrador deletado com sucesso!!!");
             }
             else
             {
-                return StatusCode(404, "Administrador não encontrado com esse ID informado!!!");
+                return StatusCode(404, "Nenhum administrador foi encontrado com ID informado!!!");
             }
         }
 
         /// <summary>
-        /// Controller responsável por buscar dados do banco de dados apartir do email ou cnpj.
+        /// Controller responsável por buscar uma usuário do tipo empresa apartir do cnpj ou email.
         /// </summary>
-        /// <response code="200">Retorna um ok, os dados e as informadas da empresa buscada. </response>
-        /// <response code="404">Retorna não encontrado caso o email ou cnpj informado não estiver cadastrados.</response>
-        [HttpGet("BuscarPorEmpresa")]
-        [Authorize(Roles = "1")]
+        /// <response code="200">Retorna status code 200 ok, listar os dados do usuário buscado.</response>
+        /// <response code="404">Retorna status code 404 não encontrado, caso o email ou cnpj informado não existir.</response>
+        [HttpPost("BuscarPorEmpresa")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public IActionResult BuscarPorEmpresa(DbEmpresas Empresa)
+        public IActionResult BuscarPorEmpresa(EmpresaViewModel Empresa)
         {
-            var Busca = _EmpresasRepository.SearchByEmpresa(Empresa.Email, Empresa.Cnpj);
+            var Busca = _EmpresasRepository.BuscarPorEmpresa(Empresa.Email, Empresa.CNPJ);
 
             if (Busca != null)
             {
@@ -229,16 +226,16 @@ namespace Real_Vagas_API.Controllers
             }
             else
             {
-                return StatusCode(404, "Nenhuma empresa encontrada com esse email e cnpj!!!");
+                return StatusCode(404, "Nenhuma empresa encontrada com esse email e CNPJ!!!");
             }
         }
 
         /// <summary>
-        /// Deletar um inscrição pelo ID
+        /// Controller responsável por deletar uma inscrição pelo seu ID.
         /// </summary>
-        /// <response code="202">Retorna um aceiteo, e deletar a inscrição do sistemas.</response>
-        /// <response code="404">Retorna bad request em caso de problemas na API.</response> 
-        /// <response code="400">Retorna não encontrado caso o ID informado não estiver cadastrado.</response>        
+        /// <response code="202">Retorna status code 202 aceito, deletar a inscrição do sistema.</response>
+        /// <response code="404">Retorna staus code 404 não encontrado, caso o ID informado não existir no sistema.</response>        
+        /// <response code="400">Retorna stauts code 400 bad request, caso de conflito com api</response> 
         [HttpDelete("DeletarInscricao/{id}")]
         [ProducesResponseType(StatusCodes.Status202Accepted)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -254,11 +251,11 @@ namespace Real_Vagas_API.Controllers
                     // Faz a chamada para o método
                     _InscricaosRepository.Deletar(id);
 
-                    // Retora a resposta da requisição 202 
+                    // Retorna a resposta da requisição 202 
                     return StatusCode(202);
                 }
                 // Retorna a resposta da requisição 404 - Not Found
-                return NotFound("Nenhuma inscrição encontrada");
+                return NotFound("Nenhuma inscrição encontrada!!!");
             }
             catch (Exception error)
             {
@@ -271,11 +268,11 @@ namespace Real_Vagas_API.Controllers
         }
 
         /// <summary>
-        /// Deleta um usuário pelo id do sistema
+        /// Controller responsável por deletar um usuário do tipo aluno e ex-aluno.
         /// </summary>
-        /// <response code="202">Retorna um aceito, deletar o usuário do sistema.</response>
-        /// <response code="404">Retorna bad request em caso de problemas na API.</response> 
-        /// <response code="400">Retorna não encontrado caso o ID informado não estiver cadastrado.</response>        
+        /// <response code="202">Retorna status code 202 aceito, deletar o usuário do sistema.</response>
+        /// <response code="404">Retorna status code 404 não encontrado, caso o ID informado não existir no sistema.</response>        
+        /// <response code="400">Retorna stauts code 400 bad request, caso de conflito com api.</response> 
         [HttpDelete("DeletarUsuario/{id}")]
         [ProducesResponseType(StatusCodes.Status202Accepted)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -295,7 +292,7 @@ namespace Real_Vagas_API.Controllers
                     return StatusCode(202);
                 }
                 // Retorna a resposta da requisição 404 - Not Found
-                return NotFound("Nenhuma inscrição encontrada");
+                return NotFound("Nenhum usuário encontrado com ID informado!!!");
             }
             catch (Exception error)
             {

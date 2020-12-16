@@ -15,6 +15,7 @@ import Chat from './pages/Chat';
 import PagCurriculos from './pages/Dashboard-Empresa/Página-do-currícúlo';
 import { parseJWT } from './services/auth';
 import Oportunidade from './pages/CadastrarVagas';
+import TestePronto from './pages/TestePronto';
 
 function Routers() {
 
@@ -104,6 +105,7 @@ function Routers() {
                 <Route path="/Sobre" component={Sobre} />
                 <Route path="/Dicas" component={Dicas} />
                 <Route path="/Teste" component={TesteComp} />
+                <Route path="/TesteComportamental" component={TestePronto} />
 
                 <Route path='/Personalidade' component={() => { 
                 window.location.href = 'https://www.personalidades.mobi/Perfil_Comportamental/'; 

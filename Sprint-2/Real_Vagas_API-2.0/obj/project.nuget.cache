@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "VGb+Oh79Gojod+dQd1rQMEJCHH6eB/VXcJ/sIZHicx4j8Wl3mqnvt7ax600ZOY6xT8YBGW66tEdSzHa52EbFDA==",
+  "dgSpecHash": "46g/ItLSWrFcWAaxqP114EloQH+P0305FbIZTkbnGEzuOQYpbWHxDV5MW9XhoWKcP9F7CWYdgj/8s7sHzcXHng==",
   "success": true,
-  "projectFilePath": "C:\\Users\\vinic\\Desktop\\Senai-CodeCreators\\Sprint-2\\Real_Vagas_API-2.0\\Real_Vagas_API.csproj",
+  "projectFilePath": "C:\\Users\\vinic\\Desktop\\BackUp\\Senai-CodeCreators\\Sprint-2\\Real_Vagas_API-2.0\\Real_Vagas_API.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\vinic\\.nuget\\packages\\microsoft.aspnet.webapi.client\\5.2.6\\microsoft.aspnet.webapi.client.5.2.6.nupkg.sha512",
     "C:\\Users\\vinic\\.nuget\\packages\\microsoft.aspnetcore\\2.1.1\\microsoft.aspnetcore.2.1.1.nupkg.sha512",

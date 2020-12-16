@@ -13,7 +13,7 @@ GO
 --Criações das tabelas DLL
 CREATE TABLE DbDados (
 	ID	INT PRIMARY KEY IDENTITY,
-	Cpf					VARCHAR (14),
+	Cpf					VARCHAR (255),
 	NumMatricula		VARCHAR (255),
 	Senha				VARCHAR (255),
 );
@@ -29,8 +29,8 @@ CREATE TABLE DbEmpresas (
 	ID		INT PRIMARY KEY IDENTITY,
 	Nome		VARCHAR (255),
 	Email			VARCHAR (255),
-	Telefone		VARCHAR (20),
-	CNPJ			VARCHAR	(20),
+	Telefone		VARCHAR (255),
+	CNPJ			VARCHAR	(255),
 	RazaoSocial		VARCHAR (255),
 	NomeResponsavel	VARCHAR (255),
 	Senha			VARCHAR (255),
@@ -40,13 +40,14 @@ GO
 
 CREATE TABLE DbUsuarios (
 	ID				INT PRIMARY KEY IDENTITY,
-	Nome			VARCHAR (255),
+	Nome			text,
 	DataNascimento		DATE,
 	Sexo				VARCHAR (255),
 	Escola				VARCHAR (255),
-	Email				VARCHAR (255),
+	Email				text,
 	Telefone			VARCHAR (255),
 	EstadoCivil			VARCHAR (255),
+	UrlCurriculo		text,
 	Nivel				VARCHAR (255),
 	TipoCurso			VARCHAR (255),
 	Curso				VARCHAR (255),

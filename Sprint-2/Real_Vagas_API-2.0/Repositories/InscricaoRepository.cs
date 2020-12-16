@@ -10,6 +10,7 @@ namespace Real_Vagas_API.Repositories
 {
     public class InscricaoRepository : IInscricao
     {
+        //Listar todas as inscrições.
         public List<DbInscricao> Listar()
         {
             using (RealVagasContext ctx = new RealVagasContext())
@@ -17,8 +18,9 @@ namespace Real_Vagas_API.Repositories
                 return ctx.DbInscricao.ToList();
             }
 
-        }
+        } 
 
+        //Buscar uma inscrição pelo seu ID.
         public DbInscricao BuscarPorId(int id)
         {
             using (RealVagasContext ctx = new RealVagasContext())
@@ -28,6 +30,7 @@ namespace Real_Vagas_API.Repositories
 
         }
 
+        //Deletar uma inscrição pelo seu ID.
         public void Deletar(int id)
         {
             using (RealVagasContext ctx = new RealVagasContext())
@@ -38,6 +41,7 @@ namespace Real_Vagas_API.Repositories
             }
         }
 
+        //Cadastrar uma nova inscrição.
         public void Cadastrar(DbInscricao inscricao)
         {
             using (RealVagasContext ctx = new RealVagasContext())
@@ -47,15 +51,27 @@ namespace Real_Vagas_API.Repositories
             }
         }
 
+        //Listar todas inscrições de um usuário pelo seu ID.
         public List<DbInscricao> ListarById(int id)
         {
             using (RealVagasContext ctx = new RealVagasContext())
             {
- 
-                return ctx.DbInscricao.Include(I => I.IdVagaNavigation.IdEmpresaNavigation).ToList().FindAll(I => I.IdUsuario == id & I.StatusInscricao == true );
+                List<DbInscricao> NovasInscricaos = new List<DbInscricao>();
+                List<DbInscricao> inscricaos = ctx.DbInscricao.Include(I => I.IdVagaNavigation.IdEmpresaNavigation)
+                    .ToList().FindAll(I => I.IdUsuario == id & I.StatusInscricao == true);
+                    
+                AdiconalRepository adiconal = new AdiconalRepository();
+
+                foreach (var item in inscricaos)
+                {
+                    adiconal.DecodeEmpresa(item.IdVagaNavigation.IdEmpresaNavigation, false);
+                    NovasInscricaos.Add(item);
+                }
+                return NovasInscricaos; 
             }
         }
 
+        //Atualizar uma inscrição pelo seu ID e body.
         public void Atualizar(int id, DbInscricao inscricaoAtulizada)
         {
             using (RealVagasContext ctx = new RealVagasContext())
@@ -73,23 +89,45 @@ namespace Real_Vagas_API.Repositories
             }
         }
 
+        //Listar todas inscrições de uma empresa pelo seu ID.
         public List<DbInscricao> ListarByIdEmpresa(int id)
         {
             using (RealVagasContext ctx = new RealVagasContext())
             {
 
-                return ctx.DbInscricao.Include(I => I.IdVagaNavigation)
-                    .ToList().FindAll(I => I.IdVagaNavigation.IdEmpresa == id 
+                List<DbInscricao> NovasInscricaos = new List<DbInscricao>();
+                List<DbInscricao> inscricaos = ctx.DbInscricao.Include(I => I.IdVagaNavigation).Include(I => I.IdUsuarioNavigation)
+                    .ToList().FindAll(I => I.IdVagaNavigation.IdEmpresa == id
                     && I.IdVagaNavigation.StatusVaga != false);
+
+                AdiconalRepository adiconal = new AdiconalRepository();
+
+                foreach (var item in inscricaos)
+                {
+                    adiconal.DecodeUsuario(item.IdUsuarioNavigation, false);
+                    NovasInscricaos.Add(item);
+                }
+                return NovasInscricaos;
             }
         }
 
+        //Listar todas inscrições de uma determinada vaga pelo seu ID.
         public List<DbInscricao> ListarByIdVaga(int id)
         {
             using (RealVagasContext ctx = new RealVagasContext())
             {
-                return ctx.DbInscricao.Include(I => I.IdVagaNavigation)
+                List<DbInscricao> NovasInscricaos = new List<DbInscricao>();
+                  List<DbInscricao> inscricaos = ctx.DbInscricao.Include(I => I.IdVagaNavigation)
                     .Include(I => I.IdUsuarioNavigation).ToList().FindAll(I => I.IdVaga == id);
+
+                AdiconalRepository adiconal = new AdiconalRepository();
+
+                foreach (var item in inscricaos)
+                {
+                    adiconal.DecodeUsuario(item.IdUsuarioNavigation, false);
+                    NovasInscricaos.Add(item);
+                }
+                return NovasInscricaos;
             }
         }
     }

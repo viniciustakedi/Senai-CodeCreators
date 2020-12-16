@@ -1,22 +1,33 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Header from '../../components/Header';
 import icone1 from '../../assets/image/icone1.png';
+import lupa from '../../assets/image/icone-busca.png';
 import curriculo from '../../assets/image/curriculo.png';
+import Modelo_de_Curriculo1 from '../../assets/image/Modelo_de_Curriculo1.jpg';
+import Modelo_de_Curriculo2 from '../../assets/image/Modelo_de_Curriculo2.jpg';
 import teste from '../../assets/image/teste.png';
 import './style.css';
 import '../../assets/style/global.css';
 import Footer from '../../components/Footer';
-import { Modal, Button } from 'react-bootstrap';
+import Button from "../../components/Button";
+import { Modal } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
 
 
 function Dicas() {
+    const [show, setShow] = useState(false);
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
+
+
 
     return (
         <div >
 
             <Header />
+
+
 
 
             <div className="Dicas">
@@ -93,7 +104,9 @@ function Dicas() {
 
 
                     <div className="curriculo">
-                        <img id="imgcurriculo" src={curriculo} alt='curriculo' title="Icone modelo de currículo" />
+                        <img id="imgcurriculo" src={curriculo} alt='curriculo' title="Icone modelo de currículo" /><input onClick={handleShow} type="button" name="botao-analise" value="Modelos de currículos " className="input-modal"></input>
+
+
 
                     </div>
 
@@ -103,8 +116,45 @@ function Dicas() {
 
             </div>
 
-            <Footer />
 
+
+            <Modal show={show} onHide={handleClose} >
+                <Modal.Header closeButton >
+                    <Modal.Title>Modelos de currículo</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    <div className="curriculos">
+
+                        <div className="curriculo1">
+
+                            <a href={require('../../assets/documents/Modelo_de_Curricul01.pdf')} target="_blank">
+                                <img
+                                    id="curriculos" src={Modelo_de_Curriculo1} alt='curriculo' title="curriculo" />
+                            </a>
+
+                        </div>
+
+
+                        <div className="curriculo2">
+                            <a href={require('../../assets/documents/Modelo_de_Curricul02.pdf')} target="_blank">
+                                <img
+                                    id="curriculos" src={Modelo_de_Curriculo2} alt='curriculo' title="curriculo" />
+                            </a>
+                        </div>
+
+                    </div>
+
+                </Modal.Body>
+            </Modal>
+
+
+
+
+            <div>
+                <Footer />
+
+
+            </div>
         </div>
     );
 }

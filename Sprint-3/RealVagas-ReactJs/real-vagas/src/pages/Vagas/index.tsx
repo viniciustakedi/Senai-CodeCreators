@@ -111,57 +111,59 @@ function Vagas() {
 
 
     const Inscrito = (id: any) => {
-        var inscricao = {};
-        var Metodo = "";
-        var UrlInscricao = "";
-        const itemBuscado = Object.values(inscricoes).filter((user:any)=> user.idVaga === id)
 
-        var IdInscricao = (itemBuscado.length != 0 ) ? Object.values(itemBuscado[0])[0] : false;
+        if (parseJWT() == 3 || parseJWT() == 4) {
+            var inscricao = {};
+            var Metodo = "";
+            var UrlInscricao = "";
+            const itemBuscado = Object.values(inscricoes).filter((user: any) => user.idVaga === id)
 
-        console.log(itemBuscado.length)
-        UrlInscricao = (itemBuscado.length == 0) ? "http://localhost:5000/api/Inscricao/" : "http://localhost:5000/api/Inscricao/" + IdInscricao;
+            var IdInscricao = (itemBuscado.length != 0) ? Object.values(itemBuscado[0])[0] : false;
 
-        Metodo = (itemBuscado.length == 0) ? "POST" : "PUT";
+            console.log(itemBuscado.length)
+            UrlInscricao = (itemBuscado.length == 0) ? "http://localhost:5000/api/Inscricao/" : "http://localhost:5000/api/Inscricao/" + IdInscricao;
 
-        var putStatus = (itemBuscado.length != 0 && Object.values(itemBuscado[0])[1] == false)? true : false;
+            Metodo = (itemBuscado.length == 0) ? "POST" : "PUT";
 
-        if (itemBuscado.length == 0) {
-            inscricao = {
-                statusInscricao: true,
-                dataInscricao: new Date(),
-                idVaga: id,
-                idUsuario: parseInt(localStorage.getItem("Real-Vagas-Id-Usuario") as any)
+            var putStatus = (itemBuscado.length != 0 && Object.values(itemBuscado[0])[1] == false) ? true : false;
+
+            if (itemBuscado.length == 0) {
+                inscricao = {
+                    statusInscricao: true,
+                    dataInscricao: new Date(),
+                    idVaga: id,
+                    idUsuario: parseInt(localStorage.getItem("Real-Vagas-Id-Usuario") as any)
+                }
             }
-        } 
-        else
-        {
-            inscricao = {
-                statusInscricao: putStatus,
-                dataInscricao: new Date(),
-                idVaga: id,
-                idUsuario: parseInt(localStorage.getItem("Real-Vagas-Id-Usuario") as any)
+            else {
+                inscricao = {
+                    statusInscricao: putStatus,
+                    dataInscricao: new Date(),
+                    idVaga: id,
+                    idUsuario: parseInt(localStorage.getItem("Real-Vagas-Id-Usuario") as any)
+                }
             }
+
+            console.log(JSON.stringify(inscricao));
+            console.log(Metodo);
+            console.log(UrlInscricao)
+
+            fetch(UrlInscricao, {
+                method: Metodo,
+                body: JSON.stringify(inscricao),
+                headers: {
+                    authorization: 'Bearer ' + localStorage.getItem('Real-Vagas-Token'),
+                    'content-type': 'application/json', //Tipo do conteudo é uma aplicação Json
+                },
+            })
+                .then(() => {
+                    var putButton = (itemBuscado.length == 0) ? id : Object.values(itemBuscado[0])[3];
+                    console.log(putButton)
+                    ButtonChange(putButton);
+                    InscricoesUsuario();
+                })
+                .catch(Erro => console.error(Erro));
         }
-
-        console.log(JSON.stringify(inscricao));
-        console.log(Metodo);
-        console.log(UrlInscricao)
-
-        fetch(UrlInscricao, {
-            method: Metodo,
-            body: JSON.stringify(inscricao),
-            headers: {
-                authorization: 'Bearer ' + localStorage.getItem('Real-Vagas-Token'),
-                'content-type': 'application/json', //Tipo do conteudo é uma aplicação Json
-            },
-        })
-        .then(()=>{
-            var putButton = (itemBuscado.length == 0)? id : Object.values(itemBuscado[0])[3]; 
-            console.log(putButton)
-            ButtonChange(putButton);
-            InscricoesUsuario();
-        })
-            .catch(Erro => console.error(Erro));
 
     }
 
@@ -187,36 +189,35 @@ function Vagas() {
 
 
     function ButtonChange(id: any) {
-        if(inscricoes.length !== 0)
-        {
-            const itemBuscado = Object.values(inscricoes).filter((user:any)=> user.idVaga === id)
+        if (inscricoes.length !== 0) {
+            const itemBuscado = Object.values(inscricoes).filter((user: any) => user.idVaga === id)
             var string = "";
             var bool;
 
             itemBuscado.map((item: any) => {
                 bool = item.statusInscricao
             })
-            
+
             if (bool == true) {
-                
+
                 string = "Inscrito";
             }
             else {
                 string = "Inscrever-se";
             }
-            
+
             return string;
-        }else{
+        } else {
             return "Inscrever-se";
         }
     }
 
 
-        const formatter = new Intl.NumberFormat('pt-BR', {
+    const formatter = new Intl.NumberFormat('pt-BR', {
         style: 'currency',
         currency: 'BRL',
         minimumFractionDigits: 2
-            })
+    })
     return (
         <div>
             <Header />
@@ -255,7 +256,7 @@ function Vagas() {
                                             <h2>{item.localVaga}</h2>
 
                                             {/* Salário */}
-                                            <h3>{'Salário: '+formatter.format(item.salario)}</h3>
+                                            <h3>{'Salário: ' + formatter.format(item.salario)}</h3>
                                         </div>
 
 
@@ -301,7 +302,7 @@ function Vagas() {
                                             <h2>{dado.localVaga}</h2>
 
                                             {/* Salário */}
-                                            <h3>{'Salário: '+ formatter.format(dado.salario)}</h3>
+                                            <h3>{'Salário: ' + formatter.format(dado.salario)}</h3>
                                         </div>
                                     </div>
 

@@ -14,7 +14,7 @@ namespace Real_Vagas_API.Controllers
     [Authorize(Roles = "1")]
     [Produces("application/json")]
     [Route("api/[controller]")]
-    [ApiController]
+    [ApiController] 
     public class TipoUsuarioController : ControllerBase
     {
         private readonly ITipoUsuario _tipousuarioRepository;
@@ -24,10 +24,11 @@ namespace Real_Vagas_API.Controllers
         }
 
         /// <summary>
-        /// Método Post para cadastrar um usuário
+        /// Controller responsavél por cadastrar um novo tipo de usuário.
         /// </summary>
-        /// <param name="tipousuario"></param>
-        /// <returns>Tipo Usuário Cadastrado</returns>
+        /// <response code="201">Retorna status code 200, listar todos tipo de usuários do sistema.</response>
+        /// <response code="403">Retorna status code 404 um não encontrado, não tiver nenhum tipo de usuário.</response>   
+        /// <response code="400">Retorna stauts code 400 bad request, caso de conflito com api</response> 
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status200OK)] //Retorna um Ok caso o tipo usuário seja cadastrado 
         [ProducesResponseType(StatusCodes.Status400BadRequest)] //Retorna um bad request caso dê algum problema ao cadastrar um tipo usuário
@@ -54,13 +55,15 @@ namespace Real_Vagas_API.Controllers
 
 
         /// <summary>
-        /// Método Delete para deletar um tipo usuário
+        /// Controller responsavél por deletar um tipo de usuário.
         /// </summary>
-        /// <param name="id"></param>
-        /// <returns>TipoUsuario Deletado</returns>
+        /// <response code="200">Retorna status code 200, deletar um tipo de usuário.</response>
+        /// <response code="404">Retorna status code 404 um não encontrado, caso não existir o ID.</response>   
+        /// <response code="400">Retorna stauts code 400 bad request, caso de conflito com api</response> 
         [HttpDelete("{id}")]
-        [ProducesResponseType(StatusCodes.Status202Accepted)] //Retorna um accepted caso o tipo usuário for encontrado e deletado
-        [ProducesResponseType(StatusCodes.Status404NotFound)] //Retorna um NotFound caso o tipo usuário não seja encontrado
+        [ProducesResponseType(StatusCodes.Status200OK)] 
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public IActionResult Delete(int id)
         {
             try
@@ -84,12 +87,13 @@ namespace Real_Vagas_API.Controllers
 
 
         /// <summary>
-        /// Método Get para listar todos os tipos de usuários
+        /// Controller responsavél por listar todos tipo de usuários.
         /// </summary>
-        /// <returns>Lista tipos usuários</returns>
+        /// <response code="200">Retorna status code 200, listar todos tipo de usuários do sistema.</response>
+        /// <response code="404">Retorna status code 404 um não encontrado, se não encontrar nenhum tipo de usuário.</response>   
         [HttpGet]
-        [ProducesResponseType(StatusCodes.Status200OK)] //Retorna um Ok caso ele encontre todos os tipos de usuários
-        [ProducesResponseType(StatusCodes.Status401Unauthorized)] //Retorna um Unauthorized caso o usuário não tenha permissão para listar os tipos de usuários
+        [ProducesResponseType(StatusCodes.Status200OK)] 
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public IActionResult Get()
         {
             var buscar = _tipousuarioRepository.Listar();
@@ -104,14 +108,15 @@ namespace Real_Vagas_API.Controllers
         }
 
         /// <summary>
-        /// Busca um tipo usuário pelo Id
+        /// Controller responsavél por buscar um tipo de usuário pelo seu ID.
         /// </summary>
-        /// <param name="id"></param>
-        /// <returns>Busca tipo usuario pelo Id</returns>
+        /// <response code="200">Retorna status code 200, buscar o tipo de usuário pelo seu ID.</response>
+        /// <response code="404">Retorna status code 404 um não encontrado, se não existir o ID.</response>   
+        /// <response code="400">Retorna stauts code 400 bad request, caso de conflito com api</response> 
         [HttpGet("{id}")]
-        [ProducesResponseType(StatusCodes.Status200OK)] //Retorna um Ok caso o tipo usuário for encontrado
-        [ProducesResponseType(StatusCodes.Status401Unauthorized)] //Retorna um não autorizado caso o usuário não tenha permissão para ver essa informação
-        [ProducesResponseType(StatusCodes.Status404NotFound)] //Retorna um não encontrado caso o Id não for encontrado
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)] 
         public IActionResult GetId(int id)
         {
             try
@@ -129,15 +134,15 @@ namespace Real_Vagas_API.Controllers
         }
 
         /// <summary>
-        /// Atualizar um tipo usuário por Id
+        /// Controller responsavél por atualizar um tipo de usuário pelo ID e body.
         /// </summary>
-        /// <param name="id"></param>
-        /// <param name="tipousuarioAtualizado"></param>
-        /// <returns></returns>
+        /// <response code="200">Retorna status code 200, atualizar um tipo de usuário.</response>
+        /// <response code="404">Retorna status code 404 um não encontrado, caso o ID do tipo de usuário não exista.</response>   
+        /// <response code="400">Retorna stauts code 400 bad request, caso de conflito com api</response> 
         [HttpPut("{id}")]
-        [ProducesResponseType(StatusCodes.Status200OK)] //Retorna um Ok caso o tipo usuário for encontrado e atualizado
-        [ProducesResponseType(StatusCodes.Status401Unauthorized)] //Retorna um não autorizado caso o usuário não tenha permissão para efetuar essa ação
-        [ProducesResponseType(StatusCodes.Status404NotFound)] //Retorna um não encontrado caso o Id não for encontrado
+        [ProducesResponseType(StatusCodes.Status200OK)] 
+        [ProducesResponseType(StatusCodes.Status404NotFound)] 
+        [ProducesResponseType(StatusCodes.Status400BadRequest)] 
         public IActionResult PulIdUrl(int id, DbTipoUsuario tipousuarioAtualizado)
         {
             try

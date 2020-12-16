@@ -4,6 +4,7 @@
     justify-content: center;
     flex-direction: column;
     padding-bottom: 4vw;
+    min-height: calc(100vh - 70px);
 }
 
 .pesquisa {

@@ -1,6 +1,7 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Real_Vagas_API.Repositories;
 
 namespace Real_Vagas_API.Domains
 {
@@ -26,9 +27,9 @@ namespace Real_Vagas_API.Domains
         {
             if (!optionsBuilder.IsConfigured)
             {
-                //Gabriel optionsBuilder.UseSqlServer("Server=LAPTOP-U61L15JH\\SQLEXPRESS2019;Database=RealVagas;Trusted_Connection=True;");
-                optionsBuilder.UseSqlServer("Server=LAPTOP-QQ7IRANA\\SQLEXPRESS2019;Database=RealVagas;Trusted_Connection=True;");
-                //optionsBuilder.UseSqlServer("Server=LAPTOP-OEOULMOC\\SQLEXPRESS;Database=RealVagas;Trusted_Connection=True;");
+                AdiconalRepository adiconal = new AdiconalRepository();
+
+                optionsBuilder.UseSqlServer(adiconal.conexao("Vinicius"));
             }
         }
 
@@ -39,7 +40,7 @@ namespace Real_Vagas_API.Domains
                 entity.Property(e => e.Id).HasColumnName("ID");
 
                 entity.Property(e => e.Cpf)
-                    .HasMaxLength(14)
+                    .HasMaxLength(255)
                     .IsUnicode(false);
 
                 entity.Property(e => e.NumMatricula)
@@ -57,7 +58,7 @@ namespace Real_Vagas_API.Domains
 
                 entity.Property(e => e.Cnpj)
                     .HasColumnName("CNPJ")
-                    .HasMaxLength(20)
+                    .HasMaxLength(255)
                     .IsUnicode(false);
 
                 entity.Property(e => e.Email)
@@ -81,7 +82,7 @@ namespace Real_Vagas_API.Domains
                     .IsUnicode(false);
 
                 entity.Property(e => e.Telefone)
-                    .HasMaxLength(20)
+                    .HasMaxLength(255)
                     .IsUnicode(false);
 
                 entity.HasOne(d => d.IdTipoUsuarioNavigation)
@@ -126,9 +127,7 @@ namespace Real_Vagas_API.Domains
 
                 entity.Property(e => e.DataNascimento).HasColumnType("date");
 
-                entity.Property(e => e.Email)
-                    .HasMaxLength(255)
-                    .IsUnicode(false);
+                entity.Property(e => e.Email).HasColumnType("text");
 
                 entity.Property(e => e.Escola)
                     .HasMaxLength(255)
@@ -142,9 +141,7 @@ namespace Real_Vagas_API.Domains
                     .HasMaxLength(255)
                     .IsUnicode(false);
 
-                entity.Property(e => e.Nome)
-                    .HasMaxLength(255)
-                    .IsUnicode(false);
+                entity.Property(e => e.Nome).HasColumnType("text");
 
                 entity.Property(e => e.Sexo)
                     .HasMaxLength(255)
@@ -165,6 +162,8 @@ namespace Real_Vagas_API.Domains
                 entity.Property(e => e.Turno)
                     .HasMaxLength(255)
                     .IsUnicode(false);
+
+                entity.Property(e => e.UrlCurriculo).HasColumnType("text");
 
                 entity.HasOne(d => d.IdDadosNavigation)
                     .WithMany(p => p.DbUsuarios)

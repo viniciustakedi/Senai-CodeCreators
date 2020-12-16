@@ -9,10 +9,15 @@ namespace Real_Vagas_API.Interfaces
 {
     public interface ITipoUsuario
     {
-        List<DbTipoUsuario> Listar(); //Para listar todos os tipos de usuarios
-        void Cadastrar(DbTipoUsuario tipousuario); //Para cadastrar um novo tipo de usuario
-        void AtualizarTipoUsuarioId(int id, DbTipoUsuario tipousuario); //Atualizar tipo usuario passando seu id na url
-        void Deletar(int id); //Para deletar um estudio
-        DbTipoUsuario BuscarId(int id); // buscar tipo usuario por Id
+        //Para listar todos os tipos de usuarios.
+        List<DbTipoUsuario> Listar();
+        //Para cadastrar um novo tipo de usuario
+        void Cadastrar(DbTipoUsuario tipousuario);
+        //Atualizar tipo usuario passando seu id na url
+        void AtualizarTipoUsuarioId(int id, DbTipoUsuario tipousuario);
+        //Para deletar um estudio
+        void Deletar(int id);
+        // Buscar tipo usuario por Id
+        DbTipoUsuario BuscarId(int id); 
     }
 }

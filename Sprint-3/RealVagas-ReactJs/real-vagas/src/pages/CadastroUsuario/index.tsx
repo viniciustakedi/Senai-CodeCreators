@@ -29,6 +29,7 @@ function Cadastro() {
     const [turma, setTurma] = useState('');
     const [turno, setTurno] = useState('');
     const [termo, setTermo] = useState('');
+    const [url, setUrl] = useState('');
 
 
     var history = useHistory();
@@ -66,6 +67,7 @@ function Cadastro() {
                 email: email,
                 telefone: telefone,
                 estadoCivil: EstadoCivil,
+                UrlCurriculo: url,
                 nivel: nivel,
                 tipoCurso: TipoCurso,
                 curso: curso,
@@ -172,13 +174,18 @@ function Cadastro() {
                 </div>
 
                 <div className="informaçao">
+                    <Input type="text" name="url" label="Url Currículo:"
+                    onChange={e => setUrl(e.target.value)}/>
+                </div>
+
+                <div className="informaçao">
                     <InputPerson mask='cpf' type="text" name="CPF" label="CPF:"
                     onChange={e => setCpf(e.target.value)}/>
                 </div>
 
                 <div className="informaçao">
                     <Input type="text" name="Telefone" label="Telefone:" 
-                    onChange={cpf as any} />
+                    onChange={e => setTelefone(e.target.value)} />
                 </div>
 
                 <div className="informaçao">

@@ -7,33 +7,29 @@ using System.Threading.Tasks;
 namespace Real_Vagas_API.Interfaces
 {
     public interface IDados
-    {
+    {                            
         List<DbDados> Listar();
 
         /// <summary>
-        /// Busca um usuário através do ID
+        /// Buscar um pelo ID do dado.
         /// </summary>
         /// <param name="id">ID do usuário buscado</param>
         /// <returns>Um usuário buscado</returns>
         DbDados BuscarPorId(int id);
 
         /// <summary>
-        /// Cadastra um novo usuário
+        /// Cadastra um novo dado
         /// </summary>
-        /// <param name="novoUsuario">Objeto novoUsuario que será cadastrado</param>
-        int Cadastrar(DbDados novoUsuario);
+        int Cadastrar(DbDados dados);
 
         /// <summary>
-        /// Atualiza um usuário existente
+        /// Atualizar um dado
         /// </summary>
-        /// <param name="id">ID do usuário que será atualizado</param>
-        /// <param name="usuarioAtualizado">Objeto com as novas informações</param>
-        void Atualizar(int id, DbDados usuarioAtualizado);
+        void Atualizar(int id, DbDados dados);
 
         /// <summary>
-        /// Deleta um usuário
+        /// Deletar um dado
         /// </summary>
-        /// <param name="id">ID do usuário que será deletado</param>
         void Deletar(int id);
     }
 }

@@ -14,9 +14,7 @@ using Real_Vagas_API.Repositories;
 namespace Real_Vagas_API.Controllers
 {
     [Produces("application/json")]
-    // Define que a rota de uma requisição será no formato domínio/api/NomeController
     [Route("api/[controller]")]
-    // Define que é um controlador de API
     [ApiController]
     public class VagasController : ControllerBase
     {
@@ -28,12 +26,15 @@ namespace Real_Vagas_API.Controllers
         }
 
         /// <summary>
-        /// Método Get para listar todas as vagas
-        /// </summary>        
-        /// <returns>Todas as Vagas </returns>
+        /// Controller responsavél por listar todas as vagas.
+        /// </summary>
+        /// <response code="200">Retorna status code 200, listar todas as vagas.</response>
+        /// <response code="404">Retorna status code 404 um não encontrado, caso não tiver nenhuma vaga cadastrar.</response>   
+        /// <response code="400">Retorna stauts code 400 bad request, caso de conflito com api</response> 
         [HttpGet]
         //[Authorize]
         [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public IActionResult Get()
         {
@@ -56,10 +57,10 @@ namespace Real_Vagas_API.Controllers
         }
 
         /// <summary>
-        /// Método Post para cadastrar uma vaga
+        /// Controller responsavél por cadastrar uma nova vaga no sistema.
         /// </summary>
-        /// <param name="VagaNova"></param>
-        /// <returns>Vaga Cadastrada</returns>
+        /// <response code="200">Retorna status code 200, cadastrar uma nova vaga.</response>
+        /// <response code="400">Retorna stauts code 400 bad request, caso de conflito com api</response> 
         [HttpPost]
         [Authorize(Roles = "1,2")]
         [ProducesResponseType(StatusCodes.Status201Created)]
@@ -79,10 +80,11 @@ namespace Real_Vagas_API.Controllers
         }
 
         /// <summary>
-        /// Método Get para listar uma vaga por id
+        /// Controller responsavél por buscar uma vaga pelo seu ID.
         /// </summary>
-        /// <param name="Id"></param>
-        /// <returns>Vaga buscada</returns>
+        /// <response code="200">Retorna status code 200, listar a vaga buscada pelo ID.</response>
+        /// <response code="404">Retorna status code 404 um não encontrado, caso não existir uma vaga com ID.</response>   
+        /// <response code="400">Retorna stauts code 400 bad request, caso de conflito com api</response> 
         [HttpGet("{Id}")]
         [Authorize(Roles = "1,2")]
         [ProducesResponseType(StatusCodes.Status200OK)]
@@ -107,120 +109,13 @@ namespace Real_Vagas_API.Controllers
             }
         }
 
-        /// <summary>
-        /// Método Get para listar uma vaga pelo local
-        /// </summary>
-        /// <param name="LocalVaga"></param>
-        /// <returns>Vagas Encontradas</returns>
-        [HttpGet("Vagas/{LocalVaga}")]
-        [Authorize]
-        [ProducesResponseType(StatusCodes.Status200OK)]
-        [ProducesResponseType(StatusCodes.Status404NotFound)]
-        [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public IActionResult GetByLocal(string LocalVaga)
-        {
-            try
-            {
-                DbVagas vagaBuscada = _vagas.BuscarPorLocal(LocalVaga);
-                if (vagaBuscada != null)
-                {
-
-                    return Ok(vagaBuscada);
-                }
-                return NotFound("Nenhuma vaga encontrada para o Local informado");
-            }
-            catch (Exception error)
-            {
-                return BadRequest(error);
-            }
-        }
 
         /// <summary>
-        /// Método Get para listar uma vaga pelo cargo
+        /// Controller responsavél por atualizar uma vaga.
         /// </summary>
-        /// <param name="Cargo"></param>
-        /// <returns>Vagas Encontradas</returns>
-        [HttpGet("VagasPorCargo/{Cargo}")]
-        [Authorize]
-        [ProducesResponseType(StatusCodes.Status200OK)]
-        [ProducesResponseType(StatusCodes.Status404NotFound)]
-        [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public IActionResult GetByCargo(string Cargo)
-        {
-            try
-            {
-                DbVagas vagaBuscada = _vagas.BuscarPorCargo(Cargo);
-                if (vagaBuscada != null)
-                {
-                    return Ok(vagaBuscada);
-                }
-                return NotFound("Nenhuma vaga encontrada para o cargo informado");
-            }
-            catch (Exception error)
-            {
-                return BadRequest(error);
-            }
-        }
-
-        /// <summary>
-        /// Método Get para listar uma vaga pela data de publicação
-        /// </summary>
-        /// <param name="DataPublicacao"></param>
-        /// <returns>Vagas Encontradas</returns>
-        [HttpGet("VagasPorData/{DataPublicacao}")]
-        [Authorize]
-        [ProducesResponseType(StatusCodes.Status200OK)]
-        [ProducesResponseType(StatusCodes.Status404NotFound)]
-        [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public IActionResult GetByData(DateTime DataPublicacao)
-        {
-            try
-            {
-                DbVagas vagaBuscada = _vagas.BuscarPorData(DataPublicacao);
-                if (vagaBuscada != null)
-                {
-
-                    return Ok(vagaBuscada);
-                }
-                return NotFound("Nenhuma vaga encontrada para a data informada");
-            }
-            catch (Exception error)
-            {
-
-                return BadRequest(error);
-            }
-        }
-
-        /// <summary>
-        /// Método Get para listar uma vaga pelo nome da empresa
-        /// </summary>
-        /// <param name="EmpresaNome"></param>
-        /// <returns>Vagas Encontradas</returns>
-        [HttpGet("VagasPorEmpresa/{EmpresaNome}")]
-        [Authorize]
-        [ProducesResponseType(StatusCodes.Status200OK)]
-        [ProducesResponseType(StatusCodes.Status404NotFound)]
-        [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public IActionResult GetByEmpresa(string EmpresaNome)
-        {
-            try
-            {
-                DbVagas vagaBuscada = _vagas.BuscarPorNomeEmpresa(EmpresaNome);
-
-                if (vagaBuscada != null)
-                {
-                    return Ok(vagaBuscada);
-                }
-
-                return NotFound("Nenhuma vaga encontrada para a empresa informada");
-            }
-            catch (Exception error)
-            {
-
-                return BadRequest(error);
-            }
-        }
-
+        /// <response code="200">Retorna status code 200, vaga será atualizada.</response>
+        /// <response code="404">Retorna status code 404 um não encontrado, caso não existir o ID.</response> 
+        /// <response code="400">Retorna stauts code 400 bad request, caso de conflito com api</response> 
         [HttpPut("{Id}")]
         [Authorize(Roles = "1,2")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
@@ -255,10 +150,10 @@ namespace Real_Vagas_API.Controllers
 
 
         /// <summary>
-        /// Retorna uma vaga pelo id da empresa
+        /// Controller responsavél por listar todas vagas de empresa pelo ID.
         /// </summary>
-        /// <param name="Id"></param>
-        /// <returns></returns>
+        /// <response code="200">Retorna status code 200, listar todas vagas daquela empresa.</response>
+        /// <response code="400">Retorna stauts code 400 bad request, caso de conflito com api</response> 
         [HttpGet("VagaByIdEmpresa/id")]
         [Authorize(Roles = "1,2")]
         [ProducesResponseType(StatusCodes.Status200OK)]
@@ -278,10 +173,11 @@ namespace Real_Vagas_API.Controllers
         }
 
         /// <summary>
-        /// Método Delete para deletar uma vaga
+        /// Controller responsavél por deletar um vaga pelo o ID.
         /// </summary>
-        /// <param name="Id"></param>
-        /// <returns>Vaga Deletada</returns>
+        /// <response code="202">Retorna status code 202 accepted, deletar uma vaga pelo ID.</response>
+        /// <response code="404">Retorna status code 404 um não encontrado, caso não encontrar nenhuma vaga.</response>   
+        /// <response code="400">Retorna stauts code 400 bad request, caso de conflito com api</response> 
         [HttpDelete("{Id}")]
         [Authorize(Roles = "1")]
         [ProducesResponseType(StatusCodes.Status202Accepted)]

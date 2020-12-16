@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\vinic\\Desktop\\Senai-CodeCreators\\Sprint-2\\Real_Vagas_API-2.0\\Real_Vagas_API.csproj": {}
+    "C:\\Users\\vinic\\Desktop\\BackUp\\Senai-CodeCreators\\Sprint-2\\Real_Vagas_API-2.0\\Real_Vagas_API.csproj": {}
   },
   "projects": {
-    "C:\\Users\\vinic\\Desktop\\Senai-CodeCreators\\Sprint-2\\Real_Vagas_API-2.0\\Real_Vagas_API.csproj": {
+    "C:\\Users\\vinic\\Desktop\\BackUp\\Senai-CodeCreators\\Sprint-2\\Real_Vagas_API-2.0\\Real_Vagas_API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\vinic\\Desktop\\Senai-CodeCreators\\Sprint-2\\Real_Vagas_API-2.0\\Real_Vagas_API.csproj",
+        "projectUniqueName": "C:\\Users\\vinic\\Desktop\\BackUp\\Senai-CodeCreators\\Sprint-2\\Real_Vagas_API-2.0\\Real_Vagas_API.csproj",
         "projectName": "Real_Vagas_API",
-        "projectPath": "C:\\Users\\vinic\\Desktop\\Senai-CodeCreators\\Sprint-2\\Real_Vagas_API-2.0\\Real_Vagas_API.csproj",
+        "projectPath": "C:\\Users\\vinic\\Desktop\\BackUp\\Senai-CodeCreators\\Sprint-2\\Real_Vagas_API-2.0\\Real_Vagas_API.csproj",
         "packagesPath": "C:\\Users\\vinic\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\vinic\\Desktop\\Senai-CodeCreators\\Sprint-2\\Real_Vagas_API-2.0\\obj\\",
+        "outputPath": "C:\\Users\\vinic\\Desktop\\BackUp\\Senai-CodeCreators\\Sprint-2\\Real_Vagas_API-2.0\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Microsoft\\Xamarin\\NuGet\\"

@@ -82,6 +82,7 @@ namespace Real_Vagas_API
             services.AddTransient<ITipoUsuario, TipoUsuarioRepository>();
             services.AddTransient<IUsuarios, UsuariosRepository>();
             services.AddTransient<IVagas, VagasRepository>();
+            services.AddTransient<IAdicional, AdiconalRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

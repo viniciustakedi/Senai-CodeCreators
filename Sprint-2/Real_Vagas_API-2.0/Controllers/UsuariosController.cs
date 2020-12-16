@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Real_Vagas_API.Domains;
 using Real_Vagas_API.Interfaces;
@@ -17,15 +18,9 @@ namespace Real_Vagas_API.Controllers
     [ApiController]
     public class UsuariosController : ControllerBase
     {
-        /// <summary>
-        /// Cria um objeto _usuarioRepository que irá receber todos os métodos definidos na interface
-        /// </summary>
         private readonly IUsuarios _usuario;
         private readonly IEmpresas _empresa;
 
-        /// <summary>
-        /// Instancia este objeto para que haja a referência aos métodos no repositório
-        /// </summary>
         public UsuariosController(IUsuarios usuario, IEmpresas empresa)
         {
             _usuario = usuario;
@@ -33,11 +28,14 @@ namespace Real_Vagas_API.Controllers
         }
 
         /// <summary>
-        /// Lista todos os usuários do sistema
+        /// Controller responsavél por listar todos os usuários.
         /// </summary>
-        /// <returns>Lista de usuário</returns>
+        /// <response code="201">Retorna status code 200, listar todos usuários.</response>
+        /// <response code="404">Retorna status code 404 um não encontrado, caso não tiver nenhum usuário no sistema.</response>   
         [HttpGet]
         //[Authorize(Roles = "1")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public IActionResult Get()
         {
             var buscar = _usuario.Listar();
@@ -52,12 +50,14 @@ namespace Real_Vagas_API.Controllers
         }
 
         /// <summary>
-        /// Lista um usuário por id especifico
+        /// Controller responsavél por buscar um usuário pelo seu ID
         /// </summary>
-        /// <param name="id"></param>
-        /// <returns>O usuário buscado</returns>
+        /// <response code="200">Retorna status code 200, listar usuário buscado pelo seu ID.</response>
+        /// <response code="404">Retorna status code 404 um não encontrado, caso não existir seu ID.</response>   
         [HttpGet("{id}")]
         [Authorize]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public IActionResult GetById(int id)
         {
             var buscar = _usuario.BuscarPorId(id);
@@ -72,17 +72,21 @@ namespace Real_Vagas_API.Controllers
         }
 
         /// <summary>
-        /// Cadastra um novo usuário no sistema
+        /// Controller responsavél por cadastrar um novo usuário.
         /// </summary>
-        /// <param name="novoUsuario"></param>
-        /// <returns>O usuário cadastrado</returns>
+        /// <response code="201">Retorna status code 201, cadastrar um novo usuário</response>
+        /// <response code="404">Retorna status code 404 não autorizado, caso de problema com cadastro.</response>   
+        /// <response code="403">Retorna stauts code 403 Forbidden, caso de problema com api.</response> 
         [HttpPost]
+        [ProducesResponseType(StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(StatusCodes.Status403Forbidden)]
         public IActionResult Post(DbUsuarios novoUsuario)
         {
-            if (novoUsuario.IdTipoUsuario == 3 || novoUsuario.IdTipoUsuario == 4)
+            if (novoUsuario.IdTipoUsuario == 1 || novoUsuario.IdTipoUsuario == 3 || novoUsuario.IdTipoUsuario == 4)
             {
                 var buscarUsuario = _usuario.BuscarPorEmail(novoUsuario.Email);
-                var buscarEmpresa = _empresa.SearchByEmpresa(novoUsuario.Email, "");
+                var buscarEmpresa = _empresa.BuscarPorEmpresa(novoUsuario.Email, "");
 
                 if (buscarUsuario == null && buscarEmpresa == null)
                 {
@@ -105,13 +109,14 @@ namespace Real_Vagas_API.Controllers
         }
 
         /// <summary>
-        /// Atualiza as informações do usuário selecionado pelo id
+        /// Controller responsavél por atualizar um usuário existente.
         /// </summary>
-        /// <param name="id"></param>
-        /// <param name="usuarioAtualizado"></param>
-        /// <returns>Usuario atualizado</returns>
+        /// <response code="200">Retorna status code 200, atualizar um usuário.</response>
+        /// <response code="404">Retorna status code 404 um não encontrado, caso não existir o ID do usuário.</response>   
         [HttpPut("{id}")]
-        //[Authorize]
+        [Authorize]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public IActionResult Put(int id, DbUsuarios usuarioAtualizado)
         {
             var busca = _usuario.BuscarPorId(id);
@@ -121,7 +126,7 @@ namespace Real_Vagas_API.Controllers
                 _usuario.Atualizar(id, usuarioAtualizado);
 
                 // Retorna um status code
-                return StatusCode(204);
+                return StatusCode(200);
             }
             else
             {
@@ -130,12 +135,14 @@ namespace Real_Vagas_API.Controllers
         }
 
         /// <summary>
-        /// Deleta um usuário pelo id do sistema
+        /// Controller responsavél deletar um usuário pelo ID.
         /// </summary>
-        /// <param name="id"></param>
-        /// <returns>Usuario deletado</returns>
+        /// <response code="200">Retorna status code 200, deletar um usuário pelo seu ID.</response>
+        /// <response code="404">Retorna status code 404 um não encontrado, caso o ID não existir.</response>   
         [HttpDelete("{id}")]
-        //[Authorize(Roles = "1")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [Authorize(Roles = "1")]
         public IActionResult Delete(int id)
         {
             var buscar = _usuario.BuscarPorId(id);
@@ -145,7 +152,7 @@ namespace Real_Vagas_API.Controllers
                 _usuario.Deletar(id);
 
                 // Retorna um status code
-                return StatusCode(204);
+                return StatusCode(200);
             }
             else
             {

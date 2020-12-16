@@ -18,6 +18,7 @@ namespace Real_Vagas_API.Domains
         public string Email { get; set; }
         public string Telefone { get; set; }
         public string EstadoCivil { get; set; }
+        public string UrlCurriculo { get; set; }
         public string Nivel { get; set; }
         public string TipoCurso { get; set; }
         public string Curso { get; set; }

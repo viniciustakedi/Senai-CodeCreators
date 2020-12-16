@@ -8,16 +8,18 @@ namespace Real_Vagas_API.Interfaces
 {
     public interface IVagas
     {
+        //Listar todas as vagas do sistema.
          List<DbVagas> ListaVagas();
+        //Buscar uma vaga pelo seu ID.
          DbVagas BuscarPorId(int Id);
+        //Cadastrar uma nova vaga.
          void Cadastrar(DbVagas VagaNova);
+        //Atualizar uma vaga pelo seu ID e body.
          void Atualizar(int Id, DbVagas VagaAtualizada);
+        //Deletar uma vaga pelo seu ID.
          void Deletar(int Id);
 
+        //Listar todas vagas de uma empresa.
          List<DbVagas> ListaByIdEmpresa(int Id);
-         DbVagas BuscarPorLocal(string localVaga);
-         DbVagas BuscarPorCargo(string Cargo);
-         DbVagas BuscarPorData(DateTime DataPublicacao);
-         DbVagas BuscarPorNomeEmpresa(string EmpresaNome);
     }
 }

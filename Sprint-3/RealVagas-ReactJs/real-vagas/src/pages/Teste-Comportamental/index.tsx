@@ -28,7 +28,7 @@ function TesteComp() {
                             <h1>Descubra quem você é</h1>
                             <h2>e como as outras pessoas são diferentes de você</h2>
                         </div>
-                        <Link to="Personalidade">
+                        <Link to="/TesteComportamental">
                         <ButtonTeste value="Clique aqui para começar" />
                         </Link>
                     </div>

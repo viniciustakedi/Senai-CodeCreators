@@ -33,18 +33,15 @@ function DashboardEmpresa() {
         labels: [
             'Vagas Cadastradas',
             'Currículos Recebidos',
-            'Mensagem Enviadas'
         ],
         colors: [
             '#C5483E',
-            '#79CC76',
             '#005086'
         ],
         datasets: [{
             data: [vagas.length, grafic.length, 0],
             backgroundColor: [
                 '#C5483E',
-                '#79CC76',
                 '#005086'
             ]
         }]
@@ -112,7 +109,7 @@ function DashboardEmpresa() {
             method: "GET"
         }).then(Response => Response.json())
             .then(Respost => {
-                if (Respost != 'Nenhuma incrição encontrada') {
+                if (Respost != 'Nenhuma inscrição encontrada!!!') {
                     setgrafic(Respost);
                 } else {
                     setgrafic([])
@@ -209,7 +206,7 @@ function DashboardEmpresa() {
                                 return (
                                     <tr>
                                         <td>{item.cargo}</td>
-                                        <td>R$ {formatter.format(item.salario)}</td>
+                                        <td>{formatter.format(item.salario)}</td>
                                         <td>{item.nomeRecrutador}</td>
                                         <td>{item.localVaga}</td>
                                         <td><Link id="link-dash" to="/Curriculos">Ver Inscrições</Link></td>
