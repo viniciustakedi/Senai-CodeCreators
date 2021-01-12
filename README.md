@@ -6,8 +6,8 @@ Nossa aplicação conta com:
 *uma API desenvolvida em SQLServer e C#
 
 Front-End será desenvolvido e marcado pela biblioteca:
-*ReactJs com TypeScript
-*Yarn
-*NodeJs
-*e Bootstrap
-*Além do React Native para mobile
+* ReactJs com TypeScript
+* Yarn
+* NodeJs
+* e Bootstrap
+* Além do React Native para mobile
