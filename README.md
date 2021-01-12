@@ -6,7 +6,7 @@ Nossa aplicação conta com uma API desenvolvida em:
 * SQLServer
 * C#
 * +Frameworks e bibliotecas
-* +Criptografia desenvolviva pelo grupo
+* +Criptografia desenvolvida pelo grupo
 
 Front-End será desenvolvido e marcado pela biblioteca:
 * ReactJs com TypeScript
