@@ -10,8 +10,8 @@ Styles: Ok
 
 Gabriel - Login:
 Tela: Ok
-Styles: Não ( Passar para o projeto principal )
-Funcionalidade: Não ( Botão entrar precisa redirecionar para a home automático )
+Styles: Não Ok
+Funcionalidade: Ok
 
 Fabiane - Aluno:
 Tela: Ok
