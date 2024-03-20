@@ -10,7 +10,7 @@ Styles: Ok
 
 Gabriel - Login:
 Tela: Ok
-Styles: Não Ok
+Styles: Ok
 Funcionalidade: Ok
 
 Fabiane - Aluno:
@@ -21,7 +21,7 @@ Funcionalidade: Ok
 Henrique - Empresa:
 Tela: Ok
 Styles: OK
-Funcionalidade: Não ( botão ver mais )
+Funcionalidade: Ok
 
 Takedi - Menu:
 Componente: Ok
